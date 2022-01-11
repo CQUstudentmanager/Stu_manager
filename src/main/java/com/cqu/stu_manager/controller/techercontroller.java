@@ -12,7 +12,7 @@ import java.util.List;
 public class techercontroller {
     @Autowired
     TeacherMapper teacherMapper;
-    @GetMapping("/techerlist")
+    @GetMapping("/teacherlist")
     public List<Teacher> techerlist()
     {
         List<Teacher> teacherList=teacherMapper.findAllTeacher();
