@@ -9,20 +9,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Student {
-    private Integer Stu_no;
-    private String Stu_password;
-    private String  Stu_name;
-    private Integer Stu_gender;
-    private String Stu_class;
-    private String Stu_birthday;
-    private String Stu_ethnic;
-    private String Stu_origin;
-    private Integer   Stu_id;
-    private String Stu_politicalface;
-    private String Stu_caucus_time;
-    private Integer Stu_isMacau;
-    private Integer      Stu_telephone;
-    private Integer Stu_qq;
-    private String  Stu_email;
-    private String Stu_address;
+    private Integer stu_no;
+    private String stu_password;
+    private String  stu_name;
+    private Integer stu_gender;
+    private String stu_class;
+    private String stu_birthday;
+    private String stu_ethnic;
+    private String stu_origin;
+    private Integer  stu_id;
+    private String stu_politicalface;
+    private String stu_caucus_time;
+    private Integer stu_isMacau;
+    private Integer stu_telephone;
+    private Integer stu_qq;
+    private String  stu_email;
+    private String stu_address;
+    private String stu_photourl;
 }

@@ -19,4 +19,10 @@ public class studentcontroller {
         List<Student> studentlist=studentMapper.findAllStudent();
         return studentlist;
     }
+    @GetMapping("/updatestudent")
+    public String updatestudent(){
+        Student student=new Student(1231234, " ","张三",0,"1","1995-12-26","汉族","四川成都",522321,"党员","2021",1,135959002,122706559,"ch@163","重庆大学","WU");
+        int i= studentMapper.upDatestudentinfo(student);
+        return "ok";
+    }
 }

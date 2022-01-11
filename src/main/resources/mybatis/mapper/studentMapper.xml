@@ -6,4 +6,27 @@
     <select id="findAllStudent" resultType="com.cqu.stu_manager.pojo.Student">
         select * from student
     </select>
+    <update id="upDatestudentinfo" parameterType="com.cqu.stu_manager.pojo.Student">
+        update student
+        set
+            stu_name=#{stu_name},
+            stu_gender=#{stu_gender},
+            stu_class=#{stu_class},
+            stu_birthday=#{stu_birthday},
+            stu_ethnic=#{stu_ethnic},
+            stu_origin=#{stu_origin},
+            stu_id=#{stu_id},
+            stu_politicalface=#{stu_politicalface},
+            stu_caucus_time=#{stu_caucus_time},
+            stu_isMacau=#{stu_isMacau},
+            stu_telephone=#{stu_telephone},
+            stu_qq=#{stu_qq},
+            stu_email=#{stu_email},
+            stu_address=#{stu_address},
+            stu_photourl=#{stu_photourl}
+
+
+        where
+              stu_no=#{stu_no}
+    </update>
 </mapper>
