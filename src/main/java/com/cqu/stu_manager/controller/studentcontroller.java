@@ -2,11 +2,12 @@ package com.cqu.stu_manager.controller;
 
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.pojo.Student;
+import com.cqu.stu_manager.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -25,4 +26,29 @@ public class studentcontroller {
         int i= studentMapper.upDatestudentinfo(student);
         return "ok";
     }
+    @ResponseBody
+    @GetMapping("/login")
+    public  Result lonin(@RequestBody Student student){
+        Result result=new Result();
+        Student student1=studentMapper.findloginPassword(student.getStu_no());
+        if(student1.getStu_no().equals(student.getStu_no())&&student1.getStu_password().equals(student.getStu_password()))
+        {
+            result.setData(student1);
+            return result;
+        }else {
+            Result failresult =new Result();
+            failresult.setMsg("登陆失败，用户名密码错误");
+            return failresult;
+        }
+
+
+
+
+
+
+
+
+
+    }
+
 }

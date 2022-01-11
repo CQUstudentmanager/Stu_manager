@@ -29,4 +29,7 @@
         where
               stu_no=#{stu_no}
     </update>
+    <select id="findloginPassword" resultType="com.cqu.stu_manager.pojo.Student">
+        select * from student where stu_no=#{stu_no}
+    </select>
 </mapper>
