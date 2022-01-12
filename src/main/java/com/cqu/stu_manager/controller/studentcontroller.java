@@ -31,24 +31,29 @@ public class studentcontroller {
     public  Result lonin(@RequestBody Student student){
         Result result=new Result();
         Student student1=studentMapper.findloginPassword(student.getStu_no());
-        if(student1.getStu_no().equals(student.getStu_no())&&student1.getStu_password().equals(student.getStu_password()))
-        {
-            result.setData(student1);
-            return result;
-        }else {
-            Result failresult =new Result();
-            failresult.setMsg("登陆失败，用户名密码错误");
-            return failresult;
+        if(student1==null){
+        Result failresult = new Result();
+        failresult.setMsg("登陆失败，用户不存在请联系管理员");
+        return failresult;
         }
-
-
-
-
-
-
-
-
-
+        else if (student1.getStu_no().equals(student.getStu_no()) && student1.getStu_password().equals(student.getStu_password()))
+            {
+                result.setData(student1);
+                return result;
+            }
+        else if(!student1.getStu_password().equals(student.getStu_password()))
+            {
+                Result failresult = new Result();
+                failresult.setMsg("登陆失败，用户名或密码错误");
+                return failresult;
+            }
+        else {
+            Result result1=new Result();
+            result1.setMsg("未知错误");
+            return result1;
     }
 
+        }
 }
+
+
