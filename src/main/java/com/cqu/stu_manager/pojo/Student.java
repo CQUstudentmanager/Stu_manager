@@ -17,12 +17,12 @@ public class Student {
     private String stu_birthday;
     private String stu_ethnic;
     private String stu_origin;
-    private Integer  stu_id;
+    private String  stu_id;
     private String stu_politicalface;
     private String stu_caucus_time;
     private Integer stu_isMacau;
-    private Integer stu_telephone;
-    private Integer stu_qq;
+    private String stu_telephone;
+    private String stu_qq;
     private String  stu_email;
     private String stu_address;
     private String stu_photourl;

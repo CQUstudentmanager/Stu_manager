@@ -12,6 +12,7 @@ public interface StudentMapper {
     List<Student> findAllStudent();
     Student findloginPassword(int userid );
 
+
     int upDatestudentinfo(Student student) ;
 
 
