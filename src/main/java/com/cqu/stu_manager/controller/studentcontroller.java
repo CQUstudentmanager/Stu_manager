@@ -35,13 +35,9 @@ public class studentcontroller {
     @ResponseBody
     @PostMapping ("/login")
     public  Result lonin(@RequestBody Student student)
-    /*public  Result lonin(@RequestParam(defaultValue = "000") int your_no,@RequestParam(defaultValue = "000") String your_string)*/
-        /*Student student = new Student();
-        student.setStu_no(your_no);
-        student.setStu_password(your_string);*/
         {
         Result result=new Result();
-        Student student1=studentMapper.findloginPassword(student.getStu_no());
+        Student student1=studentMapper.findOneStudent(student.getStu_no());
         if(student1==null){
         Result failresult = new Result();
         failresult.setMsg("登陆失败，用户不存在请联系管理员");
@@ -78,11 +74,13 @@ public class studentcontroller {
             }
             else if(your_up.getOld_password().equals(student.getStu_password()))
             {
-                Student student1 = new Student();
-                student1.setStu_no(your_up.getStu_no());
-                student1.setStu_password(your_up.getNew_password());
-                studentMapper.upDatePassword(student1);
-                myresult.setData(student1);
+//                Student student1 = new Student();
+//                student1.setStu_no(your_up.getStu_no());
+//                student1.setStu_password(your_up.getNew_password());
+                //确定student不为NULL而且旧密码输入正确，直接改成新密码就可以了
+                student.setStu_password(your_up.getNew_password());
+                studentMapper.upDatePassword(student);
+                myresult.setData(student);
                 myresult.setMsg("密码修改成功成功");
                 return myresult;
             }
