@@ -19,13 +19,13 @@ public class studentcontroller {
     StudentMapper studentMapper;
 
 
-    @GetMapping("/STUDENTLIST")
+    @PostMapping("/STUDENTLIST")
     public List<Student> students(){
         List<Student> studentlist=studentMapper.findAllStudent();
         return studentlist;
     }
 
-    @GetMapping("/updatestudent")
+    @PostMapping("/updatestudent")
     public String updatestudent(){
         Student student=new Student(1231234, " ","李四",0,"1","1995-12-26","汉族","四川成都","522321","党员","2021",1,"135959002","122706559","ch@163","重庆大学","WU");
         int i= studentMapper.upDatestudentinfo(student);
@@ -33,7 +33,7 @@ public class studentcontroller {
     }
 
     @ResponseBody
-    @GetMapping ("/login")
+    @PostMapping ("/login")
     public  Result lonin(@RequestBody Student student)
     /*public  Result lonin(@RequestParam(defaultValue = "000") int your_no,@RequestParam(defaultValue = "000") String your_string)*/
         /*Student student = new Student();
