@@ -46,6 +46,7 @@ public class studentcontroller {
         else if (student1.getStu_no().equals(student.getStu_no()) && student1.getStu_password().equals(student.getStu_password()))
             {
                 result.setData(student1);
+                result.setMsg("登录成功");
                 return result;
             }
         else if(!student1.getStu_password().equals(student.getStu_password()))
@@ -74,9 +75,6 @@ public class studentcontroller {
             }
             else if(your_up.getOld_password().equals(student.getStu_password()))
             {
-//                Student student1 = new Student();
-//                student1.setStu_no(your_up.getStu_no());
-//                student1.setStu_password(your_up.getNew_password());
                 //确定student不为NULL而且旧密码输入正确，直接改成新密码就可以了
                 student.setStu_password(your_up.getNew_password());
                 studentMapper.upDatePassword(student);
