@@ -10,9 +10,8 @@ import java.util.List;
 @Repository
 public interface StudentMapper {
     List<Student> findAllStudent();
-    Student findloginPassword(int userid );
-
+    Student findloginPassword(int userno);
     int upDatestudentinfo(Student student) ;
-
-
+    Student findOneStudent(int stu_no);
+    int upDatePassword(Student student);
 }

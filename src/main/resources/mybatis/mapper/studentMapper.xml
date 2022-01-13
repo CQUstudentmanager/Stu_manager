@@ -6,7 +6,7 @@
     <select id="findAllStudent" resultType="com.cqu.stu_manager.pojo.Student">
         select * from student
     </select>
-    <update id="upDatestudentinfo" parameterType="com.cqu.stu_manager.pojo.Student">
+    <update id="upDatestudentinfo" parameterType="com.cqu.stu_manager.pojo.Student" >
         update student
         set
             stu_name=#{stu_name},
@@ -32,4 +32,14 @@
     <select id="findloginPassword" resultType="com.cqu.stu_manager.pojo.Student">
         select * from student where stu_no=#{stu_no}
     </select>
+    <select id="findOneStudent" resultType="com.cqu.stu_manager.pojo.Student">
+        select * from student where stu_no=#{stu_no}
+    </select>
+    <update id="upDatePassword" parameterType="com.cqu.stu_manager.pojo.Student" >
+        update student
+        set
+            stu_password = #{stu_password}
+        where
+            stu_no=#{stu_no}
+    </update>
 </mapper>
