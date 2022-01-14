@@ -31,8 +31,6 @@ public class logincontroller {
         Subject subject= SecurityUtils.getSubject();
         UsernamePasswordToken token=new UsernamePasswordToken(user.getUser_id().toString(),user.getUser_password());
         Result result=new Result();
-//        result.setData(token);
-//        return result;
         try{
             subject.login(token);
             //1是学生，0是老师
