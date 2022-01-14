@@ -34,7 +34,7 @@ public class UserRealm extends AuthorizingRealm {
 
         Student student=studentMapper.findOneStudent(Integer.parseInt(usertoken.getUsername()));
         if (student==null){
-            Teacher teacher = teacherMapper.findTeacherById(Integer.parseInt(usertoken.getUsername()));
+            Teacher teacher = teacherMapper.findOneTeacher(Integer.parseInt(usertoken.getUsername()));
             if(teacher == null){
                 return null;
             }else

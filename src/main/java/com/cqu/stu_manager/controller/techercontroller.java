@@ -2,6 +2,7 @@ package com.cqu.stu_manager.controller;
 
 import com.cqu.stu_manager.mapper.TeacherMapper;
 import com.cqu.stu_manager.pojo.Teacher;
+import com.cqu.stu_manager.pojo.upDatePassword;
 import com.cqu.stu_manager.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,18 +14,18 @@ public class techercontroller {
     @Autowired
     TeacherMapper teacherMapper;
 
-    @PostMapping ("/techerlist")
+    @PostMapping ("Tea/techerlist")
     public List<Teacher> techerlist()
     {
         List<Teacher> teacherList=teacherMapper.findAllTeacher();
         return teacherList;
     }
 
-    @PostMapping("/findTechaerById")
+    @PostMapping("Tea/findOneTeacher")
     @ResponseBody
     public Result findTechaerById(@RequestBody Teacher your_t){
         Result result = new Result();
-        Teacher teacher = teacherMapper.findTeacherById(your_t.getT_no());
+        Teacher teacher = teacherMapper.findOneTeacher(your_t.getT_no());
         if(teacher == null){
             result.setMsg("无当前教师信息");
         }
@@ -35,11 +36,11 @@ public class techercontroller {
         return result;
        }
 
-    @PostMapping("/upDateTeacherInfo")
+    @PostMapping("Tea/upDateTeacher")
     @ResponseBody
-    public Result upDateTeacherInfo(@RequestBody Teacher your_t){
+    public Result upDateTeacher(@RequestBody Teacher your_t){
         Result result = new Result();
-        Teacher teacher1 = teacherMapper.findTeacherById(your_t.getT_no());
+        Teacher teacher1 = teacherMapper.findOneTeacher(your_t.getT_no());
         if(teacher1 == null){
             result.setMsg("当前教师信息不存在");
         }
@@ -56,28 +57,29 @@ public class techercontroller {
             if(your_t.getT_identity()!=0 && your_t.getT_identity()!= teacher1.getT_identity()){
                 teacher1.setT_identity(your_t.getT_identity());
             }
-            teacherMapper.upDateTeacherInfo(teacher1);
+            teacherMapper.upDateTeacher(teacher1);
             result.setData(teacher1);
             result.setMsg("教师信息更改成功");
         }
         return result;
     }
 
-//    @ResponseBody
-//    @PostMapping("/upDatePassword")
-//    public Result upDatePassword(@RequestBody ){
-//        Result result = new Result();
-//        Teacher teacher = teacherMapper.findTeacherById(your_t.getT_no());
-//        if(teacher == null){
-//            result.setMsg("当前教师信息不存在");
-//        }
-//        else if(teacher.getT_password().equals(your_t.getT_password())){
-//
-//        }
-//
-//
-//
-//
-//        return result;
-//    }
+    @ResponseBody
+    @PostMapping("Tea/upDatePassword")
+    public Result upDatePassword(@RequestBody upDatePassword your_p){
+        Result result = new Result();
+        Teacher teacher = teacherMapper.findOneTeacher(your_p.getNo());
+        if(teacher == null){
+            result.setMsg("当前教师信息不存在");
+        }
+        else if(teacher.getT_password().equals(your_p.getOld_password())){
+            result.setMsg("密码修改成功");
+            teacher.setT_password(your_p.getNew_password());
+            teacherMapper.upDatePassword(teacher);
+            result.setData(teacher);
+        }else{
+            result.setMsg("原密码输入错误");
+        }
+        return result;
+    }
 }

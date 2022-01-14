@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 public class upDatePassword {
     private String old_password;
     private String new_password;
-    private int stu_no;
+    private int no;
 }

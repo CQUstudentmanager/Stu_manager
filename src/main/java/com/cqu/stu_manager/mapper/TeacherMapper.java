@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface TeacherMapper {
     List<Teacher> findAllTeacher();
-    Teacher findTeacherById(int teacherId);
-    int upDateTeacherInfo(Teacher teacher);
+    Teacher findOneTeacher(int teacherId);
+    int upDateTeacher(Teacher teacher);
     int upDatePassword(Teacher teacher);
 }

@@ -53,7 +53,7 @@ public class logincontroller {
                 }
             }
             else if(user.getUser_type() == 0){
-                Teacher teacher = teacherMapper.findTeacherById(user.getUser_id());
+                Teacher teacher = teacherMapper.findOneTeacher(user.getUser_id());
                 if(teacher == null){
                     result.setMsg("身份错误");
                     return result;

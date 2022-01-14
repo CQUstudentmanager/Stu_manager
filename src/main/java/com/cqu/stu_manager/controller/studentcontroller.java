@@ -2,20 +2,12 @@ package com.cqu.stu_manager.controller;
 
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.pojo.Student;
+import com.cqu.stu_manager.pojo.Teacher;
 import com.cqu.stu_manager.pojo.upDatePassword;
 import com.cqu.stu_manager.utils.Result;
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController//表示返回json文件类型
@@ -24,13 +16,30 @@ public class studentcontroller {
     StudentMapper studentMapper;
 
 
-    @PostMapping("/STUDENTLIST")
+    @PostMapping("Stu/stulist")
     @ResponseBody
     public List<Student> students(){
-        List<Student> studentlist=studentMapper.findAllStudent();
-        return studentlist;
+        return studentMapper.findAllStudent();
     }
-    @PostMapping("/upDateStudent")
+
+
+    @PostMapping("Stu/findOneStudent")
+    @ResponseBody
+    public Result findOneStudent(@RequestBody Teacher your_t){
+        Result result = new Result();
+        Student teacher = studentMapper.findOneStudent(your_t.getT_no());
+        if(teacher == null){
+            result.setMsg("无当前教师信息");
+        }
+        else{
+            result.setData(teacher);
+            result.setMsg("成功找到当前教师信息");
+        }
+        return result;
+    }
+
+
+    @PostMapping("Stu/upDateStudent")
     @ResponseBody
     public Result upDateStudent(@RequestBody Student your_t){
         Result result = new Result();
@@ -93,11 +102,11 @@ public class studentcontroller {
 
 
 
-        @PostMapping("/updatepassword")
+        @PostMapping("Stu/updatepassword")
         @ResponseBody
         public Result updatePassword(@RequestBody upDatePassword your_up){
             Result result= new Result();
-            Student student = studentMapper.findOneStudent(your_up.getStu_no());
+            Student student = studentMapper.findOneStudent(your_up.getNo());
             if(student == null){
                 result.setMsg("用户不存在");
             }
@@ -107,7 +116,7 @@ public class studentcontroller {
                 student.setStu_password(your_up.getNew_password());
                 studentMapper.upDatePassword(student);
                 result.setData(student);
-                result.setMsg("密码修改成功成功");
+                result.setMsg("密码修改成功");
             }
             else{
                 result.setMsg("密码修改失败");
