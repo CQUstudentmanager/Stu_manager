@@ -91,29 +91,6 @@ public class studentcontroller {
         return result;
     }
 
-    @ResponseBody
-    @PostMapping("/login2")
-    public Result logintest(@RequestBody Student student){
-        Subject subject= SecurityUtils.getSubject();
-        UsernamePasswordToken token=new UsernamePasswordToken(student.getStu_no().toString(),student.getStu_password());
-        Result result=new Result();
-//        result.setData(token);
-//        return result;
-
-        try{
-            subject.login(token);
-            result.setData( studentMapper.findOneStudent(student.getStu_no()));
-            return result;
-        }catch (UnknownAccountException e){
-            result.setMsg("用户名不存在，请重新登陆");
-            return result;
-            //用户名密码错误
-        }catch (IncorrectCredentialsException e)
-        {
-            result.setMsg("用户授权失败，请重新登陆");
-            return result;
-            //密码错误
-        }}
 
 
         @PostMapping("/updatepassword")

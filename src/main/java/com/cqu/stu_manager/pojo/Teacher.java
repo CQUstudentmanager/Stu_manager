@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Teacher {
-    private int t_no;
+    private Integer t_no;
     private String t_password;
     private String t_name;
     private String  t_telephone;
     private String t_officeroom;
-    private int t_identity;
+    private Integer t_identity;
 }

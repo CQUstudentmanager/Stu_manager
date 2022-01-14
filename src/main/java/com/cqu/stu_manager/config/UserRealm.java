@@ -1,7 +1,9 @@
 package com.cqu.stu_manager.config;
 
 import com.cqu.stu_manager.mapper.StudentMapper;
+import com.cqu.stu_manager.mapper.TeacherMapper;
 import com.cqu.stu_manager.pojo.Student;
+import com.cqu.stu_manager.pojo.Teacher;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -13,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserRealm extends AuthorizingRealm {
     @Autowired
     StudentMapper studentMapper;
+    @Autowired
+    TeacherMapper teacherMapper;
 //授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
@@ -25,12 +29,19 @@ public class UserRealm extends AuthorizingRealm {
         //获取当前用户
 
         UsernamePasswordToken usertoken= (UsernamePasswordToken) token;
-
-        Student student=studentMapper.findOneStudent(Integer.parseInt(usertoken.getUsername()));
         String name="";
         String password="";
+
+        Student student=studentMapper.findOneStudent(Integer.parseInt(usertoken.getUsername()));
         if (student==null){
-            return null;
+            Teacher teacher = teacherMapper.findTeacherById(Integer.parseInt(usertoken.getUsername()));
+            if(teacher == null){
+                return null;
+            }else
+            {
+                name=teacher.getT_no().toString();
+                password=teacher.getT_password();
+            }
         }else {
             name=student.getStu_no().toString();
             password=student.getStu_password();
@@ -39,6 +50,7 @@ public class UserRealm extends AuthorizingRealm {
         if(!usertoken.getUsername().equals(name)){
             return null;//用户名为空
         }
+
         return new SimpleAuthenticationInfo("",password,"");
 
 
