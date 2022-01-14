@@ -11,4 +11,5 @@ public interface TeacherMapper {
     List<Teacher> findAllTeacher();
     Teacher findTeacherById(int teacherId);
     int upDateTeacherInfo(Teacher teacher);
+    int upDatePassword(Teacher teacher);
 }

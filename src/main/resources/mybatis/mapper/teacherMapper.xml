@@ -19,5 +19,12 @@
         where
             t_no=#{t_no}
     </update>
+    <update id="upDatePassword" parameterType="com.cqu.stu_manager.pojo.Teacher" >
+        update teacher
+        set
+            t_password=#{t_passwprd}
+        where
+            t_no=#{t_no}
+    </update>
 
 </mapper>

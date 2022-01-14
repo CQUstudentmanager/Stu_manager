@@ -62,4 +62,22 @@ public class techercontroller {
         }
         return result;
     }
+
+//    @ResponseBody
+//    @PostMapping("/upDatePassword")
+//    public Result upDatePassword(@RequestBody ){
+//        Result result = new Result();
+//        Teacher teacher = teacherMapper.findTeacherById(your_t.getT_no());
+//        if(teacher == null){
+//            result.setMsg("当前教师信息不存在");
+//        }
+//        else if(teacher.getT_password().equals(your_t.getT_password())){
+//
+//        }
+//
+//
+//
+//
+//        return result;
+//    }
 }

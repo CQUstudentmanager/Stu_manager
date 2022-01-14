@@ -5,6 +5,11 @@ import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.upDatePassword;
 import com.cqu.stu_manager.utils.Result;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -87,29 +92,28 @@ public class studentcontroller {
     }
 
     @ResponseBody
-    @PostMapping ("/login")
-    public  Result lonin(@RequestBody Student student)
-        {
+    @PostMapping("/login2")
+    public Result logintest(@RequestBody Student student){
+        Subject subject= SecurityUtils.getSubject();
+        UsernamePasswordToken token=new UsernamePasswordToken(student.getStu_no().toString(),student.getStu_password());
         Result result=new Result();
-        Student student1=studentMapper.findOneStudent(student.getStu_no());
-        if(student1==null){
-        result.setMsg("登陆失败，用户不存在请联系管理员");
-        }
-        else if (student1.getStu_no().equals(student.getStu_no()) && student1.getStu_password().equals(student.getStu_password()))
-            {
-                result.setData(student1);
-                result.setMsg("登录成功");
-                return result;
-            }
-        else if(!student1.getStu_password().equals(student.getStu_password()))
-            {
-                result.setMsg("登陆失败，用户名或密码错误");
-            }
-        else {
-            result.setMsg("未知错误");
-             }
-        return result;
-        }
+//        result.setData(token);
+//        return result;
+
+        try{
+            subject.login(token);
+            result.setData( studentMapper.findOneStudent(student.getStu_no()));
+            return result;
+        }catch (UnknownAccountException e){
+            result.setMsg("用户名不存在，请重新登陆");
+            return result;
+            //用户名密码错误
+        }catch (IncorrectCredentialsException e)
+        {
+            result.setMsg("用户授权失败，请重新登陆");
+            return result;
+            //密码错误
+        }}
 
 
         @PostMapping("/updatepassword")
