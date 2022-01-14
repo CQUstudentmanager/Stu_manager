@@ -38,4 +38,7 @@
         where
             stu_no=#{stu_no}
     </update>
+<!--    <select id="findStudents"  resultType="com.cqu.stu_manager.pojo.Student" >-->
+<!--        select * from student where stu_name like '%#{stu_name}%'-->
+<!--    </select>-->
 </mapper>

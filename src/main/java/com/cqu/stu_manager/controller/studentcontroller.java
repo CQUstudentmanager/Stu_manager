@@ -18,6 +18,7 @@ public class studentcontroller {
 
     @PostMapping("Stu/stulist")
     @ResponseBody
+    //得到所有学生名单
     public List<Student> students(){
         return studentMapper.findAllStudent();
     }
@@ -25,6 +26,7 @@ public class studentcontroller {
 
     @PostMapping("Stu/findOneStudent")
     @ResponseBody
+    //根据stu_no准确找到对应的学生
     public Result findOneStudent(@RequestBody Teacher your_t){
         Result result = new Result();
         Student teacher = studentMapper.findOneStudent(your_t.getT_no());
@@ -41,6 +43,7 @@ public class studentcontroller {
 
     @PostMapping("Stu/upDateStudent")
     @ResponseBody
+    //修改学生信息
     public Result upDateStudent(@RequestBody Student your_t){
         Result result = new Result();
         Student student = studentMapper.findOneStudent(your_t.getStu_no());
@@ -104,6 +107,7 @@ public class studentcontroller {
 
         @PostMapping("Stu/updatepassword")
         @ResponseBody
+        //更改密码
         public Result updatePassword(@RequestBody upDatePassword your_up){
             Result result= new Result();
             Student student = studentMapper.findOneStudent(your_up.getNo());
@@ -123,6 +127,23 @@ public class studentcontroller {
             }
             return result;
         }
+
+
+//        @PostMapping("Stu/findStudents")
+//        @ResponseBody
+//        //根据stu_no或者stu_name实现模糊查询
+//        public Result findStudents(@RequestBody String string){
+//            Result result = new Result();
+//            List<Student> list = studentMapper.findStudents(string);
+//            if(list.isEmpty()){
+//                result.setMsg("未找到");
+//            }
+//            else{
+//                result.setMsg("成功找到信息");
+//                result.setData(list);
+//            }
+//            return result;
+//        }
 
 }
 

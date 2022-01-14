@@ -13,4 +13,6 @@ public interface StudentMapper {
     int upDateStudentInfo(Student student) ;//更新学生信息
     Student findOneStudent(int stu_no);//根据stu_no找对应的学生
     int upDatePassword(Student student);//更新密码
+    List<Student> findStudents(int stu_no);//根据stu_no进行模糊查询
+    List<Student> findStudents(String stu_name);//根据stu_name进行模糊查询
 }
