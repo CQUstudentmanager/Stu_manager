@@ -14,5 +14,4 @@ public class Teacher {
     private String  t_telephone;
     private String t_officeroom;
     private int t_identity;
-
 }

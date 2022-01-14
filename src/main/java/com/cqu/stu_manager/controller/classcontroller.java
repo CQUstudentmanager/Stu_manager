@@ -12,12 +12,14 @@ import java.util.List;
 public class classcontroller {
     @Autowired
     ClassMapper classMapper;
+
     @GetMapping("/CLASSLIST")
     public List<Class> listclass()
     {
         List<Class>classList=classMapper.findAllClass();
         return classList;
     }
+
     @GetMapping("/updateclassinfo")
     public String updateclassinfo(){
         Class class_=new Class(1,"ceshi",3);

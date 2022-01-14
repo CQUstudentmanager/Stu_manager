@@ -7,7 +7,7 @@
     <select id="findAllStudent" resultType="com.cqu.stu_manager.pojo.Student">
         select * from student
     </select>
-    <update id="upDatestudentinfo" parameterType="com.cqu.stu_manager.pojo.Student" >
+    <update id="upDateStudentInfo" parameterType="com.cqu.stu_manager.pojo.Student" >
         update student
         set
             stu_name=#{stu_name},
@@ -25,8 +25,6 @@
             stu_email=#{stu_email},
             stu_address=#{stu_address},
             stu_photourl=#{stu_photourl}
-
-
         where
               stu_no=#{stu_no}
     </update>
