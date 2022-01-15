@@ -3,6 +3,7 @@ package com.cqu.stu_manager.controller;
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.Teacher;
+import com.cqu.stu_manager.pojo.User;
 import com.cqu.stu_manager.pojo.upDatePassword;
 import com.cqu.stu_manager.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +28,15 @@ public class studentcontroller {
     @PostMapping("Stu/findOneStudent")
     @ResponseBody
     //根据stu_no准确找到对应的学生
-    public Result findOneStudent(@RequestBody Teacher your_t){
+    public Result findOneStudent(@RequestBody Student your_s){
         Result result = new Result();
-        Student teacher = studentMapper.findOneStudent(your_t.getT_no());
-        if(teacher == null){
-            result.setMsg("无当前教师信息");
+        Student student = studentMapper.findOneStudent(your_s.getStu_no());
+        if(student == null){
+            result.setMsg("无当前学生信息");
         }
         else{
-            result.setData(teacher);
-            result.setMsg("成功找到当前教师信息");
+            result.setData(student);
+            result.setMsg("成功找到学生教师信息");
         }
         return result;
     }
@@ -129,21 +130,29 @@ public class studentcontroller {
         }
 
 
-//        @PostMapping("Stu/findStudents")
-//        @ResponseBody
-//        //根据stu_no或者stu_name实现模糊查询
-//        public Result findStudents(@RequestBody String string){
-//            Result result = new Result();
-//            List<Student> list = studentMapper.findStudents(string);
-//            if(list.isEmpty()){
-//                result.setMsg("未找到");
-//            }
-//            else{
-//                result.setMsg("成功找到信息");
-//                result.setData(list);
-//            }
-//            return result;
-//        }
+        @PostMapping("Stu/findStudents")
+        @ResponseBody
+        //根据stu_no或者stu_name实现模糊查询
+        public Result findStudents(@RequestBody Student student){
+            Result result = new Result();
+            List<Student> studentList=studentMapper.findStudentsByName(student.getStu_name());
+            if(studentList.isEmpty()){
+                //如果根据stu_name未找到，尝试将其当作stu_no来进行查找
+                studentList = studentMapper.findStudentsByNO(student.getStu_name());
+                if(studentList.isEmpty()){
+                    result.setMsg("未找到相关信息");
+                }
+                else{
+                    result.setMsg("成功找到信息");
+                    result.setData(studentList);
+                }
+            }
+            else{
+                result.setMsg("成功找到信息");
+                result.setData(studentList);
+            }
+            return result;
+        }
 
 }
 

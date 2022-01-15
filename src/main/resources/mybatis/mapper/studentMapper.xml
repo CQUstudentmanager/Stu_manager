@@ -38,7 +38,10 @@
         where
             stu_no=#{stu_no}
     </update>
-<!--    <select id="findStudents"  resultType="com.cqu.stu_manager.pojo.Student" >-->
-<!--        select * from student where stu_name like '%#{stu_name}%'-->
-<!--    </select>-->
+    <select id="findStudentsByName"  resultType="com.cqu.stu_manager.pojo.Student" >
+        select * from student where stu_name like  CONCAT(CONCAT('%',#{stu_name}),'%')
+    </select>
+    <select id="findStudentsByNO"  resultType="com.cqu.stu_manager.pojo.Student" >
+        select * from student where cast(stu_no as char) like  CONCAT(CONCAT('%',#{stu_name}),'%')
+    </select>
 </mapper>
