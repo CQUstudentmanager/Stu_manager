@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.stu_manager.mapper.ReceiveMapper">
+    <insert id="addReceiver" parameterType="com.cqu.stu_manager.pojo.Receive">
+            insert into receive(msg_no2,receiver,status) values (#{msg_no2},#{receiver},#{status})
+    </insert>
+</mapper>

@@ -1,9 +1,11 @@
 package com.cqu.stu_manager.controller;
 
+import com.cqu.stu_manager.mapper.MsgMapper;
+import com.cqu.stu_manager.mapper.ReceiveMapper;
 import com.cqu.stu_manager.mapper.TeacherMapper;
-import com.cqu.stu_manager.pojo.Teacher;
-import com.cqu.stu_manager.pojo.upDatePassword;
+import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.utils.Result;
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,8 @@ import java.util.List;
 public class techercontroller {
     @Autowired
     TeacherMapper teacherMapper;
+    @Autowired
+    MsgMapper msgMapper;
 
     @PostMapping ("Tea/techerlist")
     public List<Teacher> techerlist()
@@ -79,6 +83,39 @@ public class techercontroller {
             result.setData(teacher);
         }else{
             result.setMsg("原密码输入错误");
+        }
+        return result;
+    }
+
+
+    @ResponseBody
+    @PostMapping("Tea/send_msg")
+    public Result sendMsg(@RequestBody Msg msg, @RequestBody MsgReceiver msgReceiver){
+        Result result = new Result();
+        if(msg==null){
+            result.setMsg("当前消息为空");
+        }
+        else if(msgReceiver == null){
+            result.setMsg("请选择消息接收对象");
+        }
+        else{
+            msgMapper.addMsg(msg);
+            result.setMsg("发送成功");
+            result.setData(msg);
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @PostMapping("Tea/test")
+    public Result test(@RequestParam(required = false) String string){
+        Result result = new Result();
+        if(string==null){
+            result.setMsg("请输入信息");
+        }
+        else{
+            result.setMsg("接收成功");
+            result.setData(string);
         }
         return result;
     }

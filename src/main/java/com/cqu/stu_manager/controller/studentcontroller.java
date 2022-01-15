@@ -8,8 +8,15 @@ import com.cqu.stu_manager.pojo.upDatePassword;
 import com.cqu.stu_manager.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RestController//表示返回json文件类型
 public class studentcontroller {
@@ -106,7 +113,7 @@ public class studentcontroller {
 
 
 
-        @PostMapping("Stu/updatepassword")
+        @PostMapping("Stu/upDatePassword")
         @ResponseBody
         //更改密码
         public Result updatePassword(@RequestBody upDatePassword your_up){
@@ -130,7 +137,7 @@ public class studentcontroller {
         }
 
 
-        @PostMapping("Stu/findStudents")
+        @PostMapping("Stu/findStudentsByName")
         @ResponseBody
         //根据stu_no或者stu_name实现模糊查询
         public Result findStudents(@RequestBody Student student){
@@ -154,6 +161,56 @@ public class studentcontroller {
             return result;
         }
 
+
+        @PostMapping("Stu/findStudentsByClass")
+        @ResponseBody
+        //根据班级找到对应的学生
+        public Result findStudentsByClass(@RequestBody Student student){
+            Result result = new Result();
+            List<Student> studentList = studentMapper.findStudentsByClass(student.getStu_class());
+            if(studentList.isEmpty()){
+                result.setMsg("未找到");
+            }else{
+                result.setMsg("成功找到信息");
+                result.setData(studentList);
+            }
+            return result;
+        }
+
+        @PostMapping("Stu/upLoadPicture")
+        @ResponseBody
+        public Result upLoadPicture(MultipartFile file, HttpServletRequest request){
+            Result result = new Result();
+//            获取上传的文件名字，看是否为pdf文件，不是的话直接返回错误信息
+            if(file == null){
+                result.setMsg("未收到文件");
+                return result;
+            }
+            else {
+                String originName = file.getOriginalFilename();
+                if(!originName.endsWith(".jpg")){
+                result.setMsg("文件类型错误");
+                return result;
+                }
+            }
+            SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
+            String format = sdf.format(new Date());
+            String realPath = "C:\\Users\\drifter\\Desktop\\Pictures" + format;//存储在本机上的路径
+            File folder = new File(realPath);
+            if(!folder.exists()){
+                folder.mkdirs();
+            }
+            String newName = UUID.randomUUID().toString() + ".jpg";
+            try {
+                file.transferTo(new File(folder,newName));
+                result.setMsg("上传成功");
+                String url = request.getScheme() + request.getServerName() + ":" + request.getServerPort() + format + newName;
+                result.setData(url);
+            }catch (IOException e) {
+                result.setMsg(e.getMessage());
+            }
+            return result;
+        }
 }
 
 
