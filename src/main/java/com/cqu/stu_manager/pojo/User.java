@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class upDatePassword {
-    private String old_password;
-    private String new_password;
-    private int no;
+public class User {
+    private Integer user_id;
+    private String user_password;
+    private Integer user_type;
 }

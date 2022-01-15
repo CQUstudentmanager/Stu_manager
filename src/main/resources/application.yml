@@ -1,8 +1,5 @@
 server:
-  port: 8088
-  address: 0.0.0.0
-
-
+  port: 8080
 dog:
 
 spring:
@@ -10,8 +7,8 @@ spring:
     cache: false
   datasource:
     username: root
-    password: cy123
-    url: jdbc:mysql://localhost:3306/cqu_stu_manager?userUnicode=ture&characterEncodeing=utf-8
+    password: root
+    url: jdbc:mysql://localhost:3306/cqu_stu_manager?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     inittialSize: 5
