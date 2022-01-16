@@ -19,7 +19,7 @@
             stu_id=#{stu_id},
             stu_politicalface=#{stu_politicalface},
             stu_caucus_time=#{stu_caucus_time},
-            stu_isMacau=#{stu_isMacau},
+            stu_ismacau=#{stu_ismacau},
             stu_telephone=#{stu_telephone},
             stu_qq=#{stu_qq},
             stu_email=#{stu_email},

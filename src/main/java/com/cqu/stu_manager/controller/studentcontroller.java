@@ -61,8 +61,10 @@ public class studentcontroller {
             if((!your_t.getStu_name().equals("String") ) && (!your_t.getStu_name().equals(student.getStu_name()))){
                 student.setStu_name(your_t.getStu_name());
             }
-            if((your_t.getStu_gender()!=0) && (!your_t.getStu_gender().equals(student.getStu_gender()))){
+            if(!your_t.getStu_gender().equals(student.getStu_gender())){
                 student.setStu_gender(your_t.getStu_gender());
+                System.out.println(your_t.getStu_gender());
+                System.out.println(student.getStu_gender());
             }
             if((!your_t.getStu_class().equals("String")) && (!your_t.getStu_class().equals(student.getStu_class()))){
                 student.setStu_class(your_t.getStu_class());
@@ -85,8 +87,8 @@ public class studentcontroller {
             if((!your_t.getStu_caucus_time().equals("String")) && (!your_t.getStu_caucus_time().equals(student.getStu_caucus_time()))){
                 student.setStu_caucus_time(your_t.getStu_caucus_time());
             }
-            if((your_t.getStu_isMacau() != 0) && (!your_t.getStu_isMacau().equals(student.getStu_isMacau()))){
-                student.setStu_isMacau(your_t.getStu_isMacau());
+            if(!your_t.getStu_ismacau().equals(student.getStu_ismacau())){
+                student.setStu_ismacau(your_t.getStu_ismacau());
             }
             if((!your_t.getStu_telephone().equals("String")) && (!your_t.getStu_telephone().equals(student.getStu_telephone()))){
                 student.setStu_telephone(your_t.getStu_telephone());
@@ -179,6 +181,7 @@ public class studentcontroller {
 
         @PostMapping("Stu/upLoadPicture")
         @ResponseBody
+        @CrossOrigin
         public Result upLoadPicture(MultipartFile file, HttpServletRequest request){
             Result result = new Result();
 //            获取上传的文件名字，看是否为pdf文件，不是的话直接返回错误信息
@@ -204,7 +207,7 @@ public class studentcontroller {
             try {
                 file.transferTo(new File(folder,newName));
                 result.setMsg("上传成功");
-                String url = request.getScheme() + request.getServerName() + ":" + request.getServerPort() + format + newName;
+                String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
                 result.setData(url);
             }catch (IOException e) {
                 result.setMsg(e.getMessage());

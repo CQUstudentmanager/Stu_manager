@@ -6,4 +6,8 @@
     <insert id="addReceiver" parameterType="com.cqu.stu_manager.pojo.Receive">
             insert into receive(receive_no,msg_no2,receiver,status) values (#{receive_no},#{msg_no2},#{receiver},#{status})
     </insert>
+    <select id="findAlreadyReady" parameterType="com.cqu.stu_manager.pojo.Receive">
+            select count(*) from receive where msg_no2=#{meg_no2} and status=0
+    </select>
 </mapper>
+
