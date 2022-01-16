@@ -23,8 +23,8 @@ public class ShiroConfig {
         * role：拥有某个权限才能访问
         */
         Map<String,String>filterMap=new LinkedHashMap<>();
-//        filterMap.put("/Tea/*","authc");
-//        filterMap.put("/Stu/*","authc");
+        filterMap.put("/Tea/*","perms[teacher]");
+        filterMap.put("/Stu/*","perms[student]");
 
         //添加受限页面
 
