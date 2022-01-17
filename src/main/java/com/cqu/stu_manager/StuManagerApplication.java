@@ -12,4 +12,5 @@ public class StuManagerApplication {
         SpringApplication.run(StuManagerApplication.class, args);
     }
 
+
 }

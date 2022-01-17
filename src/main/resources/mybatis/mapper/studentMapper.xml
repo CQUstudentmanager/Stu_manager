@@ -10,16 +10,10 @@
     <update id="upDateStudentInfo" parameterType="com.cqu.stu_manager.pojo.Student" >
         update student
         set
-            stu_name=#{stu_name},
-            stu_gender=#{stu_gender},
-            stu_class=#{stu_class},
-            stu_birthday=#{stu_birthday},
-            stu_ethnic=#{stu_ethnic},
             stu_origin=#{stu_origin},
             stu_id=#{stu_id},
             stu_politicalface=#{stu_politicalface},
             stu_caucus_time=#{stu_caucus_time},
-            stu_ismacau=#{stu_ismacau},
             stu_telephone=#{stu_telephone},
             stu_qq=#{stu_qq},
             stu_email=#{stu_email},

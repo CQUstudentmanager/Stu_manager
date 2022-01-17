@@ -12,4 +12,5 @@ public class Msg {
     private String msg_no;
     private String msg_content;
     private Integer msg_sender;
+
 }
