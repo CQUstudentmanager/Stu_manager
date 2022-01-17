@@ -1,10 +1,9 @@
 package com.cqu.stu_manager.controller;
 
+import com.cqu.stu_manager.mapper.MsgMapper;
+import com.cqu.stu_manager.mapper.ReceiveMapper;
 import com.cqu.stu_manager.mapper.StudentMapper;
-import com.cqu.stu_manager.pojo.Student;
-import com.cqu.stu_manager.pojo.Teacher;
-import com.cqu.stu_manager.pojo.User;
-import com.cqu.stu_manager.pojo.upDatePassword;
+import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +22,10 @@ import java.util.UUID;
 public class studentcontroller {
     @Autowired
     StudentMapper studentMapper;
+    @Autowired
+    ReceiveMapper receiveMapper;
+    @Autowired
+    MsgMapper msgMapper;
 
 
     @PostMapping("Stu/stulist")
@@ -214,6 +218,33 @@ public class studentcontroller {
             }
             return result;
         }
+
+    @PostMapping("Stu/stu_getmsg")
+    @ResponseBody
+    public List<Msg> getmsg(@RequestBody Receive receive){
+        Msg msg=new Msg();
+        List<Msg> msgList=new ArrayList<>();
+        List<Receive> msgnolist=receiveMapper.findmsgnoByreceiver(receive);//先根据receive的receiver查询有哪些记录，同时获取msg编号。
+        if (msgnolist.isEmpty()){
+            msg.setMsg_content("没有查询到你的通知");
+            msgList.add(msg);
+            return msgList;
+        }
+        else {
+
+//查询msg编号下的内容
+            for (int i=0;i<msgnolist.size();i++){
+                msg.setMsg_no(msgnolist.get(i).getMsg_no2());
+                msg=msgMapper.findAllMsgByNo(msg);
+                msgList.add(msg);
+
+            }
+
+            return msgList;
+        }
+
+
+    }
 }
 
 

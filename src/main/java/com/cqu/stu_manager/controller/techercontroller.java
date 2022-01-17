@@ -165,22 +165,27 @@ public class techercontroller {
 
 
 
-    @PostMapping("Tea/findAlreadyRead")
+    @PostMapping("Tea/findReadStatus")
     @ResponseBody
     public Result findAlreadyRead(@RequestBody Teacher teacher){
         Result result = new Result();
         Teacher teacher1 = teacherMapper.findOneTeacher(teacher.getT_no());
         if(teacher1 == null){
             result.setMsg("无当前教师信息");
+            return result;
         }
         Map<Msg,String> listMap = new HashMap<>();
         //先找到该老师所发布的所有消息的msg_no
-        List<String> allMsgNo = msgMapper.findAllMsg(teacher);
-        for(String msgno:allMsgNo){
+        List<Msg> allMsg = msgMapper.findAllMsg(teacher);
+        if(allMsg.isEmpty()){
+            result.setMsg("当前教师未发布信息");
+            return result;
+        }
+        for(Msg msg:allMsg){
             //对于每一个消息，找到已读的所有学生
-            int number1 = receiveMapper.findAlreadyReady(msgno);//找到已经读了的
-            int number2 = receiveMapper.findNotRead(msgno);//找到未读的
-            listMap.put(msgMapper.findOneMsg(msgno),number1 + "已读," + number2 +"未读。");
+            int number1 = receiveMapper.findAlreadyReady(msg.getMsg_no());//找到已经读了的
+            int number2 = receiveMapper.findNotRead(msg.getMsg_no());//找到未读的
+            listMap.put(msg,number1 + "已读," + number2 +"未读。");
         }
         result.setMsg("当前老师发布的所有消息的阅读情况如下：");
         result.setData(listMap);

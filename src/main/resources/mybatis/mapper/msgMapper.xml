@@ -6,5 +6,10 @@
     <insert id="addMsg" parameterType="com.cqu.stu_manager.pojo.Msg">
         insert into msginfo(msg_no,msg_content,msg_sender) values (#{msg_no},#{msg_content},#{msg_sender})
     </insert>
-
+    <select id="findAllMsg" parameterType="com.cqu.stu_manager.pojo.Teacher" resultType="com.cqu.stu_manager.pojo.Msg">
+        select * from msginfo where msg_sender=#{t_no}
+    </select>
+    <select id="findAllMsgByNo" parameterType="com.cqu.stu_manager.pojo.Msg" resultType="com.cqu.stu_manager.pojo.Msg">
+        select * from msginfo where msg_no=#{msg_no}
+    </select>
 </mapper>
