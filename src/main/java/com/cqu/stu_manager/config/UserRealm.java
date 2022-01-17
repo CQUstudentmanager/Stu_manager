@@ -22,10 +22,11 @@ public class UserRealm extends AuthorizingRealm {
 //授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("执行了授权");
+
         SimpleAuthorizationInfo info=new SimpleAuthorizationInfo();
         Subject subject=SecurityUtils.getSubject();
         UsernamePasswordToken usertoken= (UsernamePasswordToken) subject.getPrincipal();
+        System.out.println("用户"+usertoken.getUsername()+"_______________________获取了认证权限______________");
 
         Student student=studentMapper.findOneStudent(Integer.parseInt(usertoken.getUsername()));
         Teacher teacher = teacherMapper.findOneTeacher(Integer.parseInt(usertoken.getUsername()));
