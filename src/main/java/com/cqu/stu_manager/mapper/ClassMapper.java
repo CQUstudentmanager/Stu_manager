@@ -12,4 +12,6 @@ public interface ClassMapper {
     List<Class> findAllClass();
 
     int updateClassinfo(Class class_) ;
+    int insertClass(Class class_);
+
 }

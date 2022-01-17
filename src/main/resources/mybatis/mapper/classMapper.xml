@@ -8,7 +8,14 @@
     </select>
     <update id="updateClassinfo" parameterType="com.cqu.stu_manager.pojo.Class">
         update class
-        set class_name=#{class_name}
+        set class_name=#{class_name},
+            class_teacherid=#{class_teacherid}
         where class_id=#{class_id}
     </update>
+    <insert id="insertClass" parameterType="com.cqu.stu_manager.pojo.Class">
+        insert  into class values(#{class_id},#{class_name},#{class_teacherid})
+    </insert>
+    <select id="findClassById" parameterType="com.cqu.stu_manager.pojo.Class" resultType="com.cqu.stu_manager.pojo.Class">
+        select * from class where class_teacherid=#{class_teacherid}
+    </select>
 </mapper>
