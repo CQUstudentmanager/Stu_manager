@@ -26,7 +26,7 @@ public class StudentRealm extends AuthorizingRealm {
 
         UsernamePasswordToken usertoken= (UsernamePasswordToken) token;
 
-        Student student=studentMapper.findloginPassword(Integer.parseInt(usertoken.getUsername()));
+        Student student=studentMapper.findOneStudent(Integer.parseInt(usertoken.getUsername()));
         String name="";
         String password="";
         if (student==null){

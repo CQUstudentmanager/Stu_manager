@@ -23,14 +23,14 @@ public class ShiroConfig {
         * role：拥有某个权限才能访问
         */
         Map<String,String>filterMap=new LinkedHashMap<>();
-//        filterMap.put("/Tea/*","perms[teacher]");
-//        filterMap.put("/Stu/*","perms[student]");
+        filterMap.put("/Tea/*","perms[teacher]");
+        filterMap.put("/Stu/*","perms[student]");
 
         //添加受限页面
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         //设置身份信息认证失败的返回页面。
-        // shiroFilterFactoryBean.setUnauthorizedUrl("/error");
+         shiroFilterFactoryBean.setUnauthorizedUrl("/error");
 
         return shiroFilterFactoryBean;
         //设置安全管理器
