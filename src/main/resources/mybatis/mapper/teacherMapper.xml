@@ -6,8 +6,25 @@
     <select id="findAllTeacher" resultType="com.cqu.stu_manager.pojo.Teacher">
         select * from teacher
     </select>
-    <select id="findTechaerById" resultType="com.cqu.stu_manager.pojo.Teacher" parameterType="int">
+    <select id="findOneTeacher" resultType="com.cqu.stu_manager.pojo.Teacher" parameterType="int">
         select * from teacher where t_no=#{teacherId}
     </select>
+    <update id="upDateTeacher" parameterType="com.cqu.stu_manager.pojo.Teacher" >
+        update teacher
+        set
+            t_name=#{t_name},
+            t_telephone=#{t_telephone},
+            t_officeroom=#{t_officeroom},
+            t_identity=#{t_identity}
+        where
+            t_no=#{t_no}
+    </update>
+    <update id="upDatePassword" parameterType="com.cqu.stu_manager.pojo.Teacher" >
+        update teacher
+        set
+            t_password=#{t_password}
+        where
+            t_no=#{t_no}
+    </update>
 
 </mapper>

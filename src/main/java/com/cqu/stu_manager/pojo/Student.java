@@ -20,7 +20,7 @@ public class Student {
     private String  stu_id;
     private String stu_politicalface;
     private String stu_caucus_time;
-    private Integer stu_isMacau;
+    private Integer stu_ismacau;
     private String stu_telephone;
     private String stu_qq;
     private String  stu_email;

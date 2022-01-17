@@ -3,10 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cqu.stu_manager.mapper.StudentMapper">
+
     <select id="findAllStudent" resultType="com.cqu.stu_manager.pojo.Student">
         select * from student
     </select>
-    <update id="upDatestudentinfo" parameterType="com.cqu.stu_manager.pojo.Student">
+    <update id="upDateStudentInfo" parameterType="com.cqu.stu_manager.pojo.Student" >
         update student
         set
             stu_name=#{stu_name},
@@ -18,18 +19,32 @@
             stu_id=#{stu_id},
             stu_politicalface=#{stu_politicalface},
             stu_caucus_time=#{stu_caucus_time},
-            stu_isMacau=#{stu_isMacau},
+            stu_ismacau=#{stu_ismacau},
             stu_telephone=#{stu_telephone},
             stu_qq=#{stu_qq},
             stu_email=#{stu_email},
             stu_address=#{stu_address},
             stu_photourl=#{stu_photourl}
-
-
         where
               stu_no=#{stu_no}
     </update>
-    <select id="findloginPassword" resultType="com.cqu.stu_manager.pojo.Student">
+    <select id="findOneStudent" resultType="com.cqu.stu_manager.pojo.Student">
         select * from student where stu_no=#{stu_no}
+    </select>
+    <update id="upDatePassword" parameterType="com.cqu.stu_manager.pojo.Student" >
+        update student
+        set
+            stu_password = #{stu_password}
+        where
+            stu_no=#{stu_no}
+    </update>
+    <select id="findStudentsByName"  resultType="com.cqu.stu_manager.pojo.Student" >
+        select * from student where stu_name like  CONCAT(CONCAT('%',#{stu_name}),'%')
+    </select>
+    <select id="findStudentsByNO"  resultType="com.cqu.stu_manager.pojo.Student" >
+        select * from student where cast(stu_no as char) like  CONCAT(CONCAT('%',#{stu_name}),'%')
+    </select>
+    <select id="findStudentsByClass"  resultType="com.cqu.stu_manager.pojo.Student" >
+        select * from student where stu_class like  CONCAT(CONCAT('%',#{stu_class}),'%')
     </select>
 </mapper>

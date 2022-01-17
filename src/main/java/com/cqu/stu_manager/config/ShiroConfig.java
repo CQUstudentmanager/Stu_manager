@@ -23,7 +23,10 @@ public class ShiroConfig {
         * role：拥有某个权限才能访问
         */
         Map<String,String>filterMap=new LinkedHashMap<>();
-        filterMap.put("/STUDENTLIST","authc");
+//        filterMap.put("/Tea/*","authc");
+//        filterMap.put("/Stu/*","authc");
+
+        //添加受限页面
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
 
@@ -33,17 +36,17 @@ public class ShiroConfig {
     }
 
     @Bean
-    public DefaultWebSecurityManager getdefaultWebSecurityManager(@Qualifier("studentRealm") StudentRealm studentRealm){
+    public DefaultWebSecurityManager getdefaultWebSecurityManager(@Qualifier("userRealm") UserRealm userRealm){
         DefaultWebSecurityManager defaultWebSecurityManager=new DefaultWebSecurityManager();
-        defaultWebSecurityManager.setRealm(studentRealm);
+        defaultWebSecurityManager.setRealm(userRealm);
         return defaultWebSecurityManager;
     }
 
     @Bean
-    public StudentRealm studentRealm(){
-        StudentRealm studentRealm=new StudentRealm();
+    public UserRealm userRealm(){
+        UserRealm userRealm =new UserRealm();
 
 
-    return studentRealm;
+    return userRealm;
 }
 }
