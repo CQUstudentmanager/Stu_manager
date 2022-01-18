@@ -13,10 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @RestController//表示返回json文件类型
 public class studentcontroller {
@@ -217,32 +214,33 @@ public class studentcontroller {
             return result;
         }
 
-    @PostMapping("Stu/stu_getmsg")
-    @ResponseBody
-    public List<Msg> getmsg(@RequestBody Receive receive){
-        Msg msg=new Msg();
-        List<Msg> msgList=new ArrayList<>();
-        List<Receive> msgnolist=receiveMapper.findmsgnoByreceiver(receive);
-        //先根据receive的receiver查询有哪些记录，同时获取msg编号。
-        if (msgnolist.isEmpty()){
-            msg.setMsg_content("没有查询到你的通知");
-            msgList.add(msg);
-            return msgList;
-        }
-        else {
+//    @PostMapping("Stu/stu_getmsg")
+//    @ResponseBody
+//    public List<Msg> getmsg(@RequestBody Receive receive){
+//        Msg msg=new Msg();
+//        List<Msg> msgList=new ArrayList<>();
+//        List<Receive> msgnolist=receiveMapper.findmsgnoByreceiver(receive);
+//        //先根据receive的receiver查询有哪些记录，同时获取msg编号。
+//        if (msgnolist.isEmpty()){
+//            msg.setMsg_content("没有查询到你的通知");
+//            msgList.add(msg);
+//            return msgList;
+//        }
+//        else {
+////查询msg编号下的内容
+//            for (int i=0;i<msgnolist.size();i++){
+//                msg.setMsg_no(msgnolist.get(i).getMsg_no2());
+//                msg=msgMapper.findAllMsgByNo(msg);
+//                msgList.add(msg);
+//            }
+//            return msgList;
+//        }
+//    }
 
-//查询msg编号下的内容
-            for (int i=0;i<msgnolist.size();i++){
-                msg.setMsg_no(msgnolist.get(i).getMsg_no2());
-                msg=msgMapper.findAllMsgByNo(msg);
-                msgList.add(msg);
-
-            }
-
-            return msgList;
-        }
-
-
+    public Result getMsg(@RequestBody Student student){
+        Result result = new Result();
+        Map<List<Msg>,Integer> msgStatus= new HashMap<>();
+        return result;
     }
 }
 
