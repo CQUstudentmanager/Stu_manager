@@ -214,6 +214,8 @@ public class studentcontroller {
             return result;
         }
 
+
+
 //    @PostMapping("Stu/stu_getmsg")
 //    @ResponseBody
 //    public List<Msg> getmsg(@RequestBody Receive receive){
@@ -237,11 +239,6 @@ public class studentcontroller {
 //        }
 //    }
 
-    public Result getMsg(@RequestBody Student student){
-        Result result = new Result();
-        Map<List<Msg>,Integer> msgStatus= new HashMap<>();
-        return result;
-    }
 }
 
 
