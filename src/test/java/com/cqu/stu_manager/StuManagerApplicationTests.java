@@ -31,32 +31,6 @@ class StuManagerApplicationTests {
     MsgMapper msgMapper;
     @Test
     void contextLoads() {
-        Student student=new Student();
-        student.setStu_no(159753);
-        studentMapper.addStudentByExcel(student);
-
-
-    }
-    @Test
-    public void simpleRead() {
-        StaticComponentContainer.Modules.exportAllToAll();
-
-        // 读取文件，读取完之后会自动关闭
-        /*
-        	pathName  		文件路径；
-        	head			每行数据对应的实体；Student.class
-        	readListener	读监听器，每读一样就会调用一次该监听器的invoke方法
-
-        	sheet方法参数： 工作表的顺序号（从0开始）或者工作表的名字，不传默认为0
-        */
-        // 封装工作簿对象
-        ExcelReaderBuilder workBook = EasyExcel.read
-                ("E:\\student.xls", Student.class, new StudentReadListener(studentMapper));
-
-        // 封装工作表
-        ExcelReaderSheetBuilder sheet1 = workBook.sheet();
-        // 读取
-        sheet1.doRead();
 
     }
 

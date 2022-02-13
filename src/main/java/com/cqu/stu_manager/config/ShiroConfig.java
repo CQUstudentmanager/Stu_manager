@@ -30,7 +30,8 @@ public class ShiroConfig {
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         //设置身份信息认证失败的返回页面。
-         shiroFilterFactoryBean.setUnauthorizedUrl("/error");
+         shiroFilterFactoryBean.setUnauthorizedUrl("/Unauthorizeerror");
+
 
         return shiroFilterFactoryBean;
         //设置安全管理器

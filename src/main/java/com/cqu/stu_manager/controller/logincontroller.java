@@ -25,6 +25,14 @@ public class logincontroller {
     StudentMapper studentMapper;
     @Autowired
     TeacherMapper teacherMapper;
+    @PostMapping("/logout")
+    public Result logou(){
+        Subject subject=SecurityUtils.getSubject();
+        subject.logout();
+        Result result=new Result();
+        result.setMsg("注销成功");
+        return result;
+    }
 
     @ResponseBody
     @PostMapping("/login")
@@ -46,8 +54,8 @@ public class logincontroller {
                     result.setData(student);
                     result.setCode(1);
                     result.setMsg("登录成功");
-                    StudentRead studentRead=new StudentRead(studentMapper);
-                    studentRead.simpleRead();
+                    //StudentRead studentRead=new StudentRead(studentMapper);
+                    //studentRead.simpleRead();
                 }
                 else{
                     result.setMsg("账号或密码错误");
