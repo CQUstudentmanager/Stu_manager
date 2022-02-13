@@ -3,8 +3,12 @@ package com.cqu.stu_manager.config;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.ErrorPage;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import java.util.LinkedHashMap;
@@ -64,5 +68,24 @@ public class ShiroConfig {
 
     return userRealm;
 }
+    /**
+     * 对任意错误码，例如 404 500 等统一跳转到指定页面的配置
+     * 注意：SpringBoot 2.0 以上为 WebServerFactoryCustomizer，以下为 EmbeddedServletContainerCustomizer
+     */
+//    @Bean
+//    public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer() {
+//        return new WebServerFactoryCustomizer<>() {
+//            @Override
+//            public void customize(ConfigurableWebServerFactory factory) {
+//                // 配置
+//                ErrorPage error401Page = new ErrorPage(HttpStatus.BAD_REQUEST, "/tologin");
+//                ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
+//                ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html");
+//
+//                factory.addErrorPages(error401Page, error404Page, error500Page);
+//            }
+//        };
+//    }
+
 
 }
