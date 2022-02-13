@@ -1,6 +1,7 @@
 package com.cqu.stu_manager.controller;
 
 
+import com.cqu.stu_manager.excel.StudentRead;
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.mapper.TeacherMapper;
 import com.cqu.stu_manager.pojo.Student;
@@ -45,6 +46,8 @@ public class logincontroller {
                     result.setData(student);
                     result.setCode(1);
                     result.setMsg("登录成功");
+                    StudentRead studentRead=new StudentRead(studentMapper);
+                    studentRead.simpleRead();
                 }
                 else{
                     result.setMsg("账号或密码错误");
@@ -60,6 +63,7 @@ public class logincontroller {
                     result.setMsg("登录成功");
                     result.setCode(0);
                     result.setData(teacher);
+
                 }
                 else{
                     result.setMsg("账号或密码错误");

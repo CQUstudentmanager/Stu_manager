@@ -41,4 +41,43 @@
     <select id="findStudentsByClass"  resultType="com.cqu.stu_manager.pojo.Student" >
         select * from student where stu_class like  CONCAT(CONCAT('%',#{stu_class}),'%')
     </select>
+    <insert id="addStudentByExcel" parameterType="com.cqu.stu_manager.pojo.Student">
+        insert  into student (
+            stu_no,
+            stu_password,
+            stu_name,
+            stu_gender,
+            stu_class,
+            stu_birthday,
+            stu_ethnic,
+            stu_origin,
+            stu_id,
+            stu_politicalface,
+            stu_caucus_time,
+            stu_ismacau,
+            stu_telephone,
+            stu_qq,
+            stu_email,
+            stu_address,
+            stu_photourl ) values
+            ( #{stu_no},
+              #{stu_password},
+              #{stu_name},
+              #{stu_gender},
+              #{stu_class},
+              #{stu_birthday},
+              #{stu_ethnic},
+              #{stu_origin},
+              #{stu_id},
+              #{stu_politicalface},
+              #{stu_caucus_time},
+              #{stu_ismacau},
+              #{stu_telephone},
+              #{stu_qq},
+              #{stu_email},
+              #{stu_address},
+              #{stu_photourl}
+                                    )
+    </insert>
+
 </mapper>
