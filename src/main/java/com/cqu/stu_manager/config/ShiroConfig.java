@@ -5,9 +5,11 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Properties;
 
 @Configuration
 public class ShiroConfig {
@@ -25,18 +27,28 @@ public class ShiroConfig {
         Map<String,String>filterMap=new LinkedHashMap<>();
         filterMap.put("/Tea/*","perms[teacher]");
         filterMap.put("/Stu/*","perms[student]");
-
         //添加受限页面
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         //设置身份信息认证失败的返回页面。
          shiroFilterFactoryBean.setUnauthorizedUrl("/Unauthorizeerror");
+         shiroFilterFactoryBean.setLoginUrl("/tologin");
 
 
         return shiroFilterFactoryBean;
         //设置安全管理器
 
     }
+//    @Bean
+//    public SimpleMappingExceptionResolver simpleMappingExceptionResolver() {
+//        SimpleMappingExceptionResolver simpleMappingExceptionResolver=new SimpleMappingExceptionResolver();
+//        Properties properties=new Properties();
+//        //这里的 /unauthorized 是页面，不是访问的路径
+//        properties.setProperty("org.apache.shiro.authz.UnauthorizedException","/Unauthorizeerror");
+//        properties.setProperty("org.apache.shiro.authz.UnauthenticatedException","/Unauthorizeerror");
+//        simpleMappingExceptionResolver.setExceptionMappings(properties);
+//        return simpleMappingExceptionResolver;
+//    }
 
     @Bean
     public DefaultWebSecurityManager getdefaultWebSecurityManager(@Qualifier("userRealm") UserRealm userRealm){
@@ -52,4 +64,5 @@ public class ShiroConfig {
 
     return userRealm;
 }
+
 }

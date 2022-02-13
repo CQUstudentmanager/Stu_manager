@@ -25,6 +25,12 @@ public class logincontroller {
     StudentMapper studentMapper;
     @Autowired
     TeacherMapper teacherMapper;
+    @PostMapping("/tologin")
+    public Result tologin(){
+        Result result=new Result();
+        result.setMsg("当前无用户登陆，请跳转登陆页面");
+        return result;
+    }
     @PostMapping("/logout")
     public Result logou(){
         Subject subject=SecurityUtils.getSubject();
