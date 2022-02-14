@@ -225,7 +225,7 @@ public class studentcontroller {
             //将论文信息插入到数据库,如果插入输入库中受影响的条数大于0，则插入成功
             if(paperMapper.insertPaperByStudent(paper) > 0){
                 result.setMsg("上传成功！");
-                return result
+                return result;
             }
             //否则查看上传失败的原因
             Student student = new Student();
