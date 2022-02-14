@@ -17,6 +17,8 @@ public class Paper {
     private String       paper_iscscd;
     private String paper_sciSearchNumber;
     private String       paper_eiSearchNumber;
+    private String       paper_year;
+    private String paper_supporting_materials;
 
 
 }

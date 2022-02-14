@@ -18,5 +18,7 @@ public class Patent {
   private String          patent_certificate_no;
   private String  patent_authorization_time;
   private String          patent_isfirstone;
+  private String       patent_year;
+ private String patent_supporting_materials;
 
 }

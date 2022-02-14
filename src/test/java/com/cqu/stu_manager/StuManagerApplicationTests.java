@@ -18,10 +18,15 @@ class StuManagerApplicationTests {
 PaperMapper paperMapper;
 @Autowired
 PatentMapper patentMapper;
+@Autowired
+ProjectMapper projectMapper;
 
     @Test
     void contextLoads() {
-        System.out.println(patentMapper.findAllPatent());
+      patentMapper.findAllPatent();
+      projectMapper.findAllProject();
+      paperMapper.findAllStuPaper();
+      contestMapper.findAllContest();
 
     }
 
