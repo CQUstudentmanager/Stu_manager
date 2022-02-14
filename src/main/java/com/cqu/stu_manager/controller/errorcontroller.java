@@ -14,4 +14,10 @@ public class errorcontroller {
         result.setMsg("你正在尝试非法操作，系统将记录，请规范使用");
         return result;
     }
+    @GetMapping("/Unauthorizeerror")
+    public Result error1(){
+        Result result=new Result();
+        result.setMsg("你正在尝试非法操作，系统将记录，请规范使用");
+        return result;
+    }
 }

@@ -14,10 +14,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class logincontroller {
@@ -27,6 +24,12 @@ public class logincontroller {
     TeacherMapper teacherMapper;
     @PostMapping("/tologin")
     public Result tologin(){
+        Result result=new Result();
+        result.setMsg("当前无用户登陆，请跳转登陆页面");
+        return result;
+    }
+    @GetMapping("/tologin")
+    public Result tologin_GET(){
         Result result=new Result();
         result.setMsg("当前无用户登陆，请跳转登陆页面");
         return result;
