@@ -1,6 +1,7 @@
 package com.cqu.stu_manager.controller;
 
 import com.cqu.stu_manager.mapper.MsgMapper;
+import com.cqu.stu_manager.mapper.PaperMapper;
 import com.cqu.stu_manager.mapper.ReceiveMapper;
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.pojo.*;
@@ -23,6 +24,8 @@ public class studentcontroller {
     ReceiveMapper receiveMapper;
     @Autowired
     MsgMapper msgMapper;
+    @Autowired
+    PaperMapper paperMapper;
 
 
     @PostMapping("Stu/stulist")
@@ -214,6 +217,29 @@ public class studentcontroller {
             return result;
         }
 
+        @PostMapping("Stu/upLoadPaper")
+        @ResponseBody
+        @CrossOrigin
+        public Result upLoadPaper(@RequestBody Paper paper){
+            Result result = new Result();
+            //将论文信息插入到数据库,如果插入输入库中受影响的条数大于0，则插入成功
+            if(paperMapper.insertPaperByStudent(paper) > 0){
+                result.setMsg("上传成功！");
+                return result
+            }
+            //否则查看上传失败的原因
+            Student student = new Student();
+            student.setStu_no(paper.getPaper_stuno());
+            List<Paper> paperList = paperMapper.findPaperByStuno(student);
+            for(Paper x:paperList){
+                if(x.getPaper_name().equals(paper.getPaper_name())){
+                    result.setMsg("当前论文信息已存在");
+                    return result;
+                }
+            }
+            result.setMsg("上传失败！");
+            return result;
+        }
 
 
 //    @PostMapping("Stu/stu_getmsg")

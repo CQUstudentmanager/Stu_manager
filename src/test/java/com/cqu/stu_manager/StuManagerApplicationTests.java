@@ -27,7 +27,7 @@ Voluntary_activitiesMapper voluntary_activitiesMapper;
 
     @Test
     void contextLoads() {
-     voluntary_activitiesMapper.findAllVoluntary_activities();
+        paperMapper.findAllStuPaper();
 
     }
 
