@@ -20,13 +20,14 @@ PaperMapper paperMapper;
 PatentMapper patentMapper;
 @Autowired
 ProjectMapper projectMapper;
+@Autowired
+DispatchMapper dispatchMapper;
+@Autowired
+Voluntary_activitiesMapper voluntary_activitiesMapper;
 
     @Test
     void contextLoads() {
-      patentMapper.findAllPatent();
-      projectMapper.findAllProject();
-      paperMapper.findAllStuPaper();
-      contestMapper.findAllContest();
+     voluntary_activitiesMapper.findAllVoluntary_activities();
 
     }
 
