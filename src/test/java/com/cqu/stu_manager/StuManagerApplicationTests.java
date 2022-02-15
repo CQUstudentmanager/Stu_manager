@@ -29,12 +29,9 @@ Voluntary_activitiesMapper voluntary_activitiesMapper;
     @Test
     void contextLoads() {
         Student student=new Student();
-        student.setStu_no(123);
-        Voluntary_activities voluntary_activities=new Voluntary_activities();
-        voluntary_activities.setVoluntary_activities_content("干了一堆大家都不知道在干啥的事情并且觉得对社会很有用");
-        voluntary_activities.setVoluntary_activities_stu_no("123");
-        voluntary_activities.setVoluntary_activities_no("1235654545");
-        voluntary_activitiesMapper.findVoluntary_activitiesByStuno(student);
+        student.setStu_no(10);
+
+        projectMapper.findProjectByStuno(student);
 
     }
 }
