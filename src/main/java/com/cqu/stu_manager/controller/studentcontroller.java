@@ -186,7 +186,7 @@ public class studentcontroller {
         @CrossOrigin
         public Result upLoadPicture(MultipartFile file, HttpServletRequest request){
             Result result = new Result();
-//            获取上传的文件名字，看是否为pdf文件，不是的话直接返回错误信息
+//            获取上传的文件名字，看是否为jpg文件，不是的话直接返回错误信息
             if(file == null){
                 result.setMsg("未收到文件");
                 return result;
