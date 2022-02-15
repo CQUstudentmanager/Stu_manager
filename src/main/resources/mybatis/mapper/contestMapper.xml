@@ -6,5 +6,43 @@
     <select id="findAllContest" resultType="com.cqu.stu_manager.pojo.Contest">
         select * from contest
     </select>
+    <insert id="insertContestByStudent" parameterType="com.cqu.stu_manager.pojo.Contest">
+        insert into contest
+        (
+        contest_no,
+        contest_name,
+        contest_projectname,
+        contest_grantingdepartment,
+        contest_level,
+        contest_ranking,
+        contest_date,
+        contest_teachername,
+        contest_teacherdept,
+        contest_stuname,
+        contest_stuno,
+        contest_issubmitcertificate,
+        contest_year,
+        contest_supporting_materials
+        )values
+        (
+        #{contest_no},
+        #{contest_name},
+        #{contest_projectname},
+        #{contest_grantingdepartment},
+        #{contest_level},
+        #{contest_ranking},
+        #{contest_date},
+        #{contest_teachername},
+        #{contest_teacherdept},
+        #{contest_stuname},
+        #{contest_stuno},
+        #{contest_issubmitcertificate},
+        #{contest_year},
+        #{contest_supporting_materials}
+        )
+    </insert>
+    <select id="findContestByStuno" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Contest">
+        select * from contest where contest_stuno =#{stu_no}
+    </select>
 
 </mapper>

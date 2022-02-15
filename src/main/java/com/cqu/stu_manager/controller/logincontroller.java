@@ -1,6 +1,7 @@
 package com.cqu.stu_manager.controller;
 
 
+import cn.hutool.log.Log;
 import com.cqu.stu_manager.excel.StudentRead;
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.mapper.TeacherMapper;
@@ -8,6 +9,7 @@ import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.Teacher;
 import com.cqu.stu_manager.pojo.User;
 import com.cqu.stu_manager.utils.Result;
+import lombok.extern.log4j.Log4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;

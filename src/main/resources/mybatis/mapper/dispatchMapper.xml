@@ -6,5 +6,56 @@
     <select id="findAllDispatch" resultType="com.cqu.stu_manager.pojo.Dispatch">
         select * from dispatch
     </select>
+    <select id="findDispatchByStuno" resultType="com.cqu.stu_manager.pojo.Dispatch" parameterType="com.cqu.stu_manager.pojo.Student">
+        select * from dispatch where dispatch_stu_no=#{stu_no}
+    </select>
+    <insert id="insertDispatchByStudent" parameterType="com.cqu.stu_manager.pojo.Dispatch">
+       insert  into dispatch (
+            dispatch_no,
+            dispatch_name,
+            dispatch_level,
+            dispatch_project_type,
+            dispatch_nation,
+            dispatch_continent,
+            dispatch_foreign_counterpart,
+            dispatch_stu_name,
+            dispatch_stu_gender,
+            dispatch_stu_no,
+            dispatch_stu_department,
+            dispatch_stu_major,
+            dispatch_project_time_from_to,
+            dispatch_greater_than_3month,
+            dispatch_arrangement,
+            dispatch_grade,
+            dispatch_passport_no,
+            dispatch_tel,
+            dispatch_email,
+            dispatch_is_admission,
+            dispatch_is_top200
+        )values
+           (
+            #{dispatch_no},
+            #{dispatch_name},
+            #{dispatch_level},
+            #{dispatch_project_type},
+            #{dispatch_nation},
+            #{dispatch_continent},
+            #{dispatch_foreign_counterpart},
+            #{dispatch_stu_name},
+            #{dispatch_stu_gender},
+            #{dispatch_stu_no},
+            #{dispatch_stu_department},
+            #{dispatch_stu_major},
+            #{dispatch_project_time_from_to},
+            #{dispatch_greater_than_3month},
+            #{dispatch_arrangement},
+            #{dispatch_grade},
+            #{dispatch_passport_no},
+            #{dispatch_tel},
+            #{dispatch_email},
+            #{dispatch_is_admission},
+            #{dispatch_is_top200}
+        )
+    </insert>
 
 </mapper>
