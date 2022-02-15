@@ -6,5 +6,39 @@
     <select id="findAllPatent" resultType="com.cqu.stu_manager.pojo.Patent">
         select * from patent
     </select>
+    <insert id="insertPatentByStudent" parameterType="com.cqu.stu_manager.pojo.Patent">
+        insert into patent (
+                patent_no,
+                patent_stu_no,
+                patent_stu_name,
+                patent_name,
+                patent_type,
+                patent_application_no,
+                patent_application_time,
+                patent_certificate_no,
+                patent_authorization_time,
+                patent_isfirstone,
+                patent_year,
+                patent_supporting_materials
+        )values (
+                    #{patent_no},
+                    #{patent_stu_no},
+                    #{patent_stu_name},
+                    #{patent_name},
+                    #{patent_type},
+                    #{patent_application_no},
+                    #{patent_application_time},
+                    #{patent_certificate_no},
+                    #{patent_authorization_time},
+                    #{patent_isfirstone},
+                    #{patent_year},
+                    #{patent_supporting_materials}
+                    )
+
+
+    </insert>
+    <select id="findPatentByStuno" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Patent">
+        select * from patent where patent_stu_no=#{stu_no}
+    </select>
 
 </mapper>

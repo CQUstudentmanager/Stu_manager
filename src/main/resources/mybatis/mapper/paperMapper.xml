@@ -10,29 +10,30 @@
     <insert id="insertPaperByStudent" parameterType="com.cqu.stu_manager.pojo.Paper">
         insert into paper(paper_no,
             paper_stuno,
-paper_stuname,
-paper_name,
-paper_periodical,
-paper_publicationTime,
-paper_iscscd,
-paper_sciSearchNumber,
-paper_eiSearchNumber,
-paper_year,
-paper_supporting_materials,
-paper_status
+            paper_stuname,
+            paper_name,
+            paper_periodical,
+            paper_publicationTime,
+            paper_iscscd,
+            paper_sciSearchNumber,
+            paper_eiSearchNumber,
+            paper_year,
+            paper_supporting_materials,
+            paper_status
         )
-        values ( paper_no,
-        paper_stuno,
-        paper_stuname,
-        paper_name,
-        paper_periodical,
-        paper_publicationTime,
-        paper_iscscd,
-        paper_sciSearchNumber,
-        paper_eiSearchNumber,
-        paper_year,
-        paper_supporting_materials,
-        paper_status
+        values
+               ( #{paper_no},
+                #{paper_stuno},
+                #{paper_stuname},
+                #{paper_name},
+                #{paper_periodical},
+                #{paper_publicationTime},
+                #{paper_iscscd},
+                #{paper_sciSearchNumber},
+                #{paper_eiSearchNumber},
+                #{paper_year},
+                #{paper_supporting_materials},
+                #{paper_status}
 )
     </insert>
 
