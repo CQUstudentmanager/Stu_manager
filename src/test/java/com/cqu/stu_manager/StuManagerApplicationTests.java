@@ -30,10 +30,11 @@ Voluntary_activitiesMapper voluntary_activitiesMapper;
     void contextLoads() {
         Student student=new Student();
         student.setStu_no(123);
-       Dispatch dispatch=new Dispatch();
-       dispatch.setDispatch_no(2123);
-       dispatch.setDispatch_name("事件发生的叫法是觉得很费解啊可是饭卡");
-       dispatch.setDispatch_stu_no("123");
-        dispatchMapper.findDispatchByStuno(student);
+        Voluntary_activities voluntary_activities=new Voluntary_activities();
+        voluntary_activities.setVoluntary_activities_content("干了一堆大家都不知道在干啥的事情并且觉得对社会很有用");
+        voluntary_activities.setVoluntary_activities_stu_no("123");
+        voluntary_activities.setVoluntary_activities_no("1235654545");
+        voluntary_activitiesMapper.findVoluntary_activitiesByStuno(student);
+
     }
 }

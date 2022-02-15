@@ -6,5 +6,32 @@
     <select id="findAllVoluntary_activities" resultType="com.cqu.stu_manager.pojo.Voluntary_activities">
         select * from voluntary_activities
     </select>
+    <insert id="insertVoluntary_activitiesByStudent" parameterType="com.cqu.stu_manager.pojo.Voluntary_activities">
+        insert  into voluntary_activities
+            (
+                voluntary_activities_no,
+                voluntary_activities_stu_name,
+                voluntary_activities_studept,
+                voluntary_activities_stu_no,
+                voluntary_activities_time_from_to,
+                voluntary_activities_time_long,
+                voluntary_activities_content,
+                voluntary_activities_status
+
+            )values
+                    (
+                        #{voluntary_activities_no},
+                        #{voluntary_activities_stu_name},
+                        #{voluntary_activities_studept},
+                        #{voluntary_activities_stu_no},
+                        #{voluntary_activities_time_from_to},
+                        #{voluntary_activities_time_long},
+                        #{voluntary_activities_content},
+                        #{voluntary_activities_status}
+                    )
+    </insert>
+    <select id="findVoluntary_activitiesByStuno" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Voluntary_activities">
+        select * from voluntary_activities where voluntary_activities_stu_no=#{stu_no}
+    </select>
 
 </mapper>
