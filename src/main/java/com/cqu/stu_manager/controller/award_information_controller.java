@@ -19,7 +19,14 @@ public class award_information_controller {
     @PostMapping("/upload_contest_info")
     public Result upload_contest_info(@RequestBody Contest contest){
         Result result=new Result();
-        result.setMsg(contestMapper.insertContestByStudent(contest)+"条上传信息成功");
+        List<Contest> contestList=contestMapper.findAllContest();
+        for (int i=0;i<contestList.size();i++){
+            if(contestList.get(i).getContest_name().equals(contest.getContest_name())&&contestList.get(i).getContest_stuno().equals(contest.getContest_stuno())){
+                result.setMsg("信息已经上传，请勿重复上传");
+                return result;
+            }
+        }
+        result.setMsg(contestMapper.insertContestByStudent(contest)+"条消息已经上传");
         return result;
     }
     //获取竞赛信息的证明材料
