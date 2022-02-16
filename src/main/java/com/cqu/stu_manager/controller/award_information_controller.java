@@ -1,8 +1,5 @@
 package com.cqu.stu_manager.controller;
-import com.cqu.stu_manager.mapper.ContestMapper;
-import com.cqu.stu_manager.mapper.PaperMapper;
-import com.cqu.stu_manager.mapper.PatentMapper;
-import com.cqu.stu_manager.mapper.ProjectMapper;
+import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,5 +64,30 @@ public class award_information_controller {
     public List<Paper> find_my_paper_info(@RequestBody Student student){
         return paperMapper.findPaperByStuno(student);
     }
+
+//支援服务信息
+    @Autowired
+    Voluntary_activitiesMapper voluntary_activitiesMapper;
+    @PostMapping("find_all_voluntary_activities_info")
+    public List<Voluntary_activities> find_all_voluntary_activities_info(){
+     return voluntary_activitiesMapper.findAllVoluntary_activities();
+    }
+    @PostMapping("/find_my_voluntary_activities_info")
+    public List<Voluntary_activities> find_my_voluntary_activities_info(@RequestBody Student student){
+     return voluntary_activitiesMapper.findVoluntary_activitiesByStuno(student);
+
+    }
+    //外派信息
+ @Autowired
+ DispatchMapper dispatchMapper;
+    @PostMapping("/find_all_dispatch_info")
+    public List<Dispatch> find_all_dispatch_info(){
+     return dispatchMapper.findAllDispatch();
+    }
+    @PostMapping("find_my_dispatch_info")
+    public List<Dispatch> find_my_dispatch_info(@RequestBody Student student){
+     return dispatchMapper.findDispatchByStuno(student);
+    }
+
 
 }
