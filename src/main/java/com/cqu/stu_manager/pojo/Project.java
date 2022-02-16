@@ -21,4 +21,5 @@ public class Project {
     private String project_issubmit;
     private String project_year;
     private String project_supporting_materials;
+    private String project_audit_status;
 }

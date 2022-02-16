@@ -22,7 +22,8 @@
         contest_stuno,
         contest_issubmitcertificate,
         contest_year,
-        contest_supporting_materials
+        contest_supporting_materials,
+        contest_status
         )values
         (
         #{contest_no},
@@ -38,7 +39,8 @@
         #{contest_stuno},
         #{contest_issubmitcertificate},
         #{contest_year},
-        #{contest_supporting_materials}
+        #{contest_supporting_materials},
+        #{contest_status}
         )
     </insert>
     <select id="findContestByStuno" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Contest">

@@ -20,5 +20,6 @@ public class Patent {
   private String          patent_isfirstone;
   private String       patent_year;
  private String patent_supporting_materials;
+ private  String patent_status;
 
 }

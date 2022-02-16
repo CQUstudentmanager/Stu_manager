@@ -22,5 +22,6 @@ public class Contest {
       private String      contest_issubmitcertificate;
       private String       contest_year;
       private String  contest_supporting_materials;
+      private String contest_status;
 
 }

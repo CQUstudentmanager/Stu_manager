@@ -21,7 +21,8 @@
             project_student_no,
             project_issubmit,
             project_year,
-            project_supporting_materials
+            project_supporting_materials,
+            project_audit_status
             ) values
             (
                 #{project_no},
@@ -36,7 +37,8 @@
                 #{project_student_no},
                 #{project_issubmit},
                 #{project_year},
-                #{project_supporting_materials}
+                #{project_supporting_materials},
+                #{project_audit_status}
 
             )
     </insert>
