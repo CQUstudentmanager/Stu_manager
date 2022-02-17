@@ -3,11 +3,16 @@ import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class award_information_controller {
@@ -93,23 +98,101 @@ public class award_information_controller {
         return result;
     }
 
+
+
+
+
+
+
+
+
+
     //论文相关接口
     @Autowired
     PaperMapper paperMapper;
+
+    //找到所有的获奖信息
     @PostMapping("/find_all_paper_info")
     public List<Paper> find_all_paper_info(){
         return paperMapper.findAllStuPaper();
     }
+
+    //找到对应学生的获奖信息
     @PostMapping("/find_my_paper_info")
     public List<Paper> find_my_paper_info(@RequestBody Student student){
         return paperMapper.findPaperByStuno(student);
     }
-    @PostMapping("/upload_paper_info")
-    public Result upload_paper_info(@RequestBody Paper paper){
+
+    //上传获奖信息
+    @PostMapping("upload_paper_info")
+    @ResponseBody
+    @CrossOrigin
+    public Result upLoadPaper(@RequestBody Paper paper){
         Result result=new Result();
-        result.setMsg(paperMapper.insertPaperByStudent(paper)+"条消息上传成功");
+        List<Paper> contestList=paperMapper.findAllStuPaper();
+        for (int i=0;i<contestList.size();i++){
+            if(contestList.get(i).getPaper_stuno().equals(paper.getPaper_stuno())&&contestList.get(i).getPaper_name().equals(paper.getPaper_name())){
+                result.setMsg("信息已经上传，请勿重复上传");
+                return result;
+            }
+        }
+        result.setMsg(paperMapper.insertPaperByStudent(paper)+"条消息已经上传");
         return result;
     }
+
+    //上传获奖证明材料
+    @PostMapping("upload_paper_info2")
+    @ResponseBody
+    @CrossOrigin
+    public Result upLoadPicture(MultipartFile file, HttpServletRequest request){
+        Result result = new Result();
+        String newName = UUID.randomUUID().toString();
+    //获取上传的文件名字，看是否为jpg文件或者pdf，不是的话直接返回错误信息
+        if(file == null){
+            result.setMsg("未收到文件");
+            return result;
+        }
+        else {
+            String s = file.getOriginalFilename();
+            assert s != null;
+            String originName = s.toUpperCase();
+            if(!(originName.endsWith("JPG") || originName.endsWith("PDF") )){
+                result.setMsg("文件类型错误");
+                return result;
+            }
+            if(originName.endsWith("JPG")){
+                newName += ".jpg";
+            }
+            else if(originName.endsWith("PDF")){
+                newName += ".pdf";
+            }
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
+        String format = sdf.format(new Date());
+        String realPath = "C:\\Users\\drifter\\Desktop\\Papers" + format;//存储在本机上的路径
+        File folder = new File(realPath);
+        if(!folder.exists()){
+            folder.mkdirs();
+        }
+        try {
+            file.transferTo(new File(folder,newName));
+            result.setMsg("上传成功");
+            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
+            result.setData(url);
+        }catch (IOException e) {
+            result.setMsg(e.getMessage());
+        }
+        return result;
+    }
+
+
+
+
+
+
+
+
+
 
 //志愿服务信息
     @Autowired
