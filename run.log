@@ -1,684 +1,473 @@
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20005} clearParameters. 
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20005} closed
-DEBUG http-nio-8080-exec-8 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-9 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20006} created. insert into project
-        (
-            project_no,
-            project_name,
-            project_unit,
-            project_type,
-            project_status,
-            project_join_time,
-            project_teacher_name,
-            project_teacher_dept,
-            project_student_name,
-            project_student_no,
-            project_issubmit,
-            project_year,
-            project_supporting_materials,
-            project_audit_status
-            ) values
-            (
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?
-
-            )
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20006} Parameters : [0, 456123, String, String, String, String, String, String, String, String, String, String, String, String]
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20006} Types : [INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
-ERROR http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20006} execute error. insert into project
-        (
-            project_no,
-            project_name,
-            project_unit,
-            project_type,
-            project_status,
-            project_join_time,
-            project_teacher_name,
-            project_teacher_dept,
-            project_student_name,
-            project_student_no,
-            project_issubmit,
-            project_year,
-            project_supporting_materials,
-            project_audit_status
-            ) values
-            (
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?
-
-            )
-java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '0' for key 'PRIMARY'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3409)
-	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
-	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:620)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
-	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
-	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
-	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:498)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at jdk.proxy2/jdk.proxy2.$Proxy59.insert(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:93)
-	at jdk.proxy2/jdk.proxy2.$Proxy68.insertProjectByStudent(Unknown Source)
-	at com.cqu.stu_manager.controller.award_information_controller.upload_project_info(award_information_controller.java:95)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
-	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
-	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
-	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
-	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
-	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
-	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20006} clearParameters. 
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20006} closed
-DEBUG http-nio-8080-exec-9 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-10 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20007} created. select * from contest
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20007} Parameters : []
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20007} Types : []
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20007} executed. 1.0594 millis. select * from contest
-DEBUG http-nio-8080-exec-10 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50003} open
-DEBUG http-nio-8080-exec-10 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50003} Header: [contest_no, contest_name, contest_projectname, contest_grantingdepartment, contest_level, contest_ranking, contest_date, contest_teachername, contest_teacherdept, contest_stuname, contest_stuno, contest_issubmitcertificate, contest_year, contest_supporting_materials, contest_status]
-DEBUG http-nio-8080-exec-10 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50003} Result: [1, 第七届GSIG中国可视化与可视分析大会数据可视分析挑战赛, 新冠肺炎预测与舆情分析可视平台, 中国图像图形学协会, 国家级, 二等奖, 2020-07, 胡海波, 大数据与软件学院, 杨涛, 2021252, 已提交, 2021, 无, 1]
-DEBUG http-nio-8080-exec-10 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50003} Result: [456789, String, String, String, String, String, String, String, String, String, 456789, String, String, String, String]
-DEBUG http-nio-8080-exec-10 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50003} closed
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20007} clearParameters. 
-DEBUG http-nio-8080-exec-10 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-10 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20008} created. insert into contest
-        (
-        contest_no,
-        contest_name,
-        contest_projectname,
-        contest_grantingdepartment,
-        contest_level,
-        contest_ranking,
-        contest_date,
-        contest_teachername,
-        contest_teacherdept,
-        contest_stuname,
-        contest_stuno,
-        contest_issubmitcertificate,
-        contest_year,
-        contest_supporting_materials,
-        contest_status
-        )values
-        (
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?
-        )
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20008} Parameters : [0, String, String, String, String, String, String, String, String, String, String, String, String, String, String]
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20008} Types : [INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20008} executed. 1.8802 millis. insert into contest
-        (
-        contest_no,
-        contest_name,
-        contest_projectname,
-        contest_grantingdepartment,
-        contest_level,
-        contest_ranking,
-        contest_date,
-        contest_teachername,
-        contest_teacherdept,
-        contest_stuname,
-        contest_stuno,
-        contest_issubmitcertificate,
-        contest_year,
-        contest_supporting_materials,
-        contest_status
-        )values
-        (
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?,
-        ?
-        )
-DEBUG http-nio-8080-exec-10 druid.sql.Statement - {conn-10001, pstmt-20008} clearParameters. 
-DEBUG http-nio-8080-exec-10 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20007} Parameters : []
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20007} Types : []
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20007} executed. 0.6877 millis. select * from contest
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50004} open
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50004} Header: [contest_no, contest_name, contest_projectname, contest_grantingdepartment, contest_level, contest_ranking, contest_date, contest_teachername, contest_teacherdept, contest_stuname, contest_stuno, contest_issubmitcertificate, contest_year, contest_supporting_materials, contest_status]
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50004} Result: [1, 第七届GSIG中国可视化与可视分析大会数据可视分析挑战赛, 新冠肺炎预测与舆情分析可视平台, 中国图像图形学协会, 国家级, 二等奖, 2020-07, 胡海波, 大数据与软件学院, 杨涛, 2021252, 已提交, 2021, 无, 1]
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50004} Result: [456789, String, String, String, String, String, String, String, String, String, 456789, String, String, String, String]
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50004} Result: [0, String, String, String, String, String, String, String, String, String, String, String, String, String, String]
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50004} closed
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20007} clearParameters. 
-DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [123456]
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 1.2611 millis. select * from paper where paper_stuno=?
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50005} open
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50005} Header: [paper_no, paper_stuno, paper_stuname, paper_name, paper_periodical, paper_publicationTime, paper_iscscd, paper_sciSearchNumber, paper_eiSearchNumber, paper_year, paper_supporting_materials, paper_status]
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50005} closed
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
-DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20009} created. insert into paper(paper_no,
-            paper_stuno,
-            paper_stuname,
-            paper_name,
-            paper_periodical,
-            paper_publicationTime,
-            paper_iscscd,
-            paper_sciSearchNumber,
-            paper_eiSearchNumber,
-            paper_year,
-            paper_supporting_materials,
-            paper_status
-        )
-        values
-               ( ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?
-)
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20009} Parameters : [0, 123456, String, String, String, String, String, String, String, String, String, String]
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20009} Types : [INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
-ERROR http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20009} execute error. insert into paper(paper_no,
-            paper_stuno,
-            paper_stuname,
-            paper_name,
-            paper_periodical,
-            paper_publicationTime,
-            paper_iscscd,
-            paper_sciSearchNumber,
-            paper_eiSearchNumber,
-            paper_year,
-            paper_supporting_materials,
-            paper_status
-        )
-        values
-               ( ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?
-)
-java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'String' for key 'PRIMARY'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3409)
-	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
-	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:620)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
-	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
-	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
-	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:498)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
-	at jdk.proxy2/jdk.proxy2.$Proxy59.insert(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:93)
-	at jdk.proxy2/jdk.proxy2.$Proxy69.insertPaperByStudent(Unknown Source)
-	at com.cqu.stu_manager.controller.award_information_controller.upLoadPaper(award_information_controller.java:134)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
-	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
-	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
-	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
-	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
-	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
-	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20009} clearParameters. 
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20009} closed
-DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20007} Parameters : []
-DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20007} Types : []
-DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20007} executed. 0.972 millis. select * from contest
-DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50006} open
-DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50006} Header: [contest_no, contest_name, contest_projectname, contest_grantingdepartment, contest_level, contest_ranking, contest_date, contest_teachername, contest_teacherdept, contest_stuname, contest_stuno, contest_issubmitcertificate, contest_year, contest_supporting_materials, contest_status]
-DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50006} Result: [1, 第七届GSIG中国可视化与可视分析大会数据可视分析挑战赛, 新冠肺炎预测与舆情分析可视平台, 中国图像图形学协会, 国家级, 二等奖, 2020-07, 胡海波, 大数据与软件学院, 杨涛, 2021252, 已提交, 2021, 无, 1]
-DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50006} Result: [456789, String, String, String, String, String, String, String, String, String, 456789, String, String, String, String]
-DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50006} Result: [0, String, String, String, String, String, String, String, String, String, String, String, String, String, String]
-DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20007, rs-50006} closed
-DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20007} clearParameters. 
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 1212, 1212, 121, 1, 1222, 000, 121, , 0]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 123123, 12312321, 123123, 1, 123213, 1212212, 12312, , 0]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 11, 11, 11, 1, 11, 11, 11, , 0]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 00000, 00000, 0000000, 1, 0000, 00000, 00000, , 0]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , qqqqqqqq, qqqq, qq, 1, qq, qq, qqq, , 0]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , wwwwwwww, wwww, www, 1, wwww, wwww, www, , 0]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} closed
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
 DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20008} closed
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [0, 0, , tttttttttttt, tttt, tt, 1, t, t, t, , 0]
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+ERROR http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001} execute error. insert into paper(paper_no,
+            paper_stuno,
+            paper_stuname,
+            paper_name,
+            paper_periodical,
+            paper_publicationTime,
+            paper_iscscd,
+            paper_sciSearchNumber,
+            paper_eiSearchNumber,
+            paper_year,
+            paper_supporting_materials,
+            paper_status
+        )
+        values
+               ( ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?
+)
+java.sql.SQLSyntaxErrorException: Unknown column 'paper_stuname' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3409)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:620)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:498)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	at jdk.proxy2/jdk.proxy2.$Proxy60.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:93)
+	at jdk.proxy2/jdk.proxy2.$Proxy70.insertPaperByStudent(Unknown Source)
+	at com.cqu.stu_manager.controller.award_information_controller.upLoadPaper(award_information_controller.java:139)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-recycle
 DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20007} closed
 DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
-DEBUG Druid-ConnectionPool-Create-1712569355 druid.sql.Connection - {conn-10001} connected
-DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student where stu_no=?
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [123456]
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 4.8731 millis. select * from student where stu_no=?
-DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
-DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
-DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
-DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from teacher where t_no=?
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [123456]
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER]
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.6776 millis. select * from teacher where t_no=?
-DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
-DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
-DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
-DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
-DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-8 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [12347]
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 1.2034 millis. select * from student where stu_no=?
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} open
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} closed
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
-DEBUG http-nio-8080-exec-8 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-8 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [12347]
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER]
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.751 millis. select * from teacher where t_no=?
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} open
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} closed
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
-DEBUG http-nio-8080-exec-8 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-8 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [12347]
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER]
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.7095 millis. select * from teacher where t_no=?
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50004} open
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50004} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
-DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50004} closed
-DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
-DEBUG http-nio-8080-exec-8 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-9 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [12347]
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 1.178 millis. select * from student where stu_no=?
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50005} open
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50005} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50005} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50005} closed
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
-DEBUG http-nio-8080-exec-9 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-9 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [12347]
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER]
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.8488 millis. select * from teacher where t_no=?
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50006} open
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50006} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50006} closed
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
-DEBUG http-nio-8080-exec-9 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-9 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [12347]
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 0.8055 millis. select * from student where stu_no=?
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50007} open
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50007} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50007} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
-DEBUG http-nio-8080-exec-9 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50007} closed
-DEBUG http-nio-8080-exec-9 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
-DEBUG http-nio-8080-exec-9 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20002} closed
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20003} closed
-DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
-DEBUG Druid-ConnectionPool-Create-2006483689 druid.sql.Connection - {conn-10001} connected
+DEBUG Druid-ConnectionPool-Create-1488161054 druid.sql.Connection - {conn-10001} connected
 DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student where stu_no=?
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [12347]
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 4.7143 millis. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from paper
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 4.7749 millis. select * from paper
 DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [paper_no, paper_stuno, paper_stu_name, paper_name, paper_periodical, paper_publicationTime, paper_iscscd, paper_sciSearchNumber, paper_eiSearchNumber, paper_year, paper_supporting_materials, paper_status]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [156546, 20212413, changyao, asdfasdf, adsf, werqa, asdfr, wefasdf, aerasdfasdfasdf, asdf, asdf, asdf]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [1, 20181703, 杨焱景, MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning, 2021 International Joint Conference on Neural Networks (IJCNN), 2021/9/20, 否, 否, 10.1109/IJCNN52387.2021.9533622
+, 2021, 无, null]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, String, String, String, String, String, String, String, String, String, String, String]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 12312, 121212, 12212, 1, 121e, 12312, 1212, , 0]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 2332, 333, 333, 1, 33, 33, 333, , 0]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 111, 11, 11, 1, 11, 11, 11, , 0]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 1212, 1212, 121, 1, 1222, 000, 121, , 0]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 123123, 12312321, 123123, 1, 123213, 1212212, 12312, , 0]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 11, 11, 11, 1, 11, 11, 11, , 0]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 00000, 00000, 0000000, 1, 0000, 00000, 00000, , 0]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , qqqqqqqq, qqqq, qq, 1, qq, qq, qqq, , 0]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , wwwwwwww, wwww, www, 1, wwww, wwww, www, , 0]
 DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
 DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
 DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
 DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from teacher where t_no=?
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [12347]
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER]
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.89 millis. select * from teacher where t_no=?
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} created. insert into paper(paper_no,
+            paper_stuno,
+            paper_stuname,
+            paper_name,
+            paper_periodical,
+            paper_publicationTime,
+            paper_iscscd,
+            paper_sciSearchNumber,
+            paper_eiSearchNumber,
+            paper_year,
+            paper_supporting_materials,
+            paper_status
+        )
+        values
+               ( ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?
+)
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [0, 0, , iii, i, i, 0, i, i, i, , 0]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+ERROR http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} execute error. insert into paper(paper_no,
+            paper_stuno,
+            paper_stuname,
+            paper_name,
+            paper_periodical,
+            paper_publicationTime,
+            paper_iscscd,
+            paper_sciSearchNumber,
+            paper_eiSearchNumber,
+            paper_year,
+            paper_supporting_materials,
+            paper_status
+        )
+        values
+               ( ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?
+)
+java.sql.SQLSyntaxErrorException: Unknown column 'paper_stuname' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3409)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:620)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:498)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	at jdk.proxy2/jdk.proxy2.$Proxy60.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:93)
+	at jdk.proxy2/jdk.proxy2.$Proxy70.insertPaperByStudent(Unknown Source)
+	at com.cqu.stu_manager.controller.award_information_controller.upLoadPaper(award_information_controller.java:139)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
 DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} closed
 DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
 DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-1814056331 druid.sql.Connection - {conn-10001} connected
+DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from paper
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 4.9637 millis. select * from paper
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [paper_no, paper_stuno, paper_stuname, paper_name, paper_periodical, paper_publicationTime, paper_iscscd, paper_sciSearchNumber, paper_eiSearchNumber, paper_year, paper_supporting_materials, paper_status]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [156546, 20212413, changyao, asdfasdf, adsf, werqa, asdfr, wefasdf, aerasdfasdfasdf, asdf, asdf, asdf]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [1, 20181703, 杨焱景, MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning, 2021 International Joint Conference on Neural Networks (IJCNN), 2021/9/20, 否, 否, 10.1109/IJCNN52387.2021.9533622
+, 2021, 无, null]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, String, String, String, String, String, String, String, String, String, String, String]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 12312, 121212, 12212, 1, 121e, 12312, 1212, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 2332, 333, 333, 1, 33, 33, 333, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 111, 11, 11, 1, 11, 11, 11, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 1212, 1212, 121, 1, 1222, 000, 121, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 123123, 12312321, 123123, 1, 123213, 1212212, 12312, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 11, 11, 11, 1, 11, 11, 11, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , 00000, 00000, 0000000, 1, 0000, 00000, 00000, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , qqqqqqqq, qqqq, qq, 1, qq, qq, qqq, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [0, 0, , wwwwwwww, wwww, www, 1, wwww, wwww, www, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} created. insert into paper(paper_no,
+            paper_stuno,
+            paper_stuname,
+            paper_name,
+            paper_periodical,
+            paper_publicationTime,
+            paper_iscscd,
+            paper_sciSearchNumber,
+            paper_eiSearchNumber,
+            paper_year,
+            paper_supporting_materials,
+            paper_status
+        )
+        values
+               ( ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?
+)
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [0, 12347, 张三光, uu, uu, u, 1, u, u, u, , 0]
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} executed. 2.2094 millis. insert into paper(paper_no,
+            paper_stuno,
+            paper_stuname,
+            paper_name,
+            paper_periodical,
+            paper_publicationTime,
+            paper_iscscd,
+            paper_sciSearchNumber,
+            paper_eiSearchNumber,
+            paper_year,
+            paper_supporting_materials,
+            paper_status
+        )
+        values
+               ( ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?
+)
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 1.4675 millis. select * from paper
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} open
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Header: [paper_no, paper_stuno, paper_stuname, paper_name, paper_periodical, paper_publicationTime, paper_iscscd, paper_sciSearchNumber, paper_eiSearchNumber, paper_year, paper_supporting_materials, paper_status]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [156546, 20212413, changyao, asdfasdf, adsf, werqa, asdfr, wefasdf, aerasdfasdfasdf, asdf, asdf, asdf]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [1, 20181703, 杨焱景, MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning, 2021 International Joint Conference on Neural Networks (IJCNN), 2021/9/20, 否, 否, 10.1109/IJCNN52387.2021.9533622
+, 2021, 无, null]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, String, String, String, String, String, String, String, String, String, String, String]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 12312, 121212, 12212, 1, 121e, 12312, 1212, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 2332, 333, 333, 1, 33, 33, 333, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 111, 11, 11, 1, 11, 11, 11, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 1212, 1212, 121, 1, 1222, 000, 121, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 123123, 12312321, 123123, 1, 123213, 1212212, 12312, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 11, 11, 11, 1, 11, 11, 11, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , 00000, 00000, 0000000, 1, 0000, 00000, 00000, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , qqqqqqqq, qqqq, qq, 1, qq, qq, qqq, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 0, , wwwwwwww, wwww, www, 1, wwww, wwww, www, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} Result: [0, 12347, 张三光, uu, uu, u, 1, u, u, u, , 0]
+DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50001} closed
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [0, 12347, 张三光, tt, tt, tt, 1, tt, tt, tt, zzz, 0]
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} executed. 1.9543 millis. insert into paper(paper_no,
+            paper_stuno,
+            paper_stuname,
+            paper_name,
+            paper_periodical,
+            paper_publicationTime,
+            paper_iscscd,
+            paper_sciSearchNumber,
+            paper_eiSearchNumber,
+            paper_year,
+            paper_supporting_materials,
+            paper_status
+        )
+        values
+               ( ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?
+)
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-1591958565 druid.sql.Connection - {conn-10001} connected
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student where stu_no=?
 DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [12347]
 DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
-DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 0.6985 millis. select * from student where stu_no=?
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} open
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
-DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 4.7882 millis. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl, stu_major, stu_join_time]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU, null, null]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
 DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
 DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} created. select * from paper
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : []
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} Types : []
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.7241 millis. select * from paper
-DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50003} open
-DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50003} Header: [paper_no, paper_stuno, paper_stuname, paper_name, paper_periodical, paper_publicationTime, paper_iscscd, paper_sciSearchNumber, paper_eiSearchNumber, paper_year, paper_supporting_materials, paper_status]
-DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50003} Result: [156546, 20212413, changyao, asdfasdf, adsf, werqa, asdfr, wefasdf, aerasdfasdfasdf, asdf, asdf, asdf]
-DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50003} Result: [1, 20181703, 杨焱景, MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning, 2021 International Joint Conference on Neural Networks (IJCNN), 2021/9/20, 否, 否, 10.1109/IJCNN52387.2021.9533622
-, 2021, 无, null]
-DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50003} Result: [0, String, String, String, String, String, String, String, String, String, String, String]
-DEBUG http-nio-8080-exec-2 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50003} closed
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
-DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20003} created. insert into paper(paper_no,
-            paper_stuno,
-            paper_stuname,
-            paper_name,
-            paper_periodical,
-            paper_publicationTime,
-            paper_iscscd,
-            paper_sciSearchNumber,
-            paper_eiSearchNumber,
-            paper_year,
-            paper_supporting_materials,
-            paper_status
-        )
-        values
-               ( ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?
-)
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [0, 0, , 12312, 121212, 12212, 1, 121e, 12312, 1212, , 0]
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 2.0461 millis. insert into paper(paper_no,
-            paper_stuno,
-            paper_stuname,
-            paper_name,
-            paper_periodical,
-            paper_publicationTime,
-            paper_iscscd,
-            paper_sciSearchNumber,
-            paper_eiSearchNumber,
-            paper_year,
-            paper_supporting_materials,
-            paper_status
-        )
-        values
-               ( ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?
-)
-DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
-DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : []
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20002} Types : []
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.7529 millis. select * from paper
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50004} open
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50004} Header: [paper_no, paper_stuno, paper_stuname, paper_name, paper_periodical, paper_publicationTime, paper_iscscd, paper_sciSearchNumber, paper_eiSearchNumber, paper_year, paper_supporting_materials, paper_status]
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50004} Result: [156546, 20212413, changyao, asdfasdf, adsf, werqa, asdfr, wefasdf, aerasdfasdfasdf, asdf, asdf, asdf]
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50004} Result: [1, 20181703, 杨焱景, MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning, 2021 International Joint Conference on Neural Networks (IJCNN), 2021/9/20, 否, 否, 10.1109/IJCNN52387.2021.9533622
-, 2021, 无, null]
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50004} Result: [0, String, String, String, String, String, String, String, String, String, String, String]
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50004} Result: [0, 0, , 12312, 121212, 12212, 1, 121e, 12312, 1212, , 0]
-DEBUG http-nio-8080-exec-3 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50004} closed
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
-DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [0, 0, , 2332, 333, 333, 1, 33, 33, 333, , 0]
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 3.3013 millis. insert into paper(paper_no,
-            paper_stuno,
-            paper_stuname,
-            paper_name,
-            paper_periodical,
-            paper_publicationTime,
-            paper_iscscd,
-            paper_sciSearchNumber,
-            paper_eiSearchNumber,
-            paper_year,
-            paper_supporting_materials,
-            paper_status
-        )
-        values
-               ( ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?,
-                ?
-)
-DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
-DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
 DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20002} closed
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20003} closed
 DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
 DEBUG Druid-ConnectionPool-Create-2054738816 druid.sql.Connection - {conn-10001} connected
 DEBUG main druid.sql.Connection - {conn-10001} pool-connect

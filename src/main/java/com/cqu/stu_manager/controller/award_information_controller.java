@@ -176,11 +176,23 @@ public class award_information_controller {
         }
         try {
             file.transferTo(new File(folder,newName));
-            result.setMsg("上传成功");
-            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
-            result.setData(url);
+            result.setMsg("文件上传成功");
+            result.setData(newName);
+//            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
+//            result.setData(url);
         }catch (IOException e) {
             result.setMsg(e.getMessage());
+        }
+        return result;
+    }
+    //老师审核材料通过
+    @PostMapping("paper_verification")
+    @ResponseBody
+    public Result paperVerification(@RequestBody Paper paper){
+        Result result = new Result();
+        List<Paper> paperList = paperMapper.findAllStuPaper();
+        for(Paper p:paperList){
+
         }
         return result;
     }
