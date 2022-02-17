@@ -26,16 +26,19 @@ ProjectMapper projectMapper;
 DispatchMapper dispatchMapper;
 @Autowired
 Voluntary_activitiesMapper voluntary_activitiesMapper;
+@Autowired
+AccommodationMapper accommodationMapper;
 
     @SneakyThrows
     @Test
     void contextLoads() {
-        NationalGrantsExcel national_grantsExcel =new NationalGrantsExcel(studentMapper);
-        String s= national_grantsExcel.write_National_grants_excel();
-        System.out.println(s);
-//        National_scholarship_excel national_scholarship_excel=new National_scholarship_excel(studentMapper);
-//        national_scholarship_excel.write_National_scholarship_excel_forSelf_Improvement();
-//                    StudentRead studentRead=new StudentRead(studentMapper);
-//                    studentRead.simpleRead();
+//        NationalGrantsExcel national_grantsExcel =new NationalGrantsExcel(studentMapper);
+//        String s= national_grantsExcel.write_National_grants_excel();
+//        System.out.println(s);
+////        National_scholarship_excel national_scholarship_excel=new National_scholarship_excel(studentMapper);
+////        national_scholarship_excel.write_National_scholarship_excel_forSelf_Improvement();
+////                    StudentRead studentRead=new StudentRead(studentMapper);
+////                    studentRead.simpleRead();
+        accommodationMapper.findAllAccommodation();
     }
 }
