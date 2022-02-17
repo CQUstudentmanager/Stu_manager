@@ -680,3 +680,165 @@ DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-200
 DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20002} closed
 DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20003} closed
 DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-2054738816 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.404 millis. select * from student
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201034, 123456, 刘二, 0, 人工智能1, 1995-12-26, 满, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201234, 123456, 李四, 0, 人工智能1班, 1995-12-26, 汉, 美国纽约, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146, 1111, 李四光, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 共青团员, 2021, 20204146, 18357980493, 122706559, , 重庆大学, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204567, 123456, 张三, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-731332919 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.4475 millis. select * from student
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201034, 123456, 刘二, 0, 人工智能1, 1995-12-26, 满, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201234, 123456, 李四, 0, 人工智能1班, 1995-12-26, 汉, 美国纽约, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146, 1111, 李四光, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 共青团员, 2021, 20204146, 18357980493, 122706559, , 重庆大学, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204567, 123456, 张三, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-731332919 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.7271 millis. select * from student
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201034, 123456, 刘二, 0, 人工智能1, 1995-12-26, 满, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201234, 123456, 李四, 0, 人工智能1班, 1995-12-26, 汉, 美国纽约, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146, 1111, 李四光, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 共青团员, 2021, 20204146, 18357980493, 122706559, , 重庆大学, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204567, 123456, 张三, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-1298547491 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.4847 millis. select * from student
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201034, 123456, 刘二, 0, 人工智能1, 1995-12-26, 满, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201234, 123456, 李四, 0, 人工智能1班, 1995-12-26, 汉, 美国纽约, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146, 1111, 李四光, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 共青团员, 2021, 20204146, 18357980493, 122706559, , 重庆大学, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204567, 123456, 张三, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-1298547491 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.766 millis. select * from student
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201034, 123456, 刘二, 0, 人工智能1, 1995-12-26, 满, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201234, 123456, 李四, 0, 人工智能1班, 1995-12-26, 汉, 美国纽约, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146, 1111, 李四光, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 共青团员, 2021, 20204146, 18357980493, 122706559, , 重庆大学, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204567, 123456, 张三, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-1521250207 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.5951 millis. select * from student
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201034, 123456, 刘二, 0, 人工智能1, 1995-12-26, 满, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201234, 123456, 李四, 0, 人工智能1班, 1995-12-26, 汉, 美国纽约, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146, 1111, 李四光, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 共青团员, 2021, 20204146, 18357980493, 122706559, , 重庆大学, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204567, 123456, 张三, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-200598670 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.2575 millis. select * from student
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201034, 123456, 刘二, 0, 人工智能1, 1995-12-26, 满, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201234, 123456, 李四, 0, 人工智能1班, 1995-12-26, 汉, 美国纽约, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146, 1111, 李四光, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 共青团员, 2021, 20204146, 18357980493, 122706559, , 重庆大学, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204567, 123456, 张三, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-2033090945 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.4274 millis. select * from student
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201034, 123456, 刘二, 0, 人工智能1, 1995-12-26, 满, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201234, 123456, 李四, 0, 人工智能1班, 1995-12-26, 汉, 美国纽约, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146, 1111, 李四光, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 共青团员, 2021, 20204146, 18357980493, 122706559, , 重庆大学, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204567, 123456, 张三, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-369611665 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.3974 millis. select * from student
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201034, 123456, 刘二, 0, 人工智能1, 1995-12-26, 满, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20201234, 123456, 李四, 0, 人工智能1班, 1995-12-26, 汉, 美国纽约, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146, 1111, 李四光, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 共青团员, 2021, 20204146, 18357980493, 122706559, , 重庆大学, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204567, 123456, 张三, 0, 大数据1班, 1995-12-26, 汉, 四川成都, 522321, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed

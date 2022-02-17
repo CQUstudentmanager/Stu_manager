@@ -3,6 +3,7 @@ package com.cqu.stu_manager;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
+import com.cqu.stu_manager.excel.StudentWrite;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import lombok.SneakyThrows;
@@ -39,14 +40,8 @@ Voluntary_activitiesMapper voluntary_activitiesMapper;
     @SneakyThrows
     @Test
     void contextLoads() {
-        StaticComponentContainer.Modules.exportAllToAll();
-        List<Student> studentList=new ArrayList<>();
-        studentList=studentMapper.findAllStudent();
-        String Path="C:\\Users\\lenovo\\IdeaProjects\\Stu_manager\\";
-        String FileName=Path+"学生信息表"+".xls";
-        EasyExcel.write(FileName,Student.class).sheet("学生信息表").doWrite(studentList);
-
-
+        StudentWrite studentWrite=new StudentWrite(studentMapper);
+        studentWrite.studentinfo_out();
 
     }
 }
