@@ -1,0 +1,65 @@
+DEBUG Druid-ConnectionPool-Create-1227564548 druid.sql.Connection - {conn-10001} connected
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [12347]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 6.1122 millis. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from teacher where t_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [12347]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} executed. 1.1108 millis. select * from teacher where t_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [12347]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 0.7615 millis. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} Result: [12347, 1111, 张三光, 0, 大数据1班, 1995-12-26, 满, 重庆渝北, 522321199512263756, 党员, 2021, 1, 135959002, 122706559, ch@163, 重庆, WU]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50002} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG Druid-ConnectionPool-Create-253564003 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from paper
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 6.7501 millis. select * from paper
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [paper_no, paper_stuno, paper_stuname, paper_name, paper_periodical, paper_publicationTime, paper_iscscd, paper_sciSearchNumber, paper_eiSearchNumber, paper_year, paper_supporting_materials, paper_status]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [1, 20181703, 杨焱景, MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning, 2021 International Joint Conference on Neural Networks (IJCNN), 2021/9/20, 否, 否, 10.1109/IJCNN52387.2021.9533622
+, 2021, 无, null]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-894658400 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from paper
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 6.3051 millis. select * from paper
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [paper_no, paper_stuno, paper_stuname, paper_name, paper_periodical, paper_publicationTime, paper_iscscd, paper_sciSearchNumber, paper_eiSearchNumber, paper_year, paper_supporting_materials, paper_status]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [1, 20181703, 杨焱景, MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning, 2021 International Joint Conference on Neural Networks (IJCNN), 2021/9/20, 否, 否, 10.1109/IJCNN52387.2021.9533622
+, 2021, 无, null]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed

@@ -1,0 +1,591 @@
+DEBUG Druid-ConnectionPool-Create-982495267 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from receive where receiver=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [20204146]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 6.8019 millis. select * from receive where receiver=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [receive_no, msg_no2, receiver, status]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:15:49, 1-2022-01-17 14:15:49, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:35:36, 1-2022-01-17 14:35:36, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:40:03, 1-2022-01-17 14:40:03, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from msginfo where msg_no=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:15:49]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 1.1022 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [1-2022-01-17 14:15:49, ¥Ûº“∫√£¨’‚ «“ªÃı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:35:36]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.7507 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Result: [1-2022-01-17 14:35:36, ¥Ûº“∫√£¨µ⁄∂˛Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:40:03]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.7024 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Result: [1-2022-01-17 14:40:03, ¥Ûº“∫√£¨µ⁄»˝Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-804466238 druid.sql.Connection - {conn-10001} connected
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from class
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 4.8339 millis. select * from class
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [class_id, class_name, class_teacherid]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [1, ceshi, 1]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} created. insert  into class values(?,?,?)
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1, ÂÅáËÆæÂá∫Êù•ÁöÑÁè≠Á∫ß, 2]
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [INTEGER, VARCHAR, INTEGER]
+ERROR http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} execute error. insert  into class values(?,?,?)
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3409)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:620)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3407)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:498)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	at jdk.proxy2/jdk.proxy2.$Proxy61.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:271)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:93)
+	at jdk.proxy2/jdk.proxy2.$Proxy67.insertClass(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy2/jdk.proxy2.$Proxy68.insertClass(Unknown Source)
+	at com.cqu.stu_manager.controller.classcontroller.insertclass(classcontroller.java:37)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8080-exec-2 druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-2 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20002} created. insert  into class values(?,?,?)
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [2, ÂÅáËÆæÂá∫Êù•ÁöÑÁè≠Á∫ß, 2]
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [INTEGER, VARCHAR, INTEGER]
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 20.6453 millis. insert  into class values(?,?,?)
+DEBUG http-nio-8080-exec-3 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-3 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20003} created. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [12347]
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [INTEGER]
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.9744 millis. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50001} open
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50001} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50001} Result: [12347, 1111, Âº†‰∏âÂÖâ, 12347, Â§ßÊï∞ÊçÆ1Áè≠, 1995-12-26, Êª°, ÈáçÂ∫ÜÊ∏ùÂåó, 522321, ÂÖöÂëò, 2021, 1, 135959002, 122706559, ch@163, ÈáçÂ∫Ü, WU]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50001} closed
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20004} created. select * from teacher where t_no=?
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [12347]
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [INTEGER]
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.7961 millis. select * from teacher where t_no=?
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50002} open
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50002} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50002} closed
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [12347]
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [INTEGER]
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.7275 millis. select * from teacher where t_no=?
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50003} open
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50003} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
+DEBUG http-nio-8080-exec-4 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50003} closed
+DEBUG http-nio-8080-exec-4 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-4 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-5 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [12347]
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [INTEGER]
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 1.2181 millis. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50004} open
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50004} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50004} Result: [12347, 1111, Âº†‰∏âÂÖâ, 12347, Â§ßÊï∞ÊçÆ1Áè≠, 1995-12-26, Êª°, ÈáçÂ∫ÜÊ∏ùÂåó, 522321, ÂÖöÂëò, 2021, 1, 135959002, 122706559, ch@163, ÈáçÂ∫Ü, WU]
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50004} closed
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-5 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-5 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [12347]
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [INTEGER]
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 1.0621 millis. select * from teacher where t_no=?
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50005} open
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50005} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50005} closed
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-5 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-5 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [12347]
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [INTEGER]
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.8859 millis. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50006} open
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50006} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50006} Result: [12347, 1111, Âº†‰∏âÂÖâ, 12347, Â§ßÊï∞ÊçÆ1Áè≠, 1995-12-26, Êª°, ÈáçÂ∫ÜÊ∏ùÂåó, 522321, ÂÖöÂëò, 2021, 1, 135959002, 122706559, ch@163, ÈáçÂ∫Ü, WU]
+DEBUG http-nio-8080-exec-5 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50006} closed
+DEBUG http-nio-8080-exec-5 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-5 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-6 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [12347]
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [INTEGER]
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 1.2317 millis. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50007} open
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50007} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50007} Result: [12347, 1111, Âº†‰∏âÂÖâ, 12347, Â§ßÊï∞ÊçÆ1Áè≠, 1995-12-26, Êª°, ÈáçÂ∫ÜÊ∏ùÂåó, 522321, ÂÖöÂëò, 2021, 1, 135959002, 122706559, ch@163, ÈáçÂ∫Ü, WU]
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50007} closed
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-6 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-6 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [12347]
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [INTEGER]
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.5292 millis. select * from teacher where t_no=?
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50008} open
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50008} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50008} closed
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-6 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-6 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20005} created. select * from receive where receiver=?
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20005} Parameters : [20211034]
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20005} Types : [INTEGER]
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20005} executed. 0.5935 millis. select * from receive where receiver=?
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20005, rs-50009} open
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20005, rs-50009} Header: [receive_no, msg_no2, receiver, status]
+DEBUG http-nio-8080-exec-6 druid.sql.ResultSet - {conn-10001, pstmt-20005, rs-50009} closed
+DEBUG http-nio-8080-exec-6 druid.sql.Statement - {conn-10001, pstmt-20005} clearParameters. 
+DEBUG http-nio-8080-exec-6 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [12347]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [INTEGER]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.9512 millis. select * from student where stu_no=?
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50010} open
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50010} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50010} Result: [12347, 1111, Âº†‰∏âÂÖâ, 12347, Â§ßÊï∞ÊçÆ1Áè≠, 1995-12-26, Êª°, ÈáçÂ∫ÜÊ∏ùÂåó, 522321, ÂÖöÂëò, 2021, 1, 135959002, 122706559, ch@163, ÈáçÂ∫Ü, WU]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50010} closed
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [12347]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [INTEGER]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.5526 millis. select * from teacher where t_no=?
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50011} open
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50011} Header: [t_no, t_password, t_name, t_telephone, t_officeroom, t_identity]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50011} closed
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20005} Parameters : [20201034]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20005} Types : [INTEGER]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20005} executed. 0.6013 millis. select * from receive where receiver=?
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20005, rs-50012} open
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20005, rs-50012} Header: [receive_no, msg_no2, receiver, status]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20005, rs-50012} Result: [20201034-2022-01-17 14:15:49, 1-2022-01-17 14:15:49, 20201034, 0]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20005, rs-50012} Result: [20201034-2022-01-17 14:35:36, 1-2022-01-17 14:35:36, 20201034, 0]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20005, rs-50012} Result: [20201034-2022-01-17 14:40:03, 1-2022-01-17 14:40:03, 20201034, 0]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20005, rs-50012} closed
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20005} clearParameters. 
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} created. select * from msginfo where msg_no=?
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} Parameters : [1-2022-01-17 14:15:49]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} executed. 0.5248 millis. select * from msginfo where msg_no=?
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50013} open
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50013} Header: [msg_no, msg_content, msg_sender]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50013} Result: [1-2022-01-17 14:15:49, Â§ßÂÆ∂Â•ΩÔºåËøôÊòØ‰∏ÄÊù°ÊµãËØïÊï∞ÊçÆ, 1]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50013} closed
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} clearParameters. 
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} Parameters : [1-2022-01-17 14:35:36]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} executed. 0.5584 millis. select * from msginfo where msg_no=?
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50014} open
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50014} Header: [msg_no, msg_content, msg_sender]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50014} Result: [1-2022-01-17 14:35:36, Â§ßÂÆ∂Â•ΩÔºåÁ¨¨‰∫åÊù°ÊµãËØïÊï∞ÊçÆ, 1]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50014} closed
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} clearParameters. 
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} Parameters : [1-2022-01-17 14:40:03]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} executed. 0.4249 millis. select * from msginfo where msg_no=?
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50015} open
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50015} Header: [msg_no, msg_content, msg_sender]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50015} Result: [1-2022-01-17 14:40:03, Â§ßÂÆ∂Â•ΩÔºåÁ¨¨‰∏âÊù°ÊµãËØïÊï∞ÊçÆ, 1]
+DEBUG http-nio-8080-exec-7 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50015} closed
+DEBUG http-nio-8080-exec-7 druid.sql.Statement - {conn-10001, pstmt-20006} clearParameters. 
+DEBUG http-nio-8080-exec-7 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20002} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20003} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20004} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20005} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20006} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-1827573818 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from receive where receiver=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [20204146]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.3411 millis. select * from receive where receiver=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [receive_no, msg_no2, receiver, status]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:15:49, 1-2022-01-17 14:15:49, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:35:36, 1-2022-01-17 14:35:36, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:40:03, 1-2022-01-17 14:40:03, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from msginfo where msg_no=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:15:49]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 1.6178 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [1-2022-01-17 14:15:49, ¥Ûº“∫√£¨’‚ «“ªÃı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:35:36]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.7947 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Result: [1-2022-01-17 14:35:36, ¥Ûº“∫√£¨µ⁄∂˛Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:40:03]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.7225 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Result: [1-2022-01-17 14:40:03, ¥Ûº“∫√£¨µ⁄»˝Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-159080042 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from receive where receiver=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [20204146]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 6.9348 millis. select * from receive where receiver=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [receive_no, msg_no2, receiver, status]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:15:49, 1-2022-01-17 14:15:49, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:35:36, 1-2022-01-17 14:35:36, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:40:03, 1-2022-01-17 14:40:03, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from msginfo where msg_no=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:15:49]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.9949 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [1-2022-01-17 14:15:49, ¥Ûº“∫√£¨’‚ «“ªÃı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:35:36]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.7143 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Result: [1-2022-01-17 14:35:36, ¥Ûº“∫√£¨µ⁄∂˛Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:40:03]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.6729 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Result: [1-2022-01-17 14:40:03, ¥Ûº“∫√£¨µ⁄»˝Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-1827573818 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from receive where receiver=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [20204146]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.1372 millis. select * from receive where receiver=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [receive_no, msg_no2, receiver, status]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:15:49, 1-2022-01-17 14:15:49, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:35:36, 1-2022-01-17 14:35:36, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:40:03, 1-2022-01-17 14:40:03, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from msginfo where msg_no=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:15:49]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.7731 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [1-2022-01-17 14:15:49, ¥Ûº“∫√£¨’‚ «“ªÃı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:35:36]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.6779 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Result: [1-2022-01-17 14:35:36, ¥Ûº“∫√£¨µ⁄∂˛Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:40:03]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.718 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Result: [1-2022-01-17 14:40:03, ¥Ûº“∫√£¨µ⁄»˝Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-548009467 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from receive where receiver=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [20204146]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 5.549 millis. select * from receive where receiver=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [receive_no, msg_no2, receiver, status]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:15:49, 1-2022-01-17 14:15:49, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:35:36, 1-2022-01-17 14:35:36, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:40:03, 1-2022-01-17 14:40:03, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from msginfo where msg_no=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:15:49]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.8769 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [1-2022-01-17 14:15:49, ¥Ûº“∫√£¨’‚ «“ªÃı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:35:36]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.7001 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Result: [1-2022-01-17 14:35:36, ¥Ûº“∫√£¨µ⁄∂˛Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:40:03]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.8922 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Result: [1-2022-01-17 14:40:03, ¥Ûº“∫√£¨µ⁄»˝Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-955575066 druid.sql.Connection - {conn-10001} connected
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from class
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 5.2266 millis. select * from class
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [class_id, class_name, class_teacherid]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [1, ceshi, 1]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [2, ÂÅáËÆæÂá∫Êù•ÁöÑÁè≠Á∫ß, 2]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-326102242 druid.sql.Connection - {conn-10001} connected
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from receive where receiver=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [20204146]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : [INTEGER]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 5.4291 millis. select * from receive where receiver=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [receive_no, msg_no2, receiver, status]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:15:49, 1-2022-01-17 14:15:49, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:35:36, 1-2022-01-17 14:35:36, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [20204146-2022-01-17 14:40:03, 1-2022-01-17 14:40:03, 20204146, 0]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from msginfo where msg_no=?
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:15:49]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.9788 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [1-2022-01-17 14:15:49, ¥Ûº“∫√£¨’‚ «“ªÃı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:35:36]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.9648 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} Result: [1-2022-01-17 14:35:36, ¥Ûº“∫√£¨µ⁄∂˛Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50002} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG main druid.sql.Connection - {conn-10001} pool-connect
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [1-2022-01-17 14:40:03]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} executed. 0.6744 millis. select * from msginfo where msg_no=?
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} open
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Header: [msg_no, msg_content, msg_sender]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} Result: [1-2022-01-17 14:40:03, ¥Ûº“∫√£¨µ⁄»˝Ãı≤‚ ‘ ˝æ›, 1]
+DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50003} closed
+DEBUG main druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
