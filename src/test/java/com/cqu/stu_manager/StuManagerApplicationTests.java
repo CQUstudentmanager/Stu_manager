@@ -3,6 +3,8 @@ package com.cqu.stu_manager;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
+import com.cqu.stu_manager.excel.National_grants_excel;
+import com.cqu.stu_manager.excel.National_scholarship_excel;
 import com.cqu.stu_manager.excel.StudentWrite;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
@@ -40,8 +42,10 @@ Voluntary_activitiesMapper voluntary_activitiesMapper;
     @SneakyThrows
     @Test
     void contextLoads() {
-        StudentWrite studentWrite=new StudentWrite(studentMapper);
-        studentWrite.studentinfo_out();
-
+        National_grants_excel national_grants_excel=new National_grants_excel(studentMapper);
+        String s=national_grants_excel.write_National_grants_excel();
+        System.out.println(s);
+        National_scholarship_excel national_scholarship_excel=new National_scholarship_excel(studentMapper);
+        national_scholarship_excel.write_National_scholarship_excel();
     }
 }
