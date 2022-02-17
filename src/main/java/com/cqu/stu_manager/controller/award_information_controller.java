@@ -20,7 +20,9 @@ public class award_information_controller {
     public Result upload_contest_info(@RequestBody Contest contest){
         Result result=new Result();
         List<Contest> contestList=contestMapper.findAllContest();
+        //这里是为了防止同一条数据反复上传
         for (int i=0;i<contestList.size();i++){
+         //判断数据库里面有没有paper名字和待上传的paper名字以及数据库中对应学生学号和待上传学号相同的
             if(contestList.get(i).getContest_name().equals(contest.getContest_name())&&contestList.get(i).getContest_stuno().equals(contest.getContest_stuno())){
                 result.setMsg("信息已经上传，请勿重复上传");
                 return result;
