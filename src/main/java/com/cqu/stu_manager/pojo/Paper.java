@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Paper {
     private Integer paper_no;
-    private Integer paper_stuno;
+    private String paper_stuno;
     private String paper_stuname;
     private String paper_name;
     private String paper_periodical;

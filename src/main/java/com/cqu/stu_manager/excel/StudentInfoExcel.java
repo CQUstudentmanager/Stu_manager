@@ -40,6 +40,6 @@ public class StudentInfoExcel {
      */
     @ExcelProperty(value = "学生出生日期", index = 1)
     //@ColumnWidth(20)
-    private Date birthday;
+    private String birthday;
 
 }
