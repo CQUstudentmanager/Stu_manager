@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class National_scholarship_excel {
+public class NationalScholarshipExcel {
     @Autowired
     StudentMapper studentMapper;
-    public  National_scholarship_excel(StudentMapper studentMapper){
+    public NationalScholarshipExcel(StudentMapper studentMapper){
         super();
         this.studentMapper=studentMapper;
 

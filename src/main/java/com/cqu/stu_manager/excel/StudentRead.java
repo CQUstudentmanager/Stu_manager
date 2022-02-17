@@ -4,6 +4,7 @@ import com.alibaba.excel.read.builder.ExcelReaderBuilder;
 import com.alibaba.excel.read.builder.ExcelReaderSheetBuilder;
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.pojo.Student;
+import com.cqu.stu_manager.pojo.StudentForUpload;
 import org.burningwave.core.assembler.StaticComponentContainer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +32,7 @@ public class StudentRead {
         */
         // 封装工作簿对象
         ExcelReaderBuilder workBook = EasyExcel.read
-                ("E:\\student.xls", Student.class, new StudentReadListener(studentMapper));
+                ("C:\\Users\\lenovo\\IdeaProjects\\Stu_manager\\student.xls", StudentForUpload.class, new StudentReadListener(studentMapper));
 
         // 封装工作表
         ExcelReaderSheetBuilder sheet1 = workBook.sheet();
