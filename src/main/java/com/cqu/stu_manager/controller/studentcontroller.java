@@ -184,7 +184,7 @@ public class studentcontroller {
         @PostMapping("Stu/upLoadPicture")
         @ResponseBody
         @CrossOrigin
-        public Result upLoadPicture(MultipartFile file, HttpServletRequest request){
+        public Result upLoadPicture(@RequestBody Student student,MultipartFile file, HttpServletRequest request){
             Result result = new Result();
 //            获取上传的文件名字，看是否为jpg文件，不是的话直接返回错误信息
             if(file == null){
@@ -222,20 +222,20 @@ public class studentcontroller {
         @CrossOrigin
         public Result upLoadPaper(@RequestBody Paper paper){
             Result result = new Result();
-            //将论文信息插入到数据库,如果插入输入库中受影响的条数大于0，则插入成功
-            if(paperMapper.insertPaperByStudent(paper) > 0){
-                result.setMsg("上传成功！");
-                return result;
-            }
-            //否则查看上传失败的原因
+            //查看论文是否已经存在
             Student student = new Student();
-            student.setStu_no(paper.getPaper_stuno());
+            student.setStu_no(Integer.parseInt(paper.getPaper_stuno()));
             List<Paper> paperList = paperMapper.findPaperByStuno(student);
             for(Paper x:paperList){
                 if(x.getPaper_name().equals(paper.getPaper_name())){
                     result.setMsg("当前论文信息已存在");
                     return result;
                 }
+            }
+            //论文如果不存在，将论文信息插入到数据库,如果插入输入库中受影响的条数大于0，则插入成功
+            if(paperMapper.insertPaperByStudent(paper) > 0){
+                result.setMsg("上传成功！");
+                return result;
             }
             result.setMsg("上传失败！");
             return result;
