@@ -59,7 +59,9 @@
             stu_qq,
             stu_email,
             stu_address,
-            stu_photourl ) values
+            stu_photourl,
+            stu_major,
+            stu_join_time                  ) values
             ( #{stu_no},
               #{stu_password},
               #{stu_name},
@@ -76,7 +78,9 @@
               #{stu_qq},
               #{stu_email},
               #{stu_address},
-              #{stu_photourl}
+              #{stu_photourl},
+              #{stu_major},
+              #{stu_join_time}
                                     )
     </insert>
 

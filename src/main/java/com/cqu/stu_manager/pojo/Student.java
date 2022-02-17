@@ -44,6 +44,10 @@ public class Student {
     private String  stu_email;
     @ExcelProperty (value = "家庭地址",index = 14)
     private String stu_address;
+    @ExcelProperty (value = "专业",index = 15)
+    private String stu_major;
+    @ExcelProperty (value = "入学时间",index = 16)
+    private String stu_join_time;
     @ExcelIgnore
     private String stu_photourl;
 }

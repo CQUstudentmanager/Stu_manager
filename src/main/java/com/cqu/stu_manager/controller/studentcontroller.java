@@ -184,6 +184,7 @@ public class studentcontroller {
         @PostMapping("Stu/upLoadPicture")
         @ResponseBody
         @CrossOrigin
+
         public Result upLoadPicture(MultipartFile file, HttpServletRequest request){
             Result result = new Result();
 //            获取上传的文件名字，看是否为jpg文件，不是的话直接返回错误信息

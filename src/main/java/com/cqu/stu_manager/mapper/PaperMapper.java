@@ -7,7 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 @Mapper
 public interface PaperMapper {
-    List<Paper> findAllStuPaper();//找到所有的论文
+    List<Paper> findAllStuPaper();//找到所有的论文（不论审核是否通过）
     int insertPaperByStudent(Paper paper);//将学生上传的信息插入到数据库中
     List<Paper> findPaperByStuno(Student student);//根据学生的no找到他对应的论文情况
+    int verifyPaper(Paper paper);//成功审核学生的论文
 }

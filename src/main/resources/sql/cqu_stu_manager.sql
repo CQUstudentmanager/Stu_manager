@@ -11,7 +11,7 @@
  Target Server Version : 50561
  File Encoding         : 65001
 
- Date: 17/02/2022 14:23:13
+ Date: 17/02/2022 17:44:52
 */
 
 SET NAMES utf8mb4;
@@ -64,6 +64,7 @@ CREATE TABLE `contest`  (
 -- ----------------------------
 INSERT INTO `contest` VALUES (1, '第七届GSIG中国可视化与可视分析大会数据可视分析挑战赛', '新冠肺炎预测与舆情分析可视平台', '中国图像图形学协会', '国家级', '二等奖', '2020-07', '胡海波', '大数据与软件学院', '杨涛', '2021252', '已提交', '2021', '无', '1');
 INSERT INTO `contest` VALUES (456789, 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', '456789', 'String', 'String', 'String', 'String');
+INSERT INTO `contest` VALUES (0, 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
 
 -- ----------------------------
 -- Table structure for dispatch
@@ -135,8 +136,7 @@ CREATE TABLE `paper`  (
                           `paper_eiSearchNumber` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
                           `paper_year` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
                           `paper_supporting_materials` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-                          `paper_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-                          PRIMARY KEY (`paper_name`) USING BTREE
+                          `paper_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
@@ -144,6 +144,18 @@ CREATE TABLE `paper`  (
 -- ----------------------------
 INSERT INTO `paper` VALUES (156546, '20212413', 'changyao', 'asdfasdf', 'adsf', 'werqa', 'asdfr', 'wefasdf', 'aerasdfasdfasdf', 'asdf', 'asdf', 'asdf');
 INSERT INTO `paper` VALUES (1, '20181703', '杨焱景', 'MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning', '2021 International Joint Conference on Neural Networks (IJCNN)', '2021/9/20', '否', '否', '10.1109/IJCNN52387.2021.9533622\r\n', '2021', '无', NULL);
+INSERT INTO `paper` VALUES (0, 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
+INSERT INTO `paper` VALUES (0, '0', '', '12312', '121212', '12212', '1', '121e', '12312', '1212', '', '0');
+INSERT INTO `paper` VALUES (0, '0', '', '2332', '333', '333', '1', '33', '33', '333', '', '0');
+INSERT INTO `paper` VALUES (0, '0', '', '111', '11', '11', '1', '11', '11', '11', '', '0');
+INSERT INTO `paper` VALUES (0, '0', '', '1212', '1212', '121', '1', '1222', '000', '121', '', '0');
+INSERT INTO `paper` VALUES (0, '0', '', '123123', '12312321', '123123', '1', '123213', '1212212', '12312', '', '0');
+INSERT INTO `paper` VALUES (0, '0', '', '11', '11', '11', '1', '11', '11', '11', '', '0');
+INSERT INTO `paper` VALUES (0, '0', '', '00000', '00000', '0000000', '1', '0000', '00000', '00000', '', '0');
+INSERT INTO `paper` VALUES (0, '0', '', 'qqqqqqqq', 'qqqq', 'qq', '1', 'qq', 'qq', 'qqq', '', '0');
+INSERT INTO `paper` VALUES (0, '0', '', 'wwwwwwww', 'wwww', 'www', '1', 'wwww', 'wwww', 'www', '', '0');
+INSERT INTO `paper` VALUES (0, '12347', '张三光', 'uu', 'uu', 'u', '1', 'u', 'u', 'u', '', '0');
+INSERT INTO `paper` VALUES (0, '12347', '张三光', 'tt', 'tt', 'tt', '1', 'tt', 'tt', 'tt', 'zzz', '0');
 
 -- ----------------------------
 -- Table structure for patent
@@ -197,6 +209,7 @@ CREATE TABLE `project`  (
 -- ----------------------------
 -- Records of project
 -- ----------------------------
+INSERT INTO `project` VALUES (0, 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
 INSERT INTO `project` VALUES (1, '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '2021', '无', '2');
 INSERT INTO `project` VALUES (123, '信息系统', '软件学院', '自研', '正在完成', '2021年12月26日', '周老师', '软件学院', 'changyao', '20212413', '是', '2021', 'https://sdasd.com', '0');
 
@@ -251,6 +264,8 @@ CREATE TABLE `student`  (
                             `stu_email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
                             `stu_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
                             `stu_photourl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                            `stu_major` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+                            `stu_join_time` varbinary(255) NULL DEFAULT NULL,
                             PRIMARY KEY (`stu_no`) USING BTREE,
                             INDEX `Stu_class`(`stu_class`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
@@ -258,11 +273,11 @@ CREATE TABLE `student`  (
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES (12347, '1111', '张三光', 0, '大数据1班', '1995-12-26', '满', '重庆渝北', '522321199512263756', '党员', '2021', 1, '135959002', '122706559', 'ch@163', '重庆', 'WU');
-INSERT INTO `student` VALUES (20201034, '123456', '刘二', 0, '人工智能1', '1995-12-26', '满', '四川成都', '522321', '党员', '2021', 1, '135959002', '122706559', 'ch@163', '重庆', 'WU');
-INSERT INTO `student` VALUES (20201234, '123456', '李四', 0, '人工智能1班', '1995-12-26', '汉', '美国纽约', '522321', '党员', '2021', 1, '135959002', '122706559', 'ch@163', '重庆', 'WU');
-INSERT INTO `student` VALUES (20204146, '1111', '李四光', 0, '大数据1班', '1995-12-26', '汉', '四川成都', '522321', '共青团员', '2021', 20204146, '18357980493', '122706559', '', '重庆大学', 'WU');
-INSERT INTO `student` VALUES (20204567, '123456', '张三', 0, '大数据1班', '1995-12-26', '汉', '四川成都', '522321', '党员', '2021', 1, '135959002', '122706559', 'ch@163', '重庆', 'WU');
+INSERT INTO `student` VALUES (12347, '1111', '张三光', 0, '大数据1班', '1995-12-26', '满', '重庆渝北', '522321199512263756', '党员', '2021', 1, '135959002', '122706559', 'ch@163', '重庆', 'WU', NULL, NULL);
+INSERT INTO `student` VALUES (20201034, '123456', '刘二', 0, '人工智能1', '1995-12-26', '满', '四川成都', '522321', '党员', '2021', 1, '135959002', '122706559', 'ch@163', '重庆', 'WU', NULL, NULL);
+INSERT INTO `student` VALUES (20201234, '123456', '李四', 0, '人工智能1班', '1995-12-26', '汉', '美国纽约', '522321', '党员', '2021', 1, '135959002', '122706559', 'ch@163', '重庆', 'WU', NULL, NULL);
+INSERT INTO `student` VALUES (20204146, '1111', '李四光', 0, '大数据1班', '1995-12-26', '汉', '四川成都', '522321', '共青团员', '2021', 20204146, '18357980493', '122706559', '', '重庆大学', 'WU', NULL, NULL);
+INSERT INTO `student` VALUES (20204567, '123456', '张三', 0, '大数据1班', '1995-12-26', '汉', '四川成都', '522321', '党员', '2021', 1, '135959002', '122706559', 'ch@163', '重庆', 'WU', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for teacher
