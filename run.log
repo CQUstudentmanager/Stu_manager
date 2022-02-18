@@ -1,26 +1,966 @@
-DEBUG main druid.sql.Connection - {conn-10001} pool-connect
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from accommodation_information
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.3274 millis. select * from accommodation_information
-DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
-DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed]
-DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
-DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-8 druid.sql.ResultSet - {conn-10001, pstmt-20006, rs-50282} closed
+DEBUG http-nio-8080-exec-8 druid.sql.Statement - {conn-10001, pstmt-20006} clearParameters. 
+DEBUG http-nio-8080-exec-8 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20002} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20003} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20004} closed
 DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20001} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20005} closed
+DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20006} closed
 DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
-DEBUG Druid-ConnectionPool-Create-1989102402 druid.sql.Connection - {conn-10001} connected
-DEBUG main druid.sql.Connection - {conn-10001} pool-connect
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} created. select * from accommodation_information
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : []
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} Types : []
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} executed. 7.7663 millis. select * from accommodation_information
-DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
-DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
-DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [1, 20204177, 兰园5栋, 205, 3床]
-DEBUG main druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
-DEBUG main druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
-DEBUG main druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG SpringApplicationShutdownHook druid.sql.Statement - {conn-10001, pstmt-20000} closed
-DEBUG SpringApplicationShutdownHook druid.sql.Connection - {conn-10001} closed
+DEBUG Druid-ConnectionPool-Create-694492246 druid.sql.Connection - {conn-10001} connected
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} created. select class_name from class where class_teacherid=?
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Parameters : [2]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} executed. 6.7648 millis. select class_name from class where class_teacherid=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Header: [class_name]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} Result: [软件工程01]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20000, rs-50000} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20000} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} created. select * from student where stu_class like  CONCAT(CONCAT('%',?),'%')
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Parameters : [软件工程01]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} executed. 1.7954 millis. select * from student where stu_class like  CONCAT(CONCAT('%',?),'%')
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Header: [stu_no, stu_password, stu_name, stu_gender, stu_class, stu_birthday, stu_ethnic, stu_origin, stu_id, stu_politicalface, stu_caucus_time, stu_ismacau, stu_telephone, stu_qq, stu_email, stu_address, stu_photourl, stu_major, stu_join_time]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201640, 20201640, 田先民, 1, 20软件工程01, null, 白族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201644, 20201644, 李润东, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201656, 20201656, 刘瑞奇, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201662, 20201662, 高琳璐, 0, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201668, 20201668, 卢承兮, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201682, 20201682, 陈佳明, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201686, 20201686, 张强, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201692, 20201692, 陈天宇, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201707, 20201707, 彭越涵, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201737, 20201737, 郑凌韬, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201739, 20201739, 卢宇航, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201749, 20201749, 李骥琛, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201753, 20201753, 陈禹硕, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201755, 20201755, 邱天, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201756, 20201756, 艾逸明, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201762, 20201762, 赵欣昀, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201765, 20201765, 李嘉俊, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201770, 20201770, 何静仪, 0, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201781, 20201781, 钟梓文, 0, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201786, 20201786, 唐葆程, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201787, 20201787, 杨昊淼, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20201793, 20201793, 余泽伟, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20204050, 20204050, 屈咏清, 0, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20204051, 20204051, 朱子骏, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20204145, 20204145, 邱盈钢, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20204176, 20204176, 王磊, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20204353, 20204353, 王超, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20205644, 20205644, 李易燔, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20205911, 20205911, 薛翔, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} Result: [20206463, 20206463, 曾颉, 1, 20软件工程01, null, 汉族, null, null, null, null, null, null, null, null, null, null, 软件工程, 2020年9月]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20001, rs-50001} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20001} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} created. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201640]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.726 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50002} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50002} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50002} Result: [20201640, null, null, null, 15987613985, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50002} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} created. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201640]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.5726 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50003} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50003} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50003} Result: [null, 20201640, 109, 1, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50003} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} created. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201640]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.6539 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50004} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50004} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50004} Result: [0, 鹤庆县第一中学, 农村应届, null, null, null, null, 20201640]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50004} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201644]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.5861 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50005} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50005} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50005} Result: [20201644, null, null, null, 13434306941, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50005} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201644]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.4571 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50006} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50006} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50006} Result: [null, 20201644, 110, 1, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50006} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201644]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.489 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50007} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50007} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50007} Result: [0, 南海中学分校, 城镇应届, null, null, null, null, 20201644]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50007} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201656]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.4333 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50008} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50008} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50008} Result: [20201656, null, null, null, 18323750168, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50008} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201656]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.4378 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50009} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50009} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50009} Result: [null, 20201656, 316, 1, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50009} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201656]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3957 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50010} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50010} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50010} Result: [0, 重庆市第十八中学, 城镇往届, null, null, null, null, 20201656]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50010} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201662]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.4104 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50011} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50011} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50011} Result: [20201662, null, null, null, 13808339516, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50011} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201662]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3722 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50012} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50012} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50012} Result: [null, 20201662, 471, 1, 松园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50012} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201662]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3718 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50013} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50013} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50013} Result: [0, 重庆市南开中学, 城市应届, null, null, null, null, 20201662]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50013} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201668]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.377 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50014} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50014} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50014} Result: [20201668, null, null, null, 15821562466, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50014} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201668]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3718 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50015} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50015} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50015} Result: [null, 20201668, 318, 4, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50015} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201668]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3762 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50016} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50016} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50016} Result: [0, 合肥一六八中学, 城镇应届, null, null, null, null, 20201668]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50016} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201682]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3834 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50017} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50017} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50017} Result: [20201682, null, null, null, 15723321954, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50017} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201682]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3536 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50018} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50018} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50018} Result: [null, 20201682, 321, 3, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50018} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201682]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.4351 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50019} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50019} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50019} Result: [0, 重庆市字水中学, 城镇应届, null, null, null, null, 20201682]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50019} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201686]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3536 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50020} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50020} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50020} Result: [20201686, null, null, null, 15826272128, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50020} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201686]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3349 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50021} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50021} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50021} Result: [null, 20201686, 322, 3, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50021} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201686]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.6627 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50022} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50022} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50022} Result: [0, 丰都中学校, 农村应届, null, null, null, null, 20201686]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50022} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201692]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.4842 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50023} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50023} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50023} Result: [20201692, null, null, null, 13587881903, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50023} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201692]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.367 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50024} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50024} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50024} Result: [null, 20201692, 323, 3, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50024} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201692]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3538 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50025} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50025} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50025} Result: [0, 浙江省瓯海中学, 农村应届, null, null, null, null, 20201692]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50025} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201707]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3576 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50026} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50026} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50026} Result: [20201707, null, null, null, 13547229303, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50026} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201707]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3531 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50027} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50027} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50027} Result: [null, 20201707, 328, 1, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50027} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201707]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3419 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50028} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50028} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50028} Result: [0, 四川省遂宁市卓同, 城镇往届, null, null, null, null, 20201707]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50028} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201737]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.6489 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50029} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50029} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50029} Result: [20201737, null, null, null, 13896684888, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50029} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201737]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.4645 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50030} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50030} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50030} Result: [null, 20201737, 406, 2, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50030} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201737]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.6654 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50031} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50031} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50031} Result: [0, 重庆市第一中学, 城镇应届, null, null, null, null, 20201737]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50031} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201739]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 1.4415 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50032} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50032} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50032} Result: [20201739, null, null, null, 15023782239, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50032} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201739]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.4813 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50033} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50033} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50033} Result: [null, 20201739, 406, 4, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50033} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201739]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.4427 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50034} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50034} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50034} Result: [0, 重庆市綦江中学, 城镇应届, null, null, null, null, 20201739]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50034} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201749]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.4282 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50035} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50035} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50035} Result: [20201749, null, null, null, 13856575178, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50035} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201749]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3591 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50036} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50036} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50036} Result: [null, 20201749, 408, 4, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50036} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201749]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3301 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50037} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50037} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50037} Result: [0, 巢湖市第二中学, 农村应届, null, null, null, null, 20201749]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50037} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201753]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3394 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50038} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50038} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50038} Result: [20201753, null, null, null, 13032010030, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50038} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201753]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3164 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50039} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50039} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50039} Result: [null, 20201753, 409, 3, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50039} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201753]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3247 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50040} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50040} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50040} Result: [0, 保定市第一中学, 城镇应届, null, null, null, null, 20201753]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50040} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201755]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3422 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50041} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50041} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50041} Result: [20201755, null, null, null, 13861175001, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50041} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201755]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3847 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50042} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50042} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50042} Result: [null, 20201755, 409, 4, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50042} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201755]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3728 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50043} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50043} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50043} Result: [0, 江苏省前黄高级中学, 城镇应届, null, null, null, null, 20201755]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50043} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201756]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3342 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50044} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50044} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50044} Result: [20201756, null, null, null, 13687945280, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50044} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201756]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3825 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50045} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50045} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50045} Result: [null, 20201756, 410, 1, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50045} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201756]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3168 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50046} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50046} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50046} Result: [0, 江西省临川第二中学, 农村应届, null, null, null, null, 20201756]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50046} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201762]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3374 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50047} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50047} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50047} Result: [20201762, null, null, null, 18997719996, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50047} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201762]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3098 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50048} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50048} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50048} Result: [null, 20201762, 411, 3, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50048} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201762]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3169 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50049} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50049} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50049} Result: [0, 独山子第二中学, 城镇应届, null, null, null, null, 20201762]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50049} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201765]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.318 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50050} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50050} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50050} Result: [20201765, null, null, null, 15828717896, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50050} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201765]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.2994 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50051} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50051} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50051} Result: [null, 20201765, 413, 2, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50051} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201765]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3269 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50052} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50052} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50052} Result: [0, 重庆市育才中学校, 城镇应届, null, null, null, null, 20201765]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50052} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201770]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3149 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50053} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50053} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50053} Result: [20201770, null, null, null, 13608316968, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50053} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201770]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3497 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50054} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50054} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50054} Result: [null, 20201770, 476, 1, 松园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50054} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201770]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3554 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50055} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50055} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50055} Result: [0, 重庆市第十一中学校, 城镇应届, null, null, null, null, 20201770]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50055} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201781]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3833 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50056} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50056} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50056} Result: [20201781, null, null, null, 13939089910, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50056} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201781]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3613 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50057} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50057} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50057} Result: [null, 20201781, 476, 4, 松园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50057} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201781]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3718 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50058} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50058} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50058} Result: [0, 河南省实验中学, 城镇应届, null, null, null, null, 20201781]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50058} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201786]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3579 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50059} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50059} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50059} Result: [20201786, null, null, null, 13778492752, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50059} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201786]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3244 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50060} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50060} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50060} Result: [null, 20201786, 417, 3, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50060} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201786]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3311 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50061} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50061} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50061} Result: [0, 安岳中学, 农村应届, null, null, null, null, 20201786]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50061} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201787]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3197 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50062} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50062} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50062} Result: [20201787, null, null, null, 15828520334, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50062} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201787]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.466 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50063} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50063} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50063} Result: [null, 20201787, 417, 4, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50063} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201787]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3647 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50064} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50064} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50064} Result: [0, 崇庆中学, 城市应届, null, null, null, null, 20201787]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50064} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20201793]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3101 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50065} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50065} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50065} Result: [20201793, null, null, null, 13696413526, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50065} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20201793]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.2962 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50066} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50066} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50066} Result: [null, 20201793, 419, 1, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50066} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20201793]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3039 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50067} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50067} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50067} Result: [0, 渝北中学, 城镇应届, null, null, null, null, 20201793]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50067} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20204050]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3383 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50068} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50068} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50068} Result: [20204050, null, null, null, 13646225910, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50068} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20204050]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3163 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50069} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50069} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50069} Result: [null, 20204050, 526, 1, 松园4栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50069} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20204050]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3181 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50070} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50070} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50070} Result: [0, 江苏省苏州中学, 城镇应届, null, null, null, null, 20204050]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50070} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20204051]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3338 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50071} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50071} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50071} Result: [20204051, null, null, null, 13970927371, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50071} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20204051]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.305 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50072} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50072} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50072} Result: [null, 20204051, 611, 1, 梅园6栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50072} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20204051]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3438 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50073} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50073} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50073} Result: [0, 南昌大学附属中学, 城镇应届, null, null, null, null, 20204051]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50073} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20204145]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3536 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50074} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50074} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50074} Result: [20204145, null, null, null, 15696101251, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50074} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20204145]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3028 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50075} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50075} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50075} Result: [null, 20204145, 408, 1, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50075} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20204145]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3279 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50076} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50076} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50076} Result: [0, 重庆市渝高中学校, 农村应届, null, null, null, null, 20204145]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50076} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20204176]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3154 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50077} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50077} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50077} Result: [20204176, null, null, null, 15823506364, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50077} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20204176]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3006 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50078} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50078} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50078} Result: [null, 20204176, 412, , 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50078} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20204176]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3577 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50079} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50079} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50079} Result: [0, 重庆市璧山中学校, 农村应届, null, null, null, null, 20204176]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50079} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20204353]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3201 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50080} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50080} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50080} Result: [20204353, null, null, null, 13725501605, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50080} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20204353]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3061 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50081} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50081} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50081} Result: [null, 20204353, 412, , 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50081} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20204353]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3134 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50082} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50082} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50082} Result: [0, 深圳外国语学校, 城市应届, null, null, null, null, 20204353]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50082} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20205644]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.333 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50083} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50083} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50083} Result: [20205644, null, null, null, 15252716118, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50083} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20205644]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3602 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50084} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50084} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50084} Result: [null, 20205644, 412, , 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50084} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20205644]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3219 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50085} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50085} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50085} Result: [0, 江苏省宝应中学, 城镇应届, null, null, null, null, 20205644]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50085} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20205911]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3638 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50086} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50086} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50086} Result: [20205911, null, null, null, 13637855436, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50086} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20205911]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3053 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50087} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50087} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50087} Result: [null, 20205911, 321, 4, 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50087} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20205911]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3056 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50088} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50088} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50088} Result: [0, 重庆市潼南中学校, 农村应届, null, null, null, null, 20205911]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50088} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Parameters : [20206463]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} executed. 0.3111 millis. select * from family where family_stu_no=? and family_ismain="是"
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50089} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50089} Header: [family_stu_no, family_relationship, family_name, family_age, family_tel, family_work, family_duties, family_workplace, family_ismain]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50089} Result: [20206463, null, null, null, 13012392927, null, null, null, 是]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20002, rs-50089} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Parameters : [20206463]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} executed. 0.3246 millis. select * from accommodation_information where accommodation_information_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50090} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50090} Header: [accommodation_information_no, accommodation_information_stu_no, accommodation_information_room_no, accommodation_information_bed, accommodation_information_building]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50090} Result: [null, 20206463, 412, , 竹园5栋]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20003, rs-50090} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-connect
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Parameters : [20206463]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} Types : [VARCHAR]
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} executed. 0.3524 millis. select * from college_entrance_examination where college_entrance_examination_stu_no=?
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50091} open
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50091} Header: [college_entrance_examination_no, college_entrance_examination_highschool_name, college_entrance_examination_type, college_entrance_examination_chinese, college_entrance_examination_math, college_entrance_examination_english, college_entrance_examination_comprehensive, college_entrance_examination_stu_no]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50091} Result: [0, 重庆市凤鸣山中学, 城市应届, null, null, null, null, 20206463]
+DEBUG http-nio-8080-exec-1 druid.sql.ResultSet - {conn-10001, pstmt-20004, rs-50091} closed
+DEBUG http-nio-8080-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
+DEBUG http-nio-8080-exec-1 druid.sql.Connection - {conn-10001} pool-recycle

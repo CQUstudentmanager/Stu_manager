@@ -6,5 +6,8 @@
     <select id="findAllAccommodation" resultType="com.cqu.stu_manager.pojo.Accommodation">
         select * from accommodation_information
     </select>
+    <select id="findStuAccommodation" resultType="com.cqu.stu_manager.pojo.Accommodation">
+        select * from accommodation_information where accommodation_information_stu_no=#{stuno}
+    </select>
 
 </mapper>

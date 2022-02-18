@@ -1,9 +1,7 @@
 package com.cqu.stu_manager.controller;
 
-import com.cqu.stu_manager.mapper.MsgMapper;
-import com.cqu.stu_manager.mapper.ReceiveMapper;
-import com.cqu.stu_manager.mapper.StudentMapper;
-import com.cqu.stu_manager.mapper.TeacherMapper;
+import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
+import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.utils.Result;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
@@ -12,10 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class techercontroller {
@@ -27,6 +22,14 @@ public class techercontroller {
     ReceiveMapper receiveMapper;
     @Autowired
     StudentMapper studentMapper;
+    @Autowired
+    ClassMapper classMapper;
+    @Autowired
+    CollegeEntranceExaminationMapper collegeEntranceExaminationMapper;
+    @Autowired
+    FamilyMapper familyMapper;
+    @Autowired
+    AccommodationMapper accommodationMapper;
 
     @PostMapping ("Tea/techerlist")
     public List<Teacher> techerlist()
@@ -205,4 +208,5 @@ public class techercontroller {
         }
         return result;
     }
+
 }

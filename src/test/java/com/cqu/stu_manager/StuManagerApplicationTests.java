@@ -1,6 +1,7 @@
 package com.cqu.stu_manager;
 
 import com.cqu.stu_manager.excel.NationalGrantsExcel;
+import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
 import com.cqu.stu_manager.mapper.*;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -28,6 +29,12 @@ DispatchMapper dispatchMapper;
 Voluntary_activitiesMapper voluntary_activitiesMapper;
 @Autowired
 AccommodationMapper accommodationMapper;
+@Autowired
+CollegeEntranceExaminationMapper collegeEntranceExaminationMapper;
+@Autowired
+FamilyMapper familyMapper;
+@Autowired
+ClassMapper classMapper;
 
     @SneakyThrows
     @Test
@@ -39,6 +46,6 @@ AccommodationMapper accommodationMapper;
 ////        national_scholarship_excel.write_National_scholarship_excel_forSelf_Improvement();
 ////                    StudentRead studentRead=new StudentRead(studentMapper);
 ////                    studentRead.simpleRead();
-        accommodationMapper.findAllAccommodation();
+        System.out.println(classMapper.findClassByTeacher("2"));
     }
 }
