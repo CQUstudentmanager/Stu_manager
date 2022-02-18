@@ -20,7 +20,7 @@ public class Nationalgrants {
     private String  stu_name;
     @ExcelProperty (value = "性别",index = 4)
     private String stu_gender;
-    @ExcelProperty (value = "班级",index = 1)
+    @ExcelProperty (value = "年级专业",index = 1)
     private String stu_class;
     @ExcelIgnore
     private String stu_birthday;

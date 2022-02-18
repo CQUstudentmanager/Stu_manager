@@ -1,5 +1,7 @@
 package com.cqu.stu_manager.controller;
 
+import com.cqu.stu_manager.excel.NationalGrantsExcel;
+import com.cqu.stu_manager.excel.NationalScholarshipExcel;
 import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.Student;
@@ -36,6 +38,21 @@ public class excelcontroller {
         StudentListHeadmasterExcel studentListHeadmasterExcel=new StudentListHeadmasterExcel(studentMapper,collegeEntranceExaminationMapper,familyMapper,accommodationMapper);
         return studentListHeadmasterExcel.StudentListHeadmasterExcel_Write(class_name);
 
+    }
+    @PostMapping("/getAllStudentInfoByTemplateForGrant")
+    public String getAllStudentInfoByTemplateForGrant(){
+        NationalGrantsExcel nationalGrantsExcel=new NationalGrantsExcel(studentMapper);
+        return nationalGrantsExcel.write_National_grants_excel();
+    }
+    @PostMapping("/getAllStudentInfoByTemplateForSchoolars")
+    public String getAllStudentInfoByTemplateForSchoolars(){
+        NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
+        return nationalScholarshipExcel.write_National_scholarship_excel();
+    }
+    @PostMapping("/getAllStudentInfoByTemplateForSchoolarsB")
+    public String getAllStudentInfoByTemplateForSchoolarsB(){
+        NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
+        return nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement();
     }
 
 }

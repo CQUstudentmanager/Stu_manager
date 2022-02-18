@@ -29,28 +29,28 @@ public class NationalGrantsExcel {
             Nationalgrants nationalgrants1 =new Nationalgrants();
             nationalgrants1.setExcel_no(i+1);
             //nationalgrants1.setStu_class(studentList.get(i).getStu_class());
-            String S=studentList.get(i).getStu_no().toString();
-            S=S.substring(0,4);
+            String S=studentList.get(i).getStu_class();
+            S=S.substring(0,2);
             String yyyy_Grade="";
-            yyyy_Grade=S.substring(0,4)+"级";
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
-            String format = sdf.format(new Date());
-            String format_year=format.substring(0,4);
-            String fomet_month=format.substring(format.length()-2);
-            String Grade="";
-            Integer now_year=Integer.parseInt(format_year);
-            Integer stu_jointime=Integer.parseInt(S);
-            Integer now_month=Integer.parseInt(fomet_month);
-            switch (now_year-stu_jointime){
-                case 0:Grade="大一";
-                break;
-                case 1:if(now_month>=8){Grade="大二";}else Grade="大一";
-                break;
-                case 2:if(now_month>=8){Grade="大三";}else Grade="大二";
-                break;
-                case 3:if(now_month>=8){Grade="大四";}else Grade="大三";
-                break;
-            }
+            yyyy_Grade=S+"级";
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+//            String format = sdf.format(new Date());
+//            String format_year=format.substring(0,4);
+//            String fomet_month=format.substring(format.length()-2);
+//            String Grade="";
+//            Integer now_year=Integer.parseInt(format_year);
+//            Integer stu_jointime=Integer.parseInt(S);
+//            Integer now_month=Integer.parseInt(fomet_month);
+//            switch (now_year-stu_jointime){
+//                case 0:Grade="大一";
+//                break;
+//                case 1:if(now_month>=8){Grade="大二";}else Grade="大一";
+//                break;
+//                case 2:if(now_month>=8){Grade="大三";}else Grade="大二";
+//                break;
+//                case 3:if(now_month>=8){Grade="大四";}else Grade="大三";
+//                break;
+//            }
             System.out.println(yyyy_Grade+studentList.get(i).getStu_major());
             nationalgrants1.setStu_class(yyyy_Grade+studentList.get(i).getStu_major());
             nationalgrants1.setStu_no(studentList.get(i).getStu_no());
