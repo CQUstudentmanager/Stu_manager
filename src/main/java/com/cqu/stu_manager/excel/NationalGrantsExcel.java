@@ -20,10 +20,20 @@ public class NationalGrantsExcel {
         super();
         this.studentMapper=studentMapper;
     }
-    public String write_National_grants_excel(){
+    public String write_National_grants_excel(List<Student> studentlist){
         StaticComponentContainer.Modules.exportAllToAll();
         List<Student> studentList=new ArrayList<>();
-        studentList=studentMapper.findAllStudent();
+        if(studentlist.size()==0){
+            studentList=studentMapper.findAllStudent();
+        }else {
+            for (int i=0;i<studentlist.size();i++){
+                Student student=new Student();
+                student=studentMapper.findOneStudent(studentlist.get(i).getStu_no());
+                studentList.add(student);
+            }
+        }
+
+
         List<Nationalgrants> nationalgrants=new ArrayList<>();
         for(int i=0;i<studentList.size();i++){
             Nationalgrants nationalgrants1 =new Nationalgrants();

@@ -4,6 +4,7 @@ import com.cqu.stu_manager.excel.NationalGrantsExcel;
 import com.cqu.stu_manager.excel.NationalScholarshipExcel;
 import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
 import com.cqu.stu_manager.mapper.*;
+import com.cqu.stu_manager.pojo.ExcelStuList;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,17 +43,54 @@ public class excelcontroller {
     @PostMapping("/getAllStudentInfoByTemplateForGrant")
     public String getAllStudentInfoByTemplateForGrant(){
         NationalGrantsExcel nationalGrantsExcel=new NationalGrantsExcel(studentMapper);
-        return nationalGrantsExcel.write_National_grants_excel();
+        List<Student> studentList=new ArrayList<>();
+        return nationalGrantsExcel.write_National_grants_excel(studentList);
+    }
+    @PostMapping("/getSomeStudentInfoByTemplateForGrant")
+    public String getSomeStudentInfoByTemplateForGrant(@RequestBody ExcelStuList stuList){
+        List<Student> studentList2=new ArrayList<>();
+
+        for(int i:stuList.getStuList()){
+            Student student=new Student();
+            student.setStu_no(i);
+            studentList2.add(student);
+        }
+        NationalGrantsExcel nationalGrantsExcel=new NationalGrantsExcel(studentMapper);
+        return nationalGrantsExcel.write_National_grants_excel(studentList2);
     }
     @PostMapping("/getAllStudentInfoByTemplateForSchoolars")
     public String getAllStudentInfoByTemplateForSchoolars(){
         NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
-        return nationalScholarshipExcel.write_National_scholarship_excel();
+        List<Student> studentList=new ArrayList<>();
+        return nationalScholarshipExcel.write_National_scholarship_excel(studentList);
+    }
+    @PostMapping("/getSomeStudentInfoByTemplateForSchoolars")
+    public String getSomeStudentInfoByTemplateForSchoolars(@RequestBody ExcelStuList stuList){
+        NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
+       List<Student> studentList=new ArrayList<>();
+        for(int i:stuList.getStuList()){
+            Student student=new Student();
+            student.setStu_no(i);
+            studentList.add(student);
+        }
+        return nationalScholarshipExcel.write_National_scholarship_excel(studentList);
     }
     @PostMapping("/getAllStudentInfoByTemplateForSchoolarsB")
     public String getAllStudentInfoByTemplateForSchoolarsB(){
         NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
-        return nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement();
+        List<Student> studentList=new ArrayList<>();
+        return nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement(studentList);
+    }
+    @PostMapping("/getSomeStudentInfoByTemplateForSchoolarsB")
+    public String getSomeStudentInfoByTemplateForSchoolarsB(@RequestBody ExcelStuList stuList){
+        NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
+        List<Student> studentList=new ArrayList<>();
+        for(int i:stuList.getStuList()){
+            Student student=new Student();
+            student.setStu_no(i);
+            studentList.add(student);
+        }
+        return nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement(studentList);
     }
 
 }

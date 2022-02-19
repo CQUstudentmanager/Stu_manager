@@ -44,7 +44,7 @@ public class StudentListHeadmasterExcel {
         studentList=studentMapper.findStudentsByClass(class_name);
         for (int i=0;i<studentList.size();i++){
             StudentListHeadmaster studentListHeadmaster=new StudentListHeadmaster();
-            studentListHeadmaster.setExcel_no(i);
+            studentListHeadmaster.setExcel_no(i+1);
             studentListHeadmaster.setStu_no(studentList.get(i).getStu_no().toString());
             studentListHeadmaster.setStu_name(studentList.get(i).getStu_name());
             studentListHeadmaster.setStu_class(studentList.get(i).getStu_class());
@@ -89,7 +89,7 @@ public class StudentListHeadmasterExcel {
         String format = sdf.format(new Date());
         System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
         String Path="C:\\Users\\lenovo\\IdeaProjects\\Stu_manager\\";
-        String FileName=Path+"本科生名单（班主任）"+format+".xls";
+        String FileName=Path+"本科生名单（班主任）"+class_name+"班"+format+".xls";
         EasyExcel.write(FileName, StudentListHeadmaster.class).sheet("本科生名单").doWrite(studentListHeadmasterList);
         return FileName;
     }

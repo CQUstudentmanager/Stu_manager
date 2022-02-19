@@ -20,11 +20,19 @@ public class NationalScholarshipExcel {
         this.studentMapper=studentMapper;
 
     }
-    public String write_National_scholarship_excel(){
+    public String write_National_scholarship_excel(List<Student> studentList2){
         StaticComponentContainer.Modules.exportAllToAll();
-
         List<Student> studentList=new ArrayList<>();
-        studentList=studentMapper.findAllStudent();
+        if (studentList2.size()==0){
+            studentList=studentMapper.findAllStudent();
+        }else {
+            for (int i=0;i<studentList2.size();i++){
+                Student student=new Student();
+                student=studentMapper.findOneStudent(studentList2.get(i).getStu_no());
+                studentList.add(student);
+            }
+        }
+
         List<Nationalscholarship> nationalscholarship_s =new ArrayList<>();
         for(int i=0;i<studentList.size();i++){
             Nationalscholarship nationalscholarship_ =new Nationalscholarship();
@@ -51,11 +59,20 @@ public class NationalScholarshipExcel {
         EasyExcel.write(FileName, Nationalscholarship.class).sheet("奖学金信息表").doWrite(nationalscholarship_s);
         return FileName;
     }
-    public String write_National_scholarship_excel_forSelf_Improvement(){
+    public String write_National_scholarship_excel_forSelf_Improvement(List<Student> studentList2){
         StaticComponentContainer.Modules.exportAllToAll();
 
         List<Student> studentList=new ArrayList<>();
-        studentList=studentMapper.findAllStudent();
+        if (studentList2.size()==0){
+            studentList=studentMapper.findAllStudent();
+        }else {
+            for (int i=0;i<studentList2.size();i++){
+                Student student=new Student();
+                student=studentMapper.findOneStudent(studentList2.get(i).getStu_no());
+                studentList.add(student);
+            }
+        }
+
         List<Nationalscholarship> nationalscholarship_s =new ArrayList<>();
         for(int i=0;i<studentList.size();i++){
             Nationalscholarship nationalscholarship_ =new Nationalscholarship();
