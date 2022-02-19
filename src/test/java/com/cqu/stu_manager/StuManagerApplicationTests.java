@@ -1,6 +1,7 @@
 package com.cqu.stu_manager;
 
 import com.cqu.stu_manager.excel.NationalGrantsExcel;
+import com.cqu.stu_manager.excel.StudentListGuidanceCounselorExcel;
 import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
 import com.cqu.stu_manager.mapper.*;
 import lombok.SneakyThrows;
@@ -32,6 +33,8 @@ AccommodationMapper accommodationMapper;
 @Autowired
 CollegeEntranceExaminationMapper collegeEntranceExaminationMapper;
 @Autowired
+TeacherMapper teacherMapper;
+@Autowired
 FamilyMapper familyMapper;
 @Autowired
 ClassMapper classMapper;
@@ -46,6 +49,8 @@ ClassMapper classMapper;
 ////        national_scholarship_excel.write_National_scholarship_excel_forSelf_Improvement();
 ////                    StudentRead studentRead=new StudentRead(studentMapper);
 ////                    studentRead.simpleRead();
-        System.out.println(classMapper.findClassByTeacher("2"));
+        StudentListGuidanceCounselorExcel studentListGuidanceCounselorExcel=
+                new StudentListGuidanceCounselorExcel(studentMapper,collegeEntranceExaminationMapper,familyMapper,accommodationMapper,teacherMapper,classMapper);
+        studentListGuidanceCounselorExcel.StudentListGuidanceCounselorExcel_Write(10000);
     }
 }
