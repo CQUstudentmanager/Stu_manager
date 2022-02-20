@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TypeAndCount {
+    private String ele_class;
     private String ele_type;
     private Integer ele_count;
 }

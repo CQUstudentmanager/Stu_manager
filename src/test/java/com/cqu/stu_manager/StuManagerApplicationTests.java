@@ -46,7 +46,7 @@ ClassMapper classMapper;
     void contextLoads() {
         List<Class> right_class=new ArrayList<>();
         InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
-        right_class=infoForTeacher.findRightClass(2);
+        right_class=infoForTeacher.findRightClass(10000);
         System.out.println(infoForTeacher.findStudentCount(right_class));
 
     }

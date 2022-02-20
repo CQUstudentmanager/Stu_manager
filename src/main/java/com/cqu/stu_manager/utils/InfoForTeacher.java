@@ -7,9 +7,6 @@ import com.cqu.stu_manager.pojo.Class;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.Teacher;
 import com.cqu.stu_manager.pojo.TypeAndCount;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -67,15 +64,43 @@ public class InfoForTeacher {
         List<TypeAndCount> stu_count=new ArrayList<>();
 
         for (int i=0;i<right_classlist.size();i++) {
+            TypeAndCount typeAndCount2=new TypeAndCount();
+            TypeAndCount typeAndCount3=new TypeAndCount();
             TypeAndCount typeAndCount=new TypeAndCount();
             List<Student> studentList=new ArrayList<>();
             String temp="";
             temp=right_classlist.get(i).getClass_name();
             studentList=studentMapper.findStudentsByClass(right_classlist.get(i).getClass_name());
-            temp=temp+"班:";
-            typeAndCount.setEle_type(temp);
+            for(int j=0;j<studentList.size();j++){
+               String ethnic= studentList.get(j).getStu_ethnic();
+               if(!ethnic.substring(ethnic.length()-1,ethnic.length()).equals("族")){
+                   studentList.get(j).setStu_ethnic(ethnic+"族");
+               }
+
+            }
+            Integer Han_ethniccount=0;
+            Integer ethnic=0;
+            Integer boy_count=0;
+            for (int t=0;t<studentList.size();t++){
+                if (studentList.get(t).getStu_ethnic().equals("汉族")){
+                    Han_ethniccount++;
+                }else ethnic++;
+                if(studentList.get(t).getStu_gender().equals(1)){
+                    boy_count++;
+                }
+            }
+            typeAndCount3.setEle_class(temp);
+            typeAndCount3.setEle_count(boy_count);
+            typeAndCount3.setEle_type("男生");
+            typeAndCount2.setEle_type("汉族");
+            typeAndCount2.setEle_count(Han_ethniccount);
+            typeAndCount2.setEle_class(temp);
+            typeAndCount.setEle_class(temp);
+            typeAndCount.setEle_type("人数");
             typeAndCount.setEle_count(studentList.size());
             stu_count.add(typeAndCount);
+            stu_count.add(typeAndCount2);
+            stu_count.add(typeAndCount3);
 
         }return stu_count;
     }
