@@ -113,9 +113,35 @@ public class award_information_controller {
     PaperMapper paperMapper;
 
     //找到所有的获奖信息
-    @PostMapping("/find_all_paper_info")
+    @PostMapping("/find_all_paper_info_new")
     public List<Paper> find_all_paper_info(){
-        return paperMapper.findAllStuPaper();
+        List<Paper> paperList=new ArrayList<>();
+        List<Paper> new_paperlist=new ArrayList<>();
+        paperList=paperMapper.findAllStuPaper();
+        for(int i=0;i<paperList.size();i++){
+            Paper paper=new Paper();
+            if(paperList.get(i).getPaper_status().equals("0")&&paperList.get(i)!=null){
+                paper=paperList.get(i);
+                new_paperlist.add(paper);
+            }
+
+        }
+        return new_paperlist;
+    }
+    @PostMapping("/find_all_paper_info_old")
+    public List<Paper> find_all_paper_info_old(){
+        List<Paper> paperList=new ArrayList<>();
+        List<Paper> new_paperlist=new ArrayList<>();
+        paperList=paperMapper.findAllStuPaper();
+        for(int i=0;i<paperList.size();i++){
+            Paper paper=new Paper();
+            if(!paperList.get(i).getPaper_status().equals("0")&&paperList.get(i)!=null){
+                paper=paperList.get(i);
+                new_paperlist.add(paper);
+            }
+
+        }
+        return new_paperlist;
     }
 
     //找到对应学生的获奖信息
@@ -133,13 +159,13 @@ public class award_information_controller {
         List<Paper> contestList=paperMapper.findAllStuPaper();
 //这里是防止重复上传
         for (int i=0;i<contestList.size();i++){
-            if(contestList.get(i).getPaper_stuno().equals(paper.getPaper_stuno())&&contestList.get(i).getPaper_name().equals(paper.getPaper_name())&&paper.getPaper_no()==null){
+            if(contestList.get(i).getPaper_stuno().equals(paper.getPaper_stuno())&&contestList.get(i).getPaper_name().equals(paper.getPaper_name())&&paper.getPaper_no().length()==0){
                 result.setMsg("信息已经上传，请勿重复上传");
                 return result;
             }
         }
         //这里是设置paperID
-        if(paper.getPaper_no()==null){
+        if(paper.getPaper_no().length()==0){
             String str=paper.getPaper_stuno();
             SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
             String format = sdf.format(new Date());
@@ -211,7 +237,7 @@ public class award_information_controller {
         }
         return result;
     }
-//
+//判断是否有正在审核的信息
     @PostMapping("/paper_isexamineing")
     public Integer paper_isexamineing(@RequestBody Student student){
         List<Paper> paperList=new ArrayList<>();
@@ -225,7 +251,28 @@ public class award_information_controller {
         }
         return count;
     }
+    @PostMapping("/delete_paper")
+    public Result delete_paper(@RequestBody Paper paper){
+        Result result=new Result();
+        result.setMsg(paperMapper.deletePaperByStu(paper.getPaper_no())+"条删除");
 
+
+        return result;
+    }
+    @PostMapping("/pass_paper")
+    public Result pass_paper(@RequestBody Paper paper){
+        paperMapper.pass_paper(paper.getPaper_no());
+        Result result=new Result();
+        result.setMsg("通过成功");
+        return result;
+    }
+    @PostMapping("/refuse_paper")
+    public Result refuse_paper(@RequestBody Paper paper){
+        paperMapper.refuse_paper(paper.getPaper_no());
+        Result result=new Result();
+        result.setMsg("驳回成功");
+        return result;
+    }
 
 
 

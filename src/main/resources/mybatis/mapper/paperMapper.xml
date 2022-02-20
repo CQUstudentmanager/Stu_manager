@@ -54,5 +54,16 @@
                             paper_status=#{paper_status}
                             where paper_no=#{paper_no}
     </update>
+    <delete id="deletePaperByStu" >
+        delete from paper where paper_no=#{paper_no}
+    </delete>
+    <update id="pass_paper"  >
+        update paper set paper_status='1'
+        where paper_no=#{paper_no}
+    </update>
+    <update id="refuse_paper">
+        update paper set paper_status='2'
+        where paper_no=#{paper_no}
+    </update>
 
 </mapper>

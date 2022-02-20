@@ -12,4 +12,7 @@ public interface PaperMapper {
     List<Paper> findPaperByStuno(Student student);//根据学生的no找到他对应的论文情况
     int verifyPaper(Paper paper);//成功审核学生的论文
    int updatePaperByPaperNo(Paper paper);
+   int deletePaperByStu(String paper_no);
+   int pass_paper(String paper_no);
+   int refuse_paper(String paper_no);
 }
