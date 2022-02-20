@@ -12,6 +12,6 @@ public interface ClassMapper {
     List<Class> findAllClass();//找到所有班级的信息
     int updateClassinfo(Class class_) ;
     int insertClass(Class class_);
-    String findClassByTeacher(String teacherID);
+    List<String> findClassByTeacher(String teacherID);
 
 }

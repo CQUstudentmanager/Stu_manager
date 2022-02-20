@@ -34,11 +34,15 @@ public class excelcontroller {
     @Autowired
     AccommodationMapper accommodationMapper;
     @PostMapping("/getStudentExcelInfoByHeadMaster")
-    public String getStudentExcelInfoByHeadMaster(@RequestBody Teacher teacher){
-        String class_name= classMapper.findClassByTeacher(teacher.getT_no().toString());
+    public List<String> getStudentExcelInfoByHeadMaster(@RequestBody Teacher teacher){
+        List<String> class_name= classMapper.findClassByTeacher(teacher.getT_no().toString());
         List<Student> studentList=new ArrayList<>();
         StudentListHeadmasterExcel studentListHeadmasterExcel=new StudentListHeadmasterExcel(studentMapper,collegeEntranceExaminationMapper,familyMapper,accommodationMapper);
-        return studentListHeadmasterExcel.StudentListHeadmasterExcel_Write(class_name);
+        List<String> addresslist=new ArrayList<>();
+        for(int i=0;i<class_name.size();i++){
+           addresslist.add(studentListHeadmasterExcel.StudentListHeadmasterExcel_Write(class_name.get(i))) ;
+        }
+        return addresslist;
 
     }
     @PostMapping("/getStudentExcelInfoByGuidanceCounselor")
