@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -130,14 +131,28 @@ public class award_information_controller {
     public Result upLoadPaper(@RequestBody Paper paper){
         Result result=new Result();
         List<Paper> contestList=paperMapper.findAllStuPaper();
+//这里是防止重复上传
         for (int i=0;i<contestList.size();i++){
-            if(contestList.get(i).getPaper_stuno().equals(paper.getPaper_stuno())&&contestList.get(i).getPaper_name().equals(paper.getPaper_name())){
+            if(contestList.get(i).getPaper_stuno().equals(paper.getPaper_stuno())&&contestList.get(i).getPaper_name().equals(paper.getPaper_name())&&paper.getPaper_no()==null){
                 result.setMsg("信息已经上传，请勿重复上传");
                 return result;
             }
         }
-        result.setMsg(paperMapper.insertPaperByStudent(paper)+"条消息已经上传");
+        //这里是设置paperID
+        if(paper.getPaper_no()==null){
+            String str=paper.getPaper_stuno();
+            SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+            String format = sdf.format(new Date());
+            paper.setPaper_no(str+format);
+            //插入
+            result.setMsg(paperMapper.insertPaperByStudent(paper)+"条消息已经上传");
+            return result;
+        }else {
+            //更新
+            result.setMsg(paperMapper.updatePaperByPaperNo(paper)+"条消息已经修改");
         return result;
+        }
+
     }
 
     //上传获奖证明材料
@@ -196,7 +211,20 @@ public class award_information_controller {
         }
         return result;
     }
-
+//
+    @PostMapping("/paper_isexamineing")
+    public Integer paper_isexamineing(@RequestBody Student student){
+        List<Paper> paperList=new ArrayList<>();
+        paperList=paperMapper.findPaperByStuno(student);
+        Integer count = 0;
+        System.out.println(paperList);
+        for(int i=0;i<paperList.size();i++){
+            if(paperList.get(i).getPaper_status().equals("0")){
+                count++;
+            }
+        }
+        return count;
+    }
 
 
 
