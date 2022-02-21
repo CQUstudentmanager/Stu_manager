@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Dispatch {
-    private Integer dispatch_no;
+    private String dispatch_no;
     private String dispatch_name;
     private String dispatch_level;
     private String dispatch_project_type;

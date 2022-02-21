@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Contest {
-      private Integer contest_no;
+      private String contest_no;
       private String     contest_name;
       private String  contest_projectname;
       private String        contest_grantingdepartment;

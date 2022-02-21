@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.stu_manager.mapper.StayschoolMapper">
+  <insert id="addStayschoolInfoByStu" parameterType="com.cqu.stu_manager.pojo.Stayschool">
+      insert into stay_school_info values (
+                                            #{stay_school_info_no},
+                                            #{stay_school_info_stu_no},
+                                            #{stay_school_info_begin},
+                                            #{stay_school_info_end},
+                                            #{stay_school_info_reason},
+                                            #{stay_school_info_status},
+                                            #{stay_school_info_time},
+                                           #{stay_school_info_stuname}
+                                          )
+  </insert>
+    <select id="findAllStayschoolInfo" resultType="com.cqu.stu_manager.pojo.Stayschool">
+        select *from stay_school_info where stay_school_info_time=#{stay_school_info_time}
+    </select>
+    <select id="findAllStayschoolInfo2" resultType="com.cqu.stu_manager.pojo.Stayschool">
+        select * from stay_school_info
+    </select>
+    <update id="updateStayschoolInfo" parameterType="com.cqu.stu_manager.pojo.Stayschool">
+        update stay_school_info set   stay_school_info_stu_no=#{stay_school_info_stu_no},
+                                       stay_school_info_begin= #{stay_school_info_begin},
+                                       stay_school_info_end=#{stay_school_info_end},
+                                       stay_school_info_reason=#{stay_school_info_reason},
+                                       stay_school_info_status=#{stay_school_info_status},
+                                       stay_school_info_time=#{stay_school_info_time},
+                                       stay_school_info_stuname=#{stay_school_info_stuname}
+                                       where stay_school_info_no= #{stay_school_info_no}
+    </update>
+
+</mapper>

@@ -11,7 +11,7 @@
  Target Server Version : 50560
  File Encoding         : 65001
 
- Date: 18/02/2022 18:01:02
+ Date: 21/02/2022 20:12:48
 */
 
 SET NAMES utf8mb4;
@@ -26,42 +26,45 @@ CREATE TABLE `accommodation_information`  (
   `accommodation_information_stu_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `accommodation_information_room_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `accommodation_information_bed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `accommodation_information_building` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
+  `accommodation_information_building` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `accommodation_information_ismain` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of accommodation_information
 -- ----------------------------
-INSERT INTO `accommodation_information` VALUES (NULL, '20201755', '409', '4', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20205644', '412', '', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201640', '109', '1', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201692', '323', '3', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201656', '316', '1', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201668', '318', '4', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201762', '411', '3', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201770', '476', '1', '松园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201682', '321', '3', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20204051', '611', '1', '梅园6栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20206463', '412', '', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201644', '110', '1', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201662', '471', '1', '松园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201793', '419', '1', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20204050', '526', '1', '松园4栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201756', '410', '1', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201786', '417', '3', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201753', '409', '3', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201707', '328', '1', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201781', '476', '4', '松园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201765', '413', '2', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20204353', '412', '', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201737', '406', '2', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20204176', '412', '', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20205911', '321', '4', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201686', '322', '3', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201787', '417', '4', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201739', '406', '4', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20204145', '408', '1', '竹园5栋');
-INSERT INTO `accommodation_information` VALUES (NULL, '20201749', '408', '4', '竹园5栋');
+INSERT INTO `accommodation_information` VALUES (NULL, '20201755', '409', '4', '竹园5栋', '是');
+INSERT INTO `accommodation_information` VALUES (NULL, '20205644', '412', '', '竹园5栋', '是');
+INSERT INTO `accommodation_information` VALUES (NULL, '20201640', '109', '1', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201692', '323', '3', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201656', '316', '1', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201668', '318', '4', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201762', '411', '3', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201770', '476', '1', '松园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201682', '321', '3', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20204051', '611', '1', '梅园6栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20206463', '412', '', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201644', '110', '1', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201662', '471', '1', '松园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201793', '419', '1', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20204050', '526', '1', '松园4栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201756', '410', '1', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201786', '417', '3', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201753', '409', '3', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201707', '328', '1', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201781', '476', '4', '松园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201765', '413', '2', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20204353', '412', '', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201737', '406', '2', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20204176', '412', '', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20205911', '321', '4', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201686', '322', '3', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201787', '417', '4', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201739', '406', '4', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20204145', '408', '1', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20201749', '408', '4', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20191574', '205', '3', '兰园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES (NULL, '20205380', '408', '3', '竹园5栋', NULL);
 
 -- ----------------------------
 -- Table structure for class
@@ -80,8 +83,8 @@ CREATE TABLE `class`  (
 -- Records of class
 -- ----------------------------
 INSERT INTO `class` VALUES (1, '20软件工程01', 2);
-INSERT INTO `class` VALUES (2, '20软件工程02', 1);
-INSERT INTO `class` VALUES (3, '20软件工程03', NULL);
+INSERT INTO `class` VALUES (2, '20软件工程02', 2);
+INSERT INTO `class` VALUES (3, '20软件工程03', 3);
 INSERT INTO `class` VALUES (4, '20软件工程04', NULL);
 INSERT INTO `class` VALUES (5, '20软件工程05', NULL);
 INSERT INTO `class` VALUES (6, '20软件工程06', NULL);
@@ -136,6 +139,7 @@ INSERT INTO `college_entrance_examination` VALUES (0, '崇庆中学', '城市应
 INSERT INTO `college_entrance_examination` VALUES (0, '重庆市綦江中学', '城镇应届', NULL, NULL, NULL, NULL, '20201739');
 INSERT INTO `college_entrance_examination` VALUES (0, '重庆市渝高中学校', '农村应届', NULL, NULL, NULL, NULL, '20204145');
 INSERT INTO `college_entrance_examination` VALUES (0, '巢湖市第二中学', '农村应届', NULL, NULL, NULL, NULL, '20201749');
+INSERT INTO `college_entrance_examination` VALUES (0, '兴义市第八中学', '农村应届', NULL, NULL, NULL, NULL, '20191574');
 
 -- ----------------------------
 -- Table structure for contest
@@ -171,7 +175,7 @@ INSERT INTO `contest` VALUES (0, 'String', 'String', 'String', 'String', 'String
 -- ----------------------------
 DROP TABLE IF EXISTS `dispatch`;
 CREATE TABLE `dispatch`  (
-  `dispatch_no` int(11) NOT NULL,
+  `dispatch_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `dispatch_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `dispatch_level` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `dispatch_project_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -197,9 +201,9 @@ CREATE TABLE `dispatch`  (
 -- ----------------------------
 -- Records of dispatch
 -- ----------------------------
-INSERT INTO `dispatch` VALUES (1, '2019 8th International Conference on Industrial Technology and Management(ICITM 2019)', '校', '学术会议', '英国', '欧洲', '剑桥大学/ICITM 2019 Organizing Committee', 'XXX', '女/男', '123453', '机械', '物流工程', '20190228-20190307', '否', '硕', '硕士二年级', 'EG5006506', '17725023640', '849560269@qq.com', '是', '是');
-INSERT INTO `dispatch` VALUES (1, '2019 8th International Conference on Industrial Technology and Management(ICITM 2019)', '校', '学术会议', '英国', '欧洲', '剑桥大学/ICITM 2019 Organizing Committee', 'XXX', '女/男', '123456', '机械', '物流工程', '20190228-20190307', '否', '硕', '硕士二年级', 'EG5006506', '17725023640', '849560269@qq.com', '是', '是');
-INSERT INTO `dispatch` VALUES (0, 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
+INSERT INTO `dispatch` VALUES ('1', '2019 8th International Conference on Industrial Technology and Management(ICITM 2019)', '校', '学术会议', '英国', '欧洲', '剑桥大学/ICITM 2019 Organizing Committee', 'XXX', '女/男', '123453', '机械', '物流工程', '20190228-20190307', '否', '硕', '硕士二年级', 'EG5006506', '17725023640', '849560269@qq.com', '是', '是');
+INSERT INTO `dispatch` VALUES ('1', '2019 8th International Conference on Industrial Technology and Management(ICITM 2019)', '校', '学术会议', '英国', '欧洲', '剑桥大学/ICITM 2019 Organizing Committee', 'XXX', '女/男', '123456', '机械', '物流工程', '20190228-20190307', '否', '硕', '硕士二年级', 'EG5006506', '17725023640', '849560269@qq.com', '是', '是');
+INSERT INTO `dispatch` VALUES ('0', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
 
 -- ----------------------------
 -- Table structure for family
@@ -275,7 +279,7 @@ INSERT INTO `msginfo` VALUES ('1-2022-01-17 15:21:25', 'String', 1);
 -- ----------------------------
 DROP TABLE IF EXISTS `paper`;
 CREATE TABLE `paper`  (
-  `paper_no` int(10) NOT NULL,
+  `paper_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `paper_stuno` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `paper_stuname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `paper_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -292,27 +296,16 @@ CREATE TABLE `paper`  (
 -- ----------------------------
 -- Records of paper
 -- ----------------------------
-INSERT INTO `paper` VALUES (156546, '20212413', 'changyao', 'asdfasdf', 'adsf', 'werqa', 'asdfr', 'wefasdf', 'aerasdfasdfasdf', 'asdf', 'asdf', 'asdf');
-INSERT INTO `paper` VALUES (1, '20181703', '杨焱景', 'MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning', '2021 International Joint Conference on Neural Networks (IJCNN)', '2021/9/20', '否', '否', '10.1109/IJCNN52387.2021.9533622\r\n', '2021', '无', NULL);
-INSERT INTO `paper` VALUES (0, 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
-INSERT INTO `paper` VALUES (0, '0', '', '12312', '121212', '12212', '1', '121e', '12312', '1212', '', '0');
-INSERT INTO `paper` VALUES (0, '0', '', '2332', '333', '333', '1', '33', '33', '333', '', '0');
-INSERT INTO `paper` VALUES (0, '0', '', '111', '11', '11', '1', '11', '11', '11', '', '0');
-INSERT INTO `paper` VALUES (0, '0', '', '1212', '1212', '121', '1', '1222', '000', '121', '', '0');
-INSERT INTO `paper` VALUES (0, '0', '', '123123', '12312321', '123123', '1', '123213', '1212212', '12312', '', '0');
-INSERT INTO `paper` VALUES (0, '0', '', '11', '11', '11', '1', '11', '11', '11', '', '0');
-INSERT INTO `paper` VALUES (0, '0', '', '00000', '00000', '0000000', '1', '0000', '00000', '00000', '', '0');
-INSERT INTO `paper` VALUES (0, '0', '', 'qqqqqqqq', 'qqqq', 'qq', '1', 'qq', 'qq', 'qqq', '', '0');
-INSERT INTO `paper` VALUES (0, '0', '', 'wwwwwwww', 'wwww', 'www', '1', 'wwww', 'wwww', 'www', '', '0');
-INSERT INTO `paper` VALUES (0, '12347', '张三光', 'uu', 'uu', 'u', '1', 'u', 'u', 'u', '', '0');
-INSERT INTO `paper` VALUES (0, '12347', '张三光', 'tt', 'tt', 'tt', '1', 'tt', 'tt', 'tt', 'zzz', '0');
+INSERT INTO `paper` VALUES ('156546', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
+INSERT INTO `paper` VALUES ('1', '20181703', '杨焱景', 'MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning', '2021 International Joint Conference on Neural Networks (IJCNN)', '2021/9/20', '否', '否', '10.1109/IJCNN52387.2021.9533622\r\n', '2021', '无', '0');
+INSERT INTO `paper` VALUES ('String182438', 'String2', 'String2', 'String3256', 'String2', 'String2', 'String2', 'St2ring', 'Str2ing', 'Stri2ng', '2String', 'Str2ing');
 
 -- ----------------------------
 -- Table structure for patent
 -- ----------------------------
 DROP TABLE IF EXISTS `patent`;
 CREATE TABLE `patent`  (
-  `patent_no` int(11) NOT NULL,
+  `patent_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `patent_stu_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `patent_stu_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `patent_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -330,9 +323,9 @@ CREATE TABLE `patent`  (
 -- ----------------------------
 -- Records of patent
 -- ----------------------------
-INSERT INTO `patent` VALUES (1, '20184323', '楼朝立', 'MyNote3个人笔记软件', '软件著作权', '2020R11L2782388', '202.12.28', '2021SR0488462', '20210402', '是', '2021', '无', '1');
-INSERT INTO `patent` VALUES (258963, '789456', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', '1');
-INSERT INTO `patent` VALUES (159789546, '1596595', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
+INSERT INTO `patent` VALUES ('1', '20184323', '楼朝立', 'MyNote3个人笔记软件', '软件著作权', '2020R11L2782388', '202.12.28', '2021SR0488462', '20210402', '是', '2021', '无', '1');
+INSERT INTO `patent` VALUES ('258963', '789456', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', '1');
+INSERT INTO `patent` VALUES ('159789546', '1596595', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
 
 -- ----------------------------
 -- Table structure for project
@@ -393,6 +386,28 @@ INSERT INTO `receive` VALUES ('20204567-2022-01-17 14:40:03', '1-2022-01-17 14:4
 INSERT INTO `receive` VALUES ('20212413-2022-01-17 15:21:25', '1-2022-01-17 15:21:25', 20212413, 0);
 
 -- ----------------------------
+-- Table structure for stay_school_info
+-- ----------------------------
+DROP TABLE IF EXISTS `stay_school_info`;
+CREATE TABLE `stay_school_info`  (
+  `stay_school_info_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `stay_school_info_stu_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `stay_school_info_begin` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `stay_school_info_end` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `stay_school_info_reason` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `stay_school_info_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `stay_school_info_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `stay_school_info_stuname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of stay_school_info
+-- ----------------------------
+INSERT INTO `stay_school_info` VALUES (NULL, NULL, '232', NULL, NULL, '2020-2021暑假', '2020-2021暑假', NULL);
+INSERT INTO `stay_school_info` VALUES (NULL, NULL, '232', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `stay_school_info` VALUES ('String185449', 'String235', 'String', 'String', 'String', 'String', 'String', 'String');
+
+-- ----------------------------
 -- Table structure for student
 -- ----------------------------
 DROP TABLE IF EXISTS `student`;
@@ -423,12 +438,13 @@ CREATE TABLE `student`  (
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES (20191574, '20191574', '曹越', 1, '20软件工程04', '测试数据1', '汉族', '测试数据2', '测试数据3', '测试数据4', '测试数据5', 6, '测试数据7', '测试数据8', '测试数据9', '测试数据10', NULL, '软件工程', '2020年9月');
+INSERT INTO `student` VALUES (20191574, '20191574', '曹越', 1, '20软件工程04', '2000年1月', '汉族', '江西省', '522321199512263756', '团员', '2000年1月', 1, '18357980493', '122706559', 'changyao@163.com', '贵州省兴义市万屯镇海峰村', NULL, '软件工程', '2020年9月');
 INSERT INTO `student` VALUES (20191651, '20191651', '李昊哲', 1, '20软件工程04', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
 INSERT INTO `student` VALUES (20191653, '20191653', '焦波桥', 1, '20软件工程05', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
 INSERT INTO `student` VALUES (20191665, '20191665', '蔡林汛', 1, '20软件工程06', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
 INSERT INTO `student` VALUES (20194048, '20194048', '杨廷', 1, '20软件工程03', NULL, '苗族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
 INSERT INTO `student` VALUES (20194093, '20194093', '周雅萱', 0, '20软件工程03', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
+INSERT INTO `student` VALUES (20194228, '20194228\r\n', '张怡宁', 0, '20软件工程02', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `student` VALUES (20194280, '20194280', '谭千禧', 1, '20软件工程03', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
 INSERT INTO `student` VALUES (20200136, '20200136', '武林霄', 0, '20软件工程05', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
 INSERT INTO `student` VALUES (20200658, '20200658', '解骥烨', 1, '20人工智能班', NULL, '汉', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '人工智能班', '2020年9月');
@@ -690,7 +706,7 @@ CREATE TABLE `teacher`  (
 -- Records of teacher
 -- ----------------------------
 INSERT INTO `teacher` VALUES (2, '123456', '李潇', '123456', '431', 2);
-INSERT INTO `teacher` VALUES (10000, 'tan', '周巍', '13595922234', '431', 1);
+INSERT INTO `teacher` VALUES (10000, 'tan', '周巍', '13595922234', '431', 20);
 
 -- ----------------------------
 -- Table structure for voluntary_activities

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Patent {
-  private Integer  patent_no;;
+  private String  patent_no;;
   private String          patent_stu_no;
   private String  patent_stu_name;
   private String          patent_name;

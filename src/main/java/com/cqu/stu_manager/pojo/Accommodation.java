@@ -13,5 +13,6 @@ public class Accommodation {
     private String  accommodation_information_room_no;
     private String accommodation_information_bed;
     private String accommodation_information_building;
+    private String accommodation_information_ismain;
 
 }

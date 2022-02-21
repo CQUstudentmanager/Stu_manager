@@ -7,6 +7,6 @@ import java.util.List;
 
 @Mapper
 public interface AccommodationMapper {
-    List<AccommodationMapper> findAllAccommodation();
+    List<Accommodation> findAllAccommodation();
     Accommodation findStuAccommodation(String stuno);//根据学号单独查找住宿信息
 }

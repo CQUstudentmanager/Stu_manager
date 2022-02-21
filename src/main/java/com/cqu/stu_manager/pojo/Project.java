@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Project {
-    private Integer project_no;
+    private String project_no;
     private String project_name;
     private String project_unit;
     private String project_type;
