@@ -4,7 +4,9 @@ import com.cqu.stu_manager.excel.BedroomExcel;
 import com.cqu.stu_manager.excel.pojo.Bedroom;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.Class;
+import com.cqu.stu_manager.pojo.Contest;
 import com.cqu.stu_manager.pojo.Stayschool;
+import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.utils.InfoForTeacher;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -51,9 +53,14 @@ StayschoolMapper stayschoolMapper;
     void contextLoads() {
 //        BedroomExcel bedroomExcel=new BedroomExcel(accommodationMapper,studentMapper,familyMapper);
 //        bedroomExcel.allStuBedroomInfo_writ();
-        Stayschool stayschool=new Stayschool();
-        stayschool.setStay_school_info_begin("232");
-        stayschoolMapper.addStayschoolInfoByStu(stayschool);
+//        Stayschool stayschool=new Stayschool();
+//        stayschool.setStay_school_info_begin("232");
+//        stayschoolMapper.addStayschoolInfoByStu(stayschool);
+        Student student = new Student();
+        student.setStu_no(20191574);
+        List<Contest> contestList = contestMapper.findContestByStuno(student);
+        System.out.println(contestList);
+        System.out.println(contestList.size());
 
     }
 }

@@ -47,4 +47,36 @@
         select * from contest where contest_stuno =#{stu_no}
     </select>
 
+    <update id="updateContestByContestNo" parameterType="com.cqu.stu_manager.pojo.Contest">
+        update contest set
+        contest_name = #{contest_name},
+        contest_projectname = #{contest_projectname},
+        contest_grantingdepartment = #{contest_grantingdepartment},
+        contest_level = #{contest_level},
+        contest_ranking = #{contest_ranking},
+        contest_date = #{contest_date},
+        contest_teachername = #{contest_teachername},
+        contest_teacherdept = #{contest_teacherdept},
+        contest_stuname = #{contest_stuname},
+        contest_stuno = #{contest_stuno},
+        contest_issubmitcertificate = #{contest_issubmitcertificate},
+        contest_year = #{contest_year},
+        contest_supporting_materials = #{contest_supporting_materials},
+        contest_status = #{contest_status}
+        where contest_no = #{contest_no}
+    </update>
+
+    <delete id="deleteContestByStu" >
+        delete from contest where contest_no=#{contest_no}
+    </delete>
+
+    <update id="pass_contest"  >
+        update contest set contest_status='1'
+        where contest_no=#{contest_no}
+    </update>
+    <update id="refuse_contest">
+        update contest set contest_status='2'
+        where contest_no=#{contest_no}
+    </update>
+
 </mapper>

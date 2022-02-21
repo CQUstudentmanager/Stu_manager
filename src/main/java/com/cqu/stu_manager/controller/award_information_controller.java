@@ -20,6 +20,187 @@ public class award_information_controller {
    //竞赛相关接口
     @Autowired
     ContestMapper contestMapper;
+
+    //1.找到所有的获奖信息
+    @PostMapping("/find_all_contest_info_new")
+    public List<Contest> find_all_contest_info_new(){
+        List<Contest> contestList=new ArrayList<>();
+        List<Contest> new_contestlist=new ArrayList<>();
+        contestList=contestMapper.findAllContest();
+        for(int i=0;i<contestList.size();i++){
+            Contest contest=new Contest();
+            if(contestList.get(i).getContest_status().equals("0")&&contestList.get(i)!=null){
+                contest=contestList.get(i);
+                new_contestlist.add(contest);
+            }
+        }
+        return new_contestlist;
+    }
+
+    //2.找到所有的已经审核的比赛信息
+    @PostMapping("/find_all_contest_info_old")
+    public List<Contest> find_all_contest_info_old(){
+        List<Contest> contestList=new ArrayList<>();
+        List<Contest> new_contestlist=new ArrayList<>();
+        contestList=contestMapper.findAllContest();
+        for(int i=0;i<contestList.size();i++){
+            Contest contest=new Contest();
+            if(!contestList.get(i).getContest_status().equals("0")&&contestList.get(i)!=null){
+                contest=contestList.get(i);
+                new_contestlist.add(contest);
+            }
+        }
+        System.out.println(contestList);
+        return new_contestlist;
+    }
+
+    //3.找到对应学生的比赛信息
+    @PostMapping("/find_my_contest_info")
+    public List<Contest> find_my_contest_info(@RequestBody Student student){
+        return contestMapper.findContestByStuno(student);
+    }
+
+    //4.上传比赛信息
+    @PostMapping("upload_contest_info")
+    @ResponseBody
+    @CrossOrigin
+    public Result uploadContest(@RequestBody Contest contest){
+        Result result=new Result();
+        List<Contest> contestList=contestMapper.findAllContest();
+//这里是防止重复上传
+        for (int i=0;i<contestList.size();i++){
+            if(contestList.get(i).getContest_stuno().equals(contest.getContest_stuno())&&contestList.get(i).getContest_name().equals(contest.getContest_name())&&contest.getContest_no().length()==0){
+                result.setMsg("信息已经上传，请勿重复上传");
+                return result;
+            }
+        }
+        //这里是设置contestID
+        if(contest.getContest_no().length()==0){
+            String str=contest.getContest_stuno();
+            SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+            String format = sdf.format(new Date());
+            contest.setContest_no(str+format);
+            //插入
+            result.setMsg(contestMapper.insertContestByStudent(contest)+"条消息已经上传");
+            return result;
+        }else {
+            //更新
+            result.setMsg(contestMapper.updateContestByContestNo(contest)+"条消息已经修改");
+            return result;
+        }
+
+    }
+
+    //5.上传获奖证明材料
+    @PostMapping("upload_contest_info2")
+    @ResponseBody
+    @CrossOrigin
+    public Result uploadContest2(MultipartFile file, HttpServletRequest request){
+        Result result = new Result();
+        String newName = UUID.randomUUID().toString();
+        //获取上传的文件名字，看是否为jpg文件或者pdf，不是的话直接返回错误信息
+        if(file == null){
+            result.setMsg("未收到文件");
+            return result;
+        }
+        else {
+            String s = file.getOriginalFilename();
+            assert s != null;
+            String originName = s.toUpperCase();
+            if(!(originName.endsWith("JPG") || originName.endsWith("PDF") )){
+                result.setMsg("文件类型错误");
+                return result;
+            }
+            if(originName.endsWith("JPG")){
+                newName += ".jpg";
+            }
+            else if(originName.endsWith("PDF")){
+                newName += ".pdf";
+            }
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
+        String format = sdf.format(new Date());
+        String realPath = "C:\\Users\\drifter\\Desktop\\Contests" + format;//存储在本机上的路径
+        File folder = new File(realPath);
+        if(!folder.exists()){
+            folder.mkdirs();
+        }
+        try {
+            file.transferTo(new File(folder,newName));
+            result.setMsg("文件上传成功");
+            result.setData("C:\\Users\\drifter\\Desktop\\Contests" + format+newName);
+        }catch (IOException e) {
+            result.setMsg(e.getMessage());
+        }
+        return result;
+    }
+
+    //6.判断是否有正在审核的信息
+    @PostMapping("/contest_isexamineing")
+    public Integer contest_isexamineing(@RequestBody Student student){
+        List<Contest> contestList=new ArrayList<>();
+        Integer count=0;
+        contestList=contestMapper.findContestByStuno(student);
+        for(int i=0;i<contestList.size();i++){
+            if("0".equals(contestList.get(i).getContest_status())){
+                count=1;
+            }else System.out.println("你也写错了");
+        }
+        return count;
+    }
+
+    //7.删除信息
+    @PostMapping("/delete_contest")
+    public Result delete_contest(@RequestBody Contest contest){
+        Result result=new Result();
+        result.setMsg(contestMapper.deleteContestByStu(contest.getContest_no())+"条删除");
+        return result;
+    }
+
+    //8.审核通过
+    @PostMapping("/pass_contest")
+    public Result pass_contest(@RequestBody Contest contest){
+        contestMapper.pass_contest(contest.getContest_no());
+        Result result=new Result();
+        result.setMsg("通过成功");
+        return result;
+    }
+
+    //9.审核未通过
+    @PostMapping("/refuse_contest")
+    public Result refuse_contest(@RequestBody Contest contest){
+        contestMapper.refuse_contest(contest.getContest_no());
+        Result result=new Result();
+        result.setMsg("驳回成功");
+        return result;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    //获取竞赛相关的信息
 //    //1.获取表单信息
 //    @PostMapping("/upload_contest_info")
@@ -237,7 +418,8 @@ public class award_information_controller {
         }
         return result;
     }
-//判断是否有正在审核的信息
+
+    //判断是否有正在审核的信息
     @PostMapping("/paper_isexamineing")
     public Integer paper_isexamineing(@RequestBody Student student){
         List<Paper> paperList=new ArrayList<>();
@@ -251,6 +433,7 @@ public class award_information_controller {
         }
         return count;
     }
+
     @PostMapping("/delete_paper")
     public Result delete_paper(@RequestBody Paper paper){
         Result result=new Result();

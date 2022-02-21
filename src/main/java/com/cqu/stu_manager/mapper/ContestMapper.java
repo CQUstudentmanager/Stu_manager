@@ -11,4 +11,8 @@ public interface ContestMapper {
     List<Contest> findAllContest();
     int insertContestByStudent(Contest contest);
     List<Contest> findContestByStuno(Student student);
+    int updateContestByContestNo(Contest contest);
+    int deleteContestByStu(String contest_no);
+    int pass_contest(String contest_no);
+    int refuse_contest(String contest_no);
 }

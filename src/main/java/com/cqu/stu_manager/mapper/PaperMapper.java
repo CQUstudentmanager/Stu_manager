@@ -10,7 +10,6 @@ public interface PaperMapper {
     List<Paper> findAllStuPaper();//找到所有的论文（不论审核是否通过）
     int insertPaperByStudent(Paper paper);//将学生上传的信息插入到数据库中
     List<Paper> findPaperByStuno(Student student);//根据学生的no找到他对应的论文情况
-    int verifyPaper(Paper paper);//成功审核学生的论文
    int updatePaperByPaperNo(Paper paper);
    int deletePaperByStu(String paper_no);
    int pass_paper(String paper_no);
