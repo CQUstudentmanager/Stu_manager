@@ -54,7 +54,7 @@ public class NationalScholarshipExcel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        String Path="C:\\Users\\lenovo\\IdeaProjects\\Stu_manager\\";
+        String Path="D:\\";
         String FileName=Path+"奖学金信息表"+format+".xls";
         EasyExcel.write(FileName, Nationalscholarship.class).sheet("奖学金信息表").doWrite(nationalscholarship_s);
         return FileName;
@@ -94,7 +94,7 @@ public class NationalScholarshipExcel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        String Path="C:\\Users\\lenovo\\IdeaProjects\\Stu_manager\\";
+        String Path="D:\\";
         String FileName=Path+"励志奖学金信息表"+format+".xls";
         EasyExcel.write(FileName, Nationalscholarship.class).sheet("励志奖学金信息表").doWrite(nationalscholarship_s);
         return FileName;

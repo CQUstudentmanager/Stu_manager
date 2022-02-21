@@ -47,7 +47,9 @@ public class StudentListGuidanceCounselorExcel {
             List<Class> right_classlist=new ArrayList<>();
             classList=classMapper.findAllClass();
             String teaidenty;
-            teaidenty=teacher.getT_identity().toString().substring(0,2);
+            if(teacher.getT_identity().toString().length()==2){
+            teaidenty=teacher.getT_identity().toString().substring(0,2);}
+            else return "您的权限不足";
 
             for(int i=0;i<classList.size();i++){
                 if(classList.get(i).getClass_name().substring(0,2).equals(teaidenty)){
@@ -117,7 +119,7 @@ public class StudentListGuidanceCounselorExcel {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             String format = sdf.format(new Date());
             System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-            String Path="C:\\Users\\lenovo\\IdeaProjects\\Stu_manager\\";
+            String Path="D:\\";
             String FileName=Path+teaidenty+"级"+"本科生名单（辅导员）"+format+".xls";
             EasyExcel.write(FileName, StudentListGuidanceCounselor.class).sheet("本科生名单").doWrite(studentListGuidanceCounselors);
         return FileName;}

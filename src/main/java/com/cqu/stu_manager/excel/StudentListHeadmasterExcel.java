@@ -88,7 +88,7 @@ public class StudentListHeadmasterExcel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        String Path="C:\\Users\\lenovo\\IdeaProjects\\Stu_manager\\";
+        String Path="D:\\";
         String FileName=Path+"本科生名单（班主任）"+class_name+"班"+format+".xls";
         EasyExcel.write(FileName, StudentListHeadmaster.class).sheet("本科生名单").doWrite(studentListHeadmasterList);
         return FileName;
