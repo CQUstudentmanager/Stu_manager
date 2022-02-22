@@ -14,7 +14,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.burningwave.core.assembler.StaticComponentContainer;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -65,16 +67,7 @@ public class BedroomExcel {
 
             bedrooms.add(bedroom);
         }
-        Collections.sort(bedrooms,
-                new Comparator<Bedroom>() {
-                    @Override
-                    public int compare(Bedroom o1, Bedroom o2) {
-                        if (o1.getBedroom_buildingandroom().compareTo(o2.getBedroom_buildingandroom())==-1){
-                            return 1;
-                        }else return -1;
-
-                    }
-                });
+        bedrooms.sort(Comparator.comparing(Bedroom::getBedroom_buildingandroom));
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         //System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");

@@ -29,7 +29,7 @@ public class award_information_controller {
         contestList=contestMapper.findAllContest();
         for(int i=0;i<contestList.size();i++){
             Contest contest=new Contest();
-            if(contestList.get(i).getContest_status().equals("0")&&contestList.get(i)!=null){
+            if(contestList.get( i).getContest_status().equals("0")&&contestList.get(i)!=null){
                 contest=contestList.get(i);
                 new_contestlist.add(contest);
             }

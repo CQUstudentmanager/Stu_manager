@@ -19,7 +19,9 @@ public class stayschoolcontroller {
     StayschoolMapper stayschoolMapper;
     @PostMapping("/find_stayschool_info")
     public List<Stayschool> find_stayschool_info(@RequestBody Stayschool stayschool){
+        //判断的是时间   如2022年暑假
         return stayschoolMapper.findAllStayschoolInfo(stayschool);
+
     }
     @PostMapping("upload_stayschool_info")
     public Result
