@@ -11,4 +11,12 @@ public interface PatentMapper {
     List<Patent> findAllPatent();
     int insertPatentByStudent(Patent patent);
     List<Patent> findPatentByStuno(Student student);
+
+    int updatePatenByStudent(Patent patent);
+
+    int deletePatentByStu(String patent_no);
+
+    int pass_patent(String patent_no);
+
+    int refuse_patent(String patent_no);
 }

@@ -42,5 +42,32 @@
     <select id="findPatentByStuno" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Patent">
         select * from patent where patent_stu_no=#{stu_no}
     </select>
+    <update id="updatePatenByStudent" parameterType="com.cqu.stu_manager.pojo.Patent">
+        update patent set
+                          patent_stu_no=#{patent_stu_no},
+                          patent_stu_name=#{patent_stu_name},
+                          patent_name=#{patent_name},
+                          patent_type=#{patent_type},
+                          patent_application_no=#{patent_application_no},
+                          patent_application_time=#{patent_application_time},
+                          patent_certificate_no=#{patent_certificate_no},
+                          patent_authorization_time=#{patent_authorization_time},
+                          patent_isfirstone=#{patent_isfirstone},
+                          patent_year=#{patent_year},
+                          patent_supporting_materials=#{patent_supporting_materials},
+                          patent_status=#{patent_status}
+where
+    patent_no=#{patent_no}
+    </update>
+    <delete id="deletePatentByStu" >
+        delete from patent where patent_no=#{patent_no}
+    </delete>
+    <update id="pass_patent">
+        update patent set patent_status='1' where patent_no=#{patent_no}
+    </update>
+    <update id="refuse_patent">
+        update patent set patent_status='2' where patent_no=#{patent_no}
+
+    </update>
 
 </mapper>
