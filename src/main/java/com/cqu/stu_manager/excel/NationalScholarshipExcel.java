@@ -1,6 +1,7 @@
 package com.cqu.stu_manager.excel;
 
 import com.alibaba.excel.EasyExcel;
+import com.cqu.stu_manager.excel.pojo.FilePath;
 import com.cqu.stu_manager.excel.pojo.Nationalscholarship;
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.pojo.Student;
@@ -94,8 +95,8 @@ public class NationalScholarshipExcel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        String Path="D:\\";
-        String FileName=Path+"励志奖学金信息表"+format+".xls";
+        FilePath Path=new FilePath();
+        String FileName=Path.getPath()+"励志奖学金信息表"+format+".xls";
         EasyExcel.write(FileName, Nationalscholarship.class).sheet("励志奖学金信息表").doWrite(nationalscholarship_s);
         return FileName;
     }

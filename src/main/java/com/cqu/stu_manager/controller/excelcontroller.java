@@ -1,9 +1,6 @@
 package com.cqu.stu_manager.controller;
 
-import com.cqu.stu_manager.excel.NationalGrantsExcel;
-import com.cqu.stu_manager.excel.NationalScholarshipExcel;
-import com.cqu.stu_manager.excel.StudentListGuidanceCounselorExcel;
-import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
+import com.cqu.stu_manager.excel.*;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.ExcelStuList;
 import com.cqu.stu_manager.pojo.Student;
@@ -33,6 +30,22 @@ public class excelcontroller {
     FamilyMapper familyMapper;
     @Autowired
     AccommodationMapper accommodationMapper;
+    @PostMapping("getStudentBedroomInfo")
+    public String getStudentBedroomInfo(){
+        BedroomExcel bedroomExcel=new BedroomExcel(accommodationMapper,studentMapper,familyMapper);
+        return bedroomExcel.allStuBedroomInfo_writ();
+
+
+    }
+    @PostMapping("/getHuxiInfo")
+    public List<String> getHuxiInfo(@RequestBody Teacher teacher){
+        ClassCountForHuxiExcel classCountForHuxiExcel=new
+                ClassCountForHuxiExcel(accommodationMapper,teacherMapper,classMapper,studentMapper);
+        return classCountForHuxiExcel.ClassCountForHuxiExcel_write(teacher.getT_no());
+
+    }
+
+
     @PostMapping("/getStudentExcelInfoByHeadMaster")
     public List<String> getStudentExcelInfoByHeadMaster(@RequestBody Teacher teacher){
         List<String> class_name= classMapper.findClassByTeacher(teacher.getT_no().toString());

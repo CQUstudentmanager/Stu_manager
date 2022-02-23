@@ -3,6 +3,7 @@ package com.cqu.stu_manager.excel;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.cqu.stu_manager.excel.pojo.Bedroom;
+import com.cqu.stu_manager.excel.pojo.FilePath;
 import com.cqu.stu_manager.excel.pojo.Nationalgrants;
 import com.cqu.stu_manager.mapper.AccommodationMapper;
 import com.cqu.stu_manager.mapper.FamilyMapper;
@@ -34,7 +35,7 @@ public class BedroomExcel {
  this.studentMapper=studentMapper;
  this.familyMapper=familyMapper;
     }
-    public void allStuBedroomInfo_writ(){
+    public String allStuBedroomInfo_writ(){
         StaticComponentContainer.Modules.exportAllToAll();
         List<Bedroom> bedrooms=new ArrayList<>();
         List<Student> studentList=new ArrayList<>();
@@ -70,11 +71,11 @@ public class BedroomExcel {
         bedrooms.sort(Comparator.comparing(Bedroom::getBedroom_buildingandroom));
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
-        //System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        String Path="C:\\Users\\lenovo\\IdeaProjects\\Stu_manager\\";
-        String FileName=Path+"寝室基本信息"+format+".xls";
+        FilePath filePath=new FilePath();
+        String Path="D:\\";
+        String FileName=filePath.getPath()+"寝室基本信息"+format+".xls";
         EasyExcel.write(FileName, Bedroom.class).sheet("助学金信息表").doWrite(bedrooms);
-
+return FileName;
     }
 
 

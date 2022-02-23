@@ -1,6 +1,7 @@
 package com.cqu.stu_manager.excel;
 
 import com.alibaba.excel.EasyExcel;
+import com.cqu.stu_manager.excel.pojo.FilePath;
 import com.cqu.stu_manager.excel.pojo.Nationalscholarship;
 import com.cqu.stu_manager.excel.pojo.StudentListHeadmaster;
 import com.cqu.stu_manager.mapper.AccommodationMapper;
@@ -88,8 +89,8 @@ public class StudentListHeadmasterExcel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        String Path="D:\\";
-        String FileName=Path+"本科生名单（班主任）"+class_name+"班"+format+".xls";
+        FilePath filePath=new FilePath();
+        String FileName=filePath.getPath()+"本科生名单（班主任）"+class_name+"班"+format+".xls";
         EasyExcel.write(FileName, StudentListHeadmaster.class).sheet("本科生名单").doWrite(studentListHeadmasterList);
         return FileName;
     }

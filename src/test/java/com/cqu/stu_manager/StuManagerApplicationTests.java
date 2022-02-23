@@ -50,11 +50,9 @@ StayschoolMapper stayschoolMapper;
     @SneakyThrows
     @Test
     void contextLoads() {
-        ClassCountForHuxiExcel classCountForHuxiExcel=new ClassCountForHuxiExcel(accommodationMapper,teacherMapper,classMapper,studentMapper);
-        classCountForHuxiExcel.ClassCountForHuxiExcel_write(2);
-//        Stayschool stayschool=new Stayschool();
-//        stayschool.setStay_school_info_begin("232");
-//        stayschoolMapper.addStayschoolInfoByStu(stayschool);
+
+        BedroomExcel bedroomExcel=new BedroomExcel(accommodationMapper,studentMapper,familyMapper);
+        bedroomExcel.allStuBedroomInfo_writ();
 
     }
 }

@@ -5,6 +5,7 @@ import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.cqu.stu_manager.excel.pojo.BedroomForHuxi;
 import com.cqu.stu_manager.excel.pojo.ClassCountForHuxi;
+import com.cqu.stu_manager.excel.pojo.FilePath;
 import com.cqu.stu_manager.excel.pojo.Nationalgrants;
 import com.cqu.stu_manager.mapper.AccommodationMapper;
 import com.cqu.stu_manager.mapper.ClassMapper;
@@ -41,7 +42,7 @@ public class ClassCountForHuxiExcel {
 
     }
 
-    public String ClassCountForHuxiExcel_write(Integer teacherNo){
+    public List<String> ClassCountForHuxiExcel_write(Integer teacherNo){
         StaticComponentContainer.Modules.exportAllToAll();
         InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
         List<Class> rightClass;
@@ -100,16 +101,19 @@ public class ClassCountForHuxiExcel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        String Path="C:\\Users\\lenovo\\IdeaProjects\\Stu_manager\\";
-        String FileName=Path+"学院年级人数统计表"+format+".xls";
-        String FileName2=Path+"学生详细名单"+format+".xls";
+
+        FilePath filePath=new FilePath();
+        String FileName=filePath.getPath()+"学院年级人数统计表"+format+".xls";
+        String FileName2=filePath.getPath()+"学生详细名单"+format+".xls";
         ExcelWriter excelWriter=EasyExcel.write(FileName,ClassCountForHuxi.class).build();
         WriteSheet writeSheet1 = EasyExcel.writerSheet(0, "学院年级人数统计表").build();
         excelWriter.write(classCountForHuxis,writeSheet1);
         excelWriter.finish();
         EasyExcel.write(FileName2, BedroomForHuxi.class).sheet("详细名单").doWrite(bedroomForHuxis1);
-
-        return "ok";
+List<String> s=new ArrayList<>();
+s.add(FileName);
+s.add(FileName2);
+        return s;
 
     }
 

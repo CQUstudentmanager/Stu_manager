@@ -1,6 +1,7 @@
 package com.cqu.stu_manager.excel;
 
 import com.alibaba.excel.EasyExcel;
+import com.cqu.stu_manager.excel.pojo.FilePath;
 import com.cqu.stu_manager.excel.pojo.StudentListGuidanceCounselor;
 import com.cqu.stu_manager.excel.pojo.StudentListHeadmaster;
 import com.cqu.stu_manager.mapper.*;
@@ -118,9 +119,8 @@ public class StudentListGuidanceCounselorExcel {
             }
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             String format = sdf.format(new Date());
-            System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-            String Path="D:\\";
-            String FileName=Path+teaidenty+"级"+"本科生名单（辅导员）"+format+".xls";
+            FilePath filePath=new FilePath();
+            String FileName=filePath.getPath()+teaidenty+"级"+"本科生名单（辅导员）"+format+".xls";
             EasyExcel.write(FileName, StudentListGuidanceCounselor.class).sheet("本科生名单").doWrite(studentListGuidanceCounselors);
         return FileName;}
     }
