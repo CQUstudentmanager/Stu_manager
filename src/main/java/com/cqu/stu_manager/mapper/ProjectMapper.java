@@ -12,4 +12,11 @@ public interface ProjectMapper {
     int insertProjectByStudent(Project project);
     List<Project> findProjectByStuno(Student student);
 
+    int  updateProjectByProjectNo(Project project);
+
+    int  deleteProjectByStu(String project_no);
+
+    int pass_project(String project_no);
+
+    int  refuse_project(String project_no);
 }

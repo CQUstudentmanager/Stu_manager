@@ -342,6 +342,163 @@ PatentMapper patentMapper;
         return result;
     }
 
+    //项目
+    @Autowired
+    ProjectMapper projectMapper;
+
+    //找到所有的获奖信息
+    @PostMapping("/find_all_project_info_new")
+    public List<Project> find_all_project_info_new(){
+        List<Project> projects=new ArrayList<>();
+        List<Project> new_projectlist=new ArrayList<>();
+        projects=projectMapper.findAllProject();
+        for(int i=0;i<projects.size();i++){
+            Project project=new Project();
+            if(projects.get(i).getProject_audit_status().equals("0")&&projects.get(i)!=null){
+                project=projects.get(i);
+                new_projectlist.add(project);
+            }
+
+        }
+        return new_projectlist;
+    }
+    @PostMapping("/find_all_project_info_old")
+    public List<Project> find_all_project_info_old(){
+        List<Project> projectList=new ArrayList<>();
+        List<Project> new_projectlist=new ArrayList<>();
+        projectList=projectMapper.findAllProject();
+        for(int i=0;i<projectList.size();i++){
+            Project project=new Project();
+            if(!projectList.get(i).getProject_audit_status().equals("0")&&projectList.get(i)!=null){
+                project=projectList.get(i);
+                new_projectlist.add(project);
+            }
+
+        }
+        return new_projectlist;
+    }
+
+    //找到对应学生的获奖信息
+    @PostMapping("/find_my_project_info")
+    public List<Project> find_my_project_info(@RequestBody Student student){
+        return projectMapper.findProjectByStuno(student);
+    }
+
+    //上传获奖信息
+    @PostMapping("upload_project_info")
+    @ResponseBody
+    @CrossOrigin
+    public Result upLoadproject(@RequestBody Project project){
+        Result result=new Result();
+        List<Project> projects=projectMapper.findAllProject();
+//这里是防止重复上传
+        for (int i=0;i<projects.size();i++){
+            if(projects.get(i).getProject_student_no().equals(project.getProject_student_no())&&projects.get(i).getProject_name().equals(project.getProject_name())&&project.getProject_no().length()==0){
+                result.setMsg("信息已经上传，请勿重复上传");
+                return result;
+            }
+        }
+        //这里是设置paperID
+        if(project.getProject_no().length()==0){
+            String str=project.getProject_student_no();
+            SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+            String format = sdf.format(new Date());
+            project.setProject_no(str+format);
+            //插入
+            result.setMsg(projectMapper.insertProjectByStudent(project)+"条消息已经上传");
+            return result;
+        }else {
+            //更新
+            result.setMsg(projectMapper.updateProjectByProjectNo(project)+"条消息已经修改");
+        return result;
+        }
+
+    }
+
+    //上传获奖证明材料
+    @PostMapping("upload_project_info2")
+    @ResponseBody
+    @CrossOrigin
+    public Result upLoadPicture_project(MultipartFile file, HttpServletRequest request){
+        Result result = new Result();
+        String newName = UUID.randomUUID().toString();
+    //获取上传的文件名字，看是否为jpg文件或者pdf，不是的话直接返回错误信息
+        if(file == null){
+            result.setMsg("未收到文件");
+            return result;
+        }
+        else {
+            String s = file.getOriginalFilename();
+            assert s != null;
+            String originName = s.toUpperCase();
+            if(!(originName.endsWith("JPG") || originName.endsWith("PDF") )){
+                result.setMsg("文件类型错误");
+                return result;
+            }
+            if(originName.endsWith("JPG")){
+                newName += ".jpg";
+            }
+            else if(originName.endsWith("PDF")){
+                newName += ".pdf";
+            }
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
+        String format = sdf.format(new Date());
+        String realPath = "C:\\Users\\drifter\\Desktop\\Project" + format;//存储在本机上的路径
+        File folder = new File(realPath);
+        if(!folder.exists()){
+            folder.mkdirs();
+        }
+        try {
+            file.transferTo(new File(folder,newName));
+            result.setMsg("文件上传成功");
+            result.setData(newName);
+//            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
+//            result.setData(url);
+        }catch (IOException e) {
+            result.setMsg(e.getMessage());
+        }
+        return result;
+    }
+
+
+    //判断是否有正在审核的信息
+    @PostMapping("/project_isexamineing")
+    public Integer project_isexamineing(@RequestBody Student student){
+        List<Project> projectList=new ArrayList<>();
+        projectList=projectMapper.findProjectByStuno(student);
+        Integer count = 0;
+        System.out.println(projectList);
+        for(int i=0;i<projectList.size();i++){
+            if(projectList.get(i).getProject_audit_status().equals("0")){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    @PostMapping("/delete_project")
+    public Result delete_project(@RequestBody Project project){
+        Result result=new Result();
+        result.setMsg(projectMapper.deleteProjectByStu(project.getProject_no())+"条删除");
+
+
+        return result;
+    }
+    @PostMapping("/pass_project")
+    public Result pass_project(@RequestBody Project project){
+        projectMapper.pass_project(project.getProject_no());
+        Result result=new Result();
+        result.setMsg("通过成功");
+        return result;
+    }
+    @PostMapping("/refuse_project")
+    public Result refuse_project(@RequestBody Project project){
+        projectMapper.refuse_project(project.getProject_no());
+        Result result=new Result();
+        result.setMsg("驳回成功");
+        return result;
+    }
     //论文相关接口
     @Autowired
     PaperMapper paperMapper;
@@ -410,7 +567,7 @@ PatentMapper patentMapper;
         }else {
             //更新
             result.setMsg(paperMapper.updatePaperByPaperNo(paper)+"条消息已经修改");
-        return result;
+            return result;
         }
 
     }
@@ -422,7 +579,7 @@ PatentMapper patentMapper;
     public Result upLoadPicture(MultipartFile file, HttpServletRequest request){
         Result result = new Result();
         String newName = UUID.randomUUID().toString();
-    //获取上传的文件名字，看是否为jpg文件或者pdf，不是的话直接返回错误信息
+        //获取上传的文件名字，看是否为jpg文件或者pdf，不是的话直接返回错误信息
         if(file == null){
             result.setMsg("未收到文件");
             return result;

@@ -45,5 +45,33 @@
     <select id="findProjectByStuno" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Project">
 select * from project where project_student_no=#{stu_no}
     </select>
+    <update id="updateProjectByProjectNo" parameterType="com.cqu.stu_manager.pojo.Project">
+        update project set
+
+                           project_name=#{project_name},
+                           project_unit=#{project_unit},
+                           project_type=#{project_type},
+                           project_status=#{project_status},
+                           project_join_time=#{project_join_time},
+                           project_teacher_name=#{project_teacher_name},
+                           project_teacher_dept=#{project_teacher_dept},
+                           project_student_name=#{project_student_name},
+                           project_student_no=#{project_student_no},
+                           project_issubmit=#{project_issubmit},
+                           project_year=#{project_year},
+                           project_supporting_materials=#{project_supporting_materials},
+                           project_audit_status=#{project_audit_status}
+                           where project_no=#{project_no}
+
+    </update>
+    <delete id="deleteProjectByStu">
+        delete from project where project_no=#{project_no}
+    </delete>
+    <update id="pass_project" >
+        update project set project_audit_status='1' where project_no=#{project_no}
+    </update>
+    <update id="refuse_project">
+        update project set project_audit_status='2' where project_no=#{project_no}
+    </update>
 
 </mapper>
