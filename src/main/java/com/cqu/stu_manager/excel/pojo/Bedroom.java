@@ -31,8 +31,4 @@ public class Bedroom {
     private String family_tel;
     @ExcelProperty(value = "备注" ,index =10)
     private String bedroom_ps;
-
-
-
-
 }

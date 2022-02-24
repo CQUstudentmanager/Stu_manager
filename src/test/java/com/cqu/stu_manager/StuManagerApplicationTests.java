@@ -5,6 +5,7 @@ import com.cqu.stu_manager.excel.ClassCountForHuxiExcel;
 import com.cqu.stu_manager.excel.pojo.Bedroom;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.Class;
+import com.cqu.stu_manager.pojo.Msg;
 import com.cqu.stu_manager.pojo.Stayschool;
 import com.cqu.stu_manager.utils.InfoForTeacher;
 import lombok.SneakyThrows;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,13 +48,18 @@ FamilyMapper familyMapper;
 ClassMapper classMapper;
 @Autowired
 StayschoolMapper stayschoolMapper;
+@Autowired
+MsgMapper msgMapper;
 
     @SneakyThrows
     @Test
     void contextLoads() {
+        Msg msg=new Msg();
+        msg.setMsg_deadline(LocalDateTime.now());
+        msg.setMsg_no("5454545");
+        msg.setMsg_sender(12);
+        msgMapper.addMsg(msg);
 
-        BedroomExcel bedroomExcel=new BedroomExcel(accommodationMapper,studentMapper,familyMapper);
-        bedroomExcel.allStuBedroomInfo_writ();
 
     }
 }
