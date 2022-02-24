@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Accommodation {
-    private Integer accommodation_information_no;
+    private String accommodation_information_no;
     private String accommodation_information_stu_no;
     private String  accommodation_information_room_no;
     private String accommodation_information_bed;

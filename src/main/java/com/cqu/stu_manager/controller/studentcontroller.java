@@ -1,9 +1,6 @@
 package com.cqu.stu_manager.controller;
 
-import com.cqu.stu_manager.mapper.MsgMapper;
-import com.cqu.stu_manager.mapper.PaperMapper;
-import com.cqu.stu_manager.mapper.ReceiveMapper;
-import com.cqu.stu_manager.mapper.StudentMapper;
+import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +25,25 @@ public class studentcontroller {
     PaperMapper paperMapper;
 
 
-    @PostMapping("Stu/stulist")
+    @PostMapping("Stu/stuList")
     @ResponseBody
-    //得到所有学生名单
-    public List<Student> students(){
-        return studentMapper.findAllStudent();
+    //1.得到所有学生名单
+    public List<Student> students(@RequestBody Teacher teacher){
+        List<Student> studentList = studentMapper.findAllStudent();
+        List<Student> s = new ArrayList<>();
+        String grade = teacher.getT_identity().toString();
+        for(int i=0;i<=studentList.size()-1;i++){
+            if(studentList.get(i).getStu_class().substring(0,2).equals(grade)){
+                s.add(studentList.get(i));
+            }
+        }
+        return s;
     }
 
 
     @PostMapping("Stu/findOneStudent")
     @ResponseBody
-    //根据stu_no准确找到对应的学生
+    //2.根据stu_no准确找到对应的学生
     public Result findOneStudent(@RequestBody Student your_s){
         Result result = new Result();
         Student student = studentMapper.findOneStudent(your_s.getStu_no());
@@ -55,7 +60,7 @@ public class studentcontroller {
 
     @PostMapping("Stu/upDateStudent")
     @ResponseBody
-    //修改学生信息
+    //3.修改学生信息
     public Result upDateStudent(@RequestBody Student your_t){
         Result result = new Result();
         Student student = studentMapper.findOneStudent(your_t.getStu_no());
@@ -116,10 +121,9 @@ public class studentcontroller {
     }
 
 
-
         @PostMapping("Stu/upDatePassword")
         @ResponseBody
-        //更改密码
+        //4.更改密码
         public Result updatePassword(@RequestBody upDatePassword your_up){
             Result result= new Result();
             Student student = studentMapper.findOneStudent(your_up.getNo());
@@ -143,7 +147,7 @@ public class studentcontroller {
 
         @PostMapping("Stu/findStudentsByName")
         @ResponseBody
-        //根据stu_no或者stu_name实现模糊查询
+        //5.根据stu_no或者stu_name实现模糊查询
         public Result findStudents(@RequestBody Student student){
             Result result = new Result();
             List<Student> studentList=studentMapper.findStudentsByName(student.getStu_name());
@@ -168,7 +172,7 @@ public class studentcontroller {
 
         @PostMapping("Stu/findStudentsByClass")
         @ResponseBody
-        //根据班级找到对应的学生
+        //6.根据班级找到对应的学生
         public Result findStudentsByClass(@RequestBody Student student){
             Result result = new Result();
             List<Student> studentList = studentMapper.findStudentsByClass(student.getStu_class());
@@ -181,10 +185,11 @@ public class studentcontroller {
             return result;
         }
 
+
+        //7.上传头像
         @PostMapping("Stu/upLoadPicture")
         @ResponseBody
         @CrossOrigin
-
         public Result upLoadPicture(MultipartFile file, HttpServletRequest request){
             Result result = new Result();
 //            获取上传的文件名字，看是否为jpg文件，不是的话直接返回错误信息
@@ -218,31 +223,80 @@ public class studentcontroller {
             return result;
         }
 
+        @Autowired
+        AccommodationMapper accommodationMapper;
+
+        //8.获取学生的住宿信息
+        @PostMapping("Stu/findDormitoryInfo")
+        @ResponseBody
+    public Result findDormitoryinfo(@RequestBody Student student){
+        Result result = new Result();
+        Accommodation accommodation = accommodationMapper.findStuAccommodation(student.getStu_no().toString());
+        if(accommodation!=null){
+            result.setMsg("找到当前学生宿舍信息如下：");
+            result.setData(accommodation);
+            return result;
+        }
+        result.setMsg("未找到当前学生宿舍信息");
+        return result;
+        }
+
+        //9.修改学生的住宿信息
+        @PostMapping("Stu/updateDormitoryInfo")
+        @ResponseBody
+    public Result updateDormitoryInfo(@RequestBody Accommodation accommodation){
+            Result result = new Result();
+            if(accommodation.getAccommodation_information_no() == null){
+                SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+                String format = sdf.format(new Date());
+                String no = accommodation.getAccommodation_information_stu_no();
+                accommodation.setAccommodation_information_no(no +format);
+            }
+            if(accommodationMapper.updateAccommodationInfo(accommodation) == 1) {
+                result.setMsg("信息更新成功");
+            }
+            else{result.setMsg("信息更新失败");}
+            return result;
+        }
+
+        @Autowired
+        CollegeEntranceExaminationMapper collegeEntranceExaminationMapper;
+
+        //10.获取学生的高考信息
+        @PostMapping("Stu/findEntranceInfo")
+        @ResponseBody
+    public Result findEntranceInfo(@RequestBody Student student){
+            Result result = new Result<>();
+            CollegeEntranceExamination c = collegeEntranceExaminationMapper.findStudentCollegeEntranceExamination(student.getStu_no().toString());
+            if(c != null){
+                result.setMsg("找到当前学生高考信息如下");
+                result.setData(c);
+                return result;
+            }
+            result.setMsg("未找到当前学生信息");
+            return result;
+        }
+
+        //11.修改学生的高考信息
+        @PostMapping("Stu/updateEntranceInfo")
+        @ResponseBody
+        public Result updateEntranceInfo(@RequestBody CollegeEntranceExamination c){
+            Result result = new Result<>();
+            if(c.getCollege_entrance_examination_no() == null || c.getCollege_entrance_examination_no().length() == 0){
+                SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+                String format = sdf.format(new Date());
+                String no = c.getCollege_entrance_examination_stu_no();
+                c.setCollege_entrance_examination_no(no + format);
+            }
+            if(collegeEntranceExaminationMapper.updateEntranceInfo(c) == 1) {
+                result.setMsg("信息更新成功");
+            }
+            else{result.setMsg("信息更新失败");}
+            return result;
+        }
 
 
 
-//    @PostMapping("Stu/stu_getmsg")
-//    @ResponseBody
-//    public List<Msg> getmsg(@RequestBody Receive receive){
-//        Msg msg=new Msg();
-//        List<Msg> msgList=new ArrayList<>();
-//        List<Receive> msgnolist=receiveMapper.findmsgnoByreceiver(receive);
-//        //先根据receive的receiver查询有哪些记录，同时获取msg编号。
-//        if (msgnolist.isEmpty()){
-//            msg.setMsg_content("没有查询到你的通知");
-//            msgList.add(msg);
-//            return msgList;
-//        }
-//        else {
-////查询msg编号下的内容
-//            for (int i=0;i<msgnolist.size();i++){
-//                msg.setMsg_no(msgnolist.get(i).getMsg_no2());
-//                msg=msgMapper.findAllMsgByNo(msg);
-//                msgList.add(msg);
-//            }
-//            return msgList;
-//        }
-//    }
 
 }
 

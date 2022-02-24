@@ -3,6 +3,7 @@ package com.cqu.stu_manager.pojo;
 import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.ColumnWidth;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ public class Student {
     @ExcelProperty (value = "学号",index = 0)
     private Integer stu_no;
     @ExcelIgnore
+    @JsonIgnore
     private String stu_password;
     @ExcelProperty (value = "姓名",index = 1)
     private String  stu_name;

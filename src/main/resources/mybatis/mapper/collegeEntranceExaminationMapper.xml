@@ -7,4 +7,15 @@
         select * from college_entrance_examination where college_entrance_examination_stu_no=#{stuno}
     </select>
 
+    <update id="updateEntranceInfo" parameterType="com.cqu.stu_manager.pojo.CollegeEntranceExamination">
+        update college_entrance_examination
+        set  college_entrance_examination_no = #{college_entrance_examination_no},
+        college_entrance_examination_highschool_name = #{college_entrance_examination_highschool_name},
+        college_entrance_examination_type = #{college_entrance_examination_type},
+        college_entrance_examination_chinese = #{college_entrance_examination_chinese},
+        college_entrance_examination_math = #{college_entrance_examination_math},
+        college_entrance_examination_english = #{college_entrance_examination_english},
+        college_entrance_examination_comprehensive = #{college_entrance_examination_comprehensive}
+        where  college_entrance_examination_stu_no = #{college_entrance_examination_stu_no}
+    </update>
 </mapper>

@@ -9,5 +9,14 @@
     <select id="findStuAccommodation" resultType="com.cqu.stu_manager.pojo.Accommodation">
         select * from accommodation_information where accommodation_information_stu_no=#{stuno}
     </select>
+    <update id="updateAccommodationInfo" parameterType="com.cqu.stu_manager.pojo.Accommodation">
+        update accommodation_information
+        set  accommodation_information_no = #{accommodation_information_no},
+        accommodation_information_room_no = #{accommodation_information_room_no},
+        accommodation_information_bed = #{accommodation_information_bed},
+        accommodation_information_building = #{accommodation_information_building},
+        accommodation_information_ismain = #{accommodation_information_ismain}
+        where  accommodation_information_stu_no = #{accommodation_information_stu_no}
+    </update>
 
 </mapper>

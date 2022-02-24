@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CollegeEntranceExamination {
-    private Integer college_entrance_examination_no;
-     private String       college_entrance_examination_highschool_name;
-    private String   college_entrance_examination_type;
-    private String         college_entrance_examination_chinese;
-    private String   college_entrance_examination_math;
-    private String        college_entrance_examination_english;
-    private String   college_entrance_examination_comprehensive;
-    private String         college_entrance_examination_stu_no;
+    private String college_entrance_examination_no;
+    private String college_entrance_examination_highschool_name;
+    private String college_entrance_examination_type;
+    private String college_entrance_examination_chinese;
+    private String college_entrance_examination_math;
+    private String college_entrance_examination_english;
+    private String college_entrance_examination_comprehensive;
+    private String college_entrance_examination_stu_no;
 
 }
