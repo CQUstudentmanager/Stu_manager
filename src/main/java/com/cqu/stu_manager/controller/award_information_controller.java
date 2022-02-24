@@ -2,6 +2,7 @@ package com.cqu.stu_manager.controller;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.utils.Result;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,18 +21,29 @@ public class award_information_controller {
    //竞赛相关接口
     @Autowired
     ContestMapper contestMapper;
+    @Autowired
+    TeacherMapper teacherMapper;
+    @Autowired
+    StudentMapper studentMapper;
 
     //1.找到所有的获奖信息
     @PostMapping("/find_all_contest_info_new")
-    public List<Contest> find_all_contest_info_new(){
+    public List<Contest> find_all_contest_info_new(@RequestBody Teacher teacher){
         List<Contest> contestList=new ArrayList<>();
         List<Contest> new_contestlist=new ArrayList<>();
         contestList=contestMapper.findAllContest();
         for(int i=0;i<contestList.size();i++){
             Contest contest=new Contest();
             if(contestList.get( i).getContest_status().equals("0")&&contestList.get(i)!=null){
+               Student student=new Student();
                 contest=contestList.get(i);
-                new_contestlist.add(contest);
+                student=studentMapper.findOneStudent(Integer.parseInt(contest.getContest_stuno()));
+                if(student!=null)
+                if(student.getStu_class().substring(0,2).equals(teacher.getT_identity().toString())){
+                    new_contestlist.add(contest);
+                }
+
+
             }
         }
         return new_contestlist;
@@ -39,15 +51,22 @@ public class award_information_controller {
 
     //2.找到所有的已经审核的比赛信息
     @PostMapping("/find_all_contest_info_old")
-    public List<Contest> find_all_contest_info_old(){
+    public List<Contest> find_all_contest_info_old(@RequestBody Teacher teacher){
         List<Contest> contestList=new ArrayList<>();
         List<Contest> new_contestlist=new ArrayList<>();
         contestList=contestMapper.findAllContest();
         for(int i=0;i<contestList.size();i++){
             Contest contest=new Contest();
             if(!contestList.get(i).getContest_status().equals("0")&&contestList.get(i)!=null){
+                Student student=new Student();
                 contest=contestList.get(i);
-                new_contestlist.add(contest);
+                student=studentMapper.findOneStudent(Integer.parseInt(contest.getContest_stuno()));
+                if(student!=null)
+                if(student.getStu_class().substring(0,2).equals(teacher.getT_identity().toString())){
+                    new_contestlist.add(contest);
+                }
+
+
             }
         }
         System.out.println(contestList);
@@ -181,60 +200,59 @@ public class award_information_controller {
 
 
 
+    //获取专利相关的信息
+    @Autowired
+    PatentMapper patentMapper;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    //获取竞赛相关的信息
-@Autowired
-PatentMapper patentMapper;
-
-
+    //1.找到所有的未审核的专利信息
     @PostMapping("/find_all_patent_info_new")
-    public List<Patent> find_all_patent_info_new(){
+    public List<Patent> find_all_patent_info_new(@RequestBody Teacher teacher){
         List<Patent> patentList=new ArrayList<>();
         List<Patent> patentList_new=new ArrayList<>();
         patentList=patentMapper.findAllPatent();
         for(int i=0;i<patentList.size();i++){
             if(patentList.get(i).getPatent_status().equals("0")&&patentList.get(i)!=null){
-                patentList_new.add(patentList.get(i));
+                Patent patent=patentList.get(i);
+                 Student student=studentMapper.findOneStudent(Integer.parseInt(patent.getPatent_stu_no()));
+                if(student!=null)
+                    if(student.getStu_class().substring(0,2).equals(teacher.getT_identity().toString())){
+                        patentList_new.add(patent);
+                    }
+
             }
         }
         return patentList_new;
 
     }
+
+    //2.找到所有的已经审核的专利信息
     @PostMapping("/find_all_patent_info_old")
-    public List<Patent> find_all_patent_info_old(){
+    public List<Patent> find_all_patent_info_old(@RequestBody Teacher teacher){
         List<Patent> patentList=new ArrayList<>();
         List<Patent> patentList_old=new ArrayList<>();
         patentList=patentMapper.findAllPatent();
         for(int i=0;i<patentList.size();i++){
             if(!patentList.get(i).getPatent_status().equals("0")&&patentList.get(i)!=null){
-                patentList_old.add(patentList.get(i));
+                Student student=new Student();
+                Patent patent=new Patent();
+                patent=patentList.get(i);
+                student=studentMapper.findOneStudent(Integer.parseInt(patent.getPatent_stu_no()));
+                if(student!=null)
+                    if(student.getStu_class().substring(0,2).equals(teacher.getT_identity().toString())){
+                        patentList_old.add(patent);
+                    }
             }
         }
         return patentList_old;
     }
+
+    //3。找到对应学生的专利信息
     @PostMapping("find_my_patent_info")
     public List<Patent> find_my_patent_info(@RequestBody Student student){
        return patentMapper.findPatentByStuno(student);
     }
+
+    //4.上传专利信息
     @PostMapping("upload_patent_info")
     @ResponseBody
     @CrossOrigin
@@ -265,6 +283,8 @@ PatentMapper patentMapper;
             return result;
         }
     }
+
+    //5.上传专利证明材料
     @PostMapping("upload_patent_info2")
     @ResponseBody
     @CrossOrigin
@@ -293,7 +313,7 @@ PatentMapper patentMapper;
         }
         SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
         String format = sdf.format(new Date());
-        String realPath = "C:\\Users\\drifter\\Desktop\\Patent" + format;//存储在本机上的路径
+        String realPath = "C:\\Users\\drifter\\Desktop\\Patents" + format;//存储在本机上的路径
         File folder = new File(realPath);
         if(!folder.exists()){
             folder.mkdirs();
@@ -301,14 +321,14 @@ PatentMapper patentMapper;
         try {
             file.transferTo(new File(folder,newName));
             result.setMsg("文件上传成功");
-            result.setData(newName);
-//            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
-//            result.setData(url);
+            result.setData(realPath+newName);
         }catch (IOException e) {
             result.setMsg(e.getMessage());
         }
         return result;
     }
+
+    //6.查看是否有正在审核的信息
     @PostMapping("/patent_isexamineing")
     public Integer patent_isexamineing(@RequestBody Student student){
         List<Patent> patentList=new ArrayList<>();
@@ -321,12 +341,16 @@ PatentMapper patentMapper;
         }
         return count;
     }
+
+    //7.删除专利信息
     @PostMapping("/delete_patent")
     public Result delete_patent(@RequestBody Patent patent){
         Result result=new Result();
         result.setMsg(patentMapper.deletePatentByStu(patent.getPatent_no())+"条删除");
         return result;
     }
+
+    //8.专利信息审核通过
     @PostMapping("/pass_patent")
     public Result pass_patent(@RequestBody Patent patent){
         patentMapper.pass_patent(patent.getPatent_no());
@@ -334,6 +358,8 @@ PatentMapper patentMapper;
         result.setMsg("通过成功");
         return result;
     }
+
+    //9.专利信息审核不通过
     @PostMapping("/refuse_patent")
     public Result refuse_patent(@RequestBody Patent patent){
         patentMapper.refuse_patent(patent.getPatent_no());
@@ -342,13 +368,19 @@ PatentMapper patentMapper;
         return result;
     }
 
+
+
+
+
+
+
     //项目
     @Autowired
     ProjectMapper projectMapper;
 
-    //找到所有的获奖信息
+    //1.找到所有的未审核的项目信息
     @PostMapping("/find_all_project_info_new")
-    public List<Project> find_all_project_info_new(){
+    public List<Project> find_all_project_info_new(@RequestBody Teacher teacher){
         List<Project> projects=new ArrayList<>();
         List<Project> new_projectlist=new ArrayList<>();
         projects=projectMapper.findAllProject();
@@ -356,42 +388,55 @@ PatentMapper patentMapper;
             Project project=new Project();
             if(projects.get(i).getProject_audit_status().equals("0")&&projects.get(i)!=null){
                 project=projects.get(i);
-                new_projectlist.add(project);
+                Student student=new Student();
+                student=studentMapper.findOneStudent(Integer.parseInt(project.getProject_student_no()));
+                if(student!=null)
+                    if(student.getStu_class().substring(0,2).equals(teacher.getT_identity().toString())){
+                        new_projectlist.add(project);
+                    }
+
             }
 
         }
         return new_projectlist;
     }
+
+    //2.找到所有的已经审核的项目信息
     @PostMapping("/find_all_project_info_old")
-    public List<Project> find_all_project_info_old(){
+    public List<Project> find_all_project_info_old(@RequestBody Teacher teacher){
         List<Project> projectList=new ArrayList<>();
         List<Project> new_projectlist=new ArrayList<>();
         projectList=projectMapper.findAllProject();
         for(int i=0;i<projectList.size();i++){
-            Project project=new Project();
+
             if(!projectList.get(i).getProject_audit_status().equals("0")&&projectList.get(i)!=null){
+                Project project=new Project();
                 project=projectList.get(i);
-                new_projectlist.add(project);
+                Student student=new Student();
+                student=studentMapper.findOneStudent(Integer.parseInt(project.getProject_student_no()));
+                if(student!=null)
+                    if(student.getStu_class().substring(0,2).equals(teacher.getT_identity().toString())){
+                        new_projectlist.add(project);
+                    }
             }
 
         }
         return new_projectlist;
     }
 
-    //找到对应学生的获奖信息
+    //3.找到对应学生的项目信息
     @PostMapping("/find_my_project_info")
     public List<Project> find_my_project_info(@RequestBody Student student){
         return projectMapper.findProjectByStuno(student);
     }
 
-    //上传获奖信息
+    //4.上传项目信息
     @PostMapping("upload_project_info")
     @ResponseBody
     @CrossOrigin
     public Result upLoadproject(@RequestBody Project project){
         Result result=new Result();
         List<Project> projects=projectMapper.findAllProject();
-//这里是防止重复上传
         for (int i=0;i<projects.size();i++){
             if(projects.get(i).getProject_student_no().equals(project.getProject_student_no())&&projects.get(i).getProject_name().equals(project.getProject_name())&&project.getProject_no().length()==0){
                 result.setMsg("信息已经上传，请勿重复上传");
@@ -415,7 +460,7 @@ PatentMapper patentMapper;
 
     }
 
-    //上传获奖证明材料
+    //5.上传项目证明材料
     @PostMapping("upload_project_info2")
     @ResponseBody
     @CrossOrigin
@@ -444,7 +489,7 @@ PatentMapper patentMapper;
         }
         SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
         String format = sdf.format(new Date());
-        String realPath = "C:\\Users\\drifter\\Desktop\\Project" + format;//存储在本机上的路径
+        String realPath = "C:\\Users\\drifter\\Desktop\\Projects" + format;//存储在本机上的路径
         File folder = new File(realPath);
         if(!folder.exists()){
             folder.mkdirs();
@@ -452,7 +497,7 @@ PatentMapper patentMapper;
         try {
             file.transferTo(new File(folder,newName));
             result.setMsg("文件上传成功");
-            result.setData(newName);
+            result.setData(realPath+newName);
 //            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
 //            result.setData(url);
         }catch (IOException e) {
@@ -462,7 +507,7 @@ PatentMapper patentMapper;
     }
 
 
-    //判断是否有正在审核的信息
+    //6.判断是否有正在审核的信息
     @PostMapping("/project_isexamineing")
     public Integer project_isexamineing(@RequestBody Student student){
         List<Project> projectList=new ArrayList<>();
@@ -477,6 +522,7 @@ PatentMapper patentMapper;
         return count;
     }
 
+    //7.删除项目信息
     @PostMapping("/delete_project")
     public Result delete_project(@RequestBody Project project){
         Result result=new Result();
@@ -485,6 +531,8 @@ PatentMapper patentMapper;
 
         return result;
     }
+
+    //8.项目审核通过
     @PostMapping("/pass_project")
     public Result pass_project(@RequestBody Project project){
         projectMapper.pass_project(project.getProject_no());
@@ -492,6 +540,8 @@ PatentMapper patentMapper;
         result.setMsg("通过成功");
         return result;
     }
+
+    //9.项目审核不通过
     @PostMapping("/refuse_project")
     public Result refuse_project(@RequestBody Project project){
         projectMapper.refuse_project(project.getProject_no());
@@ -499,13 +549,22 @@ PatentMapper patentMapper;
         result.setMsg("驳回成功");
         return result;
     }
+
+
+
+
+
+
+
+
+
     //论文相关接口
     @Autowired
     PaperMapper paperMapper;
 
-    //找到所有的获奖信息
+    //1.找到所有的未审核的论文信息
     @PostMapping("/find_all_paper_info_new")
-    public List<Paper> find_all_paper_info(){
+    public List<Paper> find_all_paper_info(@RequestBody Teacher teacher){
         List<Paper> paperList=new ArrayList<>();
         List<Paper> new_paperlist=new ArrayList<>();
         paperList=paperMapper.findAllStuPaper();
@@ -513,14 +572,22 @@ PatentMapper patentMapper;
             Paper paper=new Paper();
             if(paperList.get(i).getPaper_status().equals("0")&&paperList.get(i)!=null){
                 paper=paperList.get(i);
-                new_paperlist.add(paper);
+                Student student=new Student();
+                student=studentMapper.findOneStudent(Integer.parseInt(paper.getPaper_stuno()));
+                if(student!=null)
+                    if(student.getStu_class().substring(0,2).equals(teacher.getT_identity().toString())){
+                        new_paperlist.add(paper);
+                    }
+
             }
 
         }
         return new_paperlist;
     }
+
+    //2.找到所有的已经审核的论文信息
     @PostMapping("/find_all_paper_info_old")
-    public List<Paper> find_all_paper_info_old(){
+    public List<Paper> find_all_paper_info_old(@RequestBody Teacher teacher){
         List<Paper> paperList=new ArrayList<>();
         List<Paper> new_paperlist=new ArrayList<>();
         paperList=paperMapper.findAllStuPaper();
@@ -528,27 +595,32 @@ PatentMapper patentMapper;
             Paper paper=new Paper();
             if(!paperList.get(i).getPaper_status().equals("0")&&paperList.get(i)!=null){
                 paper=paperList.get(i);
-                new_paperlist.add(paper);
+                Student student=new Student();
+                student=studentMapper.findOneStudent(Integer.parseInt(paper.getPaper_stuno()));
+                if(student!=null)
+                    if(student.getStu_class().substring(0,2).equals(teacher.getT_identity().toString())){
+                        new_paperlist.add(paper);
+                    }
+
             }
 
         }
         return new_paperlist;
     }
 
-    //找到对应学生的获奖信息
+    //3.找到对应学生的论文信息
     @PostMapping("/find_my_paper_info")
     public List<Paper> find_my_paper_info(@RequestBody Student student){
         return paperMapper.findPaperByStuno(student);
     }
 
-    //上传获奖信息
+    //4.上传论文信息
     @PostMapping("upload_paper_info")
     @ResponseBody
     @CrossOrigin
     public Result upLoadPaper(@RequestBody Paper paper){
         Result result=new Result();
         List<Paper> contestList=paperMapper.findAllStuPaper();
-//这里是防止重复上传
         for (int i=0;i<contestList.size();i++){
             if(contestList.get(i).getPaper_stuno().equals(paper.getPaper_stuno())&&contestList.get(i).getPaper_name().equals(paper.getPaper_name())&&paper.getPaper_no().length()==0){
                 result.setMsg("信息已经上传，请勿重复上传");
@@ -572,7 +644,7 @@ PatentMapper patentMapper;
 
     }
 
-    //上传获奖证明材料
+    //5.上传论文证明材料
     @PostMapping("upload_paper_info2")
     @ResponseBody
     @CrossOrigin
@@ -609,27 +681,14 @@ PatentMapper patentMapper;
         try {
             file.transferTo(new File(folder,newName));
             result.setMsg("文件上传成功");
-            result.setData(newName);
-//            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
-//            result.setData(url);
+            result.setData(realPath+newName);
         }catch (IOException e) {
             result.setMsg(e.getMessage());
         }
         return result;
     }
-    //老师审核材料通过
-    @PostMapping("paper_verification")
-    @ResponseBody
-    public Result paperVerification(@RequestBody Paper paper){
-        Result result = new Result();
-        List<Paper> paperList = paperMapper.findAllStuPaper();
-        for(Paper p:paperList){
 
-        }
-        return result;
-    }
-
-    //判断是否有正在审核的信息
+    //6.判断是否有正在审核的信息
     @PostMapping("/paper_isexamineing")
     public Integer paper_isexamineing(@RequestBody Student student){
         List<Paper> paperList=new ArrayList<>();
@@ -644,6 +703,7 @@ PatentMapper patentMapper;
         return count;
     }
 
+    //7.删除论文信息
     @PostMapping("/delete_paper")
     public Result delete_paper(@RequestBody Paper paper){
         Result result=new Result();
@@ -652,6 +712,8 @@ PatentMapper patentMapper;
 
         return result;
     }
+
+    //8.论文信息审核通过
     @PostMapping("/pass_paper")
     public Result pass_paper(@RequestBody Paper paper){
         paperMapper.pass_paper(paper.getPaper_no());
@@ -659,6 +721,8 @@ PatentMapper patentMapper;
         result.setMsg("通过成功");
         return result;
     }
+
+    //9.论文呢信息审核未通过
     @PostMapping("/refuse_paper")
     public Result refuse_paper(@RequestBody Paper paper){
         paperMapper.refuse_paper(paper.getPaper_no());
