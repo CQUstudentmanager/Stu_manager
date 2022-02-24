@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Voluntary_activities {
-    private Integer voluntary_activities_no;
+    private String voluntary_activities_no;
     private String voluntary_activities_stu_name;
     private String voluntary_activities_studept;
     private String voluntary_activities_stu_no;
@@ -16,4 +16,6 @@ public class Voluntary_activities {
     private String voluntary_activities_time_long;
     private String voluntary_activities_content;
     private String voluntary_activities_status;
+    private String voluntary_activities_name;
+    private String voluntary_activities_url;
 }
