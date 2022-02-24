@@ -25,7 +25,7 @@ public class classcontroller {
         String grade = teacher.getT_identity().toString();
         List<Class> c = new ArrayList<>();
         for(int i=0;i<=classList.size()-1;i++){
-            if(classList.get(i).getClass_name().equals(grade)){
+            if(classList.get(i).getClass_name().substring(0,2).equals(grade)){
                 c.add(classList.get(i));
             }
         }

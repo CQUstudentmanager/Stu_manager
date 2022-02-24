@@ -43,9 +43,8 @@ public class studentcontroller {
                 classList=classMapper.findClassByTeacher(teacher.getT_no().toString());
                 List<Student> studentList1=new ArrayList<>();
                 for (int j=0;j<classList.size();j++){
-
-                    studentList1=studentMapper.findStudentsByClass(classList.get(j));
-                    s.addAll(studentList1);
+                   if(studentList.get(i).getStu_class().equals(classList.get(j))) {
+                    s.add(studentList.get(i));}
                 }
             }
         }
@@ -316,29 +315,47 @@ public class studentcontroller {
         @ResponseBody
         public Result findFamilyInfo(@RequestBody Student student){
             Result result = new Result<>();
-            Family f = familyMapper.findMainmember(student.getStu_no().toString());
-            if(f != null){
-                result.setMsg("找到当前学生高考信息如下");
-                result.setData(f);
-                return result;
+            List<Family> familyList = familyMapper.findAllMembers(student.getStu_no().toString());
+            List<Family> f = new ArrayList<>();
+            f.add(null);
+            f.add(null);
+            result.setMsg("找到当前学生家庭信息如下");
+            if(familyList == null || familyList.size() == 0){
+                result.setMsg("未找到当前学生信息");
             }
-            result.setMsg("未找到当前学生信息");
+            else if(familyList.size() == 1){
+                if(familyList.get(0).getFamily_relationship() == null||familyList.get(0).getFamily_relationship().equals("父亲")){
+                    f.set(0,familyList.get(0));
+                }
+                else {
+                    f.set(1,familyList.get(0));
+                }
+            }
+            else{
+                if(familyList.get(0).getFamily_relationship() == null || familyList.get(0).getFamily_relationship().equals("父亲")){
+                    f.set(0,familyList.get(0));
+                    f.set(1,familyList.get(1));
+                }
+                else{
+                    f.set(0,familyList.get(1));
+                    f.set(1,familyList.get(0));
+                }
+            }
+            result.setData(f);
             return result;
         }
 
-//    //13.修改学生的高考信息
-//    @PostMapping("Stu/updateFamilyInfo")
-//    @ResponseBody
-//    public Result updateFamilyInfo(@RequestBody Family family){
-//        Result result = new Result<>();
-//        if( == 1) {
-//            result.setMsg("信息更新成功");
-//        }
-//        else{result.setMsg("信息更新失败");}
-//        return result;
-//    }
-
-
+    //13.修改学生的家庭信息
+    @PostMapping("Stu/updateFamilyInfo")
+    @ResponseBody
+    public Result updateFamilyInfo(@RequestBody Family family){
+        Result result = new Result<>();
+        if( familyMapper.updateFamilyInfo(family) == 1) {
+            result.setMsg("信息更新成功");
+        }
+        else{result.setMsg("信息更新失败");}
+        return result;
+    }
 }
 
 

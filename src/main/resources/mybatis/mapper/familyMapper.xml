@@ -6,5 +6,20 @@
    <select id="findMainmember" resultType="com.cqu.stu_manager.pojo.Family">
        select * from family where family_stu_no=#{stuno} and family_ismain="是"
    </select>
+    <select id="findAllMembers" resultType="com.cqu.stu_manager.pojo.Family">
+        select * from family where family_stu_no=#{stuno}
+    </select>
+    <update id="updateFamilyInfo" parameterType="com.cqu.stu_manager.pojo.Family">
+        update family
+        set
+        family_name = #{family_name},
+        family_age = #{family_age},
+        family_tel = #{family_tel},
+        family_work = #{family_work},
+        family_duties = #{family_duties},
+        family_workplace = #{family_workplace},
+        family_ismain = #{family_ismain}
+        where family_stu_no = #{family_stu_no} and family_relationship = #{family_relationship}
+    </update>
 
 </mapper>
