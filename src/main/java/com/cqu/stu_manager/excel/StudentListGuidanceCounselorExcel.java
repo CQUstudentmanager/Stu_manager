@@ -87,7 +87,7 @@ public class StudentListGuidanceCounselorExcel {
                 studentListGuidanceCounselor.setStu_email(studentList.get(i).getStu_email());
                 studentListGuidanceCounselor.setStu_adress(studentList.get(i).getStu_address());
                 Family family=new Family();
-                family=familyMapper.findMainmenber(studentList.get(i).getStu_no().toString());
+                family=familyMapper.findMainmember(studentList.get(i).getStu_no().toString());
                 if(family==null){
                     studentListGuidanceCounselor.setStu_family_tel("");
                 }else studentListGuidanceCounselor.setStu_family_tel(family.getFamily_tel());

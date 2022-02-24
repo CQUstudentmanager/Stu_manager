@@ -23,6 +23,8 @@ public class studentcontroller {
     MsgMapper msgMapper;
     @Autowired
     PaperMapper paperMapper;
+    @Autowired
+    ClassMapper classMapper;
 
 
     @PostMapping("Stu/stuList")
@@ -35,6 +37,16 @@ public class studentcontroller {
         for(int i=0;i<=studentList.size()-1;i++){
             if(studentList.get(i).getStu_class().substring(0,2).equals(grade)){
                 s.add(studentList.get(i));
+            }
+            else if(teacher.getT_identity().toString().equals("2")){
+                List<String> classList=new ArrayList<>();
+                classList=classMapper.findClassByTeacher(teacher.getT_no().toString());
+                List<Student> studentList1=new ArrayList<>();
+                for (int j=0;j<classList.size();j++){
+
+                    studentList1=studentMapper.findStudentsByClass(classList.get(j));
+                    s.addAll(studentList1);
+                }
             }
         }
         return s;
@@ -296,6 +308,35 @@ public class studentcontroller {
         }
 
 
+        @Autowired
+        FamilyMapper familyMapper;
+
+        //12.获取学生的家庭信息
+        @PostMapping("Stu/findFamilyInfo")
+        @ResponseBody
+        public Result findFamilyInfo(@RequestBody Student student){
+            Result result = new Result<>();
+            Family f = familyMapper.findMainmember(student.getStu_no().toString());
+            if(f != null){
+                result.setMsg("找到当前学生高考信息如下");
+                result.setData(f);
+                return result;
+            }
+            result.setMsg("未找到当前学生信息");
+            return result;
+        }
+
+//    //13.修改学生的高考信息
+//    @PostMapping("Stu/updateFamilyInfo")
+//    @ResponseBody
+//    public Result updateFamilyInfo(@RequestBody Family family){
+//        Result result = new Result<>();
+//        if( == 1) {
+//            result.setMsg("信息更新成功");
+//        }
+//        else{result.setMsg("信息更新失败");}
+//        return result;
+//    }
 
 
 }

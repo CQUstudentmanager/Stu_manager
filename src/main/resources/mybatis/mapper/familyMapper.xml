@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cqu.stu_manager.mapper.FamilyMapper">
-   <select id="findMainmenber" resultType="com.cqu.stu_manager.pojo.Family">
+   <select id="findMainmember" resultType="com.cqu.stu_manager.pojo.Family">
        select * from family where family_stu_no=#{stuno} and family_ismain="是"
    </select>
 

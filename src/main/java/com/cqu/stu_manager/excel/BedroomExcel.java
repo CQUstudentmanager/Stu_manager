@@ -61,7 +61,7 @@ public class BedroomExcel {
                 { bedroom.setBedroom_ps("寝室长");}else bedroom.setBedroom_ps("");
             }else bedroom.setBedroom_buildingandroom("");
             Family family=new Family();
-            family=familyMapper.findMainmenber(student.getStu_no().toString());
+            family=familyMapper.findMainmember(student.getStu_no().toString());
             if(family!=null){
                 bedroom.setFamily_tel(family.getFamily_tel());
             }else bedroom.setFamily_tel("");

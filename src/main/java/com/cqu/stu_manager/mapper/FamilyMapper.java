@@ -5,5 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface FamilyMapper {
-    Family findMainmenber(String stuno);
+    Family findMainmember(String stuno);
+    int updateFamilyInfo(Family family);
 }

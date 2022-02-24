@@ -56,7 +56,7 @@ public class StudentListHeadmasterExcel {
             studentListHeadmaster.setStu_origin(studentList.get(i).getStu_origin());
             studentListHeadmaster.setStu_tel(studentList.get(i).getStu_telephone());
             Family family=new Family();
-            family=familyMapper.findMainmenber(studentList.get(i).getStu_no().toString());
+            family=familyMapper.findMainmember(studentList.get(i).getStu_no().toString());
             if(family==null){
                 studentListHeadmaster.setStu_family_tel("");
             }else studentListHeadmaster.setStu_family_tel(family.getFamily_tel());
