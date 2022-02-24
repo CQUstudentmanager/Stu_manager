@@ -16,8 +16,9 @@
                 voluntary_activities_time_from_to,
                 voluntary_activities_time_long,
                 voluntary_activities_content,
-                voluntary_activities_status
-
+                voluntary_activities_status,
+                voluntary_activities_name,
+                voluntary_activities_url
             )values
                     (
                         #{voluntary_activities_no},
@@ -27,11 +28,27 @@
                         #{voluntary_activities_time_from_to},
                         #{voluntary_activities_time_long},
                         #{voluntary_activities_content},
-                        #{voluntary_activities_status}
+                        #{voluntary_activities_status},
+                        #{voluntary_activities_name},
+                        #{voluntary_activities_url}
                     )
     </insert>
     <select id="findVoluntary_activitiesByStuno" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Voluntary_activities">
         select * from voluntary_activities where voluntary_activities_stu_no=#{stu_no}
     </select>
+    <update id="updateVoluntary_activitiesByStudent" parameterType="com.cqu.stu_manager.pojo.Voluntary_activities">
+        update voluntary_activities
+        set
+            voluntary_activities_stu_name = #{voluntary_activities_stu_name},
+            voluntary_activities_studept = #{voluntary_activities_studept},
+            voluntary_activities_stu_no = #{voluntary_activities_stu_no},
+            voluntary_activities_time_from_to = #{voluntary_activities_time_from_to},
+            voluntary_activities_time_long = #{voluntary_activities_time_long},
+            voluntary_activities_content = #{voluntary_activities_content},
+            voluntary_activities_status = #{voluntary_activities_status},
+            voluntary_activities_name = #{voluntary_activities_name},
+            voluntary_activities_url = #{voluntary_activities_url}
+        where voluntary_activities_no = #{voluntary_activities_no}
+    </update>
 
 </mapper>

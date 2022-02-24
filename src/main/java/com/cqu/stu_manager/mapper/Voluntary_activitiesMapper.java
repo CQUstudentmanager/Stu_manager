@@ -10,5 +10,6 @@ import java.util.List;
 public interface Voluntary_activitiesMapper {
     List<Voluntary_activities> findAllVoluntary_activities();
     int insertVoluntary_activitiesByStudent(Voluntary_activities voluntary_activities);
+    int updateVoluntary_activitiesByStudent(Voluntary_activities voluntary_activities);
     List<Voluntary_activities> findVoluntary_activitiesByStuno(Student student);
 }
