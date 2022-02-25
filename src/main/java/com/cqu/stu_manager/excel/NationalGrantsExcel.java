@@ -29,7 +29,7 @@ public class NationalGrantsExcel {
         }else {
             for (int i=0;i<studentlist.size();i++){
                 Student student=new Student();
-                student=studentMapper.findOneStudent(studentlist.get(i).getStu_no());
+                student=studentlist.get(i);
                 studentList.add(student);
             }
         }

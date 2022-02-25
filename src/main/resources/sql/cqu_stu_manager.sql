@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql
+ Source Server         : TEST
  Source Server Type    : MySQL
- Source Server Version : 50560
+ Source Server Version : 50561
  Source Host           : localhost:3306
  Source Schema         : cqu_stu_manager
 
  Target Server Type    : MySQL
- Target Server Version : 50560
+ Target Server Version : 50561
  File Encoding         : 65001
 
- Date: 21/02/2022 20:12:48
+ Date: 24/02/2022 21:55:41
 */
 
 SET NAMES utf8mb4;
@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `accommodation_information`;
 CREATE TABLE `accommodation_information`  (
-  `accommodation_information_no` int(11) NULL DEFAULT NULL,
+  `accommodation_information_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `accommodation_information_stu_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `accommodation_information_room_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `accommodation_information_bed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `accommodation_information`  (
 -- ----------------------------
 -- Records of accommodation_information
 -- ----------------------------
-INSERT INTO `accommodation_information` VALUES (NULL, '20201755', '409', '4', '竹园5栋', '是');
+INSERT INTO `accommodation_information` VALUES ('20201755162803', '20201755', 'String', 'String', 'String', '123');
 INSERT INTO `accommodation_information` VALUES (NULL, '20205644', '412', '', '竹园5栋', '是');
 INSERT INTO `accommodation_information` VALUES (NULL, '20201640', '109', '1', '竹园5栋', NULL);
 INSERT INTO `accommodation_information` VALUES (NULL, '20201692', '323', '3', '竹园5栋', NULL);
@@ -58,7 +58,7 @@ INSERT INTO `accommodation_information` VALUES (NULL, '20204353', '412', '', '�
 INSERT INTO `accommodation_information` VALUES (NULL, '20201737', '406', '2', '竹园5栋', NULL);
 INSERT INTO `accommodation_information` VALUES (NULL, '20204176', '412', '', '竹园5栋', NULL);
 INSERT INTO `accommodation_information` VALUES (NULL, '20205911', '321', '4', '竹园5栋', NULL);
-INSERT INTO `accommodation_information` VALUES (NULL, '20201686', '322', '3', '竹园5栋', NULL);
+INSERT INTO `accommodation_information` VALUES ('20201686162804', '20201686', '322', '3', '竹园5栋', '是');
 INSERT INTO `accommodation_information` VALUES (NULL, '20201787', '417', '4', '竹园5栋', NULL);
 INSERT INTO `accommodation_information` VALUES (NULL, '20201739', '406', '4', '竹园5栋', NULL);
 INSERT INTO `accommodation_information` VALUES (NULL, '20204145', '408', '1', '竹园5栋', NULL);
@@ -96,7 +96,7 @@ INSERT INTO `class` VALUES (8, '20人工智能班', NULL);
 -- ----------------------------
 DROP TABLE IF EXISTS `college_entrance_examination`;
 CREATE TABLE `college_entrance_examination`  (
-  `college_entrance_examination_no` int(11) NULL DEFAULT 0,
+  `college_entrance_examination_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT '0',
   `college_entrance_examination_highschool_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `college_entrance_examination_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `college_entrance_examination_chinese` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -109,44 +109,44 @@ CREATE TABLE `college_entrance_examination`  (
 -- ----------------------------
 -- Records of college_entrance_examination
 -- ----------------------------
-INSERT INTO `college_entrance_examination` VALUES (0, '江苏省前黄高级中学', '城镇应届', NULL, NULL, NULL, NULL, '20201755');
-INSERT INTO `college_entrance_examination` VALUES (0, '江苏省宝应中学', '城镇应届', NULL, NULL, NULL, NULL, '20205644');
-INSERT INTO `college_entrance_examination` VALUES (0, '鹤庆县第一中学', '农村应届', NULL, NULL, NULL, NULL, '20201640');
-INSERT INTO `college_entrance_examination` VALUES (0, '浙江省瓯海中学', '农村应届', NULL, NULL, NULL, NULL, '20201692');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市第十八中学', '城镇往届', NULL, NULL, NULL, NULL, '20201656');
-INSERT INTO `college_entrance_examination` VALUES (0, '合肥一六八中学', '城镇应届', NULL, NULL, NULL, NULL, '20201668');
-INSERT INTO `college_entrance_examination` VALUES (0, '独山子第二中学', '城镇应届', NULL, NULL, NULL, NULL, '20201762');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市第十一中学校', '城镇应届', NULL, NULL, NULL, NULL, '20201770');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市字水中学', '城镇应届', NULL, NULL, NULL, NULL, '20201682');
-INSERT INTO `college_entrance_examination` VALUES (0, '南昌大学附属中学', '城镇应届', NULL, NULL, NULL, NULL, '20204051');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市凤鸣山中学', '城市应届', NULL, NULL, NULL, NULL, '20206463');
-INSERT INTO `college_entrance_examination` VALUES (0, '南海中学分校', '城镇应届', NULL, NULL, NULL, NULL, '20201644');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市南开中学', '城市应届', NULL, NULL, NULL, NULL, '20201662');
-INSERT INTO `college_entrance_examination` VALUES (0, '渝北中学', '城镇应届', NULL, NULL, NULL, NULL, '20201793');
-INSERT INTO `college_entrance_examination` VALUES (0, '江苏省苏州中学', '城镇应届', NULL, NULL, NULL, NULL, '20204050');
-INSERT INTO `college_entrance_examination` VALUES (0, '江西省临川第二中学', '农村应届', NULL, NULL, NULL, NULL, '20201756');
-INSERT INTO `college_entrance_examination` VALUES (0, '安岳中学', '农村应届', NULL, NULL, NULL, NULL, '20201786');
-INSERT INTO `college_entrance_examination` VALUES (0, '保定市第一中学', '城镇应届', NULL, NULL, NULL, NULL, '20201753');
-INSERT INTO `college_entrance_examination` VALUES (0, '四川省遂宁市卓同', '城镇往届', NULL, NULL, NULL, NULL, '20201707');
-INSERT INTO `college_entrance_examination` VALUES (0, '河南省实验中学', '城镇应届', NULL, NULL, NULL, NULL, '20201781');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市育才中学校', '城镇应届', NULL, NULL, NULL, NULL, '20201765');
-INSERT INTO `college_entrance_examination` VALUES (0, '深圳外国语学校', '城市应届', NULL, NULL, NULL, NULL, '20204353');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市第一中学', '城镇应届', NULL, NULL, NULL, NULL, '20201737');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市璧山中学校', '农村应届', NULL, NULL, NULL, NULL, '20204176');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市潼南中学校', '农村应届', NULL, NULL, NULL, NULL, '20205911');
-INSERT INTO `college_entrance_examination` VALUES (0, '丰都中学校', '农村应届', NULL, NULL, NULL, NULL, '20201686');
-INSERT INTO `college_entrance_examination` VALUES (0, '崇庆中学', '城市应届', NULL, NULL, NULL, NULL, '20201787');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市綦江中学', '城镇应届', NULL, NULL, NULL, NULL, '20201739');
-INSERT INTO `college_entrance_examination` VALUES (0, '重庆市渝高中学校', '农村应届', NULL, NULL, NULL, NULL, '20204145');
-INSERT INTO `college_entrance_examination` VALUES (0, '巢湖市第二中学', '农村应届', NULL, NULL, NULL, NULL, '20201749');
-INSERT INTO `college_entrance_examination` VALUES (0, '兴义市第八中学', '农村应届', NULL, NULL, NULL, NULL, '20191574');
+INSERT INTO `college_entrance_examination` VALUES ('String', 'String', 'String', 'String', 'String', 'String', 'String', '20201755');
+INSERT INTO `college_entrance_examination` VALUES ('0', '江苏省宝应中学', '城镇应届', NULL, NULL, NULL, NULL, '20205644');
+INSERT INTO `college_entrance_examination` VALUES ('0', '鹤庆县第一中学', '农村应届', NULL, NULL, NULL, NULL, '20201640');
+INSERT INTO `college_entrance_examination` VALUES ('0', '浙江省瓯海中学', '农村应届', NULL, NULL, NULL, NULL, '20201692');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市第十八中学', '城镇往届', NULL, NULL, NULL, NULL, '20201656');
+INSERT INTO `college_entrance_examination` VALUES ('0', '合肥一六八中学', '城镇应届', NULL, NULL, NULL, NULL, '20201668');
+INSERT INTO `college_entrance_examination` VALUES ('0', '独山子第二中学', '城镇应届', NULL, NULL, NULL, NULL, '20201762');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市第十一中学校', '城镇应届', NULL, NULL, NULL, NULL, '20201770');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市字水中学', '城镇应届', NULL, NULL, NULL, NULL, '20201682');
+INSERT INTO `college_entrance_examination` VALUES ('0', '南昌大学附属中学', '城镇应届', NULL, NULL, NULL, NULL, '20204051');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市凤鸣山中学', '城市应届', NULL, NULL, NULL, NULL, '20206463');
+INSERT INTO `college_entrance_examination` VALUES ('0', '南海中学分校', '城镇应届', NULL, NULL, NULL, NULL, '20201644');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市南开中学', '城市应届', NULL, NULL, NULL, NULL, '20201662');
+INSERT INTO `college_entrance_examination` VALUES ('0', '渝北中学', '城镇应届', NULL, NULL, NULL, NULL, '20201793');
+INSERT INTO `college_entrance_examination` VALUES ('0', '江苏省苏州中学', '城镇应届', NULL, NULL, NULL, NULL, '20204050');
+INSERT INTO `college_entrance_examination` VALUES ('0', '江西省临川第二中学', '农村应届', NULL, NULL, NULL, NULL, '20201756');
+INSERT INTO `college_entrance_examination` VALUES ('0', '安岳中学', '农村应届', NULL, NULL, NULL, NULL, '20201786');
+INSERT INTO `college_entrance_examination` VALUES ('0', '保定市第一中学', '城镇应届', NULL, NULL, NULL, NULL, '20201753');
+INSERT INTO `college_entrance_examination` VALUES ('0', '四川省遂宁市卓同', '城镇往届', NULL, NULL, NULL, NULL, '20201707');
+INSERT INTO `college_entrance_examination` VALUES ('0', '河南省实验中学', '城镇应届', NULL, NULL, NULL, NULL, '20201781');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市育才中学校', '城镇应届', NULL, NULL, NULL, NULL, '20201765');
+INSERT INTO `college_entrance_examination` VALUES ('0', '深圳外国语学校', '城市应届', NULL, NULL, NULL, NULL, '20204353');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市第一中学', '城镇应届', NULL, NULL, NULL, NULL, '20201737');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市璧山中学校', '农村应届', NULL, NULL, NULL, NULL, '20204176');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市潼南中学校', '农村应届', NULL, NULL, NULL, NULL, '20205911');
+INSERT INTO `college_entrance_examination` VALUES ('0', '丰都中学校', '农村应届', '111', '111', '111', '111', '20201686');
+INSERT INTO `college_entrance_examination` VALUES ('0', '崇庆中学', '城市应届', NULL, NULL, NULL, NULL, '20201787');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市綦江中学', '城镇应届', NULL, NULL, NULL, NULL, '20201739');
+INSERT INTO `college_entrance_examination` VALUES ('0', '重庆市渝高中学校', '农村应届', NULL, NULL, NULL, NULL, '20204145');
+INSERT INTO `college_entrance_examination` VALUES ('0', '巢湖市第二中学', '农村应届', NULL, NULL, NULL, NULL, '20201749');
+INSERT INTO `college_entrance_examination` VALUES ('0', '兴义市第八中学', '农村应届', NULL, NULL, NULL, NULL, '20191574');
 
 -- ----------------------------
 -- Table structure for contest
 -- ----------------------------
 DROP TABLE IF EXISTS `contest`;
 CREATE TABLE `contest`  (
-  `contest_no` int(11) NOT NULL,
+  `contest_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `contest_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `contest_projectname` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `contest_grantingdepartment` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -166,9 +166,12 @@ CREATE TABLE `contest`  (
 -- ----------------------------
 -- Records of contest
 -- ----------------------------
-INSERT INTO `contest` VALUES (1, '第七届GSIG中国可视化与可视分析大会数据可视分析挑战赛', '新冠肺炎预测与舆情分析可视平台', '中国图像图形学协会', '国家级', '二等奖', '2020-07', '胡海波', '大数据与软件学院', '杨涛', '2021252', '已提交', '2021', '无', '1');
-INSERT INTO `contest` VALUES (456789, 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', '456789', 'String', 'String', 'String', 'String');
-INSERT INTO `contest` VALUES (0, 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
+INSERT INTO `contest` VALUES ('1', '第七届GSIG中国可视化与可视分析大会数据可视分析挑战赛', '新冠肺炎预测与舆情分析可视平台', '中国图像图形学协会', '国家级', '二等奖', '2020-07', '胡海波', '大数据与软件学院', '杨涛', '2021252', '已提交', '2021', '无', '1');
+INSERT INTO `contest` VALUES ('20201686233118', '竞赛5', '1', '1', '1', '1', '1', '1', '1', '张强', '20201686', '是', '1', '82517961-240a-4596-b4b5-7c3ce966d5bb.pdf', '1');
+INSERT INTO `contest` VALUES ('20201686234152', '竞赛7', '1', '1', '1', '1', '1', '1', '1', '张强', '20201686', '否', '1', '166a5fff-fcc9-4a38-9426-4357776f8eaa.pdf', '2');
+INSERT INTO `contest` VALUES ('20191574220431', 'adsfa', 'asdf', 'adsf', 'dsaf', 'asdf', 'asdf', 'qwer', 'asdf', '曹越', '20191574', '是', 'asdfqwe', 'C:\\Users\\drifter\\Desktop\\Contests/2022/02/23/6401534e-e59b-4414-87fd-f77b4582d0b7.jpg', '1');
+INSERT INTO `contest` VALUES ('20214567222745', '123', '123', '123', '123', '123', '123', '123', '123', '昌瑶', '20214567', '是', '123', 'C:\\Users\\drifter\\Desktop\\Contests/2022/02/23/b79a3650-bb50-409b-8fae-1084c780a745.jpg', '1');
+INSERT INTO `contest` VALUES ('20214567231438', 'gdafg', 'dfg', 'dfg', 'dfg', 'fdga', 'dfg', 'adfg', 'dfg', '昌瑶', '20214567', '是', 'adfg', 'C:\\Users\\drifter\\Desktop\\Contests/2022/02/23/0ebded3a-bcb7-470a-b5ca-d7d4bd07ba21.jpg', '1');
 
 -- ----------------------------
 -- Table structure for dispatch
@@ -224,8 +227,8 @@ CREATE TABLE `family`  (
 -- ----------------------------
 -- Records of family
 -- ----------------------------
-INSERT INTO `family` VALUES ('20201755', NULL, NULL, NULL, '13861175001', NULL, NULL, NULL, '是');
-INSERT INTO `family` VALUES ('20205644', NULL, NULL, NULL, '15252716118', NULL, NULL, NULL, '是');
+INSERT INTO `family` VALUES ('20201755', '母亲', '123', NULL, '13861175001', NULL, NULL, NULL, '是');
+INSERT INTO `family` VALUES ('20201755', '父亲', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
 INSERT INTO `family` VALUES ('20201640', NULL, NULL, NULL, '15987613985', NULL, NULL, NULL, '是');
 INSERT INTO `family` VALUES ('20201692', NULL, NULL, NULL, '13587881903', NULL, NULL, NULL, '是');
 INSERT INTO `family` VALUES ('20201656', NULL, NULL, NULL, '18323750168', NULL, NULL, NULL, '是');
@@ -263,16 +266,20 @@ CREATE TABLE `msginfo`  (
   `msg_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `msg_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `msg_sender` int(255) NOT NULL,
+  `msg_deliver_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `msg_deadline` datetime NULL DEFAULT NULL,
+  `msg_releasetime` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`msg_no`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of msginfo
 -- ----------------------------
-INSERT INTO `msginfo` VALUES ('1-2022-01-17 14:15:49', '大家好，这是一条测试数据', 1);
-INSERT INTO `msginfo` VALUES ('1-2022-01-17 14:35:36', '大家好，第二条测试数据', 1);
-INSERT INTO `msginfo` VALUES ('1-2022-01-17 14:40:03', '大家好，第三条测试数据', 1);
-INSERT INTO `msginfo` VALUES ('1-2022-01-17 15:21:25', 'String', 1);
+INSERT INTO `msginfo` VALUES ('1-2022-01-17 14:15:49', '大家好，这是一条测试数据', 1, NULL, NULL, NULL);
+INSERT INTO `msginfo` VALUES ('1-2022-01-17 14:35:36', '大家好，第二条测试数据', 1, NULL, NULL, NULL);
+INSERT INTO `msginfo` VALUES ('1-2022-01-17 14:40:03', '大家好，第三条测试数据', 1, NULL, NULL, NULL);
+INSERT INTO `msginfo` VALUES ('1-2022-01-17 15:21:25', 'String', 1, NULL, NULL, NULL);
+INSERT INTO `msginfo` VALUES ('10000-2022-02-24 21:54:34', 'String', 10000, NULL, '2022-02-24 15:25:54', '2022-02-24 15:25:54');
 
 -- ----------------------------
 -- Table structure for paper
@@ -296,9 +303,9 @@ CREATE TABLE `paper`  (
 -- ----------------------------
 -- Records of paper
 -- ----------------------------
-INSERT INTO `paper` VALUES ('156546', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
-INSERT INTO `paper` VALUES ('1', '20181703', '杨焱景', 'MSPLD: Shilling Attack Detection Model Based on Meta Self-Paced Learning', '2021 International Joint Conference on Neural Networks (IJCNN)', '2021/9/20', '否', '否', '10.1109/IJCNN52387.2021.9533622\r\n', '2021', '无', '0');
-INSERT INTO `paper` VALUES ('String182438', 'String2', 'String2', 'String3256', 'String2', 'String2', 'String2', 'St2ring', 'Str2ing', 'Stri2ng', '2String', 'Str2ing');
+INSERT INTO `paper` VALUES ('20214567231342', '20214567', '昌瑶', 'dsfas', 'fads', 'asdf', '是', 'dsf', 'dfsa', 'sdf', 'C:\\Users\\drifter\\Desktop\\Papers/2022/02/23/334b6e29-cf77-462c-b77d-dfc0cc2b86b2.jpg', '1');
+INSERT INTO `paper` VALUES ('20201686234100', '20201686', '张强', 'paper', '1', '1', '否', '2', '2', '1', 'C:\\Users\\drifter\\Desktop\\Papers/2022/02/23/2f2800e1-22ac-4ad0-931b-e3b0a633f256.jpg', '2');
+INSERT INTO `paper` VALUES ('20214567153449', '20214567', '昌瑶', 'dasd ', 'asdw', 'ewr', '是', 'sadf', 'werwe', 'wer', 'C:\\Users\\drifter\\Desktop\\Papers/2022/02/24/bfa4de46-e9e7-4cf5-90da-38a1776a9d5b.pdf', '1');
 
 -- ----------------------------
 -- Table structure for patent
@@ -326,13 +333,19 @@ CREATE TABLE `patent`  (
 INSERT INTO `patent` VALUES ('1', '20184323', '楼朝立', 'MyNote3个人笔记软件', '软件著作权', '2020R11L2782388', '202.12.28', '2021SR0488462', '20210402', '是', '2021', '无', '1');
 INSERT INTO `patent` VALUES ('258963', '789456', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', '1');
 INSERT INTO `patent` VALUES ('159789546', '1596595', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
+INSERT INTO `patent` VALUES ('20201686214104', '20201686', '张强', '专利11', '1', '2', '3', '4', '5', '是', '6', '16f54965-4049-4ebf-a7f5-40b0b6a0d6e1.jpg', '2');
+INSERT INTO `patent` VALUES ('20201686214200', '20201686', '张强', 'patent', '2', '2', '2', '2', '2', '否', '2', 'f1a17501-4aae-4d2a-a452-3e94abadde9f.jpg', '1');
+INSERT INTO `patent` VALUES ('20191574214637', '20191574', '曹越', 'sad2', 'dfsasdf', 'asdfa', 'sdsfasd', 'fasdf', 'asdf', '是', 'dfas', 'bac08f62-142a-4305-b32a-4dfd6489c0a2.pdf', '1');
+INSERT INTO `patent` VALUES ('20214567225628', '20214567', '昌瑶', '535', '56', '5', '5+', '5', '5', '是', '5', 'C:\\Users\\drifter\\Desktop\\Patent/2022/02/23/e5a93b49-2bcb-43a7-a7d6-7815ab4c57cf.jpg', '1');
+INSERT INTO `patent` VALUES ('20214567231419', '20214567', '昌瑶', 'xzcvzxc', 'vzxdfv', 'dsfgads', 'fgadsfga', 'rgadfg', 'dfg', '是', 'dfg', 'C:\\Users\\drifter\\Desktop\\Patent/2022/02/23/b3d20d34-fe9d-4612-9394-10f1ee3c8eb4.jpg', '1');
+INSERT INTO `patent` VALUES ('20201686143358', '20201686', '张强', 'patent1', '1', '2', '3', '4', '5', '是', '6', 'C:\\Users\\drifter\\Desktop\\Patents/2022/02/24/21000582-4bc2-4b95-b8f6-fdcacd5a8c1f.pdf', '1');
 
 -- ----------------------------
 -- Table structure for project
 -- ----------------------------
 DROP TABLE IF EXISTS `project`;
 CREATE TABLE `project`  (
-  `project_no` int(11) NOT NULL,
+  `project_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `project_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `project_unit` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `project_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
@@ -352,9 +365,10 @@ CREATE TABLE `project`  (
 -- ----------------------------
 -- Records of project
 -- ----------------------------
-INSERT INTO `project` VALUES (0, 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String', 'String');
-INSERT INTO `project` VALUES (1, '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '2021', '无', '2');
-INSERT INTO `project` VALUES (123, '信息系统', '软件学院', '自研', '正在完成', '2021年12月26日', '周老师', '软件学院', 'changyao', '20212413', '是', '2021', 'https://sdasd.com', '0');
+INSERT INTO `project` VALUES ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '2021', '无', '2');
+INSERT INTO `project` VALUES ('123', '信息系统', '软件学院', '自研', '正在完成', '2021年12月26日', '周老师', '软件学院', 'changyao', '20212413', '是', '2021', 'https://sdasd.com', '2');
+INSERT INTO `project` VALUES ('20201686223525', 'project1', '33', '2', '3', '4', '6', '7', '张强', '20201686', '否', '5', 'C:\\Users\\drifter\\Desktop\\Project/2022/02/23/0862c867-b26c-483d-a73a-39050e51bc40.pdf', '1');
+INSERT INTO `project` VALUES ('20214567230522', 'fdsg', 'adfg', 'adfg', 'adfg', 'fdag', 'adf', 'ag', '昌瑶', '20214567', '是', 'gad', 'C:\\Users\\drifter\\Desktop\\Project/2022/02/23/a01d8374-d5af-4158-a9d6-6e7164bd0121.jpg', '1');
 
 -- ----------------------------
 -- Table structure for receive
@@ -384,6 +398,7 @@ INSERT INTO `receive` VALUES ('20204146-2022-01-17 14:40:03', '1-2022-01-17 14:4
 INSERT INTO `receive` VALUES ('20204567-2022-01-17 14:15:49', '1-2022-01-17 14:15:49', 20204567, 0);
 INSERT INTO `receive` VALUES ('20204567-2022-01-17 14:40:03', '1-2022-01-17 14:40:03', 20204567, 0);
 INSERT INTO `receive` VALUES ('20212413-2022-01-17 15:21:25', '1-2022-01-17 15:21:25', 20212413, 0);
+INSERT INTO `receive` VALUES ('20214567-2022-02-24 21:54:34', '10000-2022-02-24 21:54:34', 20214567, 0);
 
 -- ----------------------------
 -- Table structure for stay_school_info
@@ -687,6 +702,7 @@ INSERT INTO `student` VALUES (20206024, '20206024', '谭晏欣', 0, '20软件工
 INSERT INTO `student` VALUES (20206351, '20206351', '吴骏', 1, '20软件工程06', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
 INSERT INTO `student` VALUES (20206353, '20206353', '秦晗轩', 1, '20软件工程05', NULL, '侗族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
 INSERT INTO `student` VALUES (20206463, '20206463', '曾颉', 1, '20软件工程01', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '软件工程', '2020年9月');
+INSERT INTO `student` VALUES (20214567, 'Changyao123', '昌瑶', 1, '21软件工程', NULL, '汉族', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for teacher
@@ -705,7 +721,7 @@ CREATE TABLE `teacher`  (
 -- ----------------------------
 -- Records of teacher
 -- ----------------------------
-INSERT INTO `teacher` VALUES (2, '123456', '李潇', '123456', '431', 2);
+INSERT INTO `teacher` VALUES (2, '123456', '李潇', '123456', '431', 21);
 INSERT INTO `teacher` VALUES (10000, 'tan', '周巍', '13595922234', '431', 20);
 
 -- ----------------------------
@@ -713,21 +729,23 @@ INSERT INTO `teacher` VALUES (10000, 'tan', '周巍', '13595922234', '431', 20);
 -- ----------------------------
 DROP TABLE IF EXISTS `voluntary_activities`;
 CREATE TABLE `voluntary_activities`  (
-  `voluntary_activities_no` int(11) NOT NULL,
+  `voluntary_activities_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `voluntary_activities_stu_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `voluntary_activities_studept` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `voluntary_activities_stu_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `voluntary_activities_time_from_to` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `voluntary_activities_time_long` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `voluntary_activities_content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
-  `voluntary_activities_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
+  `voluntary_activities_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `voluntary_activities_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `voluntary_activities_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of voluntary_activities
 -- ----------------------------
-INSERT INTO `voluntary_activities` VALUES (1, '周XX', '重庆大学自动化学院', '201700', '2020.12.31  17.00-22.00', '5', '道具搬运', '1');
-INSERT INTO `voluntary_activities` VALUES (1, '周XX', '重庆大学自动化学院', '02', '2020.12.31  17.00-22.00', '5', '道具搬运', '1');
-INSERT INTO `voluntary_activities` VALUES (0, 'String', 'String', 'String', 'String', 'String', 'String', 'String');
+INSERT INTO `voluntary_activities` VALUES ('1', '周XX', '重庆大学自动化学院', '201700', '2020.12.31  17.00-22.00', '5', '道具搬运', '1', NULL, NULL);
+INSERT INTO `voluntary_activities` VALUES ('1', '周XX', '重庆大学自动化学院', '02', '2020.12.31  17.00-22.00', '5', '道具搬运', '1', NULL, NULL);
+INSERT INTO `voluntary_activities` VALUES ('0', 'String', 'String', '123132', 'String', 'String', 'String', '0', NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -35,11 +35,9 @@ public class BedroomExcel {
  this.studentMapper=studentMapper;
  this.familyMapper=familyMapper;
     }
-    public String allStuBedroomInfo_writ(){
+    public String allStuBedroomInfo_writ(List<Student> studentList){
         StaticComponentContainer.Modules.exportAllToAll();
         List<Bedroom> bedrooms=new ArrayList<>();
-        List<Student> studentList=new ArrayList<>();
-        studentList=studentMapper.findAllStudent();
         List<Student> order_studentlist=new ArrayList<>();
         for(Student student:studentList){
             Bedroom bedroom=new Bedroom();

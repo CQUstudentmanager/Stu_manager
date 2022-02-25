@@ -48,7 +48,10 @@ public class InfoForTeacher {
                 }
 
 
-            }else {
+            }else if (teaidenty.equals("1")){
+                return null;
+            }
+            else {
             for (int i = 0; i < classList.size(); i++) {
                 if (classList.get(i).getClass_name().substring(0, 2).equals(teaidenty)) {
                     right_classlist.add(classList.get(i));

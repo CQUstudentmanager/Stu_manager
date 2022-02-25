@@ -55,8 +55,8 @@ public class NationalScholarshipExcel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        String Path="D:\\";
-        String FileName=Path+"奖学金信息表"+format+".xls";
+        FilePath filePath=new FilePath();
+        String FileName=filePath.getPath()+"奖学金信息表"+format+".xls";
         EasyExcel.write(FileName, Nationalscholarship.class).sheet("奖学金信息表").doWrite(nationalscholarship_s);
         return FileName;
     }

@@ -2,9 +2,11 @@ package com.cqu.stu_manager.controller;
 
 import com.cqu.stu_manager.excel.*;
 import com.cqu.stu_manager.mapper.*;
+import com.cqu.stu_manager.pojo.Class;
 import com.cqu.stu_manager.pojo.ExcelStuList;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.Teacher;
+import com.cqu.stu_manager.utils.InfoForTeacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,9 +33,22 @@ public class excelcontroller {
     @Autowired
     AccommodationMapper accommodationMapper;
     @PostMapping("getStudentBedroomInfo")
-    public String getStudentBedroomInfo(){
+    public String getStudentBedroomInfo(@RequestBody Teacher teacher){
         BedroomExcel bedroomExcel=new BedroomExcel(accommodationMapper,studentMapper,familyMapper);
-        return bedroomExcel.allStuBedroomInfo_writ();
+        InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
+        List<Class> right_class=new ArrayList<>();
+        right_class=infoForTeacher.findRightClass(teacher.getT_no());
+        List<Student> studentList=new ArrayList<>();
+        List<Student> right_studentlist=new ArrayList<>();
+        studentList=studentMapper.findAllStudent();
+        for (int i=0;i<studentList.size();i++){
+            for (int j=0;j<right_class.size();j++){
+                if (studentList.get(i).getStu_class().equals(right_class.get(j).getClass_name())){
+                    right_studentlist.add(studentList.get(i));
+                }
+            }
+        }
+        return bedroomExcel.allStuBedroomInfo_writ(right_studentlist);
 
 
     }
@@ -66,10 +81,23 @@ public class excelcontroller {
     return     studentListGuidanceCounselorExcel.StudentListGuidanceCounselorExcel_Write(teacher.getT_no());
     }
     @PostMapping("/getAllStudentInfoByTemplateForGrant")
-    public String getAllStudentInfoByTemplateForGrant(){
+    public String getAllStudentInfoByTemplateForGrant(@RequestBody Teacher teacher){
         NationalGrantsExcel nationalGrantsExcel=new NationalGrantsExcel(studentMapper);
         List<Student> studentList=new ArrayList<>();
-        return nationalGrantsExcel.write_National_grants_excel(studentList);
+        InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
+        List<Class> RIGHTCLASS=infoForTeacher.findRightClass(teacher.getT_no());
+        studentList=studentMapper.findAllStudent();
+        List<Student>right_studentlist=new ArrayList<>();
+        for (int i=0;i<studentList.size();i++){
+                for(int j=0;j<RIGHTCLASS.size();j++){
+                    if(studentList.get(i).getStu_class().equals(RIGHTCLASS.get(j).getClass_name())){
+                        Student student=new Student();
+                        student=studentList.get(i);
+                        right_studentlist.add(student);
+                    }
+                }
+        }
+        return nationalGrantsExcel.write_National_grants_excel(right_studentlist);
     }
     @PostMapping("/getSomeStudentInfoByTemplateForGrant")
     public String getSomeStudentInfoByTemplateForGrant(@RequestBody ExcelStuList stuList){
@@ -84,10 +112,22 @@ public class excelcontroller {
         return nationalGrantsExcel.write_National_grants_excel(studentList2);
     }
     @PostMapping("/getAllStudentInfoByTemplateForSchoolars")
-    public String getAllStudentInfoByTemplateForSchoolars(){
+    public String getAllStudentInfoByTemplateForSchoolars(@RequestBody Teacher teacher){
         NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
+        InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
+        List<Class> right_class=new ArrayList<>();
+        right_class=infoForTeacher.findRightClass(teacher.getT_no());
         List<Student> studentList=new ArrayList<>();
-        return nationalScholarshipExcel.write_National_scholarship_excel(studentList);
+        List<Student> right_studentlist=new ArrayList<>();
+        studentList=studentMapper.findAllStudent();
+        for (int i=0;i<studentList.size();i++){
+            for (int j=0;j<right_class.size();j++){
+                if(studentList.get(i).getStu_class().equals(right_class.get(j).getClass_name())){
+                    right_studentlist.add(studentList.get(i));
+                }
+            }
+        }
+        return nationalScholarshipExcel.write_National_scholarship_excel(right_studentlist);
     }
     @PostMapping("/getSomeStudentInfoByTemplateForSchoolars")
     public String getSomeStudentInfoByTemplateForSchoolars(@RequestBody ExcelStuList stuList){
@@ -101,10 +141,21 @@ public class excelcontroller {
         return nationalScholarshipExcel.write_National_scholarship_excel(studentList);
     }
     @PostMapping("/getAllStudentInfoByTemplateForSchoolarsB")
-    public String getAllStudentInfoByTemplateForSchoolarsB(){
+    public String getAllStudentInfoByTemplateForSchoolarsB(@RequestBody Teacher teacher){
         NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
+        List<Class> right_class=new ArrayList<>();
+        InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
+        right_class=infoForTeacher.findRightClass(teacher.getT_no());
         List<Student> studentList=new ArrayList<>();
-        return nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement(studentList);
+        List<Student> right_studentlist=new ArrayList<>();
+        for (int i=0;i<studentList.size();i++){
+            for(int j=0;j<right_class.size();j++){
+                if(studentList.get(i).getStu_class().equals(right_class.get(i).getClass_name())){
+                    right_studentlist.add(studentList.get(i));
+                }
+            }
+        }
+        return nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement(right_studentlist);
     }
     @PostMapping("/getSomeStudentInfoByTemplateForSchoolarsB")
     public String getSomeStudentInfoByTemplateForSchoolarsB(@RequestBody ExcelStuList stuList){
