@@ -8,6 +8,7 @@ import com.cqu.stu_manager.mapper.TeacherMapper;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.Teacher;
 import com.cqu.stu_manager.pojo.User;
+import com.cqu.stu_manager.utils.RedisUtil;
 import com.cqu.stu_manager.utils.Result;
 import lombok.extern.log4j.Log4j;
 import org.apache.shiro.SecurityUtils;
@@ -24,6 +25,8 @@ public class logincontroller {
     StudentMapper studentMapper;
     @Autowired
     TeacherMapper teacherMapper;
+    @Autowired
+    RedisUtil redisUtil;
     @PostMapping("/tologin")
     public Result tologin(){
         Result result=new Result();
@@ -65,6 +68,7 @@ public class logincontroller {
                     result.setData(student);
                     result.setCode(1);
                     result.setMsg("登录成功");
+                    redisUtil.incr("totalstudentcount",1);
 //                    StudentRead studentRead=new StudentRead(studentMapper);
 //                    studentRead.simpleRead();
                 }
@@ -82,6 +86,8 @@ public class logincontroller {
                     result.setMsg("登录成功");
                     result.setCode(0);
                     result.setData(teacher);
+                    redisUtil.incr("totalteachercount",1);
+
 
                 }
                 else{
