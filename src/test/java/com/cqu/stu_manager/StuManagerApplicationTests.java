@@ -58,8 +58,8 @@ MsgMapper msgMapper;
     @SneakyThrows
     @Test
     void contextLoads() {
-        UseCountLogin useCountLogin=new UseCountLogin();
-        useCountLogin.setUseCountLogin(redisUtil.get("totalstudentcount").toString());
-        System.out.println(useCountLogin.getUseCountLogin());
+        Msg msg=new Msg();
+        System.out.println(msg = msgMapper.findMsgByMsgNo("2-2022-02-26 21:10:46"));
+        //System.out.println(receiveMapper.findmsgnoByreceiver(20214567));
     }
 }

@@ -17,7 +17,15 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 public class logincontroller {
@@ -48,11 +56,47 @@ public class logincontroller {
         return result;
     }
 
+    @PostMapping("/count")
+    public Result count(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        String format = sdf.format(new Date());
+        String teachercount="";
+        if(redisUtil.get("totalteachercount")!=null){
+        teachercount=redisUtil.get("totalteachercount").toString();
+        }else {teachercount="0";}
+        String studentcount ="";
+        if(redisUtil.get("totalstudentcount")!=null){
+        studentcount=redisUtil.get("totalstudentcount").toString();
+        }else {studentcount="0";}
+        String todaystudent="";
+        String todayteacher="";
+        String format1="";
+        format1=format+"todaystudentcount";
+        if(redisUtil.get(format1)!=null) {
+            todaystudent = redisUtil.get(format1).toString();
+        }else {todaystudent="0";}
+        String format2="";
+        format2=format+"todayteachercount";
+        if(redisUtil.get(format2)!=null) {
+            todayteacher = redisUtil.get(format2).toString();
+        }else {todayteacher="0";}
+        List<String> list=new ArrayList<>();
+        list.add(studentcount);
+        list.add(teachercount);
+        list.add(todaystudent);
+        list.add(todayteacher);
+        Result result=new Result();
+        result.setData(list);
+        return  result;
+}
     @ResponseBody
     @PostMapping("/login")
     public Result login(@RequestBody User user){
         Subject subject= SecurityUtils.getSubject();
         UsernamePasswordToken token=new UsernamePasswordToken(user.getUser_id().toString(),user.getUser_password());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        String format = sdf.format(new Date());
+
         Result result=new Result();
         try{
             subject.login(token);
@@ -68,6 +112,12 @@ public class logincontroller {
                     result.setData(student);
                     result.setCode(1);
                     result.setMsg("登录成功");
+                    format=format+"todaystudentcount";
+                    if(redisUtil.hasKey(format)){
+                        redisUtil.incr(format,1);
+                    }else {
+                        redisUtil.set(format,1);
+                    }
                     redisUtil.incr("totalstudentcount",1);
 //                    StudentRead studentRead=new StudentRead(studentMapper);
 //                    studentRead.simpleRead();
@@ -86,6 +136,12 @@ public class logincontroller {
                     result.setMsg("登录成功");
                     result.setCode(0);
                     result.setData(teacher);
+                    format=format+"todayteachercount";
+                    if(redisUtil.hasKey(format)){
+                        redisUtil.incr(format,1);
+                    }else {
+                        redisUtil.set(format,1);
+                    }
                     redisUtil.incr("totalteachercount",1);
 
 

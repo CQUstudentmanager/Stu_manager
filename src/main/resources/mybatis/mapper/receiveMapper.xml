@@ -9,7 +9,14 @@
     <select id="findAlreadyReady" parameterType="com.cqu.stu_manager.pojo.Receive">
             select count(*) from receive where msg_no2=#{meg_no2} and status=0
     </select>
-    <select id="findmsgnoByreceiver" parameterType="com.cqu.stu_manager.pojo.Receive" resultType="com.cqu.stu_manager.pojo.Receive">
-                select * from receive where receiver=#{receiver}
+    <select id="findmsgnoByreceiver"  resultType="com.cqu.stu_manager.pojo.Receive">
+                select * from receive where receiver=#{receiver_no}
     </select>
+    <update id="readMsg" >
+            update receive set status='1' where msg_no2=#{msg_no} and receiver=#{receiver}
+    </update>
+    <update id="finish">
+    update receive set status='2' where msg_no2=#{msg_no} and receiver=#{receiver}
+    </update>
+
 </mapper>

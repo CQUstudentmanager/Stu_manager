@@ -14,5 +14,9 @@ public interface ReceiveMapper {
     int addReceiver(Receive receive);
     int findAlreadyReady(String msg_no);
     int findNotRead(String msg_no);
-    List<Receive> findmsgnoByreceiver(Receive receive);
+    List<Receive> findmsgnoByreceiver(Integer receiver_no);
+
+    int  readMsg(String msg_no,Integer receiver);
+
+    int  finish(String msg_no,Integer receiver);
 }

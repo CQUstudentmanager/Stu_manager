@@ -356,6 +356,33 @@ public class studentcontroller {
         else{result.setMsg("信息更新失败");}
         return result;
     }
+    @PostMapping("/read_msg")
+    public String read_msg(@RequestBody Receive receive){
+
+
+            return receiveMapper.readMsg(receive.getMsg_no2(),receive.getReceiver())+"条任务已收到";
+    }
+    @PostMapping("/finish_msg")
+    public String finish_msg(@RequestBody Receive receive){
+
+            return receiveMapper.finish(receive.getMsg_no2(),receive.getReceiver())+"条任务已完成";
+    }
+    @PostMapping("getstudent_msg")
+    public Result getstudent_msg(@RequestBody Student student){
+            List<Receive> receivelist=new ArrayList<>();
+            receivelist=receiveMapper.findmsgnoByreceiver(student.getStu_no());
+            Result result=new Result();
+            List<Msg> msgList=new ArrayList<>();
+        for (int i = 0; i <receivelist.size() ; i++) {
+            Msg msg=new Msg();
+            msg=msgMapper.findMsgByMsgNo(receivelist.get(i).getMsg_no2());
+            msg.setStatus(receivelist.get(i).getStatus());
+            msgList.add(msg);
+
+        }
+            result.setData(msgList);
+            return result;
+    }
 }
 
 

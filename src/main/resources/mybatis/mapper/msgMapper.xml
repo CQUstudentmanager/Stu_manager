@@ -12,4 +12,7 @@
     <select id="findAllMsgByNo" parameterType="com.cqu.stu_manager.pojo.Msg" resultType="com.cqu.stu_manager.pojo.Msg">
         select * from msginfo where msg_no=#{msg_no}
     </select>
+    <select id="findMsgByMsgNo" resultType="com.cqu.stu_manager.pojo.Msg">
+        select * from msginfo where msg_no=#{msg_no}
+    </select>
 </mapper>

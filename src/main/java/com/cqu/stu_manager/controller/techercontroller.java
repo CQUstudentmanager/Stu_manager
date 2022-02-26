@@ -114,7 +114,7 @@ public class techercontroller {
         //将消息的no改为老师的no加上当前时间
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String format = sdf.format(new Date());
-        Msg msg = new Msg(msgReceiver.getMsg_sender()+"-"+format,msgReceiver.getMsg_content(),msgReceiver.getMsg_sender(),msgReceiver.getMsg_deadline(),msgReceiver.getMsg_releasetime());
+        Msg msg = new Msg(msgReceiver.getMsg_sender()+"-"+format,msgReceiver.getMsg_content(),msgReceiver.getMsg_sender(),msgReceiver.getMsg_deadline(),msgReceiver.getMsg_releasetime(),0);
         //用于后面存放学生接收情况到数据库
         Receive receive = new Receive();
         receive.setMsg_no2(msg.getMsg_no());

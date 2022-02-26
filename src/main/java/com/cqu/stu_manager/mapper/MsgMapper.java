@@ -13,4 +13,7 @@ public interface MsgMapper {
     int addMsg(Msg msg);
     List<Msg> findAllMsg(Teacher teacher);//找到该老师发布的所有消息
     Msg findAllMsgByNo(Msg msg);
+    Msg findMsgByMsgNo(String msg_no);
+
+
 }
