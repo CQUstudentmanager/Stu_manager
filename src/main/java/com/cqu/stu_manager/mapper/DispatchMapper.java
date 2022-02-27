@@ -10,5 +10,9 @@ import java.util.List;
 public interface DispatchMapper {
     List<Dispatch> findAllDispatch();
     int insertDispatchByStudent(Dispatch dispatch);
+    int updateDispatchByStudent(Dispatch dispatch);
     List<Dispatch> findDispatchByStuno(Student student);
+    int deleteDispatch(Dispatch dispatch);
+    int passDispatch(Dispatch dispatch);
+    int refuseDispatch(Dispatch dispatch);
 }

@@ -30,4 +30,6 @@ public class Dispatch {
     private String dispatch_email;
     private String dispatch_is_admission;
     private String dispatch_is_top200;
+    private String dispatch_status;
+    private  String dispatch_supporting_materials;
 }

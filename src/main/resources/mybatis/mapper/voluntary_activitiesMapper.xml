@@ -51,4 +51,22 @@
         where voluntary_activities_no = #{voluntary_activities_no}
     </update>
 
+    <delete id="deleteActivity" parameterType="com.cqu.stu_manager.pojo.Voluntary_activities">
+        delete
+        from voluntary_activities
+        where voluntary_activities_no = #{voluntary_activities_no}
+    </delete>
+
+    <update id="pass_activity" parameterType="com.cqu.stu_manager.pojo.Voluntary_activities">
+        update voluntary_activities
+        set voluntary_activities_status = '1'
+        where voluntary_activities_no = #{voluntary_activities_no}
+    </update>
+
+    <update id="refuse_activity" parameterType="com.cqu.stu_manager.pojo.Voluntary_activities">
+        update voluntary_activities
+        set voluntary_activities_status = '2'
+        where voluntary_activities_no = #{voluntary_activities_no}
+    </update>
+
 </mapper>

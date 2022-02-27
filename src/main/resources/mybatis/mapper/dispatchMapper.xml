@@ -31,7 +31,9 @@
             dispatch_tel,
             dispatch_email,
             dispatch_is_admission,
-            dispatch_is_top200
+            dispatch_is_top200,
+            dispatch_status,
+            dispatch_supporting_materials
         )values
            (
             #{dispatch_no},
@@ -54,8 +56,54 @@
             #{dispatch_tel},
             #{dispatch_email},
             #{dispatch_is_admission},
-            #{dispatch_is_top200}
+            #{dispatch_is_top200},
+            #{dispatch_status},
+            #{dispatch_supporting_materials}
         )
     </insert>
 
+    <update id="updateDispatchByStudent" parameterType="com.cqu.stu_manager.pojo.Dispatch">
+        update dispatch
+        set
+            dispatch_name = #{dispatch_name},
+            dispatch_level = #{dispatch_level},
+            dispatch_project_type = #{dispatch_project_type},
+            dispatch_nation = #{dispatch_nation},
+            dispatch_continent = #{dispatch_continent},
+            dispatch_foreign_counterpart = #{dispatch_foreign_counterpart},
+            dispatch_stu_name = #{dispatch_stu_name},
+            dispatch_stu_gender = #{dispatch_stu_gender},
+            dispatch_stu_no = #{dispatch_stu_no},
+            dispatch_stu_department = #{dispatch_stu_department},
+            dispatch_stu_major = #{dispatch_stu_major},
+            dispatch_project_time_from_to =  #{dispatch_project_time_from_to},
+            dispatch_greater_than_3month = #{dispatch_greater_than_3month},
+            dispatch_arrangement = #{dispatch_arrangement},
+            dispatch_grade = #{dispatch_grade},
+            dispatch_passport_no = #{dispatch_passport_no},
+            dispatch_tel = #{dispatch_tel},
+            dispatch_email = #{dispatch_email},
+            dispatch_is_admission = #{dispatch_is_admission},
+            dispatch_is_top200 = #{dispatch_is_top200},
+            dispatch_status = #{dispatch_status},
+            dispatch_supporting_materials=#{dispatch_supporting_materials}
+        where dispatch_no = #{dispatch_no}
+    </update>
+
+    <delete id="deleteDispatch" parameterType="com.cqu.stu_manager.pojo.Dispatch">
+        delete from dispatch
+        where dispatch_no = #{dispatch_no}
+    </delete>
+
+    <update id="passDispatch" parameterType="com.cqu.stu_manager.pojo.Dispatch">
+        update dispatch
+        set dispatch_status = '1'
+        where dispatch_no = #{dispatch_no}
+    </update>
+
+    <update id="refuseDispatch" parameterType="com.cqu.stu_manager.pojo.Dispatch">
+        update dispatch
+        set dispatch_status = '2'
+        where dispatch_no = #{dispatch_no}
+    </update>
 </mapper>

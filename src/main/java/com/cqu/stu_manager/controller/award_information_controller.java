@@ -764,7 +764,7 @@ public class award_information_controller {
         Result result = new Result();
         List<Voluntary_activities> activityList = voluntary_activitiesMapper.findAllVoluntary_activities();
         for (int i = 0; i < activityList.size(); i++) {
-            if (activityList.get(i).getVoluntary_activities_stu_no().equals(activity.getVoluntary_activities_stu_no()) && activityList.get(i).getVoluntary_activities_content().equals(activity.getVoluntary_activities_content())) {
+            if (activity.getVoluntary_activities_no().length()==0&&activityList.get(i).getVoluntary_activities_stu_no().equals(activity.getVoluntary_activities_stu_no()) && activityList.get(i).getVoluntary_activities_content().equals(activity.getVoluntary_activities_content())) {
                 result.setMsg("信息已经上传，请勿重复上传");
                 return result;
             }
@@ -826,5 +826,185 @@ public class award_information_controller {
         return result;
     }
 
+    //7.审核通过
+    @PostMapping("/pass_activity")
+    public Result pass_activity(@RequestBody Voluntary_activities activity) {
+        voluntary_activitiesMapper.pass_activity(activity);
+        Result result = new Result();
+        result.setMsg("通过成功");
+        return result;
+    }
+
+    //8.信息审核未通过
+    @PostMapping("/refuse_activity")
+    public Result refuse_activity(@RequestBody Voluntary_activities activity) {
+        voluntary_activitiesMapper.refuse_activity(activity);
+        Result result = new Result();
+        result.setMsg("驳回成功");
+        return result;
+    }
+
+
+
+
+    //外派相关
+    @Autowired
+    DispatchMapper dispatchMapper;
+
+    //1.找到所有的未审核的外派信息
+    @PostMapping("find_all_dispatch_new")
+    @ResponseBody
+    public List<Dispatch> findAllDispatchNew(@RequestBody Teacher teacher) {
+        List<Dispatch> dispatchList = dispatchMapper.findAllDispatch();
+        List<Dispatch> result = new ArrayList<>();
+        for (Dispatch d : dispatchList) {
+            //找到外派对应的学生
+            Student student = studentMapper.findOneStudent(parseInt(d.getDispatch_stu_no()));
+            if(student == null){
+                continue;
+            }
+            //看年纪是否相同，且外派的状态为0
+            if (student.getStu_class().substring(0, 2).equals(teacher.getT_identity().toString()) && d.getDispatch_status().equals("0")) {
+                result.add(d);
+            }
+        }
+        return result;
+    }
+
+    //2.找到所有的已经审核的外派信息
+    @PostMapping("find_all_dispatch_old")
+    @ResponseBody
+    public List<Dispatch> findAllDispatchOld(@RequestBody Teacher teacher) {
+        List<Dispatch> dispatchList = dispatchMapper.findAllDispatch();
+        List<Dispatch> result = new ArrayList<>();
+        for (Dispatch d : dispatchList) {
+            //找到外派对应的学生
+            Student student = studentMapper.findOneStudent(parseInt(d.getDispatch_stu_no()));
+            if(student == null){
+                continue;
+            }
+            //看年纪是否相同，且外派的状态不为0
+            if (student.getStu_class().substring(0, 2).equals(teacher.getT_identity().toString()) && !d.getDispatch_status().equals("0")) {
+                result.add(d);
+            }
+        }
+        return result;
+    }
+
+    //3.找到对应学生的志外派信息
+    @PostMapping("/find_my_dispatch_info")
+    public List<Dispatch> find_my_dispatch_info(@RequestBody Student student) {
+        return dispatchMapper.findDispatchByStuno(student);
+    }
+
+    //4.上传外派信息
+    @PostMapping("upload_dispatch_info")
+    @ResponseBody
+    @CrossOrigin
+    public Result uploadDispatch(@RequestBody Dispatch dispatch) {
+        Result result = new Result();
+        List<Dispatch> dispatchList = dispatchMapper.findAllDispatch();
+        for (int i = 0; i < dispatchList.size(); i++) {
+            if (dispatch.getDispatch_no().length()==0&&dispatchList.get(i).getDispatch_stu_no().equals(dispatch.getDispatch_stu_no()) && dispatchList.get(i).getDispatch_name().equals(dispatch.getDispatch_name())) {
+                result.setMsg("信息已经上传，请勿重复上传");
+                return result;
+            }
+        }
+        if (dispatch.getDispatch_no() == null || dispatch.getDispatch_no().length() == 0) {
+            String str = dispatch.getDispatch_stu_no();
+            SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+            String format = sdf.format(new Date());
+            dispatch.setDispatch_no(str + format);
+            //插入
+            result.setMsg(dispatchMapper.insertDispatchByStudent(dispatch) + "条消息已经上传");
+            return result;
+        } else {
+            //更新
+            result.setMsg(dispatchMapper.updateDispatchByStudent(dispatch) + "条消息已经修改");
+            return result;
+        }
+    }
+
+    //5.上传外派证明材料
+    @PostMapping("upload_dispatch_info2")
+    @ResponseBody
+    @CrossOrigin
+    public Result uploadDispatch2(MultipartFile file, HttpServletRequest request) {
+        Result result = new Result();
+        String newName = UUID.randomUUID().toString();
+        //获取上传的文件名字，看是否为jpg文件或者pdf，不是的话直接返回错误信息
+        if (file == null) {
+            result.setMsg("未收到文件");
+            return result;
+        } else {
+            String s = file.getOriginalFilename();
+            assert s != null;
+            String originName = s.toUpperCase();
+            if (!(originName.endsWith("JPG") || originName.endsWith("PDF"))) {
+                result.setMsg("文件类型错误");
+                return result;
+            }
+            if (originName.endsWith("JPG")) {
+                newName += ".jpg";
+            } else if (originName.endsWith("PDF")) {
+                newName += ".pdf";
+            }
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
+        String format = sdf.format(new Date());
+        String realPath = "C:\\Users\\drifter\\Desktop\\Dispatches" + format;//存储在本机上的路径
+        File folder = new File(realPath);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+        try {
+            file.transferTo(new File(folder, newName));
+            result.setMsg("文件上传成功");
+            result.setData(realPath + newName);
+        } catch (IOException e) {
+            result.setMsg(e.getMessage());
+        }
+        return result;
+    }
+
+    //6.删除外派信息
+    @PostMapping("/delete_dispatch")
+    public Result delete_dispatch(@RequestBody Dispatch dispatch) {
+        Result result = new Result();
+        result.setMsg(dispatchMapper.deleteDispatch(dispatch) + "条删除");
+        return result;
+    }
+
+    //7.信息审核通过
+    @PostMapping("/pass_dispatch")
+    public Result pass_dispatch(@RequestBody Dispatch dispatch) {
+        dispatchMapper.passDispatch(dispatch);
+        Result result = new Result();
+        result.setMsg("通过成功");
+        return result;
+    }
+
+    //8.信息审核未通过
+    @PostMapping("/refuse_dispatch")
+    public Result refuse_dispatch(@RequestBody Dispatch dispatch) {
+        dispatchMapper.refuseDispatch(dispatch);
+        Result result = new Result();
+        result.setMsg("驳回成功");
+        return result;
+    }
+
+    //9.判断是否有正在审核的信息
+    @PostMapping("/dispatch_isexamineing")
+    public Integer dispatch_isexamineing(@RequestBody Student student) {
+        List<Dispatch> dispatchList = new ArrayList<>();
+        dispatchList = dispatchMapper.findDispatchByStuno(student);
+        Integer count = 0;
+        for (int i = 0; i < dispatchList.size(); i++) {
+            if (dispatchList.get(i).getDispatch_status().equals("0")) {
+                count++;
+            }
+        }
+        return count;
+    }
 
 }
