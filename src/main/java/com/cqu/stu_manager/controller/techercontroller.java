@@ -3,6 +3,7 @@ package com.cqu.stu_manager.controller;
 import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
+import com.cqu.stu_manager.utils.RedisUtil;
 import com.cqu.stu_manager.utils.Result;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,7 +115,7 @@ public class techercontroller {
         //将消息的no改为老师的no加上当前时间
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String format = sdf.format(new Date());
-        Msg msg = new Msg(msgReceiver.getMsg_sender()+"-"+format,msgReceiver.getMsg_content(),msgReceiver.getMsg_sender(),msgReceiver.getMsg_deadline(),msgReceiver.getMsg_releasetime(),0);
+        Msg msg = new Msg(msgReceiver.getMsg_sender()+"-"+format,msgReceiver.getMsg_content(),msgReceiver.getMsg_sender(),msgReceiver.getMsg_deadline(),msgReceiver.getMsg_releasetime(),"",0,0,0,0);
         //用于后面存放学生接收情况到数据库
         Receive receive = new Receive();
         receive.setMsg_no2(msg.getMsg_no());
@@ -168,16 +169,15 @@ public class techercontroller {
 
 
 
-    @PostMapping("Tea/findReadStatus")
+    @PostMapping("Tea/findAllStatus")
     @ResponseBody
-    public Result findAlreadyRead(@RequestBody Teacher teacher){
+    public Result findAllRead(@RequestBody Teacher teacher){
         Result result = new Result();
         Teacher teacher1 = teacherMapper.findOneTeacher(teacher.getT_no());
         if(teacher1 == null){
             result.setMsg("无当前教师信息");
             return result;
         }
-        Map<Msg,String> listMap = new HashMap<>();
         //先找到该老师所发布的所有消息的msg_no
         List<Msg> allMsg = msgMapper.findAllMsg(teacher);
         if(allMsg.isEmpty()){
@@ -186,14 +186,65 @@ public class techercontroller {
         }
         for(Msg msg:allMsg){
             //对于每一个消息，找到已读的所有学生
-            int number1 = receiveMapper.findAlreadyReady(msg.getMsg_no());//找到已经读了的
-            int number2 = receiveMapper.findNotRead(msg.getMsg_no());//找到未读的
-            listMap.put(msg,number1 + "已读," + number2 +"未读。");
+            List<Receive> receiveList = receiveMapper.findAlreadyReady(msg.getMsg_no());//找到已经读了的
+            List<Receive> receiveList1 = receiveMapper.findNotRead(msg.getMsg_no());
+            List<Receive> receiveList2 = receiveMapper.findHaveDone(msg.getMsg_no());
+            msg.setDone(receiveList2.size());
+            msg.setRead(receiveList.size());
+            msg.setAll(receiveList1.size()+receiveList.size());
         }
         result.setMsg("当前老师发布的所有消息的阅读情况如下：");
-        result.setData(listMap);
+        Collections.sort(allMsg, new Comparator<Msg>() {
+            @Override
+            public int compare(Msg o1, Msg o2) {
+                return o2.getMsg_releasetime().compareTo(o1.getMsg_releasetime());
+            }
+        });
+        result.setData(allMsg);
         return result;
     }
+    @Autowired
+    RedisUtil redisUtil;
+    @PostMapping("Tea/findWhoReadOneMsg")
+    @ResponseBody
+    public Result findWhoReadOneMsg(@RequestBody Msg msg){
+        Result result = new Result<>();
+        List<Receive> receiveList = receiveMapper.findAll(msg.getMsg_no());
+        if(receiveList  == null || receiveList.size() == 0){
+            result.setMsg("当前消息不存在");
+            return result;
+        }
+        for(Receive r:receiveList){
+            Student student = studentMapper.findOneStudent(r.getReceiver());
+            r.setStuClass(student.getStu_class());
+            r.setStuName(student.getStu_name());
+        }
+        result.setData(receiveList);
+        result.setMsg("当前消息的阅读情况如下");
+        return result;
+    }
+    @PostMapping("/updateMsg")
+    public Result updateMsg(@RequestBody Msg msg)
+    {
+        Result result=new Result();
+        Integer count=0;
+        count=msgMapper.updateMsg(msg);
+        if(count==0){
+            result.setMsg("消息未变更");
+        }else {
+            result.setMsg("修改成功");
+        }
+        return  result;
+    }
+    @PostMapping("/deleteMsg")
+    public Result deleteMsg(@RequestBody Msg msg){
+        Result result=new Result();
+        if(msgMapper.deleteMsg(msg.getMsg_no())!=0&&receiveMapper.deleteByMsgNo(msg.getMsg_no())!=0){
+            result.setMsg("消息删除成功");
+        }else {result.setMsg("出现未知错误");}
+return result;
+    }
+
 
     @ResponseBody
     @PostMapping("Tea/test")

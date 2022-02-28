@@ -8,6 +8,7 @@ import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.Class;
 import com.cqu.stu_manager.pojo.Msg;
 import com.cqu.stu_manager.pojo.Stayschool;
+import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.utils.InfoForTeacher;
 import com.cqu.stu_manager.utils.RedisUtil;
 import lombok.SneakyThrows;
@@ -58,8 +59,7 @@ MsgMapper msgMapper;
     @SneakyThrows
     @Test
     void contextLoads() {
-        Msg msg=new Msg();
-        System.out.println(msg = msgMapper.findMsgByMsgNo("2-2022-02-26 21:10:46"));
-        //System.out.println(receiveMapper.findmsgnoByreceiver(20214567));
+        Msg msg = new Msg();
+        System.out.println(msg);
     }
 }

@@ -3,20 +3,40 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cqu.stu_manager.mapper.ReceiveMapper">
+
     <insert id="addReceiver" parameterType="com.cqu.stu_manager.pojo.Receive">
             insert into receive(receive_no,msg_no2,receiver,status) values (#{receive_no},#{msg_no2},#{receiver},#{status})
     </insert>
-    <select id="findAlreadyReady" parameterType="com.cqu.stu_manager.pojo.Receive">
-            select count(*) from receive where msg_no2=#{meg_no2} and status=0
+
+    <select id="findHaveDone" resultType="com.cqu.stu_manager.pojo.Receive">
+                select * from receive where msg_no2=#{msg_no2} and status='2'
+        </select>
+
+    <select id="findAlreadyReady" resultType="com.cqu.stu_manager.pojo.Receive">
+            select * from receive where msg_no2=#{msg_no2} and status='1'
     </select>
+
+    <select id="findNotRead" resultType="com.cqu.stu_manager.pojo.Receive">
+                select * from receive where msg_no2=#{msg_no2} and status='0'
+     </select>
+
+     <select id="findAll" resultType="com.cqu.stu_manager.pojo.Receive">
+                 select * from receive where msg_no2=#{msg_no2}
+         </select>
+
     <select id="findmsgnoByreceiver"  resultType="com.cqu.stu_manager.pojo.Receive">
                 select * from receive where receiver=#{receiver_no}
     </select>
+
     <update id="readMsg" >
             update receive set status='1' where msg_no2=#{msg_no} and receiver=#{receiver}
     </update>
+
     <update id="finish">
     update receive set status='2' where msg_no2=#{msg_no} and receiver=#{receiver}
     </update>
+    <delete id="deleteByMsgNo">
+    delete from receive where msg_no2=#{msg_no}
+    </delete>
 
 </mapper>

@@ -21,5 +21,31 @@
         family_ismain = #{family_ismain}
         where family_stu_no = #{family_stu_no} and family_relationship = #{family_relationship}
     </update>
+    <insert id="addFamilyInfo" parameterType="com.cqu.stu_manager.pojo.Family">
+        insert into family (
+            family_stu_no,
+                family_relationship,
+family_name,
+family_age,
+family_tel,
+family_work,
+family_duties,
+family_workplace,
+family_ismain
+
+        ) values
+                 (
+                                      #{family_stu_no},
+                                        #{family_relationship},
+                                      #{family_name},
+                                      #{family_age},
+                                      #{family_tel},
+                                      #{family_work},
+                                      #{family_duties},
+                                      #{family_workplace},
+                                      #{family_ismain}
+
+                                  )
+    </insert>
 
 </mapper>

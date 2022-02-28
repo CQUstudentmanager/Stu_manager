@@ -15,4 +15,10 @@
     <select id="findMsgByMsgNo" resultType="com.cqu.stu_manager.pojo.Msg">
         select * from msginfo where msg_no=#{msg_no}
     </select>
+    <update id="updateMsg" parameterType="com.cqu.stu_manager.pojo.Msg">
+        update msginfo set msg_content=#{msg_content},msg_sender=#{msg_sender},msg_deadline=#{msg_deadline},msg_releasetime=#{msg_releasetime} where msg_no=#{msg_no}
+    </update>
+    <delete id="deleteMsg">
+        delete  from msginfo where msg_no=#{msg_no}
+    </delete>
 </mapper>

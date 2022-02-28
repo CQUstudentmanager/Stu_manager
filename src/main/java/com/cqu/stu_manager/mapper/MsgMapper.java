@@ -16,4 +16,7 @@ public interface MsgMapper {
     Msg findMsgByMsgNo(String msg_no);
 
 
+    int  updateMsg(Msg msg);
+
+    int deleteMsg(String msg_no);
 }

@@ -18,4 +18,27 @@
         college_entrance_examination_comprehensive = #{college_entrance_examination_comprehensive}
         where  college_entrance_examination_stu_no = #{college_entrance_examination_stu_no}
     </update>
+    <insert id="addcollegeEntranceExamination" parameterType="com.cqu.stu_manager.pojo.CollegeEntranceExamination">
+         insert into college_entrance_examination (
+            college_entrance_examination_no,
+            college_entrance_examination_highschool_name,
+            college_entrance_examination_type,
+            college_entrance_examination_chinese,
+            college_entrance_examination_math,
+            college_entrance_examination_english,
+            college_entrance_examination_comprehensive,
+            college_entrance_examination_stu_no
+
+         )values (
+                #{college_entrance_examination_no},
+                #{college_entrance_examination_highschool_name},
+                #{college_entrance_examination_type},
+                #{college_entrance_examination_chinese},
+                #{college_entrance_examination_math},
+                #{college_entrance_examination_english},
+                #{college_entrance_examination_comprehensive},
+                #{college_entrance_examination_stu_no}
+
+                          )
+    </insert>
 </mapper>

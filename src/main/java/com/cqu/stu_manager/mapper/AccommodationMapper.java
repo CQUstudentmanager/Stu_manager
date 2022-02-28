@@ -10,4 +10,6 @@ public interface AccommodationMapper {
     List<Accommodation> findAllAccommodation();
     Accommodation findStuAccommodation(String stuno);//根据学号单独查找住宿信息
     int updateAccommodationInfo(Accommodation accommodation);//更新宿舍信息
+
+    int addaccommodation(Accommodation accommodation);
 }

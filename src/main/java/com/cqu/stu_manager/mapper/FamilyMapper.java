@@ -10,4 +10,6 @@ public interface FamilyMapper {
     Family findMainmember(String stuno);
     List<Family> findAllMembers(String stuno);//找到所有家庭成员
     int updateFamilyInfo(Family family);
+
+    int  addFamilyInfo(Family family);
 }

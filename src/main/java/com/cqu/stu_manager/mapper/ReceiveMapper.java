@@ -12,11 +12,15 @@ import java.util.List;
 @Repository
 public interface ReceiveMapper {
     int addReceiver(Receive receive);
-    int findAlreadyReady(String msg_no);
-    int findNotRead(String msg_no);
+    List<Receive> findAlreadyReady(String msg_no2);
+    List<Receive> findNotRead(String msg_no2);
+    List<Receive> findHaveDone(String msg_no2);
     List<Receive> findmsgnoByreceiver(Integer receiver_no);
+    List<Receive> findAll(String msg_no2);
 
     int  readMsg(String msg_no,Integer receiver);
 
     int  finish(String msg_no,Integer receiver);
+
+    int deleteByMsgNo(String msg_no);
 }

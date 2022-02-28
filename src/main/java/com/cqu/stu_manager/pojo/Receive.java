@@ -13,4 +13,6 @@ public class Receive {
     private String msg_no2;
     private Integer receiver;
     private Integer status;
+    private String stuName;
+    private String stuClass;
 }

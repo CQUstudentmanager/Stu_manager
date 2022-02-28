@@ -18,5 +18,24 @@
         accommodation_information_ismain = #{accommodation_information_ismain}
         where  accommodation_information_stu_no = #{accommodation_information_stu_no}
     </update>
+    <insert id="addaccommodation" parameterType="com.cqu.stu_manager.pojo.Accommodation">
+        insert into  accommodation_information (
+            accommodation_information_no,
+        accommodation_information_stu_no,
+accommodation_information_room_no,
+accommodation_information_bed,
+accommodation_information_building,
+accommodation_information_ismain
+
+        )values (
+                            #{accommodation_information_no},
+                            #{accommodation_information_stu_no},
+                            #{accommodation_information_room_no},
+                            #{accommodation_information_bed},
+                            #{accommodation_information_building},
+                            #{accommodation_information_ismain}
+
+                        )
+    </insert>
 
 </mapper>

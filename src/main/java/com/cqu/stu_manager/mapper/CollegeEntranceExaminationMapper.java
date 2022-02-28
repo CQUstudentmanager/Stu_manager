@@ -8,4 +8,6 @@ public interface CollegeEntranceExaminationMapper
 {
     CollegeEntranceExamination findStudentCollegeEntranceExamination(String stuno);
     int updateEntranceInfo(CollegeEntranceExamination collegeEntranceExamination);//更新高考信息
+
+    int addcollegeEntranceExamination(CollegeEntranceExamination c);
 }

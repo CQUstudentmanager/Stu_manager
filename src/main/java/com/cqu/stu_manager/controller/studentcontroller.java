@@ -256,6 +256,8 @@ public class studentcontroller {
         @PostMapping("Stu/updateDormitoryInfo")
         @ResponseBody
     public Result updateDormitoryInfo(@RequestBody Accommodation accommodation){
+            Accommodation accommodation1=new Accommodation();
+            accommodation1=accommodationMapper.findStuAccommodation(accommodation.getAccommodation_information_stu_no());
             Result result = new Result();
             if(accommodation.getAccommodation_information_no() == null){
                 SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
@@ -263,10 +265,12 @@ public class studentcontroller {
                 String no = accommodation.getAccommodation_information_stu_no();
                 accommodation.setAccommodation_information_no(no +format);
             }
-            if(accommodationMapper.updateAccommodationInfo(accommodation) == 1) {
+            if(accommodation1!=null&&accommodationMapper.updateAccommodationInfo(accommodation) == 1) {
                 result.setMsg("信息更新成功");
             }
-            else{result.setMsg("信息更新失败");}
+            else{
+                accommodationMapper.addaccommodation(accommodation);
+                result.setMsg("消息上传成功");}
             return result;
         }
 
@@ -293,16 +297,20 @@ public class studentcontroller {
         @ResponseBody
         public Result updateEntranceInfo(@RequestBody CollegeEntranceExamination c){
             Result result = new Result<>();
+           CollegeEntranceExamination collegeEntranceExamination=new CollegeEntranceExamination();
+           collegeEntranceExaminationMapper.findStudentCollegeEntranceExamination(c.getCollege_entrance_examination_no());
             if(c.getCollege_entrance_examination_no() == null || c.getCollege_entrance_examination_no().length() == 0){
                 SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
                 String format = sdf.format(new Date());
                 String no = c.getCollege_entrance_examination_stu_no();
                 c.setCollege_entrance_examination_no(no + format);
             }
-            if(collegeEntranceExaminationMapper.updateEntranceInfo(c) == 1) {
+            if(collegeEntranceExamination!=null&&collegeEntranceExaminationMapper.updateEntranceInfo(c) == 1) {
                 result.setMsg("信息更新成功");
             }
-            else{result.setMsg("信息更新失败");}
+            else{
+                collegeEntranceExaminationMapper.addcollegeEntranceExamination(c);
+                result.setMsg("信息添加成功");}
             return result;
         }
 
@@ -350,23 +358,57 @@ public class studentcontroller {
     @ResponseBody
     public Result updateFamilyInfo(@RequestBody Family family){
         Result result = new Result<>();
+        List<Family> familyList=new ArrayList<>();
+        Integer countfather=0;
+        Integer countmother=0;
+
+        familyList=familyMapper.findAllMembers(family.getFamily_stu_no());
+        if(familyList.size()!=0){
+        for (int i = 0; i < familyList.size(); i++) {
+            if("母亲".equals(familyList.get(i).getFamily_relationship())){
+                countmother=1;
+            }
+            if ("父亲".equals(familyList.get(i).getFamily_relationship())){
+                countfather=1;
+            }
+        }}
         if( familyMapper.updateFamilyInfo(family) == 1) {
             result.setMsg("信息更新成功");
         }
-        else{result.setMsg("信息更新失败");}
+        else if((countfather==0 ||countmother==0)){
+            if(countmother==0&&"母亲".equals(family.getFamily_relationship())){
+            familyMapper.addFamilyInfo(family);
+            result.setMsg("信息上传成功");
+            }
+            else if (countfather==0&&"父亲".equals(family.getFamily_relationship())){
+                familyMapper.addFamilyInfo(family);
+                result.setMsg("信息上传成功");
+            }
+        }
+        else {
+            result.setMsg("操作错误");
+
+        }
         return result;
     }
     @PostMapping("/read_msg")
-    public String read_msg(@RequestBody Receive receive){
+    public Result read_msg(@RequestBody Receive receive){
 
 
-            return receiveMapper.readMsg(receive.getMsg_no2(),receive.getReceiver())+"条任务已收到";
-    }
+        Result result=new Result();
+        result.setMsg( receiveMapper.readMsg(receive.getMsg_no2(),receive.getReceiver())+"条已读");
+        return  result;}
     @PostMapping("/finish_msg")
-    public String finish_msg(@RequestBody Receive receive){
+    public Result finish_msg(@RequestBody Receive receive){
+        Result result=new Result();
 
-            return receiveMapper.finish(receive.getMsg_no2(),receive.getReceiver())+"条任务已完成";
+        result.setMsg(receiveMapper.finish(receive.getMsg_no2(),receive.getReceiver())+"条已完成");
+        return  result;
+
     }
+
+    @Autowired
+    TeacherMapper teacherMapper;
     @PostMapping("getstudent_msg")
     public Result getstudent_msg(@RequestBody Student student){
             List<Receive> receivelist=new ArrayList<>();
@@ -377,8 +419,9 @@ public class studentcontroller {
             Msg msg=new Msg();
             msg=msgMapper.findMsgByMsgNo(receivelist.get(i).getMsg_no2());
             msg.setStatus(receivelist.get(i).getStatus());
+            Teacher teacher = teacherMapper.findOneTeacher(msg.getMsg_sender());
+            msg.setTeacherName(teacher.getT_name());
             msgList.add(msg);
-
         }
             result.setData(msgList);
             return result;
