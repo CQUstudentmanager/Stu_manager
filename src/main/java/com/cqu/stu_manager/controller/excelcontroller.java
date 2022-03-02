@@ -7,6 +7,7 @@ import com.cqu.stu_manager.pojo.ExcelStuList;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.Teacher;
 import com.cqu.stu_manager.utils.InfoForTeacher;
+import com.cqu.stu_manager.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +34,7 @@ public class excelcontroller {
     @Autowired
     AccommodationMapper accommodationMapper;
     @PostMapping("getStudentBedroomInfo")
-    public String getStudentBedroomInfo(@RequestBody Teacher teacher){
+    public Result getStudentBedroomInfo(@RequestBody Teacher teacher){
         BedroomExcel bedroomExcel=new BedroomExcel(accommodationMapper,studentMapper,familyMapper);
         InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
         List<Class> right_class=new ArrayList<>();
@@ -48,21 +49,26 @@ public class excelcontroller {
                 }
             }
         }
-        return bedroomExcel.allStuBedroomInfo_writ(right_studentlist);
+        Result result=new Result();
+        result.setData(bedroomExcel.allStuBedroomInfo_writ(right_studentlist));
+        return result;
 
 
     }
     @PostMapping("/getHuxiInfo")
-    public List<String> getHuxiInfo(@RequestBody Teacher teacher){
+    public Result  getHuxiInfo(@RequestBody Teacher teacher){
         ClassCountForHuxiExcel classCountForHuxiExcel=new
                 ClassCountForHuxiExcel(accommodationMapper,teacherMapper,classMapper,studentMapper);
-        return classCountForHuxiExcel.ClassCountForHuxiExcel_write(teacher.getT_no());
+
+        Result result=new Result();
+        result.setData(classCountForHuxiExcel.ClassCountForHuxiExcel_write(teacher.getT_no()));
+        return result;
 
     }
 
 
     @PostMapping("/getStudentExcelInfoByHeadMaster")
-    public List<String> getStudentExcelInfoByHeadMaster(@RequestBody Teacher teacher){
+    public Result  getStudentExcelInfoByHeadMaster(@RequestBody Teacher teacher){
         List<String> class_name= classMapper.findClassByTeacher(teacher.getT_no().toString());
         List<Student> studentList=new ArrayList<>();
         StudentListHeadmasterExcel studentListHeadmasterExcel=new StudentListHeadmasterExcel(studentMapper,collegeEntranceExaminationMapper,familyMapper,accommodationMapper);
@@ -70,18 +76,22 @@ public class excelcontroller {
         for(int i=0;i<class_name.size();i++){
            addresslist.add(studentListHeadmasterExcel.StudentListHeadmasterExcel_Write(class_name.get(i))) ;
         }
-        return addresslist;
+        Result result=new Result();
+        result.setData(addresslist);
+        return result;
 
     }
     @PostMapping("/getStudentExcelInfoByGuidanceCounselor")
-    public String getStudentExcelInfoByGuidanceCounselor(@RequestBody Teacher teacher){
+    public Result getStudentExcelInfoByGuidanceCounselor(@RequestBody Teacher teacher){
         StudentListGuidanceCounselorExcel
                 studentListGuidanceCounselorExcel=
                 new StudentListGuidanceCounselorExcel(studentMapper,collegeEntranceExaminationMapper,familyMapper,accommodationMapper,teacherMapper,classMapper);
-    return     studentListGuidanceCounselorExcel.StudentListGuidanceCounselorExcel_Write(teacher.getT_no());
+        Result result=new Result<>();
+         result.setData(studentListGuidanceCounselorExcel.StudentListGuidanceCounselorExcel_Write(teacher.getT_no()));
+         return  result;
     }
     @PostMapping("/getAllStudentInfoByTemplateForGrant")
-    public String getAllStudentInfoByTemplateForGrant(@RequestBody Teacher teacher){
+    public Result getAllStudentInfoByTemplateForGrant(@RequestBody Teacher teacher){
         NationalGrantsExcel nationalGrantsExcel=new NationalGrantsExcel(studentMapper);
         List<Student> studentList=new ArrayList<>();
         InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
@@ -97,10 +107,12 @@ public class excelcontroller {
                     }
                 }
         }
-        return nationalGrantsExcel.write_National_grants_excel(right_studentlist);
+        Result result=new Result();
+        result.setData(nationalGrantsExcel.write_National_grants_excel(right_studentlist));
+        return result;
     }
     @PostMapping("/getSomeStudentInfoByTemplateForGrant")
-    public String getSomeStudentInfoByTemplateForGrant(@RequestBody ExcelStuList stuList){
+    public Result  getSomeStudentInfoByTemplateForGrant(@RequestBody ExcelStuList stuList){
         List<Student> studentList2=new ArrayList<>();
 
         for(int i:stuList.getStuList()){
@@ -109,10 +121,12 @@ public class excelcontroller {
             studentList2.add(student);
         }
         NationalGrantsExcel nationalGrantsExcel=new NationalGrantsExcel(studentMapper);
-        return nationalGrantsExcel.write_National_grants_excel(studentList2);
+        Result result=new Result();
+        result.setData(nationalGrantsExcel.write_National_grants_excel(studentList2));
+        return result;
     }
     @PostMapping("/getAllStudentInfoByTemplateForSchoolars")
-    public String getAllStudentInfoByTemplateForSchoolars(@RequestBody Teacher teacher){
+    public Result getAllStudentInfoByTemplateForSchoolars(@RequestBody Teacher teacher){
         NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
         InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
         List<Class> right_class=new ArrayList<>();
@@ -127,10 +141,12 @@ public class excelcontroller {
                 }
             }
         }
-        return nationalScholarshipExcel.write_National_scholarship_excel(right_studentlist);
+        Result result=new Result();
+        result.setData(nationalScholarshipExcel.write_National_scholarship_excel(right_studentlist));
+        return result;
     }
     @PostMapping("/getSomeStudentInfoByTemplateForSchoolars")
-    public String getSomeStudentInfoByTemplateForSchoolars(@RequestBody ExcelStuList stuList){
+    public Result getSomeStudentInfoByTemplateForSchoolars(@RequestBody ExcelStuList stuList){
         NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
        List<Student> studentList=new ArrayList<>();
         for(int i:stuList.getStuList()){
@@ -138,10 +154,12 @@ public class excelcontroller {
             student.setStu_no(i);
             studentList.add(student);
         }
-        return nationalScholarshipExcel.write_National_scholarship_excel(studentList);
+        Result result=new Result();
+        result.setData(nationalScholarshipExcel.write_National_scholarship_excel(studentList));
+        return result;
     }
     @PostMapping("/getAllStudentInfoByTemplateForSchoolarsB")
-    public String getAllStudentInfoByTemplateForSchoolarsB(@RequestBody Teacher teacher){
+    public Result getAllStudentInfoByTemplateForSchoolarsB(@RequestBody Teacher teacher){
         NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
         List<Class> right_class=new ArrayList<>();
         InfoForTeacher infoForTeacher=new InfoForTeacher(teacherMapper,classMapper,studentMapper);
@@ -155,10 +173,12 @@ public class excelcontroller {
                 }
             }
         }
-        return nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement(right_studentlist);
+        Result result=new Result();
+        result.setData(nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement(right_studentlist));
+        return result;
     }
     @PostMapping("/getSomeStudentInfoByTemplateForSchoolarsB")
-    public String getSomeStudentInfoByTemplateForSchoolarsB(@RequestBody ExcelStuList stuList){
+    public Result getSomeStudentInfoByTemplateForSchoolarsB(@RequestBody ExcelStuList stuList){
         NationalScholarshipExcel nationalScholarshipExcel=new NationalScholarshipExcel(studentMapper);
         List<Student> studentList=new ArrayList<>();
         for(int i:stuList.getStuList()){
@@ -166,7 +186,9 @@ public class excelcontroller {
             student.setStu_no(i);
             studentList.add(student);
         }
-        return nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement(studentList);
+        Result result=new Result();
+        result.setData(nationalScholarshipExcel.write_National_scholarship_excel_forSelf_Improvement(studentList));
+        return result;
     }
 
 }

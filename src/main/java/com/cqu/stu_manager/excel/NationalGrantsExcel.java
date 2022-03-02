@@ -79,5 +79,5 @@ public class NationalGrantsExcel {
         FilePath filePath=new FilePath();
         String FileName=filePath.getPath()+"助学金信息表"+format+".xls";
         EasyExcel.write(FileName, Nationalgrants.class).sheet("助学金信息表").doWrite(nationalgrants);
-        return  FileName;
+        return  "助学金信息表"+format+".xls";
     }}

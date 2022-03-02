@@ -92,6 +92,6 @@ public class StudentListHeadmasterExcel {
         FilePath filePath=new FilePath();
         String FileName=filePath.getPath()+"本科生名单（班主任）"+class_name+"班"+format+".xls";
         EasyExcel.write(FileName, StudentListHeadmaster.class).sheet("本科生名单").doWrite(studentListHeadmasterList);
-        return FileName;
+        return "本科生名单（班主任）"+class_name+"班"+format+".xls";
     }
 }

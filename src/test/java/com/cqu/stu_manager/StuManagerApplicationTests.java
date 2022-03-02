@@ -55,11 +55,12 @@ StayschoolMapper stayschoolMapper;
 MsgMapper msgMapper;
 @Autowired
     RedisUtil redisUtil;
+@Autowired
+AdminMapper adminMapper;
 
     @SneakyThrows
     @Test
     void contextLoads() {
-        Msg msg = new Msg();
-        System.out.println(msg);
+        System.out.println(adminMapper.findAdminPasswod("123456789"));
     }
 }

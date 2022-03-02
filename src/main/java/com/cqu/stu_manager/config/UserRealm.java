@@ -1,7 +1,9 @@
 package com.cqu.stu_manager.config;
 
+import com.cqu.stu_manager.mapper.AdminMapper;
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.mapper.TeacherMapper;
+import com.cqu.stu_manager.pojo.Admin;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.Teacher;
 import com.cqu.stu_manager.pojo.User;
@@ -19,6 +21,8 @@ public class UserRealm extends AuthorizingRealm {
     StudentMapper studentMapper;
     @Autowired
     TeacherMapper teacherMapper;
+    @Autowired
+    AdminMapper adminMapper;
 //授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
@@ -30,10 +34,13 @@ public class UserRealm extends AuthorizingRealm {
 
         Student student=studentMapper.findOneStudent(Integer.parseInt(usertoken.getUsername()));
         Teacher teacher = teacherMapper.findOneTeacher(Integer.parseInt(usertoken.getUsername()));
+        Admin admin=adminMapper.findAdminPasswod(usertoken.getUsername());
         if (student==null){
 
             if(teacher == null){
-                return null;
+                if(admin==null){
+                    return  null;
+                }else {info.addStringPermission("admin");}
             }else
             {
                 //老师
@@ -44,10 +51,6 @@ public class UserRealm extends AuthorizingRealm {
            //学生
             info.addStringPermission("student");
         }
-
-
-
-
 
         return info;
     }
@@ -62,10 +65,17 @@ public class UserRealm extends AuthorizingRealm {
 
         Student student=studentMapper.findOneStudent(Integer.parseInt(usertoken.getUsername()));
         Teacher teacher = teacherMapper.findOneTeacher(Integer.parseInt(usertoken.getUsername()));
+        Admin admin=adminMapper.findAdminPasswod(usertoken.getUsername());
         if (student==null){
 
             if(teacher == null){
-                return null;
+                if(admin==null){
+                    return  null;
+                }else {
+                    name =admin.getAdmin_username();
+                    password=admin.getAdmin_password();
+
+                }
             }else
             {
                 name=teacher.getT_no().toString();
@@ -79,10 +89,9 @@ public class UserRealm extends AuthorizingRealm {
         if(!usertoken.getUsername().equals(name)){
             return null;//用户名为空
         }
-
+        System.out.println(password);
+        System.out.println(usertoken);
             return new SimpleAuthenticationInfo(usertoken,password,"");
-
-
 
 
     }

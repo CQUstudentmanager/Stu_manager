@@ -16,5 +16,7 @@ public class Stayschool {
    private String stay_school_info_status;
    private String stay_school_info_time;
    private String stay_school_info_stuname;
+   private  String stay_school_info_stuclass;
+   private String teacherNo;
 
 }

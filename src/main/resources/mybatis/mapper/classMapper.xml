@@ -21,4 +21,7 @@
     <select id="findClassByTeacher" resultType="String">
         select class_name from class where class_teacherid=#{teacherID}
     </select>
+    <update id="setclassmaster">
+        update class set class_teacherid=#{t_no} where class_id=#{class_id}
+    </update>
 </mapper>

@@ -140,7 +140,7 @@ public class award_information_controller {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
         String format = sdf.format(new Date());
-        String realPath = "C:\\Users\\drifter\\Desktop\\Contests" + format;//存储在本机上的路径
+        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Contests" + format;//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -307,7 +307,7 @@ public class award_information_controller {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
         String format = sdf.format(new Date());
-        String realPath = "C:\\Users\\drifter\\Desktop\\Patents" + format;//存储在本机上的路径
+        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Patents" + format;//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -476,7 +476,7 @@ public class award_information_controller {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
         String format = sdf.format(new Date());
-        String realPath = "C:\\Users\\drifter\\Desktop\\Projects" + format;//存储在本机上的路径
+        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Projects" + format;//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -649,7 +649,7 @@ public class award_information_controller {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
         String format = sdf.format(new Date());
-        String realPath = "C:\\Users\\drifter\\Desktop\\Papers" + format;//存储在本机上的路径
+        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Papers" + format;//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -811,7 +811,7 @@ public class award_information_controller {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
         String format = sdf.format(new Date());
-        String realPath = "C:\\Users\\drifter\\Desktop\\Activities" + format;//存储在本机上的路径
+        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Activities" + format;//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -952,7 +952,7 @@ public class award_information_controller {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
         String format = sdf.format(new Date());
-        String realPath = "C:\\Users\\drifter\\Desktop\\Dispatches" + format;//存储在本机上的路径
+        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Dispatches" + format;//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();

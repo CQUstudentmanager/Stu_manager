@@ -70,10 +70,9 @@ public class BedroomExcel {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         FilePath filePath=new FilePath();
-        String Path="D:\\";
         String FileName=filePath.getPath()+"寝室基本信息"+format+".xls";
         EasyExcel.write(FileName, Bedroom.class).sheet("助学金信息表").doWrite(bedrooms);
-return FileName;
+return "寝室基本信息"+format+".xls";
     }
 
 

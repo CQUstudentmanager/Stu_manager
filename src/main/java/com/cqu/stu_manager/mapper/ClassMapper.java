@@ -14,4 +14,5 @@ public interface ClassMapper {
     int insertClass(Class class_);
     List<String> findClassByTeacher(String teacherID);
 
+    int  setclassmaster(int class_id, Integer t_no);
 }

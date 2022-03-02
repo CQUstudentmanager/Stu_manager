@@ -13,4 +13,8 @@ public interface TeacherMapper {
     Teacher findOneTeacher(int teacherId);
     int upDateTeacher(Teacher teacher);
     int upDatePassword(Teacher teacher);
+
+    int addteacherByAdmin(Teacher teacher);
+
+    int deleteTeacherByAdmin(Integer t_no);
 }

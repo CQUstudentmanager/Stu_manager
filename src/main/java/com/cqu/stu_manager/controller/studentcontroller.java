@@ -120,9 +120,9 @@ public class studentcontroller {
             if((!your_t.getStu_email().equals("String")) && (!your_t.getStu_email().equals(student.getStu_email()))){
                 student.setStu_email(your_t.getStu_email());
             }
-            if((!your_t.getStu_photourl().equals("String")) && (!your_t.getStu_photourl().equals(student.getStu_photourl()))){
-                student.setStu_photourl(your_t.getStu_photourl());
-            }
+//            if((!your_t.getStu_photourl().equals("String")) && (!your_t.getStu_photourl().equals(student.getStu_photourl()))){
+//                student.setStu_photourl(your_t.getStu_photourl());
+//            }
             result.setMsg("信息修改成功");
             result.setData(student);
 
@@ -217,7 +217,7 @@ public class studentcontroller {
             }
             SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
             String format = sdf.format(new Date());
-            String realPath = "C:\\Users\\drifter\\Desktop\\Pictures" + format;//存储在本机上的路径
+            String realPath = "D:\\java_project\\vue_m\\vue\\public\\Pictures" + format;//存储在本机上的路径
             File folder = new File(realPath);
             if(!folder.exists()){
                 folder.mkdirs();

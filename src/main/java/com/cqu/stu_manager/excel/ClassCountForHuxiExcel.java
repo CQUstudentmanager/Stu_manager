@@ -111,8 +111,8 @@ public class ClassCountForHuxiExcel {
         excelWriter.finish();
         EasyExcel.write(FileName2, BedroomForHuxi.class).sheet("详细名单").doWrite(bedroomForHuxis1);
 List<String> s=new ArrayList<>();
-s.add(FileName);
-s.add(FileName2);
+s.add("学院年级人数统计表"+format+".xls");
+s.add("学生详细名单"+format+".xls");
         return s;
 
     }

@@ -32,7 +32,7 @@ public class ShiroConfig {
 //        filterMap.put("/Tea/*","perms[teacher]");
 //        filterMap.put("/Stu/*","perms[student]");
         //添加受限页面
-
+        filterMap.put("/admin","perms[admin]");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         //设置身份信息认证失败的返回页面。
          shiroFilterFactoryBean.setUnauthorizedUrl("/Unauthorizeerror");

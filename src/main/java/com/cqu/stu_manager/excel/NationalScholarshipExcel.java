@@ -54,11 +54,10 @@ public class NationalScholarshipExcel {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
-        System.out.println(format+"sdsddddddddddddddddddddddddddddddddddddddddddddddddddddd");
         FilePath filePath=new FilePath();
         String FileName=filePath.getPath()+"奖学金信息表"+format+".xls";
         EasyExcel.write(FileName, Nationalscholarship.class).sheet("奖学金信息表").doWrite(nationalscholarship_s);
-        return FileName;
+        return "奖学金信息表"+format+".xls";
     }
     public String write_National_scholarship_excel_forSelf_Improvement(List<Student> studentList2){
         StaticComponentContainer.Modules.exportAllToAll();
@@ -98,6 +97,6 @@ public class NationalScholarshipExcel {
         FilePath Path=new FilePath();
         String FileName=Path.getPath()+"励志奖学金信息表"+format+".xls";
         EasyExcel.write(FileName, Nationalscholarship.class).sheet("励志奖学金信息表").doWrite(nationalscholarship_s);
-        return FileName;
+        return "励志奖学金信息表"+format+".xls";
     }
 }

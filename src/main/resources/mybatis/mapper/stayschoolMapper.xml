@@ -12,7 +12,8 @@
                                             #{stay_school_info_reason},
                                             #{stay_school_info_status},
                                             #{stay_school_info_time},
-                                           #{stay_school_info_stuname}
+                                           #{stay_school_info_stuname},
+                                           #{stay_school_info_stuclass}
                                           )
   </insert>
     <select id="findAllStayschoolInfo" resultType="com.cqu.stu_manager.pojo.Stayschool">
@@ -28,7 +29,8 @@
                                        stay_school_info_reason=#{stay_school_info_reason},
                                        stay_school_info_status=#{stay_school_info_status},
                                        stay_school_info_time=#{stay_school_info_time},
-                                       stay_school_info_stuname=#{stay_school_info_stuname}
+                                       stay_school_info_stuname=#{stay_school_info_stuname},
+                                      stay_school_info_stuclass=#{stay_school_info_stuclass}
                                        where stay_school_info_no= #{stay_school_info_no}
     </update>
 

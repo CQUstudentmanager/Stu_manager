@@ -122,6 +122,6 @@ public class StudentListGuidanceCounselorExcel {
             FilePath filePath=new FilePath();
             String FileName=filePath.getPath()+teaidenty+"级"+"本科生名单（辅导员）"+format+".xls";
             EasyExcel.write(FileName, StudentListGuidanceCounselor.class).sheet("本科生名单").doWrite(studentListGuidanceCounselors);
-        return FileName;}
+        return teaidenty+"级"+"本科生名单（辅导员）"+format+".xls";}
     }
 }

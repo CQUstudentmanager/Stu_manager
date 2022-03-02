@@ -26,6 +26,19 @@
         where
             t_no=#{t_no}
     </update>
+    <insert id="addteacherByAdmin">
+        insert into teacher values (
+                                       #{t_no},
+                                       #{t_password},
+                                       #{t_name},
+                                       #{t_telephone},
+                                       #{t_officeroom},
+                                       #{ t_identity}
+                                   )
+    </insert>
+    <delete id="deleteTeacherByAdmin" >
+        delete from teacher where t_no=#{t_no}
+    </delete>
 
 
 </mapper>
