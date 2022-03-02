@@ -1,24 +1,14 @@
 package com.cqu.stu_manager;
 
-import com.cqu.stu_manager.excel.BedroomExcel;
-import com.cqu.stu_manager.excel.ClassCountForHuxiExcel;
-import com.cqu.stu_manager.excel.pojo.Bedroom;
-import com.cqu.stu_manager.excel.pojo.UseCountLogin;
 import com.cqu.stu_manager.mapper.*;
-import com.cqu.stu_manager.pojo.Class;
-import com.cqu.stu_manager.pojo.Msg;
-import com.cqu.stu_manager.pojo.Stayschool;
-import com.cqu.stu_manager.pojo.Student;
-import com.cqu.stu_manager.utils.InfoForTeacher;
+
+import com.cqu.stu_manager.service.MailService;
 import com.cqu.stu_manager.utils.RedisUtil;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.test.context.ContextConfiguration;
 
 
 @SpringBootTest
@@ -57,10 +47,11 @@ MsgMapper msgMapper;
     RedisUtil redisUtil;
 @Autowired
 AdminMapper adminMapper;
-
+@Autowired
+    MailService mailService;
     @SneakyThrows
     @Test
     void contextLoads() {
-        System.out.println(adminMapper.findAdminPasswod("123456789"));
+        mailService.send("122706559@qq.com","this is simple mail"," hello LingDu");
     }
 }

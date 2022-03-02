@@ -3,6 +3,7 @@ package com.cqu.stu_manager.controller;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.utils.Result;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +26,21 @@ public class studentcontroller {
     PaperMapper paperMapper;
     @Autowired
     ClassMapper classMapper;
-
+    @PostMapping ("Stu/findallinfoforone")
+    public Result findallinfo(@RequestBody Student student){
+        StudentInfoAll studentInfoAll=new StudentInfoAll();
+        BeanUtils.copyProperties(student,studentInfoAll);
+        Accommodation accommodation=new Accommodation();
+        accommodation=accommodationMapper.findStuAccommodation(student.getStu_no().toString());
+        studentInfoAll.setStu_accommodation(accommodation);
+        List <Family> familyList=new ArrayList<>();
+        familyList=familyMapper.findAllMembers(student.getStu_no().toString());
+        studentInfoAll.setStu_family(familyList);
+        System.out.println(studentInfoAll);
+        Result result=new Result();
+        result.setData(studentInfoAll);
+        return result;
+    }
 
     @PostMapping("Stu/stuList")
     @ResponseBody

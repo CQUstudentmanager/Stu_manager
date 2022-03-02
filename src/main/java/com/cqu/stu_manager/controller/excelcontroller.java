@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 @RestController
 public class excelcontroller {
@@ -115,9 +116,16 @@ public class excelcontroller {
     public Result  getSomeStudentInfoByTemplateForGrant(@RequestBody ExcelStuList stuList){
         List<Student> studentList2=new ArrayList<>();
 
-        for(int i:stuList.getStuList()){
+//        for(int i:stuList.getStuList()){
+//            Student student=new Student();
+//            student=studentMapper.findOneStudent()
+//            studentList2.add(student);
+//        }
+        List<Integer > list=new ArrayList<>();
+        list= Arrays.asList(stuList.getStuList());
+        for (int i = 0; i < list.size(); i++) {
             Student student=new Student();
-            student.setStu_no(i);
+            student=studentMapper.findOneStudent(list.get(i));
             studentList2.add(student);
         }
         NationalGrantsExcel nationalGrantsExcel=new NationalGrantsExcel(studentMapper);
