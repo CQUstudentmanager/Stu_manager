@@ -95,6 +95,17 @@ public class studentcontroller {
         subject.logout();
         return result;
     }
+
+    @Autowired
+    Voluntary_activitiesMapper voluntary_activitiesMapper;
+    @Autowired
+    ContestMapper contestMapper;
+    @Autowired
+    ProjectMapper projectMapper;
+    @Autowired
+    PatentMapper patentMapper;
+    @Autowired
+    DispatchMapper dispatchMapper;
     @PostMapping ("Stu/findallinfoforone")
     public Result findallinfo(@RequestBody Student student){
         StudentInfoAll studentInfoAll=new StudentInfoAll();
@@ -106,10 +117,64 @@ public class studentcontroller {
         familyList=familyMapper.findAllMembers(student.getStu_no().toString());
         studentInfoAll.setStu_family(familyList);
         System.out.println(studentInfoAll);
+        //获取志愿时长
+        List<Voluntary_activities> activitiesList = voluntary_activitiesMapper.findVoluntary_activitiesByStuno(student);
+        Double hour = 0.0;
+        if(activitiesList==null || activitiesList.size() == 0){
+            studentInfoAll.setVolunteerTime(hour + "小时");
+        }
+        else{
+            for(Voluntary_activities v:activitiesList){
+                //这里转换的时候可能出错
+                hour += v.getVoluntary_activities_time_long();
+            }
+            studentInfoAll.setVolunteerTime(hour + "小时");
+        }
+        //获取论文信息
+        List<Paper> paperList = paperMapper.findPaperByStuno(student);
+        if(paperList == null || paperList.size() ==0){
+            studentInfoAll.setPaper(null);
+        }
+        else {
+            studentInfoAll.setPaper(paperList);
+        }
+        //获取比赛
+        List<Contest> contestList = contestMapper.findContestByStuno(student);
+        if(contestList == null || contestList.size() ==0){
+            studentInfoAll.setContest(null);
+        }
+        else {
+            studentInfoAll.setContest(contestList);
+        }
+        //获取项目信息
+        List<Project> projectList = projectMapper.findProjectByStuno(student);
+        if(projectList == null || projectList.size() ==0){
+            studentInfoAll.setProject(null);
+        }
+        else {
+            studentInfoAll.setProject(projectList);
+        }
+        //获取专利
+        List<Patent> patentList = patentMapper.findPatentByStuno(student);
+        if(patentList == null || patentList.size() ==0){
+            studentInfoAll.setPatent(null);
+        }
+        else {
+            studentInfoAll.setPatent(patentList);
+        }
+        //获取外派
+        List<Dispatch> dispatchList = dispatchMapper.findDispatchByStuno(student);
+        if(dispatchList == null || dispatchList.size() ==0){
+            studentInfoAll.setDispatch(null);
+        }
+        else {
+            studentInfoAll.setDispatch(dispatchList);
+        }
         Result result=new Result();
         result.setData(studentInfoAll);
         return result;
     }
+
 
     @PostMapping("Stu/stuList")
     @ResponseBody
@@ -162,56 +227,62 @@ public class studentcontroller {
         if(student == null){
             result.setMsg("当前学生不存在");}
         else{
-//            if((!your_t.getStu_name().equals("String") ) && (!your_t.getStu_name().equals(student.getStu_name()))){
-//                student.setStu_name(your_t.getStu_name());
-//            }姓名不可修改
-//            if(!your_t.getStu_gender().equals(student.getStu_gender())){
-//                student.setStu_gender(your_t.getStu_gender());
-//            }性别不能改
-//            if((!your_t.getStu_class().equals("String")) && (!your_t.getStu_class().equals(student.getStu_class()))){
-//                student.setStu_class(your_t.getStu_class());
-//            }班级不能改
-//            if((!your_t.getStu_birthday().equals("String")) && (!your_t.getStu_birthday().equals(student.getStu_birthday()))){
-//                student.setStu_birthday(your_t.getStu_birthday());
-//            }出生日期不能改
-//            if((!your_t.getStu_ethnic().equals("String")) && (!your_t.getStu_ethnic().equals(student.getStu_ethnic()))){
-//                student.setStu_ethnic(your_t.getStu_ethnic());
-//            }民族不能改
-            if((!your_t.getStu_origin().equals("String")) && (!your_t.getStu_origin().equals(student.getStu_origin()))){
-                student.setStu_origin(your_t.getStu_origin());
-            }
-//            if((!your_t.getStu_id().equals("String")) && (!your_t.getStu_id().equals(student.getStu_id()))){
-//                student.setStu_id(your_t.getStu_id());
-//            }身份证不能改
-            if((!your_t.getStu_politicalface().equals("String")) && (!your_t.getStu_politicalface().equals(student.getStu_politicalface()))){
-                student.setStu_politicalface(your_t.getStu_politicalface());
-            }
-            if((!your_t.getStu_caucus_time().equals("String")) && (!your_t.getStu_caucus_time().equals(student.getStu_caucus_time()))){
-                student.setStu_caucus_time(your_t.getStu_caucus_time());
-            }
-//            if(!your_t.getStu_ismacau().equals(student.getStu_ismacau())){
-//                student.setStu_ismacau(your_t.getStu_ismacau());
-//            }港澳台信息不能改
-            if((!your_t.getStu_telephone().equals("String")) && (!your_t.getStu_telephone().equals(student.getStu_telephone()))){
-                student.setStu_telephone(your_t.getStu_telephone());
-            }
-            if((!your_t.getStu_qq().equals("String")) && (!your_t.getStu_qq().equals(student.getStu_qq()))){
-                student.setStu_qq(your_t.getStu_qq());
-            }
-            if((!your_t.getStu_address().equals("String")) && (!your_t.getStu_address().equals(student.getStu_address()))){
-                student.setStu_address(your_t.getStu_address());
-            }
-            if((!your_t.getStu_email().equals("String")) && (!your_t.getStu_email().equals(student.getStu_email()))){
-                student.setStu_email(your_t.getStu_email());
-            }
-//            if((!your_t.getStu_photourl().equals("String")) && (!your_t.getStu_photourl().equals(student.getStu_photourl()))){
+////            if((!your_t.getStu_name().equals("String") ) && (!your_t.getStu_name().equals(student.getStu_name()))){
+////                student.setStu_name(your_t.getStu_name());
+////            }姓名不可修改
+////            if(!your_t.getStu_gender().equals(student.getStu_gender())){
+////                student.setStu_gender(your_t.getStu_gender());
+////            }性别不能改
+////            if((!your_t.getStu_class().equals("String")) && (!your_t.getStu_class().equals(student.getStu_class()))){
+////                student.setStu_class(your_t.getStu_class());
+////            }班级不能改
+////            if((!your_t.getStu_birthday().equals("String")) && (!your_t.getStu_birthday().equals(student.getStu_birthday()))){
+////                student.setStu_birthday(your_t.getStu_birthday());
+////            }出生日期不能改
+////            if((!your_t.getStu_ethnic().equals("String")) && (!your_t.getStu_ethnic().equals(student.getStu_ethnic()))){
+////                student.setStu_ethnic(your_t.getStu_ethnic());
+////            }民族不能改
+//            if((!your_t.getStu_origin().equals("String")) && (!your_t.getStu_origin().equals(student.getStu_origin()))){
+//                student.setStu_origin(your_t.getStu_origin());
+//            }
+////            if((!your_t.getStu_id().equals("String")) && (!your_t.getStu_id().equals(student.getStu_id()))){
+////                student.setStu_id(your_t.getStu_id());
+////            }身份证不能改
+//            if((!your_t.getStu_politicalface().equals("String")) && (!your_t.getStu_politicalface().equals(student.getStu_politicalface()))){
+//                student.setStu_politicalface(your_t.getStu_politicalface());
+//            }
+//            if((!your_t.getStu_caucus_time().equals("String")) && (!your_t.getStu_caucus_time().equals(student.getStu_caucus_time()))){
+//                student.setStu_caucus_time(your_t.getStu_caucus_time());
+//            }
+////            if(!your_t.getStu_ismacau().equals(student.getStu_ismacau())){
+////                student.setStu_ismacau(your_t.getStu_ismacau());
+////            }港澳台信息不能改
+//            if((!your_t.getStu_telephone().equals("String")) && (!your_t.getStu_telephone().equals(student.getStu_telephone()))){
+//                student.setStu_telephone(your_t.getStu_telephone());
+//            }
+//            if((!your_t.getStu_qq().equals("String")) && (!your_t.getStu_qq().equals(student.getStu_qq()))){
+//                student.setStu_qq(your_t.getStu_qq());
+//            }
+//            if((!your_t.getStu_address().equals("String")) && (!your_t.getStu_address().equals(student.getStu_address()))){
+//                student.setStu_address(your_t.getStu_address());
+//            }
+//            if((!your_t.getStu_email().equals("String")) && (!your_t.getStu_email().equals(student.getStu_email()))){
+//                student.setStu_email(your_t.getStu_email());
+//            }
+////            if((!your_t.getStu_photourl().equals("String")) && (!your_t.getStu_photourl().equals(student.getStu_photourl()))){
+////                student.setStu_photourl(your_t.getStu_photourl());
+////            }
+//            if(your_t.getStu_photourl()!=null){
 //                student.setStu_photourl(your_t.getStu_photourl());
 //            }
-            result.setMsg("信息修改成功");
-            result.setData(student);
-
+//            result.setMsg("信息修改成功");
+//            result.setData(student);
+            studentMapper.upDateStudentInfo(your_t);
+            Student student2 = studentMapper.findOneStudent(your_t.getStu_no());
+            result.setMsg("修改成功");
+            result.setData(student2);
         }
-        studentMapper.upDateStudentInfo(student);
+
         return result;
     }
 
@@ -299,9 +370,9 @@ public class studentcontroller {
                 return result;
                 }
             }
-            SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
-            String format = sdf.format(new Date());
-            String realPath = "D:\\java_project\\vue_m\\vue\\public\\Pictures" + format;//存储在本机上的路径
+
+            FilePath2 f = new FilePath2();
+            String realPath = "D:\\java_project\\vue_m\\vue\\src\\assets\\Pictures" ;//存储在本机上的路径
             File folder = new File(realPath);
             if(!folder.exists()){
                 folder.mkdirs();
@@ -310,7 +381,7 @@ public class studentcontroller {
             try {
                 file.transferTo(new File(folder,newName));
                 result.setMsg("上传成功");
-                String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
+                String url =  newName;
                 result.setData(url);
             }catch (IOException e) {
                 result.setMsg(e.getMessage());

@@ -13,7 +13,7 @@ public class Voluntary_activities {
     private String voluntary_activities_studept;
     private String voluntary_activities_stu_no;
     private String voluntary_activities_time_from_to;
-    private String voluntary_activities_time_long;
+    private Double voluntary_activities_time_long;
     private String voluntary_activities_content;
     private String voluntary_activities_status;
     private String voluntary_activities_name;

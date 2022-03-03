@@ -54,5 +54,10 @@ public class StudentInfoAll {
     private String stu_photourl;
     private List<Family> stu_family;
     private Accommodation stu_accommodation;
-
+    private String volunteerTime;
+    private List<Patent> patent;
+    private List<Paper> paper;
+    private List<Contest> contest;
+    private List<Dispatch> dispatch;
+    private List<Project> project;
 }

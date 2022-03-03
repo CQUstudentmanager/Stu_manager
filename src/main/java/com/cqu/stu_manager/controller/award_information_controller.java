@@ -138,9 +138,9 @@ public class award_information_controller {
                 newName += ".pdf";
             }
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
-        String format = sdf.format(new Date());
-        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Contests" + format;//存储在本机上的路径
+
+        FilePath2 f = new FilePath2();
+        String realPath = f.getPath() + "\\Contests\\" ;//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -148,7 +148,7 @@ public class award_information_controller {
         try {
             file.transferTo(new File(folder, newName));
             result.setMsg("文件上传成功");
-            result.setData("C:\\Users\\drifter\\Desktop\\Contests" + format + newName);
+            result.setData(f.getPath()+"\\Contests\\"+ newName);
         } catch (IOException e) {
             result.setMsg(e.getMessage());
         }
@@ -305,9 +305,9 @@ public class award_information_controller {
                 newName += ".pdf";
             }
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
-        String format = sdf.format(new Date());
-        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Patents" + format;//存储在本机上的路径
+
+        FilePath2 f = new FilePath2();
+        String realPath = f.getPath() + "\\Patents\\";//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -474,9 +474,8 @@ public class award_information_controller {
                 newName += ".pdf";
             }
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
-        String format = sdf.format(new Date());
-        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Projects" + format;//存储在本机上的路径
+        FilePath2 f = new FilePath2();
+        String realPath = f.getPath() + "\\Projects\\" ;//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -647,9 +646,9 @@ public class award_information_controller {
                 newName += ".pdf";
             }
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
-        String format = sdf.format(new Date());
-        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Papers" + format;//存储在本机上的路径
+
+        FilePath2 f = new FilePath2();
+        String realPath = f.getPath() + "\\Papers\\";//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -809,9 +808,9 @@ public class award_information_controller {
                 newName += ".pdf";
             }
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
-        String format = sdf.format(new Date());
-        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Activities" + format;//存储在本机上的路径
+
+        FilePath2 f = new FilePath2();
+        String realPath = f.getPath() + "\\Activities\\";//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -950,9 +949,8 @@ public class award_information_controller {
                 newName += ".pdf";
             }
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
-        String format = sdf.format(new Date());
-        String realPath = "D:\\java_project\\vue_m\\vue\\public\\Dispatches" + format;//存储在本机上的路径
+        FilePath2 f = new FilePath2();
+        String realPath = f.getPath() + "\\Dispatches\\";//存储在本机上的路径
         File folder = new File(realPath);
         if (!folder.exists()) {
             folder.mkdirs();
