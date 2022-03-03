@@ -52,6 +52,7 @@ AdminMapper adminMapper;
     @SneakyThrows
     @Test
     void contextLoads() {
-        mailService.send("122706559@qq.com","this is simple mail"," hello LingDu");
+        System.out.println(redisUtil.get("20191574email"));
+        //     mailService.send("122706559@qq.com","this is simple mail"," hello LingDu");
     }
 }

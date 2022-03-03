@@ -1,19 +1,14 @@
-spring:
-  thymeleaf:
-    prefix: classpath:/templates/
-    mode: HTML
-    cache: false
-    encoding: UTF-8
-    #     新版本不支持content-type: text/html，故新写法
-    servlet:
-      content-type: text/html
 
+server:
+  port: 8080
+
+spring:
   mail:
     host: smtp.163.com
     default-encoding: UTF-8
     protocol: smtp
-    username: changyao2@163.com
-    password: TAUQTZSOXEVXJYFV
+    username: 13364018163@163.com
+    password: XSLSBBJNXCHBCIOU
     properties:
       mail:
         smtp:
@@ -21,9 +16,37 @@ spring:
           starttls:
             enable: true
             required: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  thymeleaf:
+    cache: false
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/cqu_stu_manager?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    inittialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 6000
+    timeBetweenEvictionRunsMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
-  data:
-    mongodb:
-      uri: mongodb://root:password@localhost:27017/admin
-server:
-  port: 8081
+  servlet:
+    multipart:
+      max-file-size: 100MB
+
+mybatis:
+  type-aliases-package: com.cqu.stu_manager.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+

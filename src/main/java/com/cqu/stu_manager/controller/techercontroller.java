@@ -1,8 +1,10 @@
 package com.cqu.stu_manager.controller;
 
+import com.alibaba.druid.sql.visitor.functions.If;
 import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
+import com.cqu.stu_manager.service.MailService;
 import com.cqu.stu_manager.utils.RedisUtil;
 import com.cqu.stu_manager.utils.Result;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
@@ -100,7 +102,8 @@ public class techercontroller {
         }
         return result;
     }
-
+@Autowired
+    MailService mailService;
 
     @ResponseBody
     @PostMapping("Tea/send_msg")
@@ -127,11 +130,13 @@ public class techercontroller {
         //发送消息到全体学生
         else if(msgReceiver.getIsAllStudent()==1){
             msgMapper.addMsg(msg);
+
             List<Student> studentList= studentMapper.findAllStudent();
             for(Student student: studentList){
                 receive.setReceiver(student.getStu_no());
                 receive.setReceive_no(student.getStu_no() + "-" + format);
                 receiveMapper.addReceiver(receive);
+
             }
             result.setMsg("消息成功发送到全部学生");
         }
@@ -153,10 +158,17 @@ public class techercontroller {
         //发送消息到指定对象
         else if(msgReceiver.getStuList().length != 0){
             msgMapper.addMsg(msg);
+            List<String>EmailList=new ArrayList<>();
             for(int no:msgReceiver.getStuList()){
                 receive.setReceiver(no);
                 receive.setReceive_no(no + "-" + format);
                 receiveMapper.addReceiver(receive);
+                Student student=new Student();
+                student=studentMapper.findOneStudent(no);
+                if(student.getStu_email()==null||student.getStu_email().length()!=0){
+                    mailService.send(student.getStu_email(),"大数据与软件学院信息系统新消息通知","老师发布了任务消息，请点击10.236.11.68:9876查看");
+                }
+
             }
             result.setMsg("消息成功发送到指定学生");
         }

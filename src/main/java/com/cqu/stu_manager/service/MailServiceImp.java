@@ -4,6 +4,7 @@ package com.cqu.stu_manager.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,13 @@ public class MailServiceImp implements MailService {
 
     @Autowired
     private MailSender mailSender;
-
+    @Async
     @Override
     public void send(String to,String subject,String content) {
         // new 一个简单邮件消息对象
         SimpleMailMessage message = new SimpleMailMessage();
         // 和配置文件中的的username相同，相当于发送方
-        message.setFrom("changyao2@163.com");
+        message.setFrom("13364018163@163.com");
         // 收件人邮箱
         message.setTo(to);
         // 标题

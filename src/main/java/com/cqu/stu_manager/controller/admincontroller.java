@@ -7,6 +7,7 @@ import com.cqu.stu_manager.pojo.Admin;
 import com.cqu.stu_manager.pojo.Class;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.pojo.Teacher;
+import com.cqu.stu_manager.service.MailService;
 import com.cqu.stu_manager.utils.Result;
 import org.apache.poi.ss.formula.functions.T;
 import org.apache.shiro.SecurityUtils;
@@ -25,6 +26,8 @@ import java.util.List;
 
 @RestController
 public class admincontroller {
+    @Autowired
+    MailService mailService;
     @PostMapping("/admin_login")
     @ResponseBody
     public Result admin_login(@RequestBody Admin admin){
@@ -45,6 +48,7 @@ public class admincontroller {
             //密码错误
         }
             result.setMsg("登录成功");
+       // mailService.send("122706559@qq.com","管理员登录了"," hello CY");
             return result;
     }
     @Autowired

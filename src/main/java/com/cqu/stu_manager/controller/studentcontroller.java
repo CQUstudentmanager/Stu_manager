@@ -2,7 +2,15 @@ package com.cqu.stu_manager.controller;
 
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
+import com.cqu.stu_manager.service.MailService;
+import com.cqu.stu_manager.utils.RandamCode;
+import com.cqu.stu_manager.utils.RedisUtil;
 import com.cqu.stu_manager.utils.Result;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +34,67 @@ public class studentcontroller {
     PaperMapper paperMapper;
     @Autowired
     ClassMapper classMapper;
+    @Autowired
+    MailService mailService;
+    @Autowired
+    RedisUtil redisUtil;
+    @PostMapping("/findpassword")
+    public Result findPaawordByEmail(@RequestBody Student student){
+        Student student1=studentMapper.findOneStudent(student.getStu_no());
+        String email=student1.getStu_email();
+        Result result=new Result();
+        if(email!=null){
+            RandamCode randamCode=new RandamCode();
+            String random_email=randamCode.getRandomCode(6);
+            redisUtil.set(student1.getStu_no().toString()+"email",random_email,300);
+            //mailService.send(email,"大数据与软件本科生管理系统--密码找回",random_email);
+            result.setMsg("验证码已发送到"+email+"请查收");
+        }else {
+            result.setMsg("邮箱信息未找到");
+        }
+        return result;
+    }
+    @PostMapping("/judgeemailcode")
+    public Result judgeemailcode(@RequestBody EmailCode emailCode){
+        Result result=new Result();
+        if(redisUtil.get(emailCode.getStu_no()+"email")==null){
+            result.setMsg("验证信息过期（有效期五分钟）");
+            result.setCode(0);
+        }
+        else {
+        String right_code=redisUtil.get(emailCode.getStu_no()+"email").toString();
+
+        if(emailCode.getStu_code().equals(right_code)){
+            result.setMsg("验证成功");
+            result.setCode(1);
+            Subject subject1= SecurityUtils.getSubject();
+            UsernamePasswordToken token=new UsernamePasswordToken("147852369","findpass");
+        try {
+            subject1.login(token);
+        }catch (UnknownAccountException e){
+
+        }catch (IncorrectCredentialsException e)
+        {
+
+        }
+        }
+        else {result.setMsg("验证码错误");
+        result.setCode(0);}}
+        return  result;
+    }
+    @PostMapping("/passwordbyemail")
+    public Result passwordbyemail(@RequestBody upDatePassword upDatePassword){
+        Result result=new Result();
+        upDatePassword.getNew_password();
+        Student student=new Student();
+        student=studentMapper.findOneStudent(upDatePassword.getNo());
+        student.setStu_password(upDatePassword.getNew_password());
+        studentMapper.upDatePassword(student);
+        result.setMsg("修改成功");
+        Subject subject=SecurityUtils.getSubject();
+        subject.logout();
+        return result;
+    }
     @PostMapping ("Stu/findallinfoforone")
     public Result findallinfo(@RequestBody Student student){
         StudentInfoAll studentInfoAll=new StudentInfoAll();
