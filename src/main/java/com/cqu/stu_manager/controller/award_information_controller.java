@@ -148,7 +148,7 @@ public class award_information_controller {
         try {
             file.transferTo(new File(folder, newName));
             result.setMsg("文件上传成功");
-            result.setData(f.getPath()+"\\Contests\\"+ newName);
+            result.setData(newName);
         } catch (IOException e) {
             result.setMsg(e.getMessage());
         }
@@ -315,7 +315,7 @@ public class award_information_controller {
         try {
             file.transferTo(new File(folder, newName));
             result.setMsg("文件上传成功");
-            result.setData(realPath + newName);
+            result.setData(newName);
         } catch (IOException e) {
             result.setMsg(e.getMessage());
         }
@@ -483,7 +483,7 @@ public class award_information_controller {
         try {
             file.transferTo(new File(folder, newName));
             result.setMsg("文件上传成功");
-            result.setData(realPath + newName);
+            result.setData(newName);
 //            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + format + newName;
 //            result.setData(url);
         } catch (IOException e) {
@@ -656,7 +656,7 @@ public class award_information_controller {
         try {
             file.transferTo(new File(folder, newName));
             result.setMsg("文件上传成功");
-            result.setData(realPath + newName);
+            result.setData(newName);
         } catch (IOException e) {
             result.setMsg(e.getMessage());
         }
@@ -818,7 +818,7 @@ public class award_information_controller {
         try {
             file.transferTo(new File(folder, newName));
             result.setMsg("文件上传成功");
-            result.setData(realPath + newName);
+            result.setData(newName);
         } catch (IOException e) {
             result.setMsg(e.getMessage());
         }
@@ -958,7 +958,7 @@ public class award_information_controller {
         try {
             file.transferTo(new File(folder, newName));
             result.setMsg("文件上传成功");
-            result.setData(realPath + newName);
+            result.setData(newName);
         } catch (IOException e) {
             result.setMsg(e.getMessage());
         }

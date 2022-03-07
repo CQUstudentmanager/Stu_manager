@@ -2,16 +2,16 @@ package com.cqu.stu_manager;
 
 import com.cqu.stu_manager.mapper.*;
 
+import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.service.MailService;
 import com.cqu.stu_manager.utils.RedisUtil;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class StuManagerApplicationTests {
 @Autowired
     StudentMapper studentMapper;
@@ -49,10 +49,11 @@ MsgMapper msgMapper;
 AdminMapper adminMapper;
 @Autowired
     MailService mailService;
+@Autowired
+DevelopmentPlanningMapper developmentPlanningMapper;
     @SneakyThrows
     @Test
     void contextLoads() {
-        System.out.println(redisUtil.get("20191574email"));
-        //     mailService.send("122706559@qq.com","this is simple mail"," hello LingDu");
+        System.out.println(developmentPlanningMapper.findAllDevelopment());
     }
 }

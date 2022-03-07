@@ -41,15 +41,20 @@ public class studentcontroller {
     @PostMapping("/findpassword")
     public Result findPaawordByEmail(@RequestBody Student student){
         Student student1=studentMapper.findOneStudent(student.getStu_no());
-        String email=student1.getStu_email();
+        String email="";
+        if (student1!=null){
+         email=student1.getStu_email();}
+        else  email="";
         Result result=new Result();
-        if(email!=null){
+        if(email!=null&&!email.equals("")){
             RandamCode randamCode=new RandamCode();
             String random_email=randamCode.getRandomCode(6);
             redisUtil.set(student1.getStu_no().toString()+"email",random_email,300);
-            //mailService.send(email,"大数据与软件本科生管理系统--密码找回",random_email);
+            mailService.send(email,"大数据与软件本科生管理系统--密码找回",random_email);
             result.setMsg("验证码已发送到"+email+"请查收");
+            result.setCode(1);
         }else {
+            result.setCode(0);
             result.setMsg("邮箱信息未找到");
         }
         return result;
@@ -57,14 +62,15 @@ public class studentcontroller {
     @PostMapping("/judgeemailcode")
     public Result judgeemailcode(@RequestBody EmailCode emailCode){
         Result result=new Result();
-        if(redisUtil.get(emailCode.getStu_no()+"email")==null){
+        if(redisUtil.get(emailCode.getStu_no()+"email", Student.class)==null){
             result.setMsg("验证信息过期（有效期五分钟）");
             result.setCode(0);
         }
         else {
-        String right_code=redisUtil.get(emailCode.getStu_no()+"email").toString();
+        String right_code=redisUtil.get(emailCode.getStu_no()+"email", Student.class).toString();
 
         if(emailCode.getStu_code().equals(right_code)){
+            redisUtil.set(emailCode.getStu_code(),emailCode.getStu_no(),300);
             result.setMsg("验证成功");
             result.setCode(1);
             Subject subject1= SecurityUtils.getSubject();
@@ -87,12 +93,20 @@ public class studentcontroller {
         Result result=new Result();
         upDatePassword.getNew_password();
         Student student=new Student();
-        student=studentMapper.findOneStudent(upDatePassword.getNo());
+        String right_no="00";
+        if(redisUtil.get(upDatePassword.getOld_password(), Student.class)!=null){
+        right_no=redisUtil.get(upDatePassword.getOld_password(), Student.class).toString();}
+        else {result.setMsg("验证账户不匹配");
+        return result;}
+        student=studentMapper.findOneStudent(Integer.parseInt(right_no));
         student.setStu_password(upDatePassword.getNew_password());
         studentMapper.upDatePassword(student);
         result.setMsg("修改成功");
         Subject subject=SecurityUtils.getSubject();
         subject.logout();
+        redisUtil.del(right_no+"email");
+        result.setCode(1);
+        redisUtil.del(upDatePassword.getOld_password());
         return result;
     }
 
@@ -132,35 +146,68 @@ public class studentcontroller {
         }
         //获取论文信息
         List<Paper> paperList = paperMapper.findPaperByStuno(student);
+        List<Paper> right_paperlist=new ArrayList<>();
         if(paperList == null || paperList.size() ==0){
             studentInfoAll.setPaper(null);
         }
         else {
-            studentInfoAll.setPaper(paperList);
+            for (int i = 0; i < paperList.size(); i++) {
+                Paper paper=new Paper();
+                if(paperList.get(i).getPaper_status().equals("1")){
+                    paper=paperList.get(i);
+                    right_paperlist.add(paper);
+                }
+
+            }
+            studentInfoAll.setPaper(right_paperlist);
         }
         //获取比赛
+        List<Contest > right_contestlist=new ArrayList<>();
         List<Contest> contestList = contestMapper.findContestByStuno(student);
         if(contestList == null || contestList.size() ==0){
             studentInfoAll.setContest(null);
         }
         else {
-            studentInfoAll.setContest(contestList);
+            for (int i = 0; i < contestList.size(); i++) {
+                Contest contest=new Contest();
+                if(contestList.get(i).getContest_status().equals("1")){
+                    contest=contestList.get(i);
+                    right_contestlist.add(contest);
+                }
+            }
+            studentInfoAll.setContest(right_contestlist);
         }
         //获取项目信息
+        List<Project >right_projectList=new ArrayList<>();
         List<Project> projectList = projectMapper.findProjectByStuno(student);
         if(projectList == null || projectList.size() ==0){
             studentInfoAll.setProject(null);
         }
         else {
-            studentInfoAll.setProject(projectList);
+            for (int i = 0; i < projectList.size(); i++) {
+                Project project=new Project();
+                if(projectList.get(i).getProject_audit_status().equals("1")){
+                    project=projectList.get(i);
+                    right_projectList.add(project);
+                }
+            }
+            studentInfoAll.setProject(right_projectList);
         }
         //获取专利
+        List<Patent > right_patent=new ArrayList<>();
         List<Patent> patentList = patentMapper.findPatentByStuno(student);
         if(patentList == null || patentList.size() ==0){
             studentInfoAll.setPatent(null);
         }
         else {
-            studentInfoAll.setPatent(patentList);
+            for (int i = 0; i < patentList.size(); i++) {
+                Patent patent=new Patent();
+                if(patentList.get(i).getPatent_status().equals("1")){
+                    patent=patentList.get(i);
+                    right_patent.add(patent);
+                }
+            }
+            studentInfoAll.setPatent(right_patent);
         }
         //获取外派
         List<Dispatch> dispatchList = dispatchMapper.findDispatchByStuno(student);
@@ -227,56 +274,6 @@ public class studentcontroller {
         if(student == null){
             result.setMsg("当前学生不存在");}
         else{
-////            if((!your_t.getStu_name().equals("String") ) && (!your_t.getStu_name().equals(student.getStu_name()))){
-////                student.setStu_name(your_t.getStu_name());
-////            }姓名不可修改
-////            if(!your_t.getStu_gender().equals(student.getStu_gender())){
-////                student.setStu_gender(your_t.getStu_gender());
-////            }性别不能改
-////            if((!your_t.getStu_class().equals("String")) && (!your_t.getStu_class().equals(student.getStu_class()))){
-////                student.setStu_class(your_t.getStu_class());
-////            }班级不能改
-////            if((!your_t.getStu_birthday().equals("String")) && (!your_t.getStu_birthday().equals(student.getStu_birthday()))){
-////                student.setStu_birthday(your_t.getStu_birthday());
-////            }出生日期不能改
-////            if((!your_t.getStu_ethnic().equals("String")) && (!your_t.getStu_ethnic().equals(student.getStu_ethnic()))){
-////                student.setStu_ethnic(your_t.getStu_ethnic());
-////            }民族不能改
-//            if((!your_t.getStu_origin().equals("String")) && (!your_t.getStu_origin().equals(student.getStu_origin()))){
-//                student.setStu_origin(your_t.getStu_origin());
-//            }
-////            if((!your_t.getStu_id().equals("String")) && (!your_t.getStu_id().equals(student.getStu_id()))){
-////                student.setStu_id(your_t.getStu_id());
-////            }身份证不能改
-//            if((!your_t.getStu_politicalface().equals("String")) && (!your_t.getStu_politicalface().equals(student.getStu_politicalface()))){
-//                student.setStu_politicalface(your_t.getStu_politicalface());
-//            }
-//            if((!your_t.getStu_caucus_time().equals("String")) && (!your_t.getStu_caucus_time().equals(student.getStu_caucus_time()))){
-//                student.setStu_caucus_time(your_t.getStu_caucus_time());
-//            }
-////            if(!your_t.getStu_ismacau().equals(student.getStu_ismacau())){
-////                student.setStu_ismacau(your_t.getStu_ismacau());
-////            }港澳台信息不能改
-//            if((!your_t.getStu_telephone().equals("String")) && (!your_t.getStu_telephone().equals(student.getStu_telephone()))){
-//                student.setStu_telephone(your_t.getStu_telephone());
-//            }
-//            if((!your_t.getStu_qq().equals("String")) && (!your_t.getStu_qq().equals(student.getStu_qq()))){
-//                student.setStu_qq(your_t.getStu_qq());
-//            }
-//            if((!your_t.getStu_address().equals("String")) && (!your_t.getStu_address().equals(student.getStu_address()))){
-//                student.setStu_address(your_t.getStu_address());
-//            }
-//            if((!your_t.getStu_email().equals("String")) && (!your_t.getStu_email().equals(student.getStu_email()))){
-//                student.setStu_email(your_t.getStu_email());
-//            }
-////            if((!your_t.getStu_photourl().equals("String")) && (!your_t.getStu_photourl().equals(student.getStu_photourl()))){
-////                student.setStu_photourl(your_t.getStu_photourl());
-////            }
-//            if(your_t.getStu_photourl()!=null){
-//                student.setStu_photourl(your_t.getStu_photourl());
-//            }
-//            result.setMsg("信息修改成功");
-//            result.setData(student);
             studentMapper.upDateStudentInfo(your_t);
             Student student2 = studentMapper.findOneStudent(your_t.getStu_no());
             result.setMsg("修改成功");
@@ -372,8 +369,8 @@ public class studentcontroller {
             }
 
             FilePath2 f = new FilePath2();
-            String realPath = "D:\\java_project\\vue_m\\vue\\src\\assets\\Pictures" ;//存储在本机上的路径
-            File folder = new File(realPath);
+            //String realPath = "D:\\java_project\\vue_m\\vue\\src\\assets\\Pictures" ;//存储在本机上的路径
+            File folder = new File(f.getPath()+"\\Pictures");
             if(!folder.exists()){
                 folder.mkdirs();
             }

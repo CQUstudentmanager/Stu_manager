@@ -1,6 +1,7 @@
 package com.cqu.stu_manager.excel.pojo;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentListGuidanceCounselor {
+
     @ExcelProperty(value = "序号",index =0 )
     private Integer excel_no;
     @ExcelProperty(value = "学号",index =1 )

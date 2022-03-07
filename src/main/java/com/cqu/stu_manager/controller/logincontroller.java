@@ -1,8 +1,6 @@
 package com.cqu.stu_manager.controller;
 
 
-import cn.hutool.log.Log;
-import com.cqu.stu_manager.excel.StudentRead;
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.mapper.TeacherMapper;
 import com.cqu.stu_manager.pojo.Student;
@@ -10,19 +8,15 @@ import com.cqu.stu_manager.pojo.Teacher;
 import com.cqu.stu_manager.pojo.User;
 import com.cqu.stu_manager.utils.RedisUtil;
 import com.cqu.stu_manager.utils.Result;
-import lombok.extern.log4j.Log4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -61,24 +55,24 @@ public class logincontroller {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String format = sdf.format(new Date());
         String teachercount="";
-        if(redisUtil.get("totalteachercount")!=null){
-        teachercount=redisUtil.get("totalteachercount").toString();
+        if(redisUtil.get("totalteachercount", Student.class)!=null){
+        teachercount=redisUtil.get("totalteachercount", Student.class).toString();
         }else {teachercount="0";}
         String studentcount ="";
-        if(redisUtil.get("totalstudentcount")!=null){
-        studentcount=redisUtil.get("totalstudentcount").toString();
+        if(redisUtil.get("totalstudentcount", Student.class)!=null){
+        studentcount=redisUtil.get("totalstudentcount", Student.class).toString();
         }else {studentcount="0";}
         String todaystudent="";
         String todayteacher="";
         String format1="";
         format1=format+"todaystudentcount";
-        if(redisUtil.get(format1)!=null) {
-            todaystudent = redisUtil.get(format1).toString();
+        if(redisUtil.get(format1, Student.class)!=null) {
+            todaystudent = redisUtil.get(format1, Student.class).toString();
         }else {todaystudent="0";}
         String format2="";
         format2=format+"todayteachercount";
-        if(redisUtil.get(format2)!=null) {
-            todayteacher = redisUtil.get(format2).toString();
+        if(redisUtil.get(format2, Student.class)!=null) {
+            todayteacher = redisUtil.get(format2, Student.class).toString();
         }else {todayteacher="0";}
         List<String> list=new ArrayList<>();
         list.add(studentcount);

@@ -31,6 +31,13 @@ public class classcontroller {
         }
         return c;
     }
+    @PostMapping("/findallclasslist")
+    public  Result findallclasslist(){
+        Result result=new Result();
+        List<Class> classList=classMapper.findAllClass();
+        result.setData(classList);
+        return result;
+    }
 
     @PostMapping("/updateClassInfo")
     public Result updateclassinfo(@RequestBody Class class_){
