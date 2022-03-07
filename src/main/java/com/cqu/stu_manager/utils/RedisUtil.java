@@ -1,6 +1,5 @@
 package com.cqu.stu_manager.utils;
 
-import com.cqu.stu_manager.pojo.Student;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -88,10 +87,9 @@ public final class RedisUtil {
      * 普通缓存获取
      *
      * @param key 键
-     * @param studentClass
      * @return 值
      */
-    public Object get(String key, Class<Student> studentClass) {
+    public Object get(String key) {
         return key == null ? null : redisTemplate.opsForValue().get(key);
     }
 

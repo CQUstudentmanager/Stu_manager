@@ -1,7 +1,10 @@
 package com.cqu.stu_manager;
 
+import com.cqu.stu_manager.config.TxProperties;
+import com.cqu.stu_manager.config.TxSmsTemplate;
 import com.cqu.stu_manager.mapper.*;
 
+import com.cqu.stu_manager.pojo.Family;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.service.MailService;
 import com.cqu.stu_manager.utils.RedisUtil;
@@ -51,9 +54,15 @@ AdminMapper adminMapper;
     MailService mailService;
 @Autowired
 DevelopmentPlanningMapper developmentPlanningMapper;
+@Autowired
+    TxSmsTemplate txSmsTemplate;
     @SneakyThrows
     @Test
     void contextLoads() {
-        System.out.println(developmentPlanningMapper.findAllDevelopment());
+//        String Msg = txSmsTemplate.sendMesModel("18357980493", "1111");
+//        // Msg不为null 发送成功
+//        // Msg为null  发送失败
+//        System.out.println(Msg);
+
     }
 }

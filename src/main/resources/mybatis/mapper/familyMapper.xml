@@ -47,5 +47,8 @@ family_ismain
 
                                   )
     </insert>
+    <select id="isfamily" parameterType="com.cqu.stu_manager.pojo.Family" resultType="com.cqu.stu_manager.pojo.Family">
+        select * from family where family_tel=#{family_tel}
+    </select>
 
 </mapper>

@@ -50,3 +50,10 @@ mybatis:
   type-aliases-package: com.cqu.stu_manager.pojo
   mapper-locations: classpath:mybatis/mapper/*.xml
 
+
+txsms:
+  AppId: 1400643047
+  AppKey: e58b416c2b0f3edb66344336d466b1ef
+  TemplateId: 1325536
+  signName: Ganoder
+

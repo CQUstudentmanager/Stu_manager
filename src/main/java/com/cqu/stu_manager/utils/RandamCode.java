@@ -26,4 +26,14 @@ public class RandamCode {
 
         return codeNum;
     }
+    public static String characters1 = "0123456789";
+    public static String randomStr(int factor){
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < factor; i++) {
+            // nextInt(10) = [0, 10)
+            sb.append(characters1.charAt(random.nextInt(10)));
+        }
+        return sb.toString();
+    }
 }

@@ -62,12 +62,12 @@ public class studentcontroller {
     @PostMapping("/judgeemailcode")
     public Result judgeemailcode(@RequestBody EmailCode emailCode){
         Result result=new Result();
-        if(redisUtil.get(emailCode.getStu_no()+"email", Student.class)==null){
+        if(redisUtil.get(emailCode.getStu_no()+"email")==null){
             result.setMsg("验证信息过期（有效期五分钟）");
             result.setCode(0);
         }
         else {
-        String right_code=redisUtil.get(emailCode.getStu_no()+"email", Student.class).toString();
+        String right_code=redisUtil.get(emailCode.getStu_no()+"email").toString();
 
         if(emailCode.getStu_code().equals(right_code)){
             redisUtil.set(emailCode.getStu_code(),emailCode.getStu_no(),300);
@@ -94,8 +94,8 @@ public class studentcontroller {
         upDatePassword.getNew_password();
         Student student=new Student();
         String right_no="00";
-        if(redisUtil.get(upDatePassword.getOld_password(), Student.class)!=null){
-        right_no=redisUtil.get(upDatePassword.getOld_password(), Student.class).toString();}
+        if(redisUtil.get(upDatePassword.getOld_password())!=null){
+        right_no=redisUtil.get(upDatePassword.getOld_password()).toString();}
         else {result.setMsg("验证账户不匹配");
         return result;}
         student=studentMapper.findOneStudent(Integer.parseInt(right_no));

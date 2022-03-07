@@ -12,4 +12,6 @@ public interface FamilyMapper {
     int updateFamilyInfo(Family family);
 
     int  addFamilyInfo(Family family);
+
+    Family isfamily(Family family);
 }
