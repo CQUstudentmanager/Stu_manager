@@ -7,4 +7,86 @@
 <select id="findAllDevelopment" resultType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
     select  * from development_planning
 </select>
+
+    <select id="findPlanByStuNo" resultType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
+        select  * from development_planning where development_planning_stu_no=#{stu_no}
+    </select>
+
+    <insert id="insertPlan" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
+        insert into development_planning(
+        development_planning_no,
+        development_planning_stu_no,
+        development_planning_stu_name,
+        development_planning_stu_class,
+        development_planning_room,
+        development_planning_gpa,
+        development_planning_nopass_point,
+        development_planning_wish,
+        development_planning_planone,
+        development_planning_plantwo,
+        development_planning_summary,
+        development_planning_howto,
+        development_planning_status,
+        development_planning_family_status,
+        year
+        ) values (
+         #{development_planning_no},
+         #{development_planning_stu_no},
+         #{development_planning_stu_name},
+         #{development_planning_stu_class},
+         #{development_planning_room},
+         #{development_planning_gpa},
+         #{development_planning_nopass_point},
+         #{development_planning_wish},
+         #{development_planning_planone},
+         #{development_planning_plantwo},
+         #{development_planning_summary},
+         #{development_planning_howto},
+         #{development_planning_status},
+         #{development_planning_family_status},
+         #{year}
+                         )
+    </insert>
+
+    <update id="updatePlan" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
+        update development_planning
+        set development_planning_no = #{development_planning_no},
+            development_planning_stu_name = #{development_planning_stu_name},
+            development_planning_stu_class = #{development_planning_stu_class},
+            development_planning_room = #{development_planning_room},
+            development_planning_gpa = #{development_planning_gpa},
+            development_planning_nopass_point = #{development_planning_nopass_point},
+            development_planning_wish = #{development_planning_wish},
+            development_planning_planone = #{development_planning_planone},
+            development_planning_plantwo = #{development_planning_plantwo},
+            development_planning_summary = #{development_planning_summary},
+            development_planning_howto = #{development_planning_howto},
+            development_planning_status = #{development_planning_status},
+            development_planning_family_status = #{development_planning_family_status}
+        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+    </update>
+
+    <update id="passPlan" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
+        update development_planning
+        set development_planning_status = '1'
+        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+    </update>
+
+    <update id="rejectPlan" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
+        update development_planning
+        set development_planning_status = '0'
+        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+    </update>
+
+    <update id="passPlan2" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
+        update development_planning
+        set development_planning_family_status = '1'
+        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+    </update>
+
+    <update id="rejectPlan2" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
+        update development_planning
+        set development_planning_family_status = '0'
+        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+    </update>
 </mapper>

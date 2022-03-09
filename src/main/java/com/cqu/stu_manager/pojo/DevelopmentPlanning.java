@@ -22,6 +22,6 @@ public class DevelopmentPlanning {
     private String development_planning_howto;
     private String development_planning_status;
     private String development_planning_family_status;
-    private  String year;
+    private String year;
 
 }

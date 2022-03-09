@@ -578,6 +578,112 @@ public class studentcontroller {
             result.setData(msgList);
             return result;
     }
+
+
+    @Autowired
+    DevelopmentPlanningMapper developmentPlanningMapper;
+
+    //1.找到对应学生的计划
+    @PostMapping("Stu/getStudentPlan")
+    @ResponseBody
+    public Result getStudentPlan(@RequestBody Student student){
+        Result result = new Result();
+        List<DevelopmentPlanning> planList = developmentPlanningMapper.findPlanByStuNo(student.getStu_no().toString());
+        if(planList == null || planList.size() == 0){
+            result.setMsg("当前学生暂无发展规划");
+        }
+        else {
+            result.setMsg("当前学生发展规划信息有" + planList.size() + "条");
+            result.setData(planList);
+        }
+        return result;
+    }
+
+    //2.修改或者新增发展规划
+    @PostMapping("Stu/uploadPlan")
+    @ResponseBody
+    public Result uploadPlan(@RequestBody DevelopmentPlanning plan){
+        //将planno设置为学号加上最后一次修改的时间(精确到分钟)，前端发送planno时默认null值
+        SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmm");
+        String format = sdf.format(new Date());
+        String str = plan.getDevelopment_planning_stu_no() + format;
+        plan.setDevelopment_planning_no(str);
+        Result result =new Result<>();
+        //判断是进行更新还是进行插入操作
+        List<DevelopmentPlanning> planList = developmentPlanningMapper.findPlanByStuNo(plan.getDevelopment_planning_stu_no());
+        if(planList == null || planList.size() == 0){
+            //插入新的规划
+            developmentPlanningMapper.insertPlan(plan);
+            result.setMsg("发展规划更新完成");
+            return result;
+        }
+        for(DevelopmentPlanning dp:planList){
+            if(dp.getYear().equals(plan.getYear())){
+                //进行更新操作
+                developmentPlanningMapper.updatePlan(plan);
+                result.setMsg("发展规划更新完成");
+                return result;
+            }
+        }
+        //非以上两种情况，直接进行插入操作
+        developmentPlanningMapper.insertPlan(plan);
+        result.setMsg("发展规划更新完成");
+        return result;
+    }
+
+    //3.导员驳回发展规划
+    @PostMapping("rejectPlan")
+    @ResponseBody
+    public Result rejectPlan(@RequestBody DevelopmentPlanning plan){
+        Result result = new Result<>();
+        developmentPlanningMapper.rejectPlan(plan);
+        result.setMsg("驳回发展计划");
+        return result;
+    }
+
+    //4.导员审核通过
+    @PostMapping("passPlan")
+    @ResponseBody
+    public Result passPlan(@RequestBody DevelopmentPlanning plan){
+        Result result = new Result<>();
+        developmentPlanningMapper.passPlan(plan);
+        result.setMsg("发展计划审核通过");
+        return result;
+    }
+
+    //5.家长审核通过
+    @PostMapping("passPlan2")
+    @ResponseBody
+    public Result passPlan2(@RequestBody DevelopmentPlanning plan){
+        Result result = new Result<>();
+        developmentPlanningMapper.passPlan2(plan);
+        result.setMsg("发展计划审核通过");
+        return result;
+    }
+
+    //6.家长驳回发展规划
+    @PostMapping("rejectPlan2")
+    @ResponseBody
+    public Result rejectPlan2(@RequestBody DevelopmentPlanning plan){
+        Result result = new Result<>();
+        developmentPlanningMapper.rejectPlan2(plan);
+        result.setMsg("驳回发展计划");
+        return result;
+    }
+
+    @PostMapping("Stu/findStuPicture")
+    public Result findStuPicture(@RequestBody Student student){
+        Result result = new Result();
+        Student s = studentMapper.findOneStudent(student.getStu_no());
+        if(s==null){
+            result.setData("test.jpg");
+            result.setMsg("当前学生不存在,返回默认图片路径");
+            return result;
+        }
+        result.setData(s.getStu_photourl());
+        result.setMsg("当前学生照片路径如下：");
+        return result;
+    }
 }
 
 

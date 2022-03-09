@@ -104,4 +104,35 @@ public class echartscontroller {
         result.setData(typeAndCounts);
         return result;
     }
+    @PostMapping("/ethnic_minority")
+    public Result ethnic_minority(@RequestBody Teacher teacher){
+        Result result=new Result();
+        List<TypeAndCount> typeAndCounts=new ArrayList<>();
+        List<Class> classList=new ArrayList<>();
+        classList=(List<Class>) redisUtil.get(teacher.getT_no()+"class");
+        for (int i = 0; i < classList.size(); i++) {
+            List<Student> s=new ArrayList<>();
+            Integer shaoshu=0;
+            s=studentMapper.findStudentsByClass(classList.get(i).getClass_name());
+            for (int j = 0; j < s.size(); j++) {
+                if(s.get(j).getStu_ethnic()!=null&&(!s.get(j).getStu_ethnic().equals("汉")&&!s.get(j).getStu_ethnic().equals("汉族"))){
+                    shaoshu++;
+                }
+            }
+            TypeAndCount typeAndCount=new TypeAndCount();
+            typeAndCount.setEle_class(classList.get(i).getClass_name());
+            typeAndCount.setEle_type("少数民族");
+            typeAndCount.setEle_count(shaoshu);
+            TypeAndCount typeAndCount1=new TypeAndCount();
+            typeAndCount1.setEle_class(classList.get(i).getClass_name());
+            typeAndCount1.setEle_type("其他");
+            typeAndCount1.setEle_count(s.size()-shaoshu);
+            typeAndCounts.add(typeAndCount);
+            typeAndCounts.add(typeAndCount1);
+
+        }
+        result.setData(typeAndCounts);
+        return result;
+
+    }
 }
