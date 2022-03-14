@@ -25,10 +25,16 @@
         development_planning_planone,
         development_planning_plantwo,
         development_planning_summary,
-        development_planning_howto,
+        development_planning_howtonextyear,
+        development_planning_howtonext2year,
+        development_planning_thisyearplan,
+        development_planning_successful_experience,
+        development_planning_details,
+        development_planning_familymean,
         development_planning_status,
         development_planning_family_status,
-        year
+        year,
+        year2
         ) values (
          #{development_planning_no},
          #{development_planning_stu_no},
@@ -41,16 +47,23 @@
          #{development_planning_planone},
          #{development_planning_plantwo},
          #{development_planning_summary},
-         #{development_planning_howto},
+        #{ development_planning_howtonextyear},
+        #{development_planning_howtonext2year},
+        #{development_planning_thisyearplan},
+        #{development_planning_successful_experience},
+        #{development_planning_details},
+        #{development_planning_familymean},
          #{development_planning_status},
          #{development_planning_family_status},
-         #{year}
+         #{year},
+        #{year2}
                          )
     </insert>
 
     <update id="updatePlan" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
         update development_planning
-        set development_planning_no = #{development_planning_no},
+        set
+            development_planning_stu_no= #{development_planning_stu_no},
             development_planning_stu_name = #{development_planning_stu_name},
             development_planning_stu_class = #{development_planning_stu_class},
             development_planning_room = #{development_planning_room},
@@ -60,33 +73,44 @@
             development_planning_planone = #{development_planning_planone},
             development_planning_plantwo = #{development_planning_plantwo},
             development_planning_summary = #{development_planning_summary},
-            development_planning_howto = #{development_planning_howto},
+            development_planning_howtonextyear = #{development_planning_howtonextyear},
+            development_planning_howtonext2year=#{development_planning_howtonext2year},
+            development_planning_thisyearplan=#{development_planning_thisyearplan},
+            development_planning_successful_experience=#{development_planning_successful_experience},
+            development_planning_details=#{development_planning_details},
+            development_planning_familymean=#{development_planning_familymean},
             development_planning_status = #{development_planning_status},
-            development_planning_family_status = #{development_planning_family_status}
-        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+            development_planning_family_status = #{development_planning_family_status},
+            year = #{year},
+            year2=#{year2}
+
+        where development_planning_no = #{development_planning_no}
     </update>
 
     <update id="passPlan" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
         update development_planning
         set development_planning_status = '1'
-        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+        where where development_planning_no = #{development_planning_no}
     </update>
 
     <update id="rejectPlan" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
         update development_planning
         set development_planning_status = '0'
-        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+        where where development_planning_no = #{development_planning_no}
     </update>
 
     <update id="passPlan2" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
         update development_planning
         set development_planning_family_status = '1'
-        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+        where where development_planning_no = #{development_planning_no}
     </update>
 
     <update id="rejectPlan2" parameterType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
         update development_planning
         set development_planning_family_status = '0'
-        where development_planning_stu_no = #{development_planning_stu_no} and year = #{year}
+        where where development_planning_no = #{development_planning_no}
     </update>
+    <select id="findPlanByYear" resultType="com.cqu.stu_manager.pojo.DevelopmentPlanning">
+        select *from development_planning  where development_planning_no = #{development_planning_no}
+    </select>
 </mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.stu_manager.mapper.Social_activityMapper">
+    <select id="findAllSocialActivity" resultType="com.cqu.stu_manager.pojo.Social_activity">
+        select * from social_activity
+    </select>
+
+    <select id="findSocialActivityByStu" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Social_activity">
+        select * from social_activity where social_activity_stu_no=#{stu_no}
+    </select>
+
+    <insert id="insertSocialActivityByStudent" parameterType="com.cqu.stu_manager.pojo.Social_activity">
+        insert into social_activity (
+
+            social_activity_no,
+            social_activity_stu_no,
+            social_activity_stu_name,
+            social_activity_name,
+            social_activity_start_time,
+            social_activity_end_time
+
+        )
+        values (
+                   #{social_activity_no},
+                   #{social_activity_stu_no},
+                   #{social_activity_stu_name},
+                   #{social_activity_name},
+                   #{social_activity_start_time},
+                   #{social_activity_end_time}
+
+               )
+    </insert>
+
+    <delete id="deleteSocialActivityByStudent" parameterType="com.cqu.stu_manager.pojo.Social_activity">
+        delete from social_activity
+        where social_activity_stu_no = #{social_activity_stu_no} and social_activity_name = #{social_activity_name}
+    </delete>
+
+
+</mapper>

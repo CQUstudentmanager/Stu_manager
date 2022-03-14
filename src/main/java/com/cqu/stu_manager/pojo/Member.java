@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Code
-{
-    private String family_code;
-    private String family_tel;
+@AllArgsConstructor
+public class Member {
+    private String is_doing_name;
+    private String is_doing_member_name;
 }

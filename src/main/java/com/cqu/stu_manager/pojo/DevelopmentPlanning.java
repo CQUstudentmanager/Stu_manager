@@ -19,9 +19,15 @@ public class DevelopmentPlanning {
     private String development_planning_planone;
     private String development_planning_plantwo;
     private String development_planning_summary;
-    private String development_planning_howto;
+    private String development_planning_howtonextyear;
+    private String development_planning_howtonext2year;
+    private String development_planning_thisyearplan;
+    private String development_planning_successful_experience;
+     private String       development_planning_details;
+    private String development_planning_familymean;
     private String development_planning_status;
     private String development_planning_family_status;
     private String year;
+    private String year2;
 
 }

@@ -30,8 +30,10 @@ public class familycontroller {
        String radom= randamCode.randomStr(6);
        redisUtil.set(tel+"family",radom,300);
        txSmsTemplatel.sendMesModel(family.getFamily_tel(),radom.toString());
+       result.setCode(1);
        result.setMsg("验证码发送成功");
        }else {
+           result.setCode(0);
            result.setMsg("未找到家长信息");
        }
        return  result;
@@ -40,9 +42,9 @@ public class familycontroller {
 
     @PostMapping("/familycode")
     public Result familycode(@RequestBody Code code){
-    String CODE=code.getCode();
+    String CODE=code.getFamily_code();
     String right_code="";
-    String tel=code.getTel();
+    String tel=code.getFamily_tel();
     tel=tel+"family";
         Result result=new Result();
     if (redisUtil.get(tel)==null){
@@ -51,11 +53,18 @@ public class familycontroller {
     right_code=redisUtil.get(tel).toString();
 
     if(right_code.equals(CODE)){
+        result.setCode(1);
        result.setMsg("验证成功");
     }else {
+        result.setCode(0);
         result.setMsg("验证失败");
     }}
 
     return result;
+    }
+    public Result findStudentInfo(){
+        Result result=new Result();
+
+        return result;
     }
     }

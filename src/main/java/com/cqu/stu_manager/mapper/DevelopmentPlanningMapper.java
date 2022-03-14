@@ -16,4 +16,6 @@ public interface DevelopmentPlanningMapper {
     int rejectPlan(DevelopmentPlanning plan);//计划审核未通过
     int passPlan2(DevelopmentPlanning plan);//家长审核通过
     int rejectPlan2(DevelopmentPlanning plan);//家长审核未通过
+
+    DevelopmentPlanning findPlanByYear(String development_planning_stu_no, String year);
 }

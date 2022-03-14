@@ -54,6 +54,6 @@ mybatis:
 txsms:
   AppId: 1400643047
   AppKey: e58b416c2b0f3edb66344336d466b1ef
-  TemplateId: 1325536
+  TemplateId: 1325562
   signName: Ganoder
 

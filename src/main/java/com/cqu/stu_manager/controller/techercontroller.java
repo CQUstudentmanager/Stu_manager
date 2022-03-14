@@ -5,6 +5,7 @@ import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.service.MailService;
+import com.cqu.stu_manager.utils.DocUtil;
 import com.cqu.stu_manager.utils.RedisUtil;
 import com.cqu.stu_manager.utils.Result;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -270,6 +272,43 @@ return result;
             result.setData(string);
         }
         return result;
+    }
+    @PostMapping("/Tea/writeplanning")
+    public Result writeplanning(@RequestBody DevelopmentPlanning developmentPlanning){
+        Result result=new Result();
+        String path="D:\\nginx-1.18.0\\html\\Word\\";
+        String filename=developmentPlanning.getDevelopment_planning_stu_name()+"发展规划书.doc";
+        try {
+            Map<String, Object> dataMap = new HashMap<>();
+            dataMap.put("stu_name", developmentPlanning.getDevelopment_planning_stu_name());
+            dataMap.put("stu_no", developmentPlanning.getDevelopment_planning_stu_no());
+            dataMap.put("stu_class", developmentPlanning.getDevelopment_planning_stu_class());
+            dataMap.put("stu_room", developmentPlanning.getDevelopment_planning_room());
+            dataMap.put("stu_gpa", developmentPlanning.getDevelopment_planning_gpa());
+            dataMap.put("nopass_point", developmentPlanning.getDevelopment_planning_nopass_point());
+            dataMap.put("wish", developmentPlanning.getDevelopment_planning_wish());
+            dataMap.put("planone", developmentPlanning.getDevelopment_planning_planone());
+            dataMap.put("plantwo", developmentPlanning.getDevelopment_planning_plantwo());
+            dataMap.put("summary", developmentPlanning.getDevelopment_planning_summary());
+            dataMap.put("howtonextyear", developmentPlanning.getDevelopment_planning_howtonextyear());
+            dataMap.put("year", developmentPlanning.getYear());
+            Integer nextyear=0;
+            nextyear=(Integer.parseInt(developmentPlanning.getYear())+1);
+            dataMap.put("nextyear", nextyear.toString());
+            dataMap.put("howtonexttwoyear",developmentPlanning.getDevelopment_planning_howtonext2year());
+            dataMap.put("thisyearplan", developmentPlanning.getDevelopment_planning_thisyearplan());
+            dataMap.put("successful_experience", developmentPlanning.getDevelopment_planning_successful_experience());
+            dataMap.put("details", developmentPlanning.getDevelopment_planning_details());
+            dataMap.put("familymean", developmentPlanning.getDevelopment_planning_familymean());
+
+            DocUtil.saveWord(path+filename, dataMap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        result.setMsg("生成成功");
+        result.setData(filename);
+        return result;
+
     }
 
 }

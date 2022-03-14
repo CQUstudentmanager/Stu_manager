@@ -594,11 +594,23 @@ public class studentcontroller {
         }
         else {
             result.setMsg("当前学生发展规划信息有" + planList.size() + "条");
-            result.setData(planList);
+            DevelopmentPlanning temp=new DevelopmentPlanning();
+            for (int i = 0; i < planList.size()-1; i++) {
+                if(planList.get(i).getYear().compareTo(planList.get(i+1).getYear())<0){
+                    temp=planList.get(i+1);
+                }else temp=planList.get(i);
+            }
+result.setData(temp);
         }
         return result;
     }
-
+    @PostMapping("/Stu/getStudentPlanByYear")
+        public Result getStudentPlanByYear(@RequestBody DevelopmentPlanning developmentPlanning){
+            Result result=new Result();
+            DevelopmentPlanning developmentPlanning1=developmentPlanningMapper.findPlanByYear(developmentPlanning.getDevelopment_planning_stu_no(),developmentPlanning.getYear());
+            result.setData(developmentPlanning1);
+            return result;
+        }
     //2.修改或者新增发展规划
     @PostMapping("Stu/uploadPlan")
     @ResponseBody

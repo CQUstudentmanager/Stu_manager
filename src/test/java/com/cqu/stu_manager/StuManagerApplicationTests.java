@@ -7,11 +7,16 @@ import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.Family;
 import com.cqu.stu_manager.pojo.Student;
 import com.cqu.stu_manager.service.MailService;
+import com.cqu.stu_manager.utils.DocUtil;
 import com.cqu.stu_manager.utils.RedisUtil;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -59,10 +64,7 @@ DevelopmentPlanningMapper developmentPlanningMapper;
     @SneakyThrows
     @Test
     void contextLoads() {
-//        String Msg = txSmsTemplate.sendMesModel("18357980493", "1111");
-//        // Msg不为null 发送成功
-//        // Msg为null  发送失败
-//        System.out.println(Msg);
+
 
     }
 }

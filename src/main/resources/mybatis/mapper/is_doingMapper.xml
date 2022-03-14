@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.stu_manager.mapper.Is_doingMapper">
+
+    <select id="find_my_is_doing" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Is_doing">
+        select * from is_doing where is_doing_stu_no = #{stu_no};
+    </select>
+
+    <select id="find_my_member" resultType="com.cqu.stu_manager.pojo.Member">
+        select * from is_doing_member where is_doing_name = #{is_doing_name}
+    </select>
+
+    <insert id="insert_is_doing" parameterType="com.cqu.stu_manager.pojo.Is_doing">
+        insert into is_doing(
+            is_doing_no,
+            is_doing_stu_no,
+            is_doing_stu_name,
+            is_doing_end,
+            is_doing_category,
+            is_doing_guide_teacher,
+            is_doing_name
+        )
+        values (
+                   #{is_doing_no},
+                   #{is_doing_stu_no},
+                   #{is_doing_stu_name},
+                   #{is_doing_end},
+                   #{is_doing_category},
+                   #{is_doing_guide_teacher},
+                   #{is_doing_name}
+               )
+    </insert>
+    
+    <insert id="insert_is_doing_member" parameterType="com.cqu.stu_manager.pojo.Member">
+        insert into is_doing_member (
+            is_doing_name,
+            is_doing_member_name
+        )
+        values (
+                #{is_doing_name},
+                #{is_doing_member_name}
+               )
+    </insert>
+
+    <delete id="delete_is_doing" parameterType="com.cqu.stu_manager.pojo.Is_doing">
+        delete from is_doing
+        where is_doing_name = #{is_doing_name}
+    </delete>
+
+    <delete id="delete_is_doing_member">
+        delete from is_doing_member
+        where is_doing_name = #{is_doing_name}
+    </delete>
+
+
+</mapper>

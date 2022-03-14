@@ -28,7 +28,7 @@ public class TxSmsTemplate {
     public String sendMesModel(String number,String value) {
         try {
             // 接收生成的验证码，设置5分钟内填写
-            String[] params = {value};
+            String[] params = {value,"5"};
 
             // 构建短信发送器
             SmsSingleSender ssender = new SmsSingleSender(txProperties.getAppId(), txProperties.getAppKey());

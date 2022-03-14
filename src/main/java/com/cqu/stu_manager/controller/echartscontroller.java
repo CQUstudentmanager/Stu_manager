@@ -3,10 +3,9 @@ package com.cqu.stu_manager.controller;
 import com.cqu.stu_manager.mapper.ClassMapper;
 import com.cqu.stu_manager.mapper.StudentMapper;
 import com.cqu.stu_manager.mapper.TeacherMapper;
+import com.cqu.stu_manager.mapper.Voluntary_activitiesMapper;
+import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.pojo.Class;
-import com.cqu.stu_manager.pojo.Student;
-import com.cqu.stu_manager.pojo.Teacher;
-import com.cqu.stu_manager.pojo.TypeAndCount;
 import com.cqu.stu_manager.utils.InfoForTeacher;
 import com.cqu.stu_manager.utils.RedisUtil;
 import com.cqu.stu_manager.utils.Result;
@@ -95,7 +94,7 @@ public class echartscontroller {
                 typeAndCount.setEle_count(Demoted_student);
             TypeAndCount typeAndCount1=new TypeAndCount();
             typeAndCount1.setEle_class(classList.get(i).getClass_name());
-            typeAndCount1.setEle_type("其他");
+            typeAndCount1.setEle_type("普通生");
             typeAndCount1.setEle_count(s.size()-Demoted_student);
             typeAndCounts.add(typeAndCount);
             typeAndCounts.add(typeAndCount1);
@@ -125,7 +124,7 @@ public class echartscontroller {
             typeAndCount.setEle_count(shaoshu);
             TypeAndCount typeAndCount1=new TypeAndCount();
             typeAndCount1.setEle_class(classList.get(i).getClass_name());
-            typeAndCount1.setEle_type("其他");
+            typeAndCount1.setEle_type("汉族");
             typeAndCount1.setEle_count(s.size()-shaoshu);
             typeAndCounts.add(typeAndCount);
             typeAndCounts.add(typeAndCount1);
@@ -134,5 +133,43 @@ public class echartscontroller {
         result.setData(typeAndCounts);
         return result;
 
+    }
+    @PostMapping("/findFailedstudent")
+    public Result findFailedstudent(){
+        Result result=new Result();
+
+        return  result;
+    }
+    @Autowired
+    Voluntary_activitiesMapper voluntary_activitiesMapper;
+    @PostMapping("/findVolunteer_Hours")
+    public Result findVolunteer_Hours(@RequestBody Teacher teacher){
+        Result result=new Result();
+        List<Class> classList=new ArrayList<>();
+        classList=(List<Class>) redisUtil.get(teacher.getT_no()+"class");
+        List<Student> allStudent=new ArrayList<>();
+        for (int i = 0; i < classList.size(); i++) {
+            List<Student> temp=new ArrayList<>();
+            temp=studentMapper.findStudentsByClass(classList.get(i).getClass_name());
+            allStudent.addAll(temp);
+        }
+        List<VoluntaryCount> voluntaryCounts=new ArrayList<>();
+        for (int i = 0; i < allStudent.size(); i++) {
+            List<Voluntary_activities>v=new ArrayList<>();
+            v=voluntary_activitiesMapper.findVoluntary_activitiesByStuno(allStudent.get(i));
+            Double total=0.0;
+            if(!v.isEmpty()){
+
+            for (int j = 0; j < v.size(); j++) {
+                total=total+v.get(j).getVoluntary_activities_time_long();
+            }}
+            VoluntaryCount count=new VoluntaryCount();
+            count.setStu_no(allStudent.get(i).getStu_no().toString());
+            count.setStu_name(allStudent.get(i).getStu_name());
+            count.setTime(total);
+            voluntaryCounts.add(count);
+        }
+        result.setData(voluntaryCounts);
+        return  result;
     }
 }

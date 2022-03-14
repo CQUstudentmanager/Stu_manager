@@ -3,6 +3,7 @@ import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.utils.Result;
 import org.apache.poi.ss.formula.functions.T;
+import org.hamcrest.core.Is;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.flyway.FlywayDataSource;
 import org.springframework.web.bind.annotation.*;
@@ -1003,6 +1004,144 @@ public class award_information_controller {
             }
         }
         return count;
+    }
+
+    //社会工作
+    @Autowired
+    Social_activityMapper social_activityMapper;
+
+    //1.找到所有的社会工作信息
+    @PostMapping("find_all_social_activity")
+    @ResponseBody
+    public List<Social_activity> findAllSocialActivity(@RequestBody Teacher teacher) {
+        List<Social_activity> social_activityList = social_activityMapper.findAllSocialActivity();
+        List<Social_activity> result = new ArrayList<>();
+        for (Social_activity s: social_activityList) {
+            //找到社会工作对应的学生
+            Student student = studentMapper.findOneStudent(parseInt(s.getSocial_activity_stu_no()));
+            if(student == null){
+                continue;
+            }
+            //看年纪是否相同
+            if (student.getStu_class().substring(0, 2).equals(teacher.getT_identity().toString())) {
+                result.add(s);
+            }
+        }
+        return result;
+    }
+
+    //2.找到对应学生的社会工作信息
+    @PostMapping("find_my_social_activity_info")
+    public List<Social_activity> find_my_social_activity_info(@RequestBody Student student) {
+        return social_activityMapper.findSocialActivityByStu(student);
+    }
+
+    //3.上传社会服务信息
+    @PostMapping("uploadSocialActivity")
+    public Result uploadSocialActivity(@RequestBody Social_activity social_activity){
+        Result result = new Result<>();
+        Student student = new Student();
+        student.setStu_no(Integer.parseInt(social_activity.getSocial_activity_stu_no()));
+        //找到该学生的所有已上传的社会服务信息
+        List<Social_activity> social_activityList = social_activityMapper.findSocialActivityByStu(student);
+        //如果信息重复
+        for(Social_activity s:social_activityList){
+            if(s.getSocial_activity_name().equals(social_activity.getSocial_activity_name())){
+                result.setMsg("当前社会服务信息已上传，请勿重复上传");
+                return result;
+            }
+        }
+        //如果信息没有重复
+        SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
+        String format = sdf.format(new Date());
+        //social_no设置成学号加上时间
+        social_activity.setSocial_activity_no(social_activity.getSocial_activity_stu_no() + format );
+        social_activityMapper.insertSocialActivityByStudent(social_activity);
+        result.setMsg("成功上传当前社会服务信息");
+        return result;
+    }
+
+    //4.删除社会服务信息
+    @PostMapping("/deleteSocialActivity")
+    public Result deleteSocialActivity(@RequestBody Social_activity social_activity){
+        Result result = new Result<>();
+        result.setMsg(social_activityMapper.deleteSocialActivityByStudent(social_activity) + "条删除");
+        return result;
+    }
+
+    //正在进行的计划
+
+    @Autowired
+    Is_doingMapper is_doingMapper;
+
+    //1.找到对应学生的信息
+    @PostMapping("find_my_is_doing")
+    public Result find_my_is_doing(@RequestBody Student student){
+        Result result = new Result<>();
+        Is_doing is_doing = is_doingMapper.find_my_is_doing(student);
+        if(is_doing == null){
+            result.setMsg("当前学生没有正在进行的计划");
+        }
+        else {
+            result.setMsg("当前学生正在进行的计划如下");
+            List<Member> memberList = is_doingMapper.find_my_member(is_doing.getIs_doing_name());
+            List<String> nameList = new ArrayList<>();
+            for(Member m:memberList){
+                nameList.add(m.getIs_doing_member_name());
+            }
+            is_doing.setIs_doing_member(nameList);
+            result.setData(is_doing);
+        }
+        return result;
+    }
+
+    //2.学生上传信息
+    @PostMapping("upload_is_doing")
+    public Result upload_is_doing(@RequestBody Is_doing is_doing){
+        SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+        String format = sdf.format(new Date());
+        is_doing.setIs_doing_no(format+is_doing.getIs_doing_stu_no());
+        Result result = new Result<>();
+        //找到该学生是否已经上传一个正在进行的计划
+        Student student = new Student();
+        student.setStu_no(Integer.parseInt(is_doing.getIs_doing_stu_no()));
+        Is_doing is_doing_old = is_doingMapper.find_my_is_doing(student);
+        //插入is_doing表
+        is_doingMapper.insert_is_doing(is_doing);
+        //插入is_doing_member表
+        Member m = new Member();
+        m.setIs_doing_name(is_doing.getIs_doing_name());
+        for(String s:is_doing.getIs_doing_member()){
+            m.setIs_doing_member_name(s);
+            is_doingMapper.insert_is_doing_member(m);
+        }
+        if(is_doing_old == null){
+            result.setMsg("上传成功");
+        }
+        else {
+            //先删除原来的信息
+            is_doingMapper.delete_is_doing(is_doing_old);
+            is_doingMapper.delete_is_doing_member(is_doing_old.getIs_doing_name());
+            result.setMsg("已覆盖原有正在进行中的计划");
+        }
+        return result;
+    }
+
+    //3.删除相关
+    @PostMapping("delete_is_doing")
+    public Result delete_is_doing(@RequestBody Is_doing is_doing){
+        Result result = new Result<>();
+        Student student = new Student();
+        student.setStu_no(Integer.parseInt(is_doing.getIs_doing_stu_no()));
+        Is_doing is_doing_old = is_doingMapper.find_my_is_doing(student);
+        if(is_doing_old == null || is_doing_old.getIs_doing_name()!= is_doing.getIs_doing_name()){
+            result.setMsg("错误！");
+            return result;
+        }
+        is_doingMapper.delete_is_doing(is_doing);
+        is_doingMapper.delete_is_doing_member(is_doing.getIs_doing_name());
+        result.setMsg("删除成功");
+        return  result;
     }
 
 }
