@@ -46,7 +46,7 @@
 
     <delete id="delete_is_doing" parameterType="com.cqu.stu_manager.pojo.Is_doing">
         delete from is_doing
-        where is_doing_name = #{is_doing_name}
+        where is_doing_stu_no = #{is_doing_stu_no}
     </delete>
 
     <delete id="delete_is_doing_member">

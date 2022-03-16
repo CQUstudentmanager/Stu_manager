@@ -120,6 +120,24 @@ public class studentcontroller {
     PatentMapper patentMapper;
     @Autowired
     DispatchMapper dispatchMapper;
+    @PostMapping("/findDevelopments")
+    public Result findDevelopments(@RequestBody Student student){
+        Result result=new Result();
+        List<DevelopmentPlanning >developmentPlannings=new ArrayList<>();
+        developmentPlannings=developmentPlanningMapper.findPlanByStuNo(student.getStu_no().toString());
+        Collections.sort(developmentPlannings, new Comparator<DevelopmentPlanning>() {
+            @Override
+            public int compare(DevelopmentPlanning o1, DevelopmentPlanning o2) {
+                String s2=o2.getYear()+o2.getYear2();
+                String s1=o1.getYear()+o1.getYear2();
+                return s2.compareTo(s1);
+            }
+        });
+        result.setData(developmentPlannings);
+        return result;
+    }
+    @Autowired
+    Is_doingMapper is_doingMapper;
     @PostMapping ("Stu/findallinfoforone")
     public Result findallinfo(@RequestBody Student student){
         StudentInfoAll studentInfoAll=new StudentInfoAll();
@@ -217,11 +235,29 @@ public class studentcontroller {
         else {
             studentInfoAll.setDispatch(dispatchList);
         }
+        List<DevelopmentPlanning >developmentPlannings=new ArrayList<>();
+        developmentPlannings=developmentPlanningMapper.findPlanByStuNo(student.getStu_no().toString());
+        Collections.sort(developmentPlannings, new Comparator<DevelopmentPlanning>() {
+            @Override
+            public int compare(DevelopmentPlanning o1, DevelopmentPlanning o2) {
+                String s2=o2.getYear()+o2.getYear2();
+                String s1=o1.getYear()+o1.getYear2();
+                return s2.compareTo(s1);
+            }
+        });
+        studentInfoAll.setDevelopmentPlannings(developmentPlannings);
+        Is_doing is_doing=new Is_doing();
+        is_doing=is_doingMapper.find_my_is_doing(student);
+        studentInfoAll.setIs_doing(is_doing);
+        Plan plan=new Plan();
+        plan=planMapper.findMyPlan(student);
+        studentInfoAll.setPlan(plan);
         Result result=new Result();
         result.setData(studentInfoAll);
         return result;
     }
-
+@Autowired
+PlanMapper planMapper;
 
     @PostMapping("Stu/stuList")
     @ResponseBody
@@ -355,26 +391,30 @@ public class studentcontroller {
         @CrossOrigin
         public Result upLoadPicture(MultipartFile file, HttpServletRequest request){
             Result result = new Result();
-//            获取上传的文件名字，看是否为jpg文件，不是的话直接返回错误信息
+//            获取上传的文件名字，看是否为jpg文件，或者是png,不是的话直接返回错误信息
+            String originName = file.getOriginalFilename();
             if(file == null){
                 result.setMsg("未收到文件");
                 return result;
             }
             else {
-                String originName = file.getOriginalFilename();
-                if(!originName.endsWith(".jpg")){
+                if((!originName.endsWith(".jpg")) || (!originName.endsWith(".png"))){
                 result.setMsg("文件类型错误");
                 return result;
                 }
             }
-
             FilePath2 f = new FilePath2();
             //String realPath = "D:\\java_project\\vue_m\\vue\\src\\assets\\Pictures" ;//存储在本机上的路径
             File folder = new File(f.getPath()+"\\Pictures");
             if(!folder.exists()){
                 folder.mkdirs();
             }
-            String newName = UUID.randomUUID().toString() + ".jpg";
+            String newName;
+            if(originName.endsWith(".jpg")){
+                newName = UUID.randomUUID().toString() + ".jpg";
+            }else {
+                newName = UUID.randomUUID().toString() + ".png";
+            }
             try {
                 file.transferTo(new File(folder,newName));
                 result.setMsg("上传成功");
@@ -619,25 +659,27 @@ result.setData(temp);
         SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmm");
         String format = sdf.format(new Date());
         String str = plan.getDevelopment_planning_stu_no() + format;
-        plan.setDevelopment_planning_no(str);
         Result result =new Result<>();
         //判断是进行更新还是进行插入操作
         List<DevelopmentPlanning> planList = developmentPlanningMapper.findPlanByStuNo(plan.getDevelopment_planning_stu_no());
         if(planList == null || planList.size() == 0){
             //插入新的规划
+            plan.setDevelopment_planning_no(str);
             developmentPlanningMapper.insertPlan(plan);
             result.setMsg("发展规划更新完成");
             return result;
         }
         for(DevelopmentPlanning dp:planList){
-            if(dp.getYear().equals(plan.getYear())){
+            if(dp.getYear().equals(plan.getYear())&&dp.getYear2().equals(plan.getYear2())&&dp.getDevelopment_planning_stu_no().equals(plan.getDevelopment_planning_stu_no())){
                 //进行更新操作
+                plan.setDevelopment_planning_no(str);
                 developmentPlanningMapper.updatePlan(plan);
                 result.setMsg("发展规划更新完成");
                 return result;
             }
         }
         //非以上两种情况，直接进行插入操作
+        plan.setDevelopment_planning_no(str);
         developmentPlanningMapper.insertPlan(plan);
         result.setMsg("发展规划更新完成");
         return result;

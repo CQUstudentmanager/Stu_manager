@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.stu_manager.mapper.GradePiontMapper">
+<insert id="insertGradePiontByExcel" parameterType="com.cqu.stu_manager.excel.pojo.GradePoint">
+    insert into grade_point (
+        grade_point_no,
+            grade_point_stu_no,
+grade_point_stu_name,
+grade_point_stu_class,
+grade_point_mrjorpercentage,
+grade_point_national_english,
+grade_point_gpa,
+grade_point_rankforclass,
+grade_point_rankformajor,
+grade_point_major_num,
+grade_point_english_score,
+grade_point_sportsscore,
+grade_point_healthknowledge,
+grade_point_long_distance_run,
+grade_point_general_knowledge,
+grade_point_istatol,
+grade_point_time
+    )values (
+                    #{grade_point_no},
+                    #{grade_point_stu_no},
+                    #{grade_point_stu_name},
+                    #{grade_point_stu_class},
+                    #{grade_point_mrjorpercentage},
+                    #{grade_point_national_english},
+                    #{grade_point_gpa},
+                    #{grade_point_rankforclass},
+                    #{grade_point_rankformajor},
+                    #{grade_point_major_num},
+                    #{grade_point_english_score},
+                    #{grade_point_sportsscore},
+                    #{grade_point_healthknowledge},
+                    #{grade_point_long_distance_run},
+                    #{grade_point_general_knowledge},
+                    #{grade_point_istatol},
+                    #{grade_point_time}
+
+                )
+</insert>
+    <select id="findGradePointByStuno" resultType="com.cqu.stu_manager.excel.pojo.GradePoint">
+        select * from grade_point where grade_point_stu_no=#{grade_point_stu_no} and grade_point_istatol='是'
+    </select>
+    <update id="updateGradePoint" parameterType="com.cqu.stu_manager.excel.pojo.GradePoint">
+        update grade_point set
+            grade_point_no=#{grade_point_no},
+            grade_point_stu_name=#{grade_point_stu_name},
+            grade_point_stu_class=#{grade_point_stu_class},
+            grade_point_mrjorpercentage=#{grade_point_mrjorpercentage},
+            grade_point_national_english=#{grade_point_national_english},
+            grade_point_gpa=#{grade_point_gpa},
+            grade_point_rankforclass=#{grade_point_rankforclass},
+            grade_point_rankformajor=#{grade_point_rankformajor},
+            grade_point_major_num=#{grade_point_major_num},
+            grade_point_english_score=#{grade_point_english_score},
+            grade_point_sportsscore=#{grade_point_sportsscore},
+            grade_point_healthknowledge=#{grade_point_healthknowledge},
+            grade_point_long_distance_run=#{grade_point_long_distance_run},
+            grade_point_general_knowledge=#{grade_point_general_knowledge},
+            grade_point_istatol=#{grade_point_istatol},
+            grade_point_time=#{grade_point_time}
+where grade_point_stu_no=#{grade_point_stu_no}
+    </update>
+
+</mapper>

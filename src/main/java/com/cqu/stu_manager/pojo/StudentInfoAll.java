@@ -60,4 +60,7 @@ public class StudentInfoAll {
     private List<Contest> contest;
     private List<Dispatch> dispatch;
     private List<Project> project;
-}
+    private List<DevelopmentPlanning> developmentPlannings;
+    private Is_doing is_doing;
+    private Plan plan;
+ }

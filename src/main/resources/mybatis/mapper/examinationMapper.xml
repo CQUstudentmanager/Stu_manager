@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.stu_manager.mapper.ExaminationMapper">
+    <insert id="insertExaminationByExcel" parameterType="com.cqu.stu_manager.excel.pojo.Examination">
+        insert into final_information (
+                final_Information_no,
+                final_Information_no_stu_no,
+                final_Information_stu_name,
+                final_Information_year,
+                final_Information_dept,
+                final_Information_no_coursename,
+                final_Information_coursecode,
+                final_Information_character,
+                final_Information_comprehensive_achievements,
+                final_Information_effective_achievement,
+                final_Information_examination_situation,
+                final_Information_examination_type
+
+        )values (
+                    #{final_Information_no},
+                    #{final_Information_no_stu_no},
+                    #{final_Information_stu_name},
+                    #{final_Information_year},
+                    #{final_Information_dept},
+                    #{final_Information_no_coursename},
+                    #{final_Information_coursecode},
+                    #{final_Information_character},
+                    #{final_Information_comprehensive_achievements},
+                    #{final_Information_effective_achievement},
+                    #{final_Information_examination_situation},
+                    #{final_Information_examination_type}
+
+            )
+    </insert>
+</mapper>

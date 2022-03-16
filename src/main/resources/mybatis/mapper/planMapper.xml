@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqu.stu_manager.mapper.PlanMapper">
+ 
+    <select id="findMyPlan" parameterType="com.cqu.stu_manager.pojo.Student" resultType="com.cqu.stu_manager.pojo.Plan">
+        select *
+        from plan where plan_stu_no = #{stu_no};
+    </select>
+
+    <delete id="deletePlan" parameterType="com.cqu.stu_manager.pojo.Plan">
+        delete from plan
+        where plan_stu_no = #{plan_stu_no}
+    </delete>
+
+    <insert id="insertPlan" parameterType="com.cqu.stu_manager.pojo.Plan">
+        insert into plan(
+                         plan_no,
+                         plan_stu_no,
+                         plan_stu_name,
+                         plan_start_time,
+                         plan_end_time,
+                         plan_category
+        ) values (
+                             #{plan_no},
+                             #{plan_stu_no},
+                             #{plan_stu_name},
+                             #{plan_start_time},
+                             #{plan_end_time},
+                             #{plan_category}
+                         )
+    </insert>
+
+</mapper>

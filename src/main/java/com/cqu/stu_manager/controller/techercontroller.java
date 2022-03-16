@@ -1,7 +1,10 @@
 package com.cqu.stu_manager.controller;
 
 import com.alibaba.druid.sql.visitor.functions.If;
+import com.cqu.stu_manager.excel.GradePoint_Reader;
 import com.cqu.stu_manager.excel.StudentListHeadmasterExcel;
+import com.cqu.stu_manager.excel.pojo.FilePath;
+import com.cqu.stu_manager.excel.pojo.GradePoint;
 import com.cqu.stu_manager.mapper.*;
 import com.cqu.stu_manager.pojo.*;
 import com.cqu.stu_manager.service.MailService;
@@ -12,7 +15,10 @@ import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -41,6 +47,111 @@ public class techercontroller {
     {
         List<Teacher> teacherList=teacherMapper.findAllTeacher();
         return teacherList;
+    }
+    @Autowired
+    GradePiontMapper gradePiontMapper;
+    @PostMapping("/downloadExcelforGradepoint")
+    public Result downloadExcelforGradepoint(){
+
+        Result result=new Result();
+        result.setData("成绩绩点排名模板.xls");
+        return result;
+    }
+@PostMapping("/readExcelforGradepoint")
+    public Result readExcelforGradepoint(@RequestBody FilePath filePath_r){
+        Result result=new Result();
+
+            GradePoint_Reader gradePoint_reader = new GradePoint_Reader(gradePiontMapper, redisUtil);
+            String path = "";
+            FilePath filePath = new FilePath();
+            path = filePath.getPath() + "UploadExcel\\";
+            gradePoint_reader.gradepointread(path + filePath_r.getPath());
+    if(redisUtil.hasKey("test123")) {
+            Object getdate = (Object) redisUtil.get("test123");
+            result.setData(getdate);
+            result.setMsg("解析到数据");
+        }
+        else {
+            result.setMsg("数据未进入缓存");
+        }
+        return result;
+    }
+    @PostMapping("/issubmiting")
+    public Result  issubmiting(){
+        Result result=new Result();
+        if(redisUtil.hasKey("test123")){
+            result.setMsg("有老师正在上传，请等待上传完成");
+            result.setCode(0);
+        }
+        else {
+            result.setMsg("可以上传");
+            result.setCode(1);
+        }
+        return  result;
+    }
+    @PostMapping("/submitGradePoint")
+    public Result submitGradePoint(){
+        Result result=new Result();
+        Object rightGradePoint= redisUtil.get("test123");
+        List<GradePoint>gradePoints=new ArrayList<>();
+        gradePoints= (List<GradePoint>) rightGradePoint;
+        for (int i = 0; i < gradePoints.size(); i++) {
+            if("是".equals(gradePoints.get(i).getGrade_point_istatol())){
+                if(gradePiontMapper.findGradePointByStuno(gradePoints.get(i).getGrade_point_stu_no())==null)
+                {
+                    gradePiontMapper.insertGradePiontByExcel(gradePoints.get(i));
+                }else {
+                    gradePiontMapper.updateGradePoint(gradePoints.get(i));
+                }
+
+            }else {
+                gradePiontMapper.insertGradePiontByExcel(gradePoints.get(i));
+            }
+
+        }
+        result.setMsg("绩点信息上传成功");
+        redisUtil.del("test123");
+        return result;
+    }
+    @PostMapping("uploadExcelforGradePoint")
+    @ResponseBody
+    @CrossOrigin
+    public Result uploadExcelforGradePoint(MultipartFile file, HttpServletRequest request) {
+        Result result = new Result();
+        String newName = UUID.randomUUID().toString();
+        //获取上传的文件名字，看是否为jpg文件或者pdf，不是的话直接返回错误信息
+        if (file == null) {
+            result.setMsg("未收到文件");
+            return result;
+        } else {
+            String s = file.getOriginalFilename();
+            assert s != null;
+            String originName = s.toUpperCase();
+            if (!(originName.endsWith("XLS") || originName.endsWith("XLSX"))) {
+                result.setMsg("文件类型错误");
+                return result;
+            }
+            if (originName.endsWith("XLS")) {
+                newName += ".XLS";
+            } else if (originName.endsWith("XLSX")) {
+                newName += ".XLSX";
+            }
+        }
+
+        FilePath f = new FilePath();
+        String realPath = f.getPath() + "UploadExcel\\" ;//存储在本机上的路径
+        File folder = new File(realPath);
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+        try {
+            file.transferTo(new File(folder, newName));
+            result.setMsg("文件上传成功");
+            result.setData(newName);
+        } catch (IOException e) {
+            result.setMsg(e.getMessage());
+        }
+        return result;
     }
 
     @PostMapping("Tea/findOneTeacher")
@@ -279,7 +390,17 @@ return result;
         String path="D:\\nginx-1.18.0\\html\\Word\\";
         String filename=developmentPlanning.getDevelopment_planning_stu_name()+"发展规划书.doc";
         try {
+            if(developmentPlanning.getDevelopment_planning_details()==null){
+                developmentPlanning.setDevelopment_planning_details("未填写");
+            }
+            if(developmentPlanning.getDevelopment_planning_gpa()==null){
+                developmentPlanning.setDevelopment_planning_gpa("未填写");
+            }
+            if (developmentPlanning.getDevelopment_planning_familymean()==null){
+                developmentPlanning.setDevelopment_planning_familymean("家长还未填写");
+            }
             Map<String, Object> dataMap = new HashMap<>();
+            dataMap.put("Grade","20"+developmentPlanning.getDevelopment_planning_stu_class().substring(0,2));
             dataMap.put("stu_name", developmentPlanning.getDevelopment_planning_stu_name());
             dataMap.put("stu_no", developmentPlanning.getDevelopment_planning_stu_no());
             dataMap.put("stu_class", developmentPlanning.getDevelopment_planning_stu_class());
@@ -305,7 +426,7 @@ return result;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        result.setMsg("生成成功");
+        result.setMsg(filename);
         result.setData(filename);
         return result;
 

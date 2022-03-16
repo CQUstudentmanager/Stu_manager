@@ -1106,15 +1106,6 @@ public class award_information_controller {
         Student student = new Student();
         student.setStu_no(Integer.parseInt(is_doing.getIs_doing_stu_no()));
         Is_doing is_doing_old = is_doingMapper.find_my_is_doing(student);
-        //插入is_doing表
-        is_doingMapper.insert_is_doing(is_doing);
-        //插入is_doing_member表
-        Member m = new Member();
-        m.setIs_doing_name(is_doing.getIs_doing_name());
-        for(String s:is_doing.getIs_doing_member()){
-            m.setIs_doing_member_name(s);
-            is_doingMapper.insert_is_doing_member(m);
-        }
         if(is_doing_old == null){
             result.setMsg("上传成功");
         }
@@ -1123,6 +1114,15 @@ public class award_information_controller {
             is_doingMapper.delete_is_doing(is_doing_old);
             is_doingMapper.delete_is_doing_member(is_doing_old.getIs_doing_name());
             result.setMsg("已覆盖原有正在进行中的计划");
+        }
+        //插入is_doing表
+        is_doingMapper.insert_is_doing(is_doing);
+        //插入is_doing_member表
+        Member m = new Member();
+        m.setIs_doing_name(is_doing.getIs_doing_name());
+        for(String s:is_doing.getIs_doing_member()){
+            m.setIs_doing_member_name(s);
+            is_doingMapper.insert_is_doing_member(m);
         }
         return result;
     }
@@ -1144,4 +1144,51 @@ public class award_information_controller {
         return  result;
     }
 
+    //计划开展
+    @Autowired
+    PlanMapper planMapper;
+
+    //1.找到学生的计划
+    @PostMapping("find_my_plan")
+    public Result find_my_plan(@RequestBody Student student){
+        Result result = new Result<>();
+        Plan plan = planMapper.findMyPlan(student);
+        if(plan == null){
+            result.setMsg("当前学生无计划");
+        }else {
+            result.setMsg("当前学生的计划如下");
+            result.setData(plan);
+        }
+        return result;
+    }
+
+    //2.上传计划
+    @PostMapping("upload_plan")
+    public Result upload_plan(@RequestBody Plan plan){
+        Result result = new Result<>();
+        //设置no
+        SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+        String format = sdf.format(new Date());
+        plan.setPlan_no(format+plan.getPlan_stu_no());
+        //删除原有的计划
+        Student student =new Student();
+        student.setStu_no(Integer.parseInt(plan.getPlan_stu_no()));
+        Plan plan_old = planMapper.findMyPlan(student);
+        if(plan_old == null){
+            result.setMsg("上传成功");
+        }else {
+            planMapper.deletePlan(plan_old);
+            result.setMsg("已覆盖原有计划");
+        }
+        planMapper.insertPlan(plan);
+        return result;
+    }
+
+    //3.删除计划
+    @PostMapping("delete_plan")
+    public Result delete_plan(@RequestBody Plan plan){
+        Result result = new Result<>();
+        planMapper.deletePlan(plan);
+        return result;
+    }
 }

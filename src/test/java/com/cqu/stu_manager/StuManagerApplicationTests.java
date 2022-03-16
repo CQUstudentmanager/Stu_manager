@@ -2,6 +2,9 @@ package com.cqu.stu_manager;
 
 import com.cqu.stu_manager.config.TxProperties;
 import com.cqu.stu_manager.config.TxSmsTemplate;
+import com.cqu.stu_manager.excel.Examination_reader;
+import com.cqu.stu_manager.excel.GradePoint_Reader;
+import com.cqu.stu_manager.excel.pojo.FilePath;
 import com.cqu.stu_manager.mapper.*;
 
 import com.cqu.stu_manager.pojo.Family;
@@ -61,10 +64,22 @@ AdminMapper adminMapper;
 DevelopmentPlanningMapper developmentPlanningMapper;
 @Autowired
     TxSmsTemplate txSmsTemplate;
+@Autowired
+GradePiontMapper gradePiontMapper;
+@Autowired
+ExaminationMapper examinationMapper;
     @SneakyThrows
     @Test
     void contextLoads() {
+//        GradePoint_Reader gradePoint_reader=new GradePoint_Reader(gradePiontMapper,redisUtil);
+//        String path="";
+//        FilePath filePath=new FilePath();
+//        path=filePath.getPath()+"UploadExcel\\绩点排名上传模板.xls";
+//        gradePoint_reader.gradepointread(path);
 
+
+        Examination_reader examination_reader=new Examination_reader(examinationMapper,redisUtil);
+        examination_reader.gradepointread("C:\\Users\\drifter\\Desktop\\期末成绩信息.xlsx");
 
     }
 }
